@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>ВШТ • Ads</title>
+<title>ВШТ • Реклама</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,600,1,0" rel="stylesheet" />
 <style>
@@ -25,7 +25,7 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
 .page.active { display: block; }
 @keyframes slideIn { from { transform: translateX(30px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 .header { text-align: center; margin-bottom: 24px; }
-.main-logo { width: 64px; height: 64px; background: var(--card); border-radius: 18px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05); color: var(--accent); }
+.main-logo { width: 64px; height: 64px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; color: var(--accent); }
 .title h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
 .section-label { font-size: 13px; font-weight: 600; color: var(--sub); margin: 0 0 8px 12px; text-transform: uppercase; letter-spacing: 0.5px; }
 .card-group { background: var(--card); border-radius: var(--radius); margin-bottom: 24px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
@@ -76,6 +76,23 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
 .c-stat { font-size: 24px; font-weight: 800; color: var(--accent); margin: 12px 0; }
 .c-desc { font-size: 13px; color: var(--sub); }
 .contact-btn { display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--card); color: var(--text); padding: 16px; border-radius: var(--radius); font-size: 17px; font-weight: 600; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+.client-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--sep);
+    font-size: 15px;
+    font-weight: 500;
+}
+.client-item:last-child {
+    border-bottom: none;
+}
+.client-item .material-symbols-rounded {
+    color: var(--accent);
+    font-size: 20px;
+}
+
 </style>
 </head>
 <body>
@@ -136,7 +153,6 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
         <div class="bento-card" onclick="nav('page-native')">
             <div style="display: flex; justify-content: space-between;">
                 <div class="btn-icon"><span class="material-symbols-rounded">auto_awesome</span></div>
-                <!-- значок NEW тепер зелений (стиль .new-badge) -->
                 <span class="material-symbols-rounded new-badge">fiber_new</span>
             </div>
             <div class="bento-title">Нативна реклама</div>
@@ -153,11 +169,12 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
             <div class="btn-content"><div class="btn-title">Інформація</div></div>
             <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
-        <div class="main-btn" onclick="openModal('Наші клієнти', 'Тут буде список клієнтів, відгуки та успішні кейси.', '', '', false)">
-            <div class="btn-icon"><span class="material-symbols-rounded">handshake</span></div>
-            <div class="btn-content"><div class="btn-title">Наші клієнти</div></div>
-            <span class="material-symbols-rounded arrow">chevron_right</span>
-        </div>
+        <div class="main-btn" onclick="openModal('Наші клієнти', document.getElementById('clients-html').innerHTML, '', '', false)">
+    <div class="btn-icon"><span class="material-symbols-rounded">handshake</span></div>
+    <div class="btn-content"><div class="btn-title">Наші клієнти</div></div>
+    <span class="material-symbols-rounded arrow">chevron_right</span>
+</div>
+
     </div>
 
     <div class="contact-btn" onclick="act('contact')">
@@ -167,7 +184,7 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
 
 <div id="page-bazar" class="page">
     <div class="nav-bar">
-        <div class="back-btn" onclick="nav('home')"><span class="material-symbols-rounded">arrow_back</span></div>
+        <div class="back-btn" onclick="nav('home')"><span class="material-symbols-rounded">splitscreen_top</span></div>
         <div class="nav-title">Базарчик</div>
     </div>
     <div class="card-group">
@@ -197,15 +214,15 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
     </div>
     <div class="card-group">
         <div class="in-btn" onclick="openModal('Безлім+', 'Необмежена публікація + антибот.', '150 ₴', 'baz_bezlim', false)">
-            <div class="in-title"><span class="material-symbols-rounded">all_inclusive</span> Безлім+</div>
+          <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">all_inclusive</span> Безлім+</div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
         <div class="in-btn" onclick="openModal('Pro', '50 оголошень на місяць.', '100 ₴', 'baz_pro', false)">
-            <div class="in-title"><span class="material-symbols-rounded">verified</span> Pro</div>
+            <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">verified</span> Pro</div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
         <div class="in-btn" onclick="openModal('Lite', '30 оголошень на місяць.', '50 ₴', 'baz_lite', false)">
-            <div class="in-title"><span class="material-symbols-rounded">check_circle</span> Lite</div>
+            <div class="in-title"><span class="material-symbols-rounded" style="color: #34c759;">check_circle</span> Lite</div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
     </div>
@@ -218,7 +235,7 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
     </div>
     <div class="card-group">
         <div class="in-btn" onclick="openModal('Стандартне', 'Класичний пост у стрічці.', '250 ₴', 'vsht_std', false)">
-            <div class="in-title"><span class="material-symbols-rounded">article</span> Стандартне оголошення</div>
+            <div class="in-title"><span class="material-symbols-rounded">campaign</span> Стандартне оголошення</div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
         <div class="in-btn" onclick="openModal('Інфо-пост', 'Пост з детальним розбором.', '350 ₴', 'vsht_info', true)">
@@ -271,11 +288,11 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
         <div class="nav-title">Пакети</div>
     </div>
     <div class="card-group">
-        <div class="in-btn" onclick="openModal('Стандарт', 'Базовий набір.', '350 ₴', 'pack_std', false)"><div class="in-title"><span class="material-symbols-rounded">layers</span> Стандарт</div></div>
-        <div class="in-btn" onclick="openModal('Стандарт+', 'Розширений набір.', '450 ₴', 'pack_std_plus', false)"><div class="in-title"><span class="material-symbols-rounded">layers</span> Стандарт+</div></div>
-        <div class="in-btn" onclick="openModal('Pro', 'Оптимально для бізнесу.', '600 ₴', 'pack_pro', false)"><div class="in-title"><span class="material-symbols-rounded">layers</span> Pro</div></div>
-        <div class="in-btn" onclick="openModal('Premium', 'Максимальне охоплення.', '1000 ₴', 'pack_prem', false)"><div class="in-title"><span class="material-symbols-rounded">workspace_premium</span> Premium</div></div>
-        <div class="in-btn" onclick="openModal('Кастомний', 'Зберемо пакет під вас.', '...', 'pack_custom', false)"><div class="in-title"><span class="material-symbols-rounded">dashboard_customize</span> Кастомний</div></div>
+        <div class="in-btn" onclick="openModal('Стандарт', 'Базовий набір.', '350 ₴', 'pack_std', false)"><div class="in-title"><span class="material-symbols-rounded" style="color: #8e8e93;">layers</span> Стандарт</div></div>
+        <div class="in-btn" onclick="openModal('Стандарт+', 'Розширений набір.', '450 ₴', 'pack_std_plus', false)"><div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">layers</span> Стандарт+</div></div>
+        <div class="in-btn" onclick="openModal('Pro', 'Оптимально для бізнесу.', '600 ₴', 'pack_pro', false)"><div class="in-title"><span class="material-symbols-rounded" style="color: #ff9500;">layers</span> Pro</div></div>
+        <div class="in-btn" onclick="openModal('Premium', 'Максимальне охоплення.', '1000 ₴', 'pack_prem', false)"><div class="in-title"><span class="material-symbols-rounded" style="color: #ffcc00;">workspace_premium</span> Premium</div></div>
+        <div class="in-btn" onclick="openModal('Кастомний', 'Зберемо пакет під вас.', '...', 'pack_custom', false)"><div class="in-title"><span class="material-symbols-rounded" style="color: #1a1a1c;">dashboard_customize</span> Кастомний</div></div>
     </div>
 </div>
 
@@ -284,6 +301,12 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
         <div class="back-btn" onclick="nav('home')"><span class="material-symbols-rounded">arrow_back</span></div>
         <div class="nav-title">Нативна реклама</div>
     </div>
+    <div class="card-group">
+    <div class="in-btn" onclick="openModal('🤔 Шо це взагалі таке?', 'Це ненав’язлива, але більш ефективна реклама, яка виглядає як типовий пост у нашому каналі, але саме тому краще сприймається і завдяки інтерактивному/інформаційному формату краще привертає увагу.', '', '', false)">
+        <div class="in-title"><span class="material-symbols-rounded">help</span> Шо це взагалі таке?</div>
+        <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
+    </div>
+</div>
     <div class="card-group">
         <div class="in-btn" onclick="openModal('Інфо-пост', 'Нативний огляд.', '400 ₴', 'nat_info', false)"><div class="in-title">Інфо-пост</div></div>
         <div class="in-btn" onclick="openModal('Інтерактив', 'Залучення аудиторії.', '350 ₴', 'nat_inter', false)"><div class="in-title">Інтерактив</div></div>
@@ -317,22 +340,22 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
     
     <div class="carousel" id="info-carousel">
         <div class="carousel-card">
-            <img src="logo_bazar.png" alt="" class="c-img-logo">
+            <img src="assets/vb.PNG" alt="" class="c-img-logo">
             <div class="c-title">Базарчик</div>
             <div class="c-stat">7.1K</div>
-            <div class="c-desc">Найбільший майданчик для торгівлі та послуг у громаді.</div>
+            <div class="c-desc">Найбільша Telegram-група для торгівлі та послуг у громаді.</div>
         </div>
         <div class="carousel-card">
-            <img src="logo_vsht.png" alt="" class="c-img-logo">
+            <img src="assets/vsht.PNG" alt="" class="c-img-logo">
             <div class="c-title">Валки, шо там?</div>
             <div class="c-stat">4.8K</div>
-            <div class="c-desc">Головне джерело новин з найвищою залученістю.</div>
+            <div class="c-desc">Телеграм-канал</div>
         </div>
         <div class="carousel-card">
-            <img src="logo_chat.png" alt="" class="c-img-logo">
+            <img src="assets/vch.PNG" alt="" class="c-img-logo">
             <div class="c-title">Чатік</div>
             <div class="c-stat">5K</div>
-            <div class="c-desc">Живе спілкування та миттєвий зворотній зв'язок.</div>
+            <div class="c-desc">Живе спілкування.</div>
         </div>
     </div>
 </div>
@@ -350,6 +373,17 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
     
     <button class="secondary-btn" id="m-ex-btn" style="display:none;" onclick="act('example')">Переглянути приклад</button>
     <button class="primary-btn" id="m-btn" onclick="act(this.dataset.action)">Замовити</button>
+</div>
+<div id="clients-html" style="display: none;">
+    <div class="client-item"><span class="material-symbols-rounded">monitor</span> «Всесвіт Електроніки» <span class="mini-tag">3</span></div>
+    <div class="client-item"><span class="material-symbols-rounded">box</span> «Tati Box» <span class="mini-tag">1</span></div>
+    <div class="client-item"><span class="material-symbols-rounded">woman</span> «Жіночий Рай» <span class="mini-tag">1</span></div>
+    <div class="client-item"><span class="material-symbols-rounded">cookie</span> «Солодка Пара» <span class="mini-tag">2</span></div>
+    <div class="client-item"><span class="material-symbols-rounded">diamond_shine</span> inna_jewelry_ <span class="mini-tag">1</span></div>
+    <div class="client-item"><span class="material-symbols-rounded">gynecology</span> Акуш.-гінеколог Стефанків Т.І. <span class="mini-tag">1</span></div>
+    <div class="client-item"><span class="material-symbols-rounded">school</span> Каразінський Університет</div>
+    <div class="client-item"><span class="material-symbols-rounded">school</span> ХПІ</div>
+    <div class="client-item"><span class="material-symbols-rounded">thread_unread</span> Магазин «Пряжа»</div>
 </div>
 
 <script>
@@ -376,7 +410,7 @@ function nav(pageId) {
 function openModal(title, desc, price, action, hasExample) {
     tg.HapticFeedback.impactOccurred('medium');
     document.getElementById('m-title').innerText = title;
-    document.getElementById('m-desc').innerText = desc;
+    document.getElementById('m-desc').innerHTML = desc;
     
     const priceEl = document.getElementById('m-price');
     const btnEl = document.getElementById('m-btn');
