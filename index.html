@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>ВШТ • Ads Mono</title>
+<title>ВШТ • Реклама</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
 :root {
@@ -69,19 +69,19 @@ body { background: var(--bg); color: var(--text); padding: 20px; padding-top: ca
     <div class="header">
         <div class="main-logo"><img src="assets/vsht.PNG" alt="VHT"></div>
         <div class="title">
-            <h1>ВШТ Реклама</h1>
-            <p>Керуй просуванням легко</p>
+            <h1>ВШТ • Реклама</h1>
+            <p></p>
         </div>
     </div>
 
-    <p class="section-label">Твої майданчики</p>
+    <p class="section-label">Оберіть:</p>
     
     <div class="mono-card" onclick="nav('page-bazar')">
         <div class="card-info">
             <div class="icon-box"><img src="assets/vb.PNG" alt=""></div>
             <div>
                 <div class="res-name">Валківський Базарчик</div>
-                <div class="res-stats">Оренда, Безлім, Пакети</div>
+                <div class="res-stats">Оренда гілки та безлім</div>
             </div>
         </div>
         <div class="arrow">›</div>
@@ -92,7 +92,7 @@ body { background: var(--bg); color: var(--text); padding: 20px; padding-top: ca
             <div class="icon-box"><img src="assets/vsht.PNG" alt=""></div>
             <div>
                 <div class="res-name">Валки, шо там?</div>
-                <div class="res-stats">Головний канал</div>
+                <div class="res-stats">Різні варіанти реклами/div>
             </div>
         </div>
         <div class="arrow">›</div>
@@ -103,14 +103,18 @@ body { background: var(--bg); color: var(--text); padding: 20px; padding-top: ca
             <div class="icon-box"><img src="assets/vch.PNG" alt=""></div>
             <div>
                 <div class="res-name">Валківський Чатік</div>
-                <div class="res-stats">Живе спілкування</div>
+                <div class="res-stats">Реклама у чаті</div>
             </div>
         </div>
         <div class="arrow">›</div>
     </div>
 
-    <p class="section-label">Ексклюзив</p>
+    <p class="section-label">Інші варіанти реклами</p>
     <div class="action-grid">
+        div class="mini-card" onclick="act('quiz')">
+            <div class="mini-icon">🎯</div>
+            <div class="mini-text">Тест «Швидкий<br>старт»</div>
+        </div>
         <div class="mini-card" onclick="nav('page-native')">
             <div class="mini-icon">🎭</div>
             <div class="mini-text">Нативна<br>реклама</div>
@@ -123,17 +127,13 @@ body { background: var(--bg); color: var(--text); padding: 20px; padding-top: ca
             <div class="mini-icon">📦</div>
             <div class="mini-text">Пакетні<br>комбо</div>
         </div>
-        <div class="mini-card" onclick="act('quiz')">
-            <div class="mini-icon">🎯</div>
-            <div class="mini-text">Тест Швидкий<br>старт</div>
-        </div>
     </div>
 </div>
 
 <div id="page-bazar" class="page">
     <div class="nav-bar">
         <div class="back-btn" onclick="nav('home')">‹</div>
-        <div class="nav-title">Базарчик</div>
+        <div class="nav-title">Валківський Базарчик</div>
     </div>
 
     <div class="detail-card" style="border: 1px solid var(--accent)">
