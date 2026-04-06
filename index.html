@@ -12,8 +12,8 @@
     --card: #ffffff;
     --text: #000000;
     --sub: #8e8e93;
-    --accent: #007aff;
-    --btn-bg: #007aff;
+    --accent: #1a1a1c;
+    --btn-bg: #1a1a1c;
     --btn-text: #ffffff;
     --radius: 20px;
     --sep: #e5e5ea;
@@ -31,11 +31,12 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
 .main-btn { display: flex; align-items: center; padding: 16px; border-bottom: 1px solid var(--sep); cursor: pointer; transition: background 0.2s; }
 .main-btn:active { background: #f9f9f9; }
 .main-btn:last-child { border-bottom: none; }
-.btn-icon { width: 40px; height: 40px; border-radius: 12px; background: #f5f5f5; display: flex; align-items: center; justify-content: center; margin-right: 14px; color: var(--accent); }
+.btn-icon { width: 40px; height: 40px; border-radius: 12px; background: #f5f5f5; display: flex; align-items: center; justify-content: center; margin-right: 14px; color: var(--accent); flex-shrink: 0; }
+.img-logo { width: 40px; height: 40px; border-radius: 12px; margin-right: 14px; object-fit: cover; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
 .btn-icon.gray { color: var(--sub); }
 .btn-content { flex-grow: 1; }
-.btn-title { font-size: 17px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
-.mini-tag { background: #eef5ff; color: var(--accent); font-size: 11px; font-weight: 700; padding: 2px 6px; border-radius: 6px; }
+.btn-title { font-size: 17px; font-weight: 600; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.mini-tag { background: var(--accent); color: #ffffff; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 8px; }
 .new-badge { color: #ff3b30; display: flex; align-items: center; }
 .btn-desc { font-size: 13px; color: var(--sub); margin-top: 2px; }
 .arrow { color: #c7c7cc; }
@@ -63,13 +64,13 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
 .modal-includes { background: var(--bg); border-radius: 12px; padding: 16px; margin-bottom: 24px; }
 .modal-includes-title { font-size: 13px; font-weight: 600; text-transform: uppercase; color: var(--sub); margin-bottom: 8px; }
 .modal-price { font-size: 24px; font-weight: 700; margin-bottom: 16px; text-align: center; }
-.primary-btn { width: 100%; background: var(--btn-bg); color: var(--btn-text); border: none; padding: 16px; border-radius: 16px; font-size: 17px; font-weight: 600; cursor: pointer; transition: transform 0.1s; }
+.primary-btn { width: 100%; background: var(--btn-bg); color: var(--btn-text); border: none; padding: 16px; border-radius: 16px; font-size: 17px; font-weight: 600; cursor: pointer; transition: transform 0.1s; margin-top: 8px; }
 .primary-btn:active { transform: scale(0.97); }
-.secondary-btn { width: 100%; background: #eef5ff; color: var(--accent); border: none; padding: 14px; border-radius: 16px; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 8px; }
+.secondary-btn { width: 100%; background: #f2f2f7; color: var(--text); border: none; padding: 16px; border-radius: 16px; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 8px; }
 .carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; padding-bottom: 12px; scrollbar-width: none; }
 .carousel::-webkit-scrollbar { display: none; }
 .carousel-card { flex: 0 0 85%; scroll-snap-align: center; background: var(--card); border-radius: 20px; padding: 20px; position: relative; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
-.c-logo { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; border-radius: 10px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; color: var(--sub); }
+.c-img-logo { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; border-radius: 10px; object-fit: cover; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
 .c-title { font-size: 18px; font-weight: 700; margin-bottom: 4px; width: 80%; }
 .c-stat { font-size: 24px; font-weight: 800; color: var(--accent); margin: 12px 0; }
 .c-desc { font-size: 13px; color: var(--sub); }
@@ -87,7 +88,7 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
     <p class="section-label">Оберіть майданчик</p>
     <div class="card-group">
         <div class="main-btn" onclick="nav('page-bazar')">
-            <div class="btn-icon"><span class="material-symbols-rounded">storefront</span></div>
+            <img src="logo_bazar.png" alt="" class="img-logo">
             <div class="btn-content">
                 <div class="btn-title">Базарчик <span class="mini-tag">7.1K</span></div>
                 <div class="btn-desc">Оренда гілки, ліміти та інше</div>
@@ -95,7 +96,7 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
             <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
         <div class="main-btn" onclick="nav('page-vsht')">
-            <div class="btn-icon"><span class="material-symbols-rounded">public</span></div>
+            <img src="logo_vsht.png" alt="" class="img-logo">
             <div class="btn-content">
                 <div class="btn-title">Валки, шо там? <span class="mini-tag">4.8K</span></div>
                 <div class="btn-desc">Різні варіанти реклами</div>
@@ -103,7 +104,7 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
             <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
         <div class="main-btn" onclick="nav('page-chatik')">
-            <div class="btn-icon"><span class="material-symbols-rounded">forum</span></div>
+            <img src="logo_chat.png" alt="" class="img-logo">
             <div class="btn-content">
                 <div class="btn-title">Валківський Чатік <span class="mini-tag">5K</span></div>
                 <div class="btn-desc">Реклама в чаті</div>
@@ -313,19 +314,19 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
     
     <div class="carousel" id="info-carousel">
         <div class="carousel-card">
-            <div class="c-logo"><span class="material-symbols-rounded">storefront</span></div>
+            <img src="logo_bazar.png" alt="" class="c-img-logo">
             <div class="c-title">Базарчик</div>
             <div class="c-stat">7.1K</div>
             <div class="c-desc">Найбільший майданчик для торгівлі та послуг у громаді.</div>
         </div>
         <div class="carousel-card">
-            <div class="c-logo"><span class="material-symbols-rounded">public</span></div>
+            <img src="logo_vsht.png" alt="" class="c-img-logo">
             <div class="c-title">Валки, шо там?</div>
             <div class="c-stat">4.8K</div>
             <div class="c-desc">Головне джерело новин з найвищою залученістю.</div>
         </div>
         <div class="carousel-card">
-            <div class="c-logo"><span class="material-symbols-rounded">forum</span></div>
+            <img src="logo_chat.png" alt="" class="c-img-logo">
             <div class="c-title">Чатік</div>
             <div class="c-stat">5K</div>
             <div class="c-desc">Живе спілкування та миттєвий зворотній зв'язок.</div>
@@ -343,8 +344,9 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
         <div id="m-inc-text">...</div>
     </div>
     <div class="modal-price" id="m-price">0 ₴</div>
-    <button class="primary-btn" id="m-btn" onclick="act(this.dataset.action)">Замовити</button>
+    
     <button class="secondary-btn" id="m-ex-btn" style="display:none;" onclick="act('example')">Переглянути приклад</button>
+    <button class="primary-btn" id="m-btn" onclick="act(this.dataset.action)">Замовити</button>
 </div>
 
 <script>
