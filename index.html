@@ -11,7 +11,8 @@
     --card: #ffffff;
     --text: #1a1a1c;
     --sub: #848488;
-    --accent: #ff3b30;
+    --accent: #0A84FF;
+    --accent-light: rgba(10,132,255,0.12);
     --btn-bg: #000000;
     --btn-text: #ffffff;
     --radius: 24px;
@@ -57,10 +58,11 @@ body { background: var(--bg); color: var(--text); padding: 20px; padding-top: ca
 .order-btn:active { transform: scale(0.93); }
 .disabled-btn { background: #e5e5ea; color: #aeaeb2; box-shadow: none; cursor: not-allowed; }
 .disabled-btn:active { transform: none; }
-.badge { background: #ffefef; color: var(--accent); padding: 4px 8px; border-radius: 8px; font-size: 12px; font-weight: 700; }
-.info-block { background: #eef2fa; padding: 16px; border-radius: 16px; margin-bottom: 20px; border-left: 4px solid #007aff; }
+.badge { background: var(--accent-light); color: var(--accent); padding: 4px 8px; border-radius: 8px; font-size: 12px; font-weight: 700; }
+.info-block { background: #eef2fa; padding: 16px; border-radius: 16px; margin-bottom: 20px; border-left: 4px solid var(--accent); }
 .info-title { font-size: 15px; font-weight: 700; color: #1c1c1e; margin-bottom: 6px; }
 .info-text { font-size: 13px; color: #3a3a3c; line-height: 1.5; }
+.subsection-title { font-size: 15px; font-weight: 800; color: var(--accent); margin: 8px 0 12px 8px; letter-spacing: -0.2px; text-transform: uppercase; }
 </style>
 </head>
 <body>
@@ -70,11 +72,11 @@ body { background: var(--bg); color: var(--text); padding: 20px; padding-top: ca
         <div class="main-logo"><img src="assets/vsht.PNG" alt="VHT"></div>
         <div class="title">
             <h1>ВШТ • Реклама</h1>
-            <p>.</p>
+            <p>обери зручний варіант</p>
         </div>
     </div>
 
-    <p class="section-label">Оберіть:</p>
+    <p class="section-label">Оберіть ресурс</p>
     
     <div class="mono-card" onclick="nav('page-bazar')">
         <div class="card-info">
@@ -92,7 +94,7 @@ body { background: var(--bg); color: var(--text); padding: 20px; padding-top: ca
             <div class="icon-box"><img src="assets/vsht.PNG" alt=""></div>
             <div>
                 <div class="res-name">Валки, шо там?</div>
-                <div class="res-stats">Різні варіанти реклами/div>
+                <div class="res-stats">Різні варіанти реклами</div>
             </div>
         </div>
         <div class="arrow">›</div>
@@ -111,7 +113,7 @@ body { background: var(--bg); color: var(--text); padding: 20px; padding-top: ca
 
     <p class="section-label">Інші варіанти реклами</p>
     <div class="action-grid">
-        div class="mini-card" onclick="act('quiz')">
+        <div class="mini-card" onclick="act('quiz')">
             <div class="mini-icon">🎯</div>
             <div class="mini-text">Тест «Швидкий<br>старт»</div>
         </div>
@@ -126,6 +128,7 @@ body { background: var(--bg); color: var(--text); padding: 20px; padding-top: ca
         <div class="mini-card" onclick="nav('page-packages')">
             <div class="mini-icon">📦</div>
             <div class="mini-text">Пакетні<br>комбо</div>
+        </div>
     </div>
 </div>
 
@@ -135,6 +138,9 @@ body { background: var(--bg); color: var(--text); padding: 20px; padding-top: ca
         <div class="nav-title">Валківський Базарчик</div>
     </div>
 
+    <!-- БЛОК: ОРЕНДА ГІЛКИ -->
+    <div class="subsection-title">📌 Оренда гілки</div>
+    
     <div class="detail-card" style="border: 1px solid var(--accent)">
         <div class="detail-title">Оренда гілки <span class="badge">Топ</span></div>
         <div class="detail-desc">
@@ -160,6 +166,9 @@ body { background: var(--bg); color: var(--text); padding: 20px; padding-top: ca
             <button class="order-btn" onclick="act('baz_pin')">Замовити</button>
         </div>
     </div>
+
+    <!-- БЛОК: БЕЗЛІМ ТА ПЛАНИ (LITE / PRO) -->
+    <div class="subsection-title">⚡ Безлім та плани</div>
 
     <div class="detail-card" style="background: #fafafa">
         <div class="detail-title">Безлім+ <span class="badge" style="background:var(--accent); color:#fff;">Акція</span></div>
