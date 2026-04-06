@@ -17,6 +17,7 @@
     --btn-text: #ffffff;
     --radius: 20px;
     --sep: #e5e5ea;
+    --tag-gray: #8e8e93;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
 body { background: var(--bg); color: var(--text); overflow-x: hidden; }
@@ -36,8 +37,8 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
 .btn-icon.gray { color: var(--sub); }
 .btn-content { flex-grow: 1; }
 .btn-title { font-size: 17px; font-weight: 600; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.mini-tag { background: var(--accent); color: #ffffff; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 8px; }
-.new-badge { color: #ff3b30; display: flex; align-items: center; }
+.mini-tag { background: var(--tag-gray); color: #ffffff; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 8px; }
+.new-badge { color: #34c759; display: flex; align-items: center; }
 .btn-desc { font-size: 13px; color: var(--sub); margin-top: 2px; }
 .arrow { color: #c7c7cc; }
 .in-btn { display: flex; justify-content: space-between; align-items: center; padding: 16px; border-bottom: 1px solid var(--sep); cursor: pointer; transition: background 0.2s; }
@@ -113,16 +114,17 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
         </div>
     </div>
 
+    
     <div class="card-group">
         <div class="main-btn" onclick="nav('page-packages')">
-            <div class="btn-icon"><span class="material-symbols-outlined">cards_stack</span></div>
+            <div class="btn-icon"><span class="material-symbols-rounded">cards_stack</span></div>
             <div class="btn-content">
                 <div class="btn-title">Готові рекламні пакети</div>
             </div>
             <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
         <div class="main-btn" onclick="act('quiz')">
-            <div class="btn-icon"><span class="material-symbols-outlined">quiz</span></div>
+            <div class="btn-icon"><span class="material-symbols-rounded">quiz</span></div>
             <div class="btn-content">
                 <div class="btn-title">Тест «Швидкий старт»</div>
             </div>
@@ -134,6 +136,7 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
         <div class="bento-card" onclick="nav('page-native')">
             <div style="display: flex; justify-content: space-between;">
                 <div class="btn-icon"><span class="material-symbols-rounded">auto_awesome</span></div>
+                <!-- значок NEW тепер зелений (стиль .new-badge) -->
                 <span class="material-symbols-rounded new-badge">fiber_new</span>
             </div>
             <div class="bento-title">Нативна реклама</div>
