@@ -19,8 +19,26 @@
     --sep: #e5e5ea;
     --tag-gray: #8e8e93;
 }
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
-body { background: var(--bg); color: var(--text); overflow-x: hidden; }
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", Helvetica, Arial, sans-serif; 
+    -webkit-tap-highlight-color: transparent; 
+    outline: none;
+}
+html {
+    -webkit-text-size-adjust: 100%;
+}
+body { 
+    background: var(--bg); 
+    color: var(--text); 
+    overflow-x: hidden; 
+    word-break: break-word;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
 .page { display: none; padding: 20px; padding-top: calc(20px + env(safe-area-inset-top)); padding-bottom: 40px; animation: slideIn 0.3s cubic-bezier(0.25, 1, 0.5, 1); }
 .page.active { display: block; }
 @keyframes slideIn { from { transform: translateX(30px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
@@ -32,10 +50,12 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
 .main-btn { display: flex; align-items: center; padding: 16px; border-bottom: 1px solid var(--sep); cursor: pointer; transition: background 0.2s; }
 .main-btn:active { background: #f9f9f9; }
 .main-btn:last-child { border-bottom: none; }
+.logo-container { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-right: 14px; flex-shrink: 0; }
+.img-logo { width: 40px; height: 40px; border-radius: 12px; object-fit: cover; }
+.capsule-tag { background: var(--accent); color: #ffffff; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 12px; }
 .btn-icon { width: 40px; height: 40px; border-radius: 12px; background: #f5f5f5; display: flex; align-items: center; justify-content: center; margin-right: 14px; color: var(--accent); flex-shrink: 0; }
-.img-logo { width: 40px; height: 40px; border-radius: 12px; margin-right: 14px; object-fit: cover; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
 .btn-icon.gray { color: var(--sub); }
-.btn-content { flex-grow: 1; }
+.btn-content { flex-grow: 1; min-width: 0; }
 .btn-title { font-size: 17px; font-weight: 600; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .mini-tag { background: var(--tag-gray); color: #ffffff; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 8px; }
 .new-badge { color: #34c759; display: flex; align-items: center; }
@@ -59,8 +79,9 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
 .overlay.show { opacity: 1; pointer-events: auto; }
 .modal { position: fixed; bottom: -100%; left: 0; width: 100%; background: var(--card); border-radius: 24px 24px 0 0; padding: 24px 20px; padding-bottom: calc(24px + env(safe-area-inset-bottom)); transition: bottom 0.3s cubic-bezier(0.25, 1, 0.5, 1); z-index: 11; box-shadow: 0 -4px 20px rgba(0,0,0,0.1); }
 .modal.show { bottom: 0; }
-.modal-handle { width: 40px; height: 4px; background: #e5e5ea; border-radius: 2px; margin: 0 auto 20px; }
-.modal-title { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+.modal-close { position: absolute; top: 16px; right: 16px; width: 32px; height: 32px; background: var(--bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--sub); transition: background 0.2s; }
+.modal-close:active { background: #e5e5ea; }
+.modal-title { font-size: 22px; font-weight: 700; margin-bottom: 8px; padding-right: 32px; }
 .modal-desc { font-size: 15px; color: var(--sub); line-height: 1.4; margin-bottom: 16px; }
 .modal-includes { background: var(--bg); border-radius: 12px; padding: 16px; margin-bottom: 24px; }
 .modal-includes-title { font-size: 13px; font-weight: 600; text-transform: uppercase; color: var(--sub); margin-bottom: 8px; }
@@ -71,28 +92,14 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
 .carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; padding-bottom: 12px; scrollbar-width: none; }
 .carousel::-webkit-scrollbar { display: none; }
 .carousel-card { flex: 0 0 85%; scroll-snap-align: center; background: var(--card); border-radius: 20px; padding: 20px; position: relative; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
-.c-img-logo { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; border-radius: 10px; object-fit: cover; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+.c-img-logo { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; border-radius: 10px; object-fit: cover; }
 .c-title { font-size: 18px; font-weight: 700; margin-bottom: 4px; width: 80%; }
 .c-stat { font-size: 24px; font-weight: 800; color: var(--accent); margin: 12px 0; }
 .c-desc { font-size: 13px; color: var(--sub); }
 .contact-btn { display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--card); color: var(--text); padding: 16px; border-radius: var(--radius); font-size: 17px; font-weight: 600; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
-.client-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--sep);
-    font-size: 15px;
-    font-weight: 500;
-}
-.client-item:last-child {
-    border-bottom: none;
-}
-.client-item .material-symbols-rounded {
-    color: var(--accent);
-    font-size: 20px;
-}
-
+.client-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--sep); font-size: 15px; font-weight: 500; }
+.client-item:last-child { border-bottom: none; }
+.client-item .material-symbols-rounded { color: var(--accent); font-size: 20px; }
 </style>
 </head>
 <body>
@@ -106,32 +113,40 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
     <p class="section-label">Оберіть:</p>
     <div class="card-group">
         <div class="main-btn" onclick="nav('page-bazar')">
-            <img src="assets/vb.PNG" alt="" class="img-logo">
+            <div class="logo-container">
+                <img src="assets/vb.PNG" alt="" class="img-logo">
+                <div class="capsule-tag">7.1K</div>
+            </div>
             <div class="btn-content">
-                <div class="btn-title">Базарчик <span class="mini-tag">7.1K</span></div>
+                <div class="btn-title">Базарчик</div>
                 <div class="btn-desc">Оренда гілки, ліміти та інше</div>
             </div>
             <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
         <div class="main-btn" onclick="nav('page-vsht')">
-            <img src="assets/vsht.PNG" alt="" class="img-logo">
+            <div class="logo-container">
+                <img src="assets/vsht.PNG" alt="" class="img-logo">
+                <div class="capsule-tag">4.8K</div>
+            </div>
             <div class="btn-content">
-                <div class="btn-title">Валки, шо там? <span class="mini-tag">4.8K</span></div>
+                <div class="btn-title">Валки, шо там?</div>
                 <div class="btn-desc">Різні варіанти реклами</div>
             </div>
             <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
         <div class="main-btn" onclick="nav('page-chatik')">
-            <img src="assets/vch.PNG" alt="" class="img-logo">
+            <div class="logo-container">
+                <img src="assets/vch.PNG" alt="" class="img-logo">
+                <div class="capsule-tag">5K</div>
+            </div>
             <div class="btn-content">
-                <div class="btn-title">Валківський Чатік <span class="mini-tag">5K</span></div>
+                <div class="btn-title">Валківський Чатік</div>
                 <div class="btn-desc">Реклама в чаті</div>
             </div>
             <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
     </div>
 
-    
     <div class="card-group">
         <div class="main-btn" onclick="nav('page-packages')">
             <div class="btn-icon"><span class="material-symbols-rounded">cards_stack</span></div>
@@ -170,11 +185,10 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
             <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
         <div class="main-btn" onclick="openModal('Наші клієнти', document.getElementById('clients-html').innerHTML, '', '', false)">
-    <div class="btn-icon"><span class="material-symbols-rounded">handshake</span></div>
-    <div class="btn-content"><div class="btn-title">Наші клієнти</div></div>
-    <span class="material-symbols-rounded arrow">chevron_right</span>
-</div>
-
+            <div class="btn-icon"><span class="material-symbols-rounded">handshake</span></div>
+            <div class="btn-content"><div class="btn-title">Наші клієнти</div></div>
+            <span class="material-symbols-rounded arrow">chevron_right</span>
+        </div>
     </div>
 
     <div class="contact-btn" onclick="act('contact')">
@@ -184,7 +198,7 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
 
 <div id="page-bazar" class="page">
     <div class="nav-bar">
-        <div class="back-btn" onclick="nav('home')"><span class="material-symbols-rounded">splitscreen_top</span></div>
+        <div class="back-btn" onclick="nav('home')"><span class="material-symbols-rounded">arrow_back</span></div>
         <div class="nav-title">Базарчик</div>
     </div>
     <div class="card-group">
@@ -291,7 +305,7 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
         <div class="in-btn" onclick="openModal('Стандарт', 'Базовий набір.', '350 ₴', 'pack_std', false)"><div class="in-title"><span class="material-symbols-rounded" style="color: #8e8e93;">layers</span> Стандарт</div></div>
         <div class="in-btn" onclick="openModal('Стандарт+', 'Розширений набір.', '450 ₴', 'pack_std_plus', false)"><div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">layers</span> Стандарт+</div></div>
         <div class="in-btn" onclick="openModal('Pro', 'Оптимально для бізнесу.', '600 ₴', 'pack_pro', false)"><div class="in-title"><span class="material-symbols-rounded" style="color: #ff9500;">layers</span> Pro</div></div>
-        <div class="in-btn" onclick="openModal('Premium', 'Максимальне охоплення.', '1000 ₴', 'pack_prem', false)"><div class="in-title"><span class="material-symbols-rounded" style="color: #ffcc00;">workspace_premium</span> Premium</div></div>
+        <div class="in-btn" onclick="openModal('Premium', 'Максимальне охоплення.', '1000 ₴', 'pack_prem', false)"><div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">workspace_premium</span> Premium</div></div>
         <div class="in-btn" onclick="openModal('Кастомний', 'Зберемо пакет під вас.', '...', 'pack_custom', false)"><div class="in-title"><span class="material-symbols-rounded" style="color: #1a1a1c;">dashboard_customize</span> Кастомний</div></div>
     </div>
 </div>
@@ -362,7 +376,9 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
 
 <div class="overlay" id="modal-overlay" onclick="closeModal()"></div>
 <div class="modal" id="dynamic-modal">
-    <div class="modal-handle"></div>
+    <div class="modal-close" onclick="closeModal()">
+        <span class="material-symbols-rounded" style="font-size: 20px;">close</span>
+    </div>
     <div class="modal-title" id="m-title">Назва</div>
     <div class="modal-desc" id="m-desc">Опис</div>
     <div class="modal-includes" id="m-includes" style="display:none;">
