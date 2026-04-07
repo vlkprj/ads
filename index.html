@@ -350,10 +350,10 @@ body {
         <div class="nav-title">Інформація</div>
     </div>
     <div class="card-group">
-        <div class="in-btn" onclick="openModal('Чому саме у нас?', 'Ми маємо найбільшу живу аудиторію у Валках. Без накруток, тільки реальні люди.', '', '', false)">
-            <div class="in-title"><span class="material-symbols-rounded">help</span> Чому саме у нас?</div>
-            <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
-        </div>
+        <div class="in-btn" onclick="openModal('Чому саме у нас?', document.getElementById('info-why-html').innerHTML, '', '', false)">
+    <div class="in-title"><span class="material-symbols-rounded">help</span> Чому саме у нас?</div>
+    <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+</div>
     </div>
     
     <div class="carousel" id="info-carousel">
@@ -487,6 +487,37 @@ body {
     </div>
 </div>
 
+<div id="info-why-html" style="display: none;">
+    <div class="intro-box">Ми маємо найбільшу живу аудиторію у Валках. Без накруток, тільки реальні люди. Але це ще не все.</div>
+
+    <div style="font-size: 16px; font-weight: 600; margin: 16px 0 8px; display: flex; align-items: center; gap: 8px; color: var(--text);">
+        <span class="material-symbols-rounded" style="color: #ff9500; font-size: 20px;">campaign</span> Вашу рекламу дійсно помітять
+    </div>
+    <div style="font-size: 14.5px; color: var(--sub); line-height: 1.4; margin-bottom: 8px;">Наприклад, у чаті немає безкінечного потоку оголошень завдяки обмеженням на оголошення — саме тому ваша реклама не залишиться без уваги і не загубиться. Ми її закріпимо, а у разі, якщо час публікації потрапив у момент, коли в чаті почалось занадто активне спілкування, ми безкоштовно опублікуємо ваше оголошення знову.</div>
+    <div style="font-size: 14.5px; color: var(--sub); line-height: 1.4; margin-bottom: 20px;">А в групі «Валківський Базарчик» ви маєте можливість орендувати під свій бізнес цілу індивідуальну гілку, що також значно підвищує ефективність реклами.</div>
+
+    <div style="font-size: 16px; font-weight: 600; margin: 0 0 8px; display: flex; align-items: center; gap: 8px; color: var(--text);">
+        <span class="material-symbols-rounded" style="color: #34c759; font-size: 20px;">group</span> Лояльна та зацікавлена авдиторія
+    </div>
+    <div style="display: flex; gap: 8px; margin-bottom: 8px; align-items: flex-start;">
+        <span style="color: var(--sub); font-size: 14.5px;">•</span>
+        <span style="font-size: 14.5px; color: var(--sub); line-height: 1.4;">Більшість (91%) опитаних лояльно ставляться до реклами на каналі/у наших групах.</span>
+    </div>
+    <div style="display: flex; gap: 8px; margin-bottom: 20px; align-items: flex-start;">
+        <span style="color: var(--sub); font-size: 14.5px;">•</span>
+        <span style="font-size: 14.5px; color: var(--sub); line-height: 1.4;">Близько 80% підписників — це платоспроможна аудиторія в широкому віковому діапазоні від 20 і до 50+ років.</span>
+    </div>
+
+    <div style="font-size: 16px; font-weight: 600; margin: 0 0 8px; display: flex; align-items: center; gap: 8px; color: var(--text);">
+        <span class="material-symbols-rounded" style="color: #007aff; font-size: 20px;">handshake</span> Індивідуальний підхід
+    </div>
+    <div style="font-size: 14.5px; color: var(--sub); line-height: 1.4; margin-bottom: 20px;">Іноді недостаньо просто опублікувати оголошення. Ми пропонуємо цікаві і нестандартні для нашого невеликого міста варіанти реклами, які точно привернуть увагу і їх варто спробувати. Ми все підкажемо, пояснимо, допоможемо, уважно поставимося до ваших пропозицій і бажань.</div>
+
+    <div style="font-size: 16px; font-weight: 600; margin: 0 0 8px; display: flex; align-items: center; gap: 8px; color: var(--text);">
+        <span class="material-symbols-rounded" style="color: #ff2d55; font-size: 20px;">favorite</span> Допомога військовим
+    </div>
+    <div style="font-size: 14.5px; color: var(--sub); line-height: 1.4;">Ви можете спрямувати частину (або навіть повністю всю суму) грошей за рекламу на будь-який місцевий волонтерський збір коштів на потреби наших військових.</div>
+</div>
 
 <script>
 const tg = window.Telegram.WebApp;
