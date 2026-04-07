@@ -78,6 +78,7 @@ body {
 .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 10; }
 .overlay.show { opacity: 1; pointer-events: auto; }
 .modal { position: fixed; bottom: -100%; left: 0; width: 100%; background: var(--card); border-radius: 24px 24px 0 0; padding: 24px 20px; padding-bottom: calc(24px + env(safe-area-inset-bottom)); transition: bottom 0.3s cubic-bezier(0.25, 1, 0.5, 1); z-index: 11; box-shadow: 0 -4px 20px rgba(0,0,0,0.1); display: flex; flex-direction: column; max-height: 95dvh; }
+.intro-box { background: rgba(142, 142, 147, 0.12); color: var(--text); padding: 14px 16px; border-radius: 14px; font-size: 14.5px; font-weight: 500; margin-bottom: 16px; }
 .modal-desc { font-size: 15px; color: var(--sub); line-height: 1.4; margin-bottom: 16px; overflow-y: auto; flex-shrink: 1; padding-right: 4px; /*box-shadow: inset 0 -24px 20px -24px rgba(0,0,0,0.12); */padding-bottom: 16px; }
 .modal.show { bottom: 0; }
 .modal-close { position: absolute; top: 16px; right: 16px; width: 32px; height: 32px; background: var(--bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--sub); transition: background 0.2s; }
@@ -405,7 +406,7 @@ body {
     <div class="client-item"><span class="material-symbols-rounded">thread_unread</span> Магазин «Пряжа»</div>
 </div>
 <div id="baz-branch-html" style="display: none;">
-    Це окремий закріплений в топі розділ в групі, який повністю належить вам на 7 днів. По суті, це ваш міні-сайт всередині Базарчика.
+    <div class="intro-box">Це окремий закріплений в топі розділ в групі, який повністю належить вам на 7 днів. По суті, це ваш міні-сайт всередині Базарчика.</div>
     <div style="font-weight: 600; margin: 16px 0 12px; color: var(--text);">Що ви отримуєте:</div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #34c759; flex-shrink: 0;">add_reaction</span>
@@ -430,7 +431,7 @@ body {
 </div>
 
 <div id="baz-pin-html" style="display: none;">
-    Ваше оголошення завжди в топі обраної гілки.
+      <div class="intro-box">Ваше оголошення завжди в топі обраної гілки.</div>
     <div style="font-weight: 600; margin: 16px 0 12px; color: var(--text);">Що входить:</div>
     <div style="display: flex; gap: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #ff2d55; flex-shrink: 0;">pinboard</span>
@@ -454,7 +455,7 @@ body {
     </div>
     <div style="display: flex; gap: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">list_alt_add</span>
-        <span style="font-size: 14px; line-height: 1.4;">На 2 дні отримуєте клікабельну кнопку з назвою вашого бізнесу в щоденному системному повідомленні від бота в чаті «Валківський Чатік». Назву кнопки підберемо окремо індивідуально з вами.</span>
+        <span style="font-size: 14px; line-height: 1.4;">На 2 дні додаємо кнопку з назвою вашого бізнесу в щоденне повідомлення бота в чаті «Валківський Чатік». Один клік і люди переходять до вашого оголошення/гілки/інстаграму. Назву кнопки підберемо разом з вами.</span>
     </div>
 </div>
 
@@ -511,7 +512,12 @@ function nav(pageId) {
 function openModal(title, desc, price, action, hasExample) {
     tg.HapticFeedback.impactOccurred('medium');
     document.getElementById('m-title').innerText = title;
-    document.getElementById('m-desc').innerHTML = desc;
+    
+    if (!desc.includes('<div') && !desc.includes('<span')) {
+        document.getElementById('m-desc').innerHTML = `<div class="intro-box">${desc}</div>`;
+    } else {
+        document.getElementById('m-desc').innerHTML = desc;
+    }
     
     const priceEl = document.getElementById('m-price');
     const btnEl = document.getElementById('m-btn');
