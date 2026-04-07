@@ -66,7 +66,7 @@ body {
 .in-btn:last-child { border-bottom: none; }
 .in-title { font-size: 16px; font-weight: 500; display: flex; align-items: center; gap: 12px; }
 .in-title .material-symbols-rounded { font-size: 20px; color: var(--accent); }
-.in-action { display: flex; align-items: center; gap: 4px; font-size: 14px; color: var(--sub); font-weight: 500; }
+.in-action { display: flex; align-items: center; gap: 4px; font-size: 14px; color: var(--sub); font-weight: 500; white-space: nowrap; }
 .disabled { opacity: 0.5; pointer-events: none; }
 .nav-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
 .back-btn { width: 40px; height: 40px; background: var(--card); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.02); color: var(--accent); }
@@ -202,7 +202,7 @@ body {
         <div class="nav-title">Базарчик</div>
     </div>
     <div class="card-group">
-        <div class="in-btn" onclick="openModal('Оренда гілки', 'Ваш власний закріплений розділ.', '150 ₴ / тиж', 'baz_branch', false)">
+        <div class="in-btn" onclick="openModal('Оренда гілки', document.getElementById('baz-branch-html').innerHTML, '150 ₴ / тиж', 'baz_branch', false)">
             <div class="in-title"><span class="material-symbols-rounded">splitscreen_top</span> Оренда гілки</div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
@@ -400,6 +400,30 @@ body {
     <div class="client-item"><span class="material-symbols-rounded">school</span> Каразінський Університет</div>
     <div class="client-item"><span class="material-symbols-rounded">school</span> ХПІ</div>
     <div class="client-item"><span class="material-symbols-rounded">thread_unread</span> Магазин «Пряжа»</div>
+</div>
+<div id="baz-branch-html" style="display: none;">
+    Це окремий закріплений в топі розділ в групі, який повністю належить вам цілий тиждень. По суті, це ваш міні-сайт всередині Базарчика.
+    <div style="font-weight: 600; margin: 16px 0 12px; color: var(--text);">Що ви отримуєте:</div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: var(--accent); flex-shrink: 0;">add_reaction</span>
+        <span style="font-size: 14px; line-height: 1.4;">Ваш логотип (за бaжанням) або емодзі на ваш вибір в якості іконки для гілки.</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: var(--accent); flex-shrink: 0;">custom_typography</span>
+        <span style="font-size: 14px; line-height: 1.4;">Власна назва гілки. Це може бути як назва вашого магазину/закладу, так і назва послуги, яку ви надаєте. Ви можете обрати будь-яку назву.</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: var(--accent); flex-shrink: 0;">all_inclusive</span>
+        <span style="font-size: 14px; line-height: 1.4;">Необмежена кількість публікацій всередині гілки протягом тижня. Це може бути асортимент магазину, фото ваших робіт, опис послуг, прайс, акції, корисна інформація про товари/послуги, місцезнаходження, контакти тощо.</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: var(--accent); flex-shrink: 0;">repeat</span>
+        <span style="font-size: 14px; line-height: 1.4;">Ми беремо ваше основне оголошення і публікуємо його на каналі «Валки, шо там?» з посиланням на вашу гілку.</span>
+    </div>
+    <div style="display: flex; gap: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: var(--accent); flex-shrink: 0;">list_alt_add</span>
+        <span style="font-size: 14px; line-height: 1.4;">На 2 дні додаємо клікабельну кнопку з назвою вашого бізнесу/послуги в щоденному системному повідомленні від бота в чаті «Валківський Чатік». Назву кнопки підберемо індивідуально з вами.</span>
+    </div>
 </div>
 
 <script>
