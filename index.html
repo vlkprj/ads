@@ -100,6 +100,7 @@ body {
 .client-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--sep); font-size: 15px; font-weight: 500; }
 .client-item:last-child { border-bottom: none; }
 .client-item .material-symbols-rounded { color: var(--accent); font-size: 20px; }
+.modal-desc { scroll-behavior: smooth; }
 </style>
 </head>
 <body>
@@ -528,11 +529,27 @@ function openModal(title, desc, price, action, hasExample) {
     
     document.getElementById('modal-overlay').classList.add('show');
     document.getElementById('dynamic-modal').classList.add('show');
+    const descEl = document.getElementById('m-desc');
+gentleAutoScroll(descEl);
 }
 
 function closeModal() {
     document.getElementById('modal-overlay').classList.remove('show');
     document.getElementById('dynamic-modal').classList.remove('show');
+}
+
+function gentleAutoScroll(container) {
+    if (!container) return;
+    if (container.scrollHeight > container.clientHeight) {
+        setTimeout(() => {
+           
+            container.scrollBy({ top: 40, behavior: 'smooth' });
+            setTimeout(() => {
+              
+                container.scrollBy({ top: -40, behavior: 'smooth' });
+            }, 400);
+        }, 100);
+    }
 }
 
 function act(id) {
