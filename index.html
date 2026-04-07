@@ -227,10 +227,11 @@ body {
         <div class="nav-title">Ліміти</div>
     </div>
     <div class="card-group">
-        <div class="in-btn" onclick="openModal('Безлім+', 'Необмежена публікація + антибот.', '150 ₴', 'baz_bezlim', false)">
-          <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">all_inclusive</span> Безлім+</div>
-            <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
-        </div>
+       <div class="in-btn" onclick="openModal('Безлім+', document.getElementById('baz-bezlim-html').innerHTML, '<s style=\'color: var(--sub); font-size: 18px; margin-right: 4px;\'>150 ₴</s> 100 ₴ / 3 міс', 'baz_bezlim', false)">
+    <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">all_inclusive</span> Безлім+</div>
+    <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+</div>
+
         <div class="in-btn" onclick="openModal('Pro', '50 оголошень на місяць.', '100 ₴', 'baz_pro', false)">
             <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">verified</span> Pro</div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
@@ -435,6 +436,27 @@ body {
     </div>
 </div>
 
+<div id="baz-bezlim-html" style="display: none;">
+    <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start; background: rgba(255, 149, 0, 0.1); padding: 12px; border-radius: 12px;">
+        <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">percent_discount</span>
+        <span style="font-size: 14px; line-height: 1.4; color: #ff9500; font-weight: 600;">Акція! Спробуйте «Безлім+» протягом трьох місяців за 100 грн.</span>
+    </div>
+    <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що входить:</div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0;">all_inclusive</span>
+        <span style="font-size: 14px; line-height: 1.4;">Абсолютний безліміт</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #ff2d55; flex-shrink: 0;">smart_toy</span>
+        <span style="font-size: 14px; line-height: 1.4;">Анти-бот (бот більше не просить у вас підтверджень і забуває про ваше існування)</span>
+    </div>
+    <div style="display: flex; gap: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">list_alt_add</span>
+        <span style="font-size: 14px; line-height: 1.4;">На 2 дні отримуєте клікабельну кнопку з назвою вашого бізнесу в щоденному системному повідомленні від бота в чаті «Валківський Чатік». Назву кнопки підберемо окремо індивідуально з вами.</span>
+    </div>
+</div>
+
+
 <script>
 const tg = window.Telegram.WebApp;
 tg.expand();
@@ -465,7 +487,7 @@ function openModal(title, desc, price, action, hasExample) {
     const btnEl = document.getElementById('m-btn');
     if(price) {
         priceEl.style.display = 'block';
-        priceEl.innerText = price;
+        priceEl.innerHTML = price;
         btnEl.style.display = 'block';
         btnEl.dataset.action = action;
     } else {
