@@ -41,6 +41,14 @@ body {
 }
 .page { display: none; padding: 20px; padding-top: calc(20px + env(safe-area-inset-top)); padding-bottom: 40px; animation: slideIn 0.3s cubic-bezier(0.25, 1, 0.5, 1); }
 .page.active { display: block; }
+.promo-banner { background: linear-gradient(135deg, #ff9500, #ffcc00); border-radius: var(--radius); padding: 16px; margin-bottom: 24px; position: relative; color: #ffffff; box-shadow: 0 4px 12px rgba(255, 149, 0, 0.3); animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.promo-close { position: absolute; top: 12px; right: 12px; width: 26px; height: 26px; background: rgba(0,0,0,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s; }
+.promo-close:active { background: rgba(0,0,0,0.25); }
+.promo-title { font-size: 17px; font-weight: 700; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; padding-right: 30px; }
+.promo-desc { font-size: 14.5px; line-height: 1.3; margin-bottom: 14px; font-weight: 500; opacity: 0.95; }
+.promo-btn { background: #ffffff; color: #ff9500; font-weight: 700; font-size: 15px; padding: 12px 16px; border-radius: 14px; display: inline-block; text-align: center; cursor: pointer; transition: transform 0.1s; }
+.promo-btn:active { transform: scale(0.96); }
+@keyframes popIn { 0% { transform: scale(0.9); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
 @keyframes slideIn { from { transform: translateX(30px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 .header { text-align: center; margin-bottom: 24px; }
 .main-logo { width: 64px; height: 64px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; color: var(--accent); }
@@ -199,6 +207,14 @@ body {
     <div class="nav-bar">
         <div class="back-btn" onclick="nav('home')"><span class="material-symbols-rounded">arrow_back</span></div>
         <div class="nav-title">Базарчик</div>
+    </div>
+        <div class="promo-banner" id="baz-promo">
+        <div class="promo-close" onclick="document.getElementById('baz-promo').style.display='none'">
+            <span class="material-symbols-rounded" style="font-size: 16px;">close</span>
+        </div>
+        <div class="promo-title">🔥 Акційна пропозиція</div>
+        <div class="promo-desc">Спробуйте «Безлім+» протягом <b>трьох</b> місяців лише за 100 грн</div>
+        <div class="promo-btn" onclick="openModal('Безлім+', document.getElementById('baz-bezlim-html').innerHTML, '<s style=\'color: var(--sub); font-size: 18px; margin-right: 4px;\'>150 ₴</s> 100 ₴ / 3 міс', 'baz_bezlim', false)">Спробувати</div>
     </div>
     <div class="card-group">
         <div class="in-btn" onclick="openModal('Оренда гілки', document.getElementById('baz-branch-html').innerHTML, '150 ₴ / тиж', 'baz_branch', false)">
