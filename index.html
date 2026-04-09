@@ -269,10 +269,11 @@ body {
     <div class="in-title"><span class="material-symbols-rounded">campaign</span> Стандартне оголошення</div>
     <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
 </div>
-        <div class="in-btn" onclick="openModal('Інфо-пост', 'Пост з детальним розбором.', '350 ₴', 'vsht_info', true)">
-            <div class="in-title"><span class="material-symbols-rounded">feed</span> Інфо-пост</div>
-            <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
-        </div>
+        <div class="in-btn" onclick="openModal('Інфо-пост', document.getElementById('vsht-info-html').innerHTML, '250 ₴', 'vsht_info', true)">
+    <div class="in-title"><span class="material-symbols-rounded">feed</span> Інфо-пост</div>
+    <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+</div>
+
         <div class="in-btn" onclick="openModal('Інтерактив', 'Опитування або квіз.', '300 ₴', 'vsht_inter', true)">
             <div class="in-title"><span class="material-symbols-rounded">touch_app</span> Інтерактив</div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
@@ -553,7 +554,27 @@ body {
     </div>
 </div>
 
+<!--ВШТ>інфо-пост--> 
 
+<div id="vsht-info-html" style="display: none;">
+    <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">article_shortcut</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"> Не просто реклама, а пост, який виглядає як нормальний корисний контент. Ми пишемо текст у форматі новини або підбірки, який повʼязаний з вашим бізнесом/послугою/товарами, і який читають як «о, цікаво», а не «о, знову реклама» — і  ненавʼязливо додаємо вашу пропозицію. Це також може бути топ товарів / послуг. </span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0;">keep</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Закріплення публікації на 24 години.</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">calendar_clock</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Час публікації обираєте самостійно.</span>
+    </div>
+    <div style="display: flex; gap: 12px; align-items: flex-start; background: rgba(52, 199, 89, 0.1); padding: 12px; border-radius: 12px;">
+        <span class="material-symbols-rounded" style="color: #34c759; flex-shrink: 0;">loyalty</span>
+        <span style="font-size: 14px; line-height: 1.4; color: #34c759; font-weight: 500;">За умови донату будь-якої суми (від 50 грн) на будь-який місцевий волонтерський збір, ми репостимо ваше оголошення в чат «Валківський Чатік».</span>
+    </div>
+</div>
 <script>
 const tg = window.Telegram.WebApp;
 tg.expand();
