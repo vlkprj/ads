@@ -265,10 +265,10 @@ body {
         <div class="nav-title">Валки, шо там?</div>
     </div>
     <div class="card-group">
-        <div class="in-btn" onclick="openModal('Стандартне', 'Класичний пост-оголошення на каналі.', '250 ₴', 'vsht_std', false)">
-            <div class="in-title"><span class="material-symbols-rounded">campaign</span> Стандартне </div>
-            <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
-        </div>
+       <div class="in-btn" onclick="openModal('Стандартне', document.getElementById('vsht-std-html').innerHTML, '100 ₴', 'vsht_std', false)">
+    <div class="in-title"><span class="material-symbols-rounded">campaign</span> Стандартне оголошення</div>
+    <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+</div>
         <div class="in-btn" onclick="openModal('Інфо-пост', 'Пост з детальним розбором.', '350 ₴', 'vsht_info', true)">
             <div class="in-title"><span class="material-symbols-rounded">feed</span> Інфо-пост</div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
@@ -500,6 +500,7 @@ body {
     </div>
 </div>
 
+ <!--WHY--> 
 <div id="info-why-html" style="display: none;">
 
     <div style="font-size: 16px; font-weight: 600; margin: 16px 0 8px; display: flex; align-items: center; gap: 8px; color: var(--text);">
@@ -530,6 +531,28 @@ body {
     </div>
     <div style="font-size: 14.5px; color: var(--sub); line-height: 1.4;">Ви можете спрямувати частину (або навіть повністю всю суму) грошей за рекламу на будь-який місцевий волонтерський збір коштів на потреби наших військових.</div>
 </div>
+
+ <!--ВШТ>стандартне--> 
+<div id="vsht-std-html" style="display: none;">
+    <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">sticky_note</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Ми публікуємо ваше готове оголошення на каналі.</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">calendar_clock</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Час публікації обираєте самостійно.</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0;">keep</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Закріплення оголошення на 24 години.</span>
+    </div>
+    <div style="display: flex; gap: 12px; align-items: flex-start; background: rgba(52, 199, 89, 0.1); padding: 12px; border-radius: 12px;">
+        <span class="material-symbols-rounded" style="color: #34c759; flex-shrink: 0;">loyalty</span>
+        <span style="font-size: 14px; line-height: 1.4; color: #34c759; font-weight: 500;">За умови донату будь-якої суми (від 50 грн) на будь-який місцевий збір, ми репостимо ваше оголошення в чат «Валківський Чатік».</span>
+    </div>
+</div>
+
 
 <script>
 const tg = window.Telegram.WebApp;
