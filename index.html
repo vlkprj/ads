@@ -127,7 +127,7 @@ body {
     font-size: 14.5px; 
     line-height: 1.4;
 }
-
+ 
 .chat-sim { background: rgba(142, 142, 147, 0.08); border-radius: 16px; padding: 12px; margin: 16px 0; display: flex; flex-direction: column; gap: 8px; }
 .chat-msg { display: flex; gap: 8px; align-items: flex-end; max-width: 90%; }
 .chat-msg.reply { align-self: flex-start; }
@@ -159,6 +159,29 @@ body {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
 }
+
+.channel-sim { background: rgba(142, 142, 147, 0.08); border-radius: 16px; padding: 12px; margin: 16px 0; display: flex; flex-direction: column; gap: 12px; }
+.channel-post { background: var(--card); border-radius: 14px; padding: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+.post-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-weight: 600; font-size: 14.5px; color: var(--text); }
+.post-avatar { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
+.poll-q { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+.poll-sub { font-size: 13px; color: var(--sub); margin-bottom: 12px; }
+.poll-opt { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.poll-circle { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--sub); }
+.poll-text { font-size: 14.5px; }
+.poll-bot { font-size: 13px; color: var(--sub); margin-top: 8px; }
+.reply-preview { border-left: 3px solid var(--accent); padding-left: 8px; margin-bottom: 8px; }
+.reply-name { font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 2px; }
+.reply-text-prev { font-size: 13px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.post-body { font-size: 14.5px; line-height: 1.4; color: var(--text); }
+.post-body ul, .post-body ol { padding-left: 20px; margin: 8px 0; }
+.post-body li { margin-bottom: 6px; }
+.post-link { color: #007aff; text-decoration: none; word-break: break-all; }
+.reactions { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.reaction { background: rgba(142, 142, 147, 0.12); padding: 4px 8px; border-radius: 12px; font-size: 13px; display: flex; align-items: center; gap: 4px; }
+.post-meta { display: flex; justify-content: flex-end; align-items: center; gap: 6px; font-size: 12px; color: var(--sub); margin-top: 8px; }
+.post-meta .material-symbols-rounded { font-size: 16px; }
+
 </style>
 </head>
 <body>
@@ -663,11 +686,74 @@ body {
         <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0; font-size: 18px; margin-top: 2px;">send</span>
         <span style="font-size: 14.5px; line-height: 1.4;">окремим рекламним постом</span>
     </div>
-    <div class="donation-block">
+
+    <div style="font-weight: 600; margin: 20px 0 8px; color: var(--text);">Приклад формату:</div>
+    
+    <div class="channel-sim">
+        <div class="channel-post">
+            <div class="post-header">
+                <img src="assets/vsht.PNG" class="post-avatar">
+                Валки, шо там? 🇺🇦
+            </div>
+            <div class="poll-q">🎁 Вже підготували подарунки своїм близьким?</div>
+            <div class="poll-sub">Анонімна вікторина</div>
+            <div class="poll-opt">
+                <div class="poll-circle"></div> <div class="poll-text">Так ❤️</div>
+            </div>
+            <div class="poll-opt">
+                <div class="poll-circle"></div> <div class="poll-text">Нє 😟</div>
+            </div>
+            <div class="poll-bot">Відповіли 306 людей</div>
+            <div class="reactions">
+                <div class="reaction">👍🏻 6</div>
+                <div class="reaction">⛄️ 2</div>
+                <div class="reaction">❤️ 2</div>
+            </div>
+            <div class="post-meta">
+                <span class="material-symbols-rounded">visibility</span> 1.5K
+                <span>11:12</span>
+            </div>
+        </div>
+
+        <div class="channel-post">
+            <div class="post-header">
+                <img src="assets/vsht.PNG" class="post-avatar">
+                Валки, шо там? 🇺🇦
+            </div>
+            <div class="reply-preview">
+                <div class="reply-name">Валки, шо там? 🇺🇦</div>
+                <div class="reply-text-prev">🎁 Вже підготували подарунки своїм бл...</div>
+            </div>
+            <div class="post-body">
+                ❄️ Зима, мандарини, вогники і вічне питання — що подарувати близьким цього року?<br>
+                Зібрали кілька перевірених ідей подарунків, які точно не покриються пилом після свят.<br><br>
+                🎁 <b>Тримайте ТОП ідей від онлайн-магазину «ВШТ»</b><br>
+                <ol>
+                    <li><b>🔋 Повербанк Xiaomi 20000 mAh</b><br>Надійний, компактний, із швидкою зарядкою.<br><a href="#" class="post-link">👉🏻 posylannya.com.ua</a></li>
+                    <li><b>🧴Косметичний сет Nivea</b><br>Знайома якість, нейтральні аромати.<br><a href="#" class="post-link">👉🏻 posylannya.com.ua</a></li>
+                </ol>
+                Шукайте ще більше ідей в магазині «ВШТ» 🤩<br><br>
+                Магазин «ВШТ»<br>
+                <a href="#" class="post-link">➡️ t.me/tutvashmagazyn</a>
+            </div>
+            <div class="reactions">
+                <div class="reaction">👍🏻 14</div>
+                <div class="reaction">🔥 8</div>
+                <div class="reaction">❤️ 5</div>
+            </div>
+            <div class="post-meta">
+                <span class="material-symbols-rounded">visibility</span> 1.6K
+                <span>11:13</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="donation-block" style="margin-top: 16px;">
         <span class="material-symbols-rounded" style="flex-shrink: 0;">loyalty</span>
         <span>За умови донату будь-якої суми (але не менше 50 грн) на будь-який місцевий волонтерський збір, ми репостимо ваше оголошення в чат «Валківський Чатік».</span>
     </div>
 </div>
+
 
 <!--ВШТ>міні інтервʼю--> 
 <div id="vsht-interview-html" style="display: none;">
