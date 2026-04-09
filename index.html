@@ -274,10 +274,11 @@ body {
     <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
 </div>
 
-        <div class="in-btn" onclick="openModal('Інтерактив', 'Опитування або квіз.', '300 ₴', 'vsht_inter', true)">
-            <div class="in-title"><span class="material-symbols-rounded">touch_app</span> Інтерактив</div>
-            <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
-        </div>
+       <div class="in-btn" onclick="openModal('Інтерактив', document.getElementById('vsht-inter-html').innerHTML, '250 ₴', 'vsht_inter', true)">
+    <div class="in-title"><span class="material-symbols-rounded">touch_app</span> Інтерактив</div>
+    <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+</div>
+
         <div class="in-btn disabled">
             <div class="in-title"><span class="material-symbols-rounded">play_circle</span> Кружечок</div>
             <div class="in-action">Недоступно</div>
@@ -286,6 +287,11 @@ body {
             <div class="in-title"><span class="material-symbols-rounded">redeem</span> Розіграш</div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
+        <div class="in-btn" onclick="openModal('Міні-інтервʼю', document.getElementById('vsht-interview-html').innerHTML, '300 ₴', 'vsht_interview', false)">
+    <div class="in-title"><span class="material-symbols-rounded">text_snippet</span> Міні-інтервʼю</div>
+    <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+</div>
+
     </div>
 </div>
 
@@ -575,6 +581,44 @@ body {
         <span style="font-size: 14px; line-height: 1.4; color: #34c759; font-weight: 500;">За умови донату будь-якої суми (від 50 грн) на будь-який місцевий волонтерський збір, ми репостимо ваше оголошення в чат «Валківський Чатік».</span>
     </div>
 </div>
+
+<!--ВШТ>інтерактив--> 
+<div id="vsht-inter-html" style="display: none;">
+    <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
+    <div style="display: flex; gap: 12px; margin-bottom: 8px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">ballot</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Ми створюємо і публікуємо опитування або вікторину (до 3), яке так чи інакше пов’язано з товаром, послугами, закладом (і т.д), які Ви хочете прорекламувати, а після цього у відповідь до квізу публікуємо ваше основне оголошення двічі:</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 8px; align-items: flex-start; padding-left: 36px;">
+        <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0;">chat</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">в коментарях до допису з опитуванням</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start; padding-left: 36px;">
+        <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">send</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">окремим рекламним постом</span>
+    </div>
+    <div style="display: flex; gap: 12px; align-items: flex-start; background: rgba(52, 199, 89, 0.1); padding: 12px; border-radius: 12px;">
+        <span class="material-symbols-rounded" style="color: #34c759; flex-shrink: 0;">loyalty</span>
+        <span style="font-size: 14px; line-height: 1.4; color: #34c759; font-weight: 500;">За умови донату будь-якої суми (але не менше 50 грн) на будь-який місцевий волонтерський збір, ми репостимо ваше оголошення в чат «Валківський Чатік»</span>
+    </div>
+</div>
+
+<!--ВШТ>міні інтервʼю--> 
+<div id="vsht-interview-html" style="display: none;">
+    <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
+    <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0;">menu_book</span>
+        <div>
+            <span style="font-size: 14.5px; font-weight: 600; display: block; margin-bottom: 4px;">Міні-інтервʼю про ваш бізнес</span>
+            <span style="font-size: 14.5px; line-height: 1.4;">Не просто реклама, а історія: як ви відкрились, що робите і чому до вас приходять. Підсвічуємо локальний бізнес і знайомимо людей з вами ближче.</span>
+        </div>
+    </div>
+    <div style="display: flex; gap: 12px; align-items: flex-start; background: rgba(52, 199, 89, 0.1); padding: 12px; border-radius: 12px;">
+        <span class="material-symbols-rounded" style="color: #34c759; flex-shrink: 0;">loyalty</span>
+        <span style="font-size: 14px; line-height: 1.4; color: #34c759; font-weight: 500;">За умови донату будь-якої суми (але не менше 50 грн) на будь-який місцевий волонтерський збір, ми репостимо ваше оголошення в чат «Валківський Чатік»</span>
+    </div>
+</div>
+
 <script>
 const tg = window.Telegram.WebApp;
 tg.expand();
