@@ -283,7 +283,21 @@ body {
             <div class="in-title"><span class="material-symbols-rounded">play_circle</span> Кружечок</div>
             <div class="in-action">Недоступно</div>
         </div>
-        <div id="page-giveaways" class="page">
+        
+<div class="in-btn" onclick="nav('page-giveaways')">
+    <div class="in-title"><span class="material-symbols-rounded">redeem</span> Розіграші</div>
+    <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+</div>
+
+        <div class="in-btn" onclick="openModal('Міні-інтервʼю', document.getElementById('vsht-interview-html').innerHTML, '300 ₴', 'vsht_interview', false)">
+    <div class="in-title"><span class="material-symbols-rounded">text_snippet</span> Міні-інтервʼю</div>
+    <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+</div>
+
+    </div>
+</div>
+
+<div id="page-giveaways" class="page">
     <div class="nav-bar">
         <div class="back-btn" onclick="nav('home')"><span class="material-symbols-rounded">arrow_back</span></div>
         <div class="nav-title">Розіграші</div>
@@ -300,13 +314,6 @@ body {
     </div>
 </div>
 
-        <div class="in-btn" onclick="openModal('Міні-інтервʼю', document.getElementById('vsht-interview-html').innerHTML, '300 ₴', 'vsht_interview', false)">
-    <div class="in-title"><span class="material-symbols-rounded">text_snippet</span> Міні-інтервʼю</div>
-    <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
-</div>
-
-    </div>
-</div>
 
 <div id="page-chatik" class="page">
     <div class="nav-bar">
@@ -366,18 +373,6 @@ body {
         <div class="in-btn" onclick="openModal('Діалог', 'Формат інтерв\'ю.', '450 ₴', 'nat_dialog', false)"><div class="in-title">Діалог</div></div>
     </div>
 </div>
-
-<div class="card-group">
-    <div class="in-btn" onclick="openModal('Стандартний', document.getElementById('gw-std-html').innerHTML, '150 ₴', 'gw_std', false)">
-        <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">send</span> Стандартний</div>
-        <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
-    </div>
-    <div class="in-btn" onclick="openModal('Організація', document.getElementById('gw-org-html').innerHTML, '350 ₴', 'gw_org', false)">
-        <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">wand_stars</span> Організація</div>
-        <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
-    </div>
-</div>
-
 
 <div id="page-info" class="page">
     <div class="nav-bar">
