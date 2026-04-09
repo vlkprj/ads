@@ -124,7 +124,7 @@ body {
 .donation-block span:last-child {
     color: var(--sub) !important;
     font-weight: 400 !important; 
-    font-size: 14.5px; є
+    font-size: 14.5px; 
     line-height: 1.4;
 }
 
@@ -206,14 +206,12 @@ body {
         </div>
     </div>
 
-        <div class="card-group">
+            <div class="card-group">
         <div class="main-btn" onclick="showDevToast()">
-    <div class="btn-icon"><span class="material-symbols-rounded">cards_stack</span></div>
-    <div class="btn-content">
-        <div class="btn-title">Готові рекламні пакети</div>
-    </div>
-    <span class="material-symbols-rounded arrow">chevron_right</span>
-</div>
+            <div class="btn-icon"><span class="material-symbols-rounded">cards_stack</span></div>
+            <div class="btn-content">
+                <div class="btn-title">Готові рекламні пакети</div>
+            </div>
             <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
         <div class="main-btn" onclick="nav('page-native')">
@@ -224,6 +222,7 @@ body {
             <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
     </div>
+
 
     <div class="bento-grid">
         <div class="bento-card" onclick="act('quiz')">
@@ -464,6 +463,7 @@ body {
     </div>
 </div>
 
+<div id="dev-toast" class="toast-msg">Наразі в розробці. Очікуйте оновлень. 🛠️</div>
 <div class="overlay" id="modal-overlay" onclick="closeModal()"></div>
 <div class="modal" id="dynamic-modal">
     <div class="modal-close" onclick="closeModal()">
@@ -775,10 +775,10 @@ body {
 
 <!--діалог--> 
 <div id="chat-dialog-html" style="display: none;">
-    <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
-    <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start;">
-        <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">forum</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Ви відправляєте свою рекламу, а ми створюємо під нею живий діалог, відповідаючи на найпопулярніші питання потенційних клієнтів.</span>
+    <div class="intro-box">
+        Ви відправляєте свою рекламу у чат, а ми у відповідь на ваше повідомлення поставимо вам у чаті декілька найпопулярніших питань стосовно вашого товару/магазину/послуги/закладу і т.д. Це можуть бути характеристики, ціни, асортимент і т.д.<br><br>
+        Тобто, ми створюємо діалог, який приверне увагу і буде інформативним для ваших потенційних клієнтів.<br><br>
+        <span style="color: var(--text); font-weight: 600;">Наприклад, у вас кафе:</span>
     </div>
 
     <div class="chat-sim">
