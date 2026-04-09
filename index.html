@@ -354,15 +354,17 @@ body {
     </div>
 </div>
 
-<div id="page-giveaways" class="page">
-    <div class="nav-bar">
-        <div class="back-btn" onclick="nav('home')"><span class="material-symbols-rounded">arrow_back</span></div>
-        <div class="nav-title">Розіграші</div>
+<div class="card-group">
+    <div class="in-btn" onclick="openModal('Стандартний', document.getElementById('gw-std-html').innerHTML, '150 ₴', 'gw_std', false)">
+        <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">send</span> Стандартний</div>
+        <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
     </div>
-    <div class="card-group">
-        <div class="in-btn" onclick="openModal('Стандартний розіграш', 'Умови та проведення.', '300 ₴', 'gw_std', false)"><div class="in-title"><span class="material-symbols-rounded">card_giftcard</span> Стандартний</div></div>
+    <div class="in-btn" onclick="openModal('Організація', document.getElementById('gw-org-html').innerHTML, '350 ₴', 'gw_org', false)">
+        <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">wand_stars</span> Організація</div>
+        <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
     </div>
 </div>
+
 
 <div id="page-info" class="page">
     <div class="nav-bar">
@@ -589,12 +591,12 @@ body {
         <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">ballot</span>
         <span style="font-size: 14.5px; line-height: 1.4;">Ми створюємо і публікуємо опитування або вікторину (до 3), яке так чи інакше пов’язано з товаром, послугами, закладом (і т.д), які Ви хочете прорекламувати, а після цього у відповідь до квізу публікуємо ваше основне оголошення двічі:</span>
     </div>
-    <div style="display: flex; gap: 12px; margin-bottom: 8px; align-items: flex-start; padding-left: 36px;">
-        <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0;">chat</span>
+        <div style="display: flex; gap: 12px; margin-bottom: 8px; align-items: flex-start; padding-left: 36px;">
+        <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0; font-size: 18px; margin-top: 2px;">chat</span>
         <span style="font-size: 14.5px; line-height: 1.4;">в коментарях до допису з опитуванням</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start; padding-left: 36px;">
-        <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">send</span>
+        <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0; font-size: 18px; margin-top: 2px;">send</span>
         <span style="font-size: 14.5px; line-height: 1.4;">окремим рекламним постом</span>
     </div>
     <div style="display: flex; gap: 12px; align-items: flex-start; background: rgba(52, 199, 89, 0.1); padding: 12px; border-radius: 12px;">
@@ -618,6 +620,42 @@ body {
         <span style="font-size: 14px; line-height: 1.4; color: #34c759; font-weight: 500;">За умови донату будь-якої суми (але не менше 50 грн) на будь-який місцевий волонтерський збір, ми репостимо ваше оголошення в чат «Валківський Чатік»</span>
     </div>
 </div>
+
+<!--Розіграш стандарт--> 
+<div id="gw-std-html" style="display: none;">
+    <div class="intro-box">Проводимо розіграш або конкурс для вашого бізнесу.</div>
+    <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
+    <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">send</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Публікуємо ваш розіграш або конкурс: ви даєте готовий текст і умови — ми просто розміщуємо.</span>
+    </div>
+    <div style="display: flex; gap: 12px; align-items: flex-start; background: rgba(52, 199, 89, 0.1); padding: 12px; border-radius: 12px;">
+        <span class="material-symbols-rounded" style="color: #34c759; flex-shrink: 0;">loyalty</span>
+        <span style="font-size: 14px; line-height: 1.4; color: #34c759; font-weight: 500;">За умови донату будь-якої суми (але не менше 50 грн) на будь-який місцевий волонтерський збір, ми репостимо ваше оголошення в чат «Валківський Чатік»</span>
+    </div>
+</div>
+<!--РОЗІГРАШ організпція--> 
+<div id="gw-org-html" style="display: none;">
+    <div class="intro-box">Проводимо розіграш або конкурс для вашого бізнесу.</div>
+    <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0;">wand_stars</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Допомагаємо вам організувати і провести розіграш / конкурс. Сюди входить текст, умови і т.д.</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">mobile_layout</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Створюємо візуал для розіграшу.</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #34c759; flex-shrink: 0;">repeat</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Репостимо в чат «Валківський Чатік».</span>
+    </div>
+    <div style="display: flex; gap: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">add_box</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">На 2 дні додаємо кнопку з назвою вашого бізнесу в щоденне повідомлення бота в чаті «Валківський Чатік». Її бачать усі — один клік і люди переходять до вашого оголошення/гілки/інстаграму. Назву кнопки підберемо разом з вами.</span>
+    </div>
+</div>
+
 
 <script>
 const tg = window.Telegram.WebApp;
