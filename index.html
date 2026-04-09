@@ -135,6 +135,7 @@ body {
 .bubble { background: var(--card); padding: 8px 12px; border-radius: 14px 14px 14px 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
 .bubble-name { font-size: 12px; font-weight: 700; color: var(--accent); margin-bottom: 2px; display: block; }
 .bubble-text { font-size: 14px; line-height: 1.4; color: var(--text); }
+.chat-img { width: 100%; border-radius: 10px; margin: 6px 0; display: block; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
 .file-mock { display: flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.05); padding: 6px 10px; border-radius: 10px; margin-top: 6px; }
 .toast-msg {
     position: fixed;
@@ -800,12 +801,23 @@ body {
             <div class="bubble">
                 <span class="bubble-name">Кафе ГаляВина</span>
                 <span class="bubble-text">Є сирні та м’ясні сети, а ще круто заходять наші сіннабони 🤌🏻
-                    <div class="file-mock">
-                        <span class="material-symbols-rounded" style="font-size: 20px;">description</span>
-                        <span style="font-size: 12px; font-weight: 500;">Меню.pdf</span>
-                    </div>
+                    <img src="assets/menugalya.WEBP" class="chat-img">
                     Доставка є!
                 </span>
+            </div>
+        </div>
+        <div class="chat-msg reply">
+            <img src="assets/vch.PNG" class="chat-avatar">
+            <div class="bubble" style="border-radius: 14px 14px 4px 14px; background: #e1f5fe;">
+                <span class="bubble-name">Валківський Чатік</span>
+                <span class="bubble-text">А який графік роботи і де знаходиться кафе?</span>
+            </div>
+        </div>
+        <div class="chat-msg">
+            <img src="assets/galyavyna.PNG" class="chat-avatar">
+            <div class="bubble">
+                <span class="bubble-name">Кафе ГаляВина</span>
+                <span class="bubble-text">З 8:00 до 18:00, вул Неіснуюча, 77</span>
             </div>
         </div>
     </div>
@@ -819,6 +831,7 @@ body {
         <span style="font-size: 14px; color: var(--sub); line-height: 1.4;">Працюємо над «сценарієм», узгоджуючи всі деталі з вами.</span>
     </div>
 </div>
+
 
 
 <script>
