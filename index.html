@@ -127,6 +127,15 @@ body {
     font-size: 14.5px; є
     line-height: 1.4;
 }
+
+.chat-sim { background: rgba(142, 142, 147, 0.08); border-radius: 16px; padding: 12px; margin: 16px 0; display: flex; flex-direction: column; gap: 8px; }
+.chat-msg { display: flex; gap: 8px; align-items: flex-end; max-width: 90%; }
+.chat-msg.reply { align-self: flex-start; }
+.chat-avatar { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; flex-shrink: 0; margin-bottom: 2px; }
+.bubble { background: var(--card); padding: 8px 12px; border-radius: 14px 14px 14px 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+.bubble-name { font-size: 12px; font-weight: 700; color: var(--accent); margin-bottom: 2px; display: block; }
+.bubble-text { font-size: 14px; line-height: 1.4; color: var(--text); }
+.file-mock { display: flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.05); padding: 6px 10px; border-radius: 10px; margin-top: 6px; }
 </style>
 </head>
 <body>
@@ -350,6 +359,10 @@ body {
             <div class="in-title"><span class="material-symbols-rounded">ads_click</span> Кнопка в боті</div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
+        <div class="in-btn" onclick="openModal('Діалог в чаті', document.getElementById('chat-dialog-html').innerHTML, '250 ₴', 'chat_dialog', false)">
+    <div class="in-title"><span class="material-symbols-rounded">forum</span> Діалог в чаті</div>
+    <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+</div>
         <div class="in-btn disabled">
             <div class="in-title"><span class="material-symbols-rounded">play_circle</span> Кружечок</div>
             <div class="in-action">Недоступно</div>
@@ -734,6 +747,55 @@ body {
         <span style="font-size: 14.5px; line-height: 1.4;">До повідомлення від бота додаємо ваше оголошення.</span>
     </div>
 </div>
+
+<!--діалог--> 
+<div id="chat-dialog-html" style="display: none;">
+    <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
+    <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">forum</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Ви відправляєте свою рекламу, а ми створюємо під нею живий діалог, відповідаючи на найпопулярніші питання потенційних клієнтів.</span>
+    </div>
+
+    <div class="chat-sim">
+        <div class="chat-msg">
+            <img src="assets/galyavyna.PNG" class="chat-avatar">
+            <div class="bubble">
+                <span class="bubble-name">Кафе ГаляВина</span>
+                <span class="bubble-text">Запрошуємо валківчан і гостей міста у наше кафе «ГаляВина». У нас — ароматна кава, свіжа випічка і гарний вибір вина 🍷</span>
+            </div>
+        </div>
+        <div class="chat-msg reply">
+            <img src="assets/vch.PNG" class="chat-avatar">
+            <div class="bubble" style="border-radius: 14px 14px 4px 14px; background: #e1f5fe;">
+                <span class="bubble-name">Валківський Чатік</span>
+                <span class="bubble-text">А покажіть що у вас там за меню? І чи є доставка?</span>
+            </div>
+        </div>
+        <div class="chat-msg">
+            <img src="assets/galyavyna.PNG" class="chat-avatar">
+            <div class="bubble">
+                <span class="bubble-name">Кафе ГаляВина</span>
+                <span class="bubble-text">Є сирні та м’ясні сети, а ще круто заходять наші сіннабони 🤌🏻
+                    <div class="file-mock">
+                        <span class="material-symbols-rounded" style="font-size: 20px;">description</span>
+                        <span style="font-size: 12px; font-weight: 500;">Меню.pdf</span>
+                    </div>
+                    Доставка є!
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: var(--sub); flex-shrink: 0;">dashboard_2_edit</span>
+        <span style="font-size: 14px; color: var(--sub); line-height: 1.4;">Ми можемо адаптувати такого типу діалог під будь-який бізнес чи послугу.</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: var(--sub); flex-shrink: 0;">contract_edit</span>
+        <span style="font-size: 14px; color: var(--sub); line-height: 1.4;">Працюємо над «сценарієм», узгоджуючи всі деталі з вами.</span>
+    </div>
+</div>
+
 
 <script>
 const tg = window.Telegram.WebApp;
