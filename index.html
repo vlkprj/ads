@@ -338,15 +338,15 @@ body {
         <div class="nav-title">Валківський Чатік</div>
     </div>
     <div class="card-group">
-        <div class="in-btn" onclick="openModal('Стандартне', 'Пост у чаті.', '150 ₴', 'chat_std', false)">
+        <div class="in-btn" onclick="openModal('Стандартне', document.getElementById('chat-std-html').innerHTML, '100 ₴', 'chat_std', false)">
             <div class="in-title"><span class="material-symbols-rounded">chat</span> Стандартне</div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
-        <div class="in-btn" onclick="openModal('Стандарт + Кнопка', 'Пост у чаті з Inline кнопкою.', '200 ₴', 'chat_btn_std', false)">
+        <div class="in-btn" onclick="openModal('Стандартне + кнопка', document.getElementById('chat-btn-std-html').innerHTML, '150 ₴', 'chat_btn_std', false)">
             <div class="in-title"><span class="material-symbols-rounded">smart_button</span> Стандартне + кнопка</div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
-        <div class="in-btn" onclick="openModal('Кнопка', 'Кнопка у системному повідомленні.', '100 ₴', 'chat_btn', false)">
+        <div class="in-btn" onclick="openModal('Кнопка в боті', document.getElementById('chat-btn-html').innerHTML, '100 ₴', 'chat_btn', false)">
             <div class="in-title"><span class="material-symbols-rounded">ads_click</span> Кнопка в боті</div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
@@ -356,6 +356,7 @@ body {
         </div>
     </div>
 </div>
+
 
 <div id="page-packages" class="page">
     <div class="nav-bar">
@@ -685,6 +686,54 @@ body {
     </div>
 </div>
 
+<!--чатік--> 
+<div id="chat-std-html" style="display: none;">
+    <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">send</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Стандартна публікація вашого готового оголошення.</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0;">keep</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Закріплення на 24 години.</span>
+    </div>
+    <div class="donation-block">
+        <span class="material-symbols-rounded">loyalty</span>
+        <span>За умови донату будь-якої суми (але не менше 50 грн) на будь-який місцевий волонтерський збір, ми репостимо ваше оголошення на канал «Валки, шо там?».</span>
+    </div>
+</div>
+
+<div id="chat-btn-std-html" style="display: none;">
+    <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">send</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Стандартна публікація вашого готового оголошення.</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0;">keep</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Закріплення на 24 години.</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">add_box</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">На 2 дні додаємо кнопку з назвою вашого бізнесу в щоденне повідомлення бота в чаті «Валківський Чатік». Її бачать усі — один клік і люди переходять до вашого оголошення/гілки/інстаграму. Назву кнопки підберемо разом з вами.</span>
+    </div>
+    <div class="donation-block">
+        <span class="material-symbols-rounded">loyalty</span>
+        <span>За умови донату будь-якої суми (але не менше 50 грн) на будь-який місцевий волонтерський збір, ми репостимо ваше оголошення на канал «Валки, шо там?».</span>
+    </div>
+</div>
+
+<div id="chat-btn-html" style="display: none;">
+    <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">add_box</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">На 2 дні додаємо кнопку з назвою вашого бізнесу в щоденне повідомлення бота в чаті «Валківський Чатік». Її бачать усі — один клік і люди переходять до вашого оголошення/гілки/інстаграму. Назву кнопки підберемо разом з вами.</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">text_ad</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">До повідомлення від бота додаємо ваше оголошення.</span>
+    </div>
+</div>
 
 <script>
 const tg = window.Telegram.WebApp;
