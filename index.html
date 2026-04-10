@@ -553,18 +553,15 @@ body.no-scroll {
 </div>
 
 
-<div id="page-native" class="page">
-    <div class="nav-bar">
-        <div class="back-btn" onclick="nav('home')"><span class="material-symbols-rounded">arrow_back</span></div>
-        <div class="nav-title">Нативна реклама</div>
+<div class="card-group">
+    <div class="in-btn" onclick="openModal('Стандартний розіграш', document.getElementById('gw-std-html').innerHTML, '150 ₴', 'gw_std', false)">
+        <div class="in-title"><span class="material-symbols-rounded">redeem</span> Розіграш</div>
+        <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
     </div>
-    <div class="card-group">
-    <div class="in-btn" onclick="openModal('🤔 Шо це взагалі таке?', 'Це ненав’язлива, але більш ефективна реклама, яка виглядає як типовий пост у нашому каналі, але саме тому краще сприймається і завдяки інтерактивному/інформаційному формату краще привертає увагу.', '', '', false)">
-        <div class="in-title"><span class="material-symbols-rounded">help</span> Шо це взагалі таке?</div>
-        <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
+    <div class="in-btn" onclick="openModal('Міні-інтервʼю', document.getElementById('vsht-interview-html').innerHTML, '300 ₴', 'vsht_interview', false)">
+        <div class="in-title"><span class="material-symbols-rounded">text_snippet</span> Міні-інтервʼю</div>
+        <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
     </div>
-</div>
-  <div class="card-group">
     <div class="in-btn" onclick="openModal('Інфо-пост', document.getElementById('vsht-info-html').innerHTML, '400 ₴', 'nat_info')">
         <div class="in-title"><span class="material-symbols-rounded">article_shortcut</span> Інфо-пост</div>
         <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
@@ -573,15 +570,6 @@ body.no-scroll {
         <div class="in-title"><span class="material-symbols-rounded">touch_app</span> Інтерактив</div>
         <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
     </div>
-    <div class="in-btn disabled">
-        <div class="in-title"><span class="material-symbols-rounded">play_circle</span> Кружечок</div>
-        <div class="in-action">Недоступно</div>
-    </div>
-    <div class="in-btn disabled">
-    <div class="in-title"><span class="material-symbols-rounded">sticky_note_2</span> Стікер-пак</div>
-    <div class="in-action">Недоступно</div>
-</div>
-
     <div class="in-btn" onclick="openModal('Діалог', document.getElementById('chat-dialog-html').innerHTML, '450 ₴', 'nat_dialog')">
         <div class="in-title"><span class="material-symbols-rounded">forum</span> Діалог</div>
         <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
@@ -1414,36 +1402,38 @@ function selectPay(method) {
     event.currentTarget.classList.add('selected');
     
     const btn = document.getElementById('final-btn');
-    btn.style.display = 'flex'; 
+    btn.style.display = 'flex';
     
     if(method === 'donatello') {
         let cleanPrice = currentOrder.price.split('/')[0].trim();
-        btn.innerHTML = `<img src="assets/donatello_logo.png" style="width:20px; height:20px;"> Сплатити ${cleanPrice} через Donatello`;
+        btn.innerHTML = `Сплатити ${cleanPrice} через Donatello`;
         btn.className = 'primary-btn';
     } else {
         btn.innerHTML = `<span class="material-symbols-rounded">chat</span> Написати адмінам`;
-        btn.className = 'primary-btn'; 
+        btn.className = 'primary-btn';
     }
 }
 
-
 function processFinalAction() {
+    let msg = "";
+    const name = currentOrder.name;
+    const plat = currentOrder.platform;
+
+    if (name.includes('Безлім') || name === 'Pro' || name === 'Lite') {
+        msg = `Вітаю! Хочу замовити ${name} у групі Валківський Базарчик`;
+    } else if (name.toLowerCase().includes('пакет')) {
+        msg = `Вітаю! Хочу замовити рекламу. Мене цікавить рекламний пакет «${name}»`;
+    } else {
+        msg = `Вітаю! Хочу замовити рекламу. Мене цікавить варіант ${name} ${plat}`;
+    }
+
     if(selectedMethod === 'donatello') {
         tg.openLink('https://donatello.to/valkyads');
     } else if(selectedMethod === 'admin') {
-        let msg = "";
-        const name = currentOrder.name;
-        const plat = currentOrder.platform;
-        if (name.includes('Безлім') || name === 'Pro' || name === 'Lite') {
-            msg = `Вітаю! Хочу замовити ${name} у групі Валківський Базарчик`;
-        } else if (name.toLowerCase().includes('пакет')) {
-            msg = `Вітаю! Хочу замовити рекламу. Мене цікавить рекламний пакет «${name}»`;
-        } else {
-            msg = `Вітаю! Хочу замовити рекламу. Мене цікавить варіант ${name} ${plat}`;
-        }
-        tg.openTelegramLink('https://t.me/valkysho_bot?text=' + encodeURIComponent(msg));
+        tg.sendData(msg);
     }
 }
+
 
 
 function showDevToast() {
