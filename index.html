@@ -502,6 +502,7 @@ body.no-scroll {
         <div class="back-btn" onclick="nav('home')"><span class="material-symbols-rounded">arrow_back</span></div>
         <div class="nav-title">Валківський Чатік</div>
     </div>
+    
     <div class="card-group">
         <div class="in-btn" onclick="openModal('Стандартне', document.getElementById('chat-std-html').innerHTML, '100 ₴', 'chat_std', false)">
             <div class="in-title"><span class="material-symbols-rounded">chat</span> Стандартне</div>
@@ -552,29 +553,35 @@ body.no-scroll {
     </div>
 </div>
 
-
-<div class="card-group">
-    <div class="in-btn" onclick="openModal('Стандартний розіграш', document.getElementById('gw-std-html').innerHTML, '150 ₴', 'gw_std', false)">
-        <div class="in-title"><span class="material-symbols-rounded">redeem</span> Розіграш</div>
-        <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+<div id="page-native" class="page">
+    <div class="nav-bar">
+        <div class="back-btn" onclick="nav('home')"><span class="material-symbols-rounded">arrow_back</span></div>
+        <div class="nav-title">Нативна реклама</div>
     </div>
-    <div class="in-btn" onclick="openModal('Міні-інтервʼю', document.getElementById('vsht-interview-html').innerHTML, '300 ₴', 'vsht_interview', false)">
-        <div class="in-title"><span class="material-symbols-rounded">text_snippet</span> Міні-інтервʼю</div>
-        <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
-    </div>
-    <div class="in-btn" onclick="openModal('Інфо-пост', document.getElementById('vsht-info-html').innerHTML, '400 ₴', 'nat_info')">
-        <div class="in-title"><span class="material-symbols-rounded">article_shortcut</span> Інфо-пост</div>
-        <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
-    </div>
-    <div class="in-btn" onclick="openModal('Інтерактив', document.getElementById('vsht-inter-html').innerHTML, '350 ₴', 'nat_inter')">
-        <div class="in-title"><span class="material-symbols-rounded">touch_app</span> Інтерактив</div>
-        <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
-    </div>
-    <div class="in-btn" onclick="openModal('Діалог', document.getElementById('chat-dialog-html').innerHTML, '450 ₴', 'nat_dialog')">
-        <div class="in-title"><span class="material-symbols-rounded">forum</span> Діалог</div>
-        <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+    <div class="card-group">
+        <div class="in-btn" onclick="openModal('Стандартний розіграш', document.getElementById('gw-std-html').innerHTML, '150 ₴', 'gw_std', false)">
+            <div class="in-title"><span class="material-symbols-rounded">redeem</span> Розіграш</div>
+            <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+        </div>
+        <div class="in-btn" onclick="openModal('Міні-інтервʼю', document.getElementById('vsht-interview-html').innerHTML, '300 ₴', 'vsht_interview', false)">
+            <div class="in-title"><span class="material-symbols-rounded">text_snippet</span> Міні-інтервʼю</div>
+            <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+        </div>
+        <div class="in-btn" onclick="openModal('Інфо-пост', document.getElementById('vsht-info-html').innerHTML, '400 ₴', 'nat_info')">
+            <div class="in-title"><span class="material-symbols-rounded">article_shortcut</span> Інфо-пост</div>
+            <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+        </div>
+        <div class="in-btn" onclick="openModal('Інтерактив', document.getElementById('vsht-inter-html').innerHTML, '350 ₴', 'nat_inter')">
+            <div class="in-title"><span class="material-symbols-rounded">touch_app</span> Інтерактив</div>
+            <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+        </div>
+        <div class="in-btn" onclick="openModal('Діалог', document.getElementById('chat-dialog-html').innerHTML, '450 ₴', 'nat_dialog')">
+            <div class="in-title"><span class="material-symbols-rounded">forum</span> Діалог</div>
+            <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+        </div>
     </div>
 </div>
+
 
 
 </div>
@@ -627,7 +634,7 @@ body.no-scroll {
 
     <p class="section-label">Спосіб оплати</p>
     
-    <div class="pay-option" onclick="selectPay('donatello')">
+    <div class="pay-option" onclick="selectPay('donatello', this)">
         <div class="pay-header">
             <img src="assets/donatello_logo.png" style="width: 24px; height: 24px; object-fit: contain;">
             <span>Сплатити через Donatello</span>
@@ -645,7 +652,7 @@ body.no-scroll {
         </div>
     </div>
 
-    <div class="pay-option" onclick="selectPay('admin')">
+   <div class="pay-option" onclick="selectPay('admin', this)">
         <div class="pay-header">
             <span class="material-symbols-rounded" style="color: #007aff;">chat</span>
             <span>Спочатку уточнити деталі з адмінами</span>
@@ -1395,11 +1402,11 @@ function goToCheckout() {
 
 document.getElementById('m-btn').onclick = goToCheckout;
 
-function selectPay(method) {
+function selectPay(method, element) {
     tg.HapticFeedback.impactOccurred('light');
     selectedMethod = method;
     document.querySelectorAll('.pay-option').forEach(el => el.classList.remove('selected'));
-    event.currentTarget.classList.add('selected');
+    element.classList.add('selected');
     
     const btn = document.getElementById('final-btn');
     btn.style.display = 'flex';
@@ -1413,6 +1420,7 @@ function selectPay(method) {
         btn.className = 'primary-btn';
     }
 }
+
 
 function processFinalAction() {
     let msg = "";
@@ -1430,9 +1438,10 @@ function processFinalAction() {
     if(selectedMethod === 'donatello') {
         tg.openLink('https://donatello.to/valkyads');
     } else if(selectedMethod === 'admin') {
-        tg.sendData(msg);
+        tg.openTelegramLink(`https://t.me/valkysho_bot?text=${encodeURIComponent(msg)}`);
     }
 }
+
 
 
 
