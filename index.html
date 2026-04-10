@@ -261,6 +261,34 @@ body.no-scroll {
 .donatello-guide li { margin-bottom: 6px; }
 
 .mini-hint { font-size: 12px; color: var(--sub); text-decoration: underline; cursor: pointer; display: block; margin-top: 4px; }
+#final-btn {
+    position: sticky;
+    bottom: env(safe-area-inset-bottom);
+    left: 0;
+    right: 0;
+    z-index: 100;
+    margin-top: 24px;
+    box-shadow: 0 -15px 20px var(--bg); 
+}
+
+.primary-btn, .admin-btn-style {
+    width: 100%;
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border: none;
+    padding: 18px;
+    border-radius: 18px;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.primary-btn:active { transform: scale(0.97); }
 
 
 </style>
@@ -1277,12 +1305,24 @@ function goToCheckout() {
     else currentOrder.platform = "";
     
     currentOrder.name = document.getElementById('m-title').innerText;
-    currentOrder.price = document.getElementById('m-price').innerText;
+    
+    
+    let priceEl = document.getElementById('m-price');
+    let priceHtml = priceEl.innerHTML;
+    let finalPriceText = "";
+    
+    if (priceHtml.includes('</s>')) {
+        finalPriceText = priceHtml.split('</s>')[1].trim();
+    } else {
+        finalPriceText = priceEl.innerText.trim();
+    }
+    
+    currentOrder.price = finalPriceText;
     
     document.getElementById('check-name-display').innerText = currentOrder.name;
     document.getElementById('check-price-display').innerText = currentOrder.price;
     
-    let justPrice = currentOrder.price.split('/')[0].replace(' ₴', '');
+    let justPrice = currentOrder.price.split('/')[0].replace(/[^\d]/g, '');
     document.getElementById('d-price-insert').innerText = justPrice + ' грн';
 
     selectedMethod = null;
@@ -1293,6 +1333,7 @@ function goToCheckout() {
 }
 
 
+
 document.getElementById('m-btn').onclick = goToCheckout;
 
 function selectPay(method) {
@@ -1300,18 +1341,20 @@ function selectPay(method) {
     selectedMethod = method;
     document.querySelectorAll('.pay-option').forEach(el => el.classList.remove('selected'));
     event.currentTarget.classList.add('selected');
+    
     const btn = document.getElementById('final-btn');
-    btn.style.display = 'block';
+    btn.style.display = 'flex'; 
+    
     if(method === 'donatello') {
-        btn.innerHTML = `Сплатити ${currentOrder.price.split('/')[0]} через Donatello`;
+        let cleanPrice = currentOrder.price.split('/')[0].trim();
+        btn.innerHTML = `<img src="assets/donatello_logo.png" style="width:20px; height:20px;"> Сплатити ${cleanPrice} через Donatello`;
         btn.className = 'primary-btn';
     } else {
-        btn.innerHTML = `Написати адмінам`;
-        btn.className = 'secondary-btn';
-        btn.style.marginTop = '16px';
-        btn.style.background = 'var(--card)';
+        btn.innerHTML = `<span class="material-symbols-rounded">chat</span> Написати адмінам`;
+        btn.className = 'primary-btn'; 
     }
 }
+
 
 function processFinalAction() {
     if(selectedMethod === 'donatello') {
