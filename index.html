@@ -352,10 +352,14 @@ body.no-scroll {
         </div>
     </div>
 
-    <div class="contact-btn" onclick="act('contact')">
+        <div class="contact-btn" onclick="act('contact')">
         <span class="material-symbols-rounded">mail</span> Написати
     </div>
+    <a href="https://donatello.to/valkyads" class="footer-link">
+        <span class="material-symbols-rounded" style="font-size: 18px;">coffee</span> Підтримати
+    </a>
 </div>
+
 
 <div id="page-bazar" class="page">
     <div class="nav-bar">
@@ -597,15 +601,14 @@ body.no-scroll {
     
     <div class="pay-option" onclick="selectPay('donatello')">
         <div class="pay-header">
-            <span class="material-symbols-rounded" style="color: #ff9500;">volunteer_activism</span>
+            <img src="assets/donatello_logo.png" style="width: 24px; height: 24px; object-fit: contain;">
             <span>Сплатити через Donatello</span>
-            <img src="assets/donatello_logo.png" style="width: 20px; margin-left: auto;">
         </div>
         <div class="pay-info-text">
-            <span class="mini-hint" onclick="tg.openLink('https://donatello.to/about'); event.stopPropagation();">Що таке Donatello?</span>
+            <span class="mini-hint" onclick="openModal('Що таке Donatello?', 'Donatello — українська платформа донатів та регулярних підписок.<br><br><a href=\'https://donatello.to/about\' target=\'_blank\' class=\'post-link\'>Дізнатись більше</a>', '', '', false); event.stopPropagation();">Що таке Donatello?</span>
             <div class="donatello-guide">
                 <ol>
-                    <li>На сторінці введіть суму в поле (або оберіть шаблон)</li>
+                    <li>На нашій сторінці Donatello введіть <b id="d-price-insert">суму</b> в поле з сумою (або оберіть готовий шаблон з вартістю)</li>
                     <li>Натисніть «Надіслати»</li>
                     <li>Введіть дані для оплати на сторінці Donatello</li>
                     <li>На всяк випадок, зробіть скріншот платежу і надішліть нам в бот <b>@valkysho_bot</b></li>
@@ -617,7 +620,7 @@ body.no-scroll {
     <div class="pay-option" onclick="selectPay('admin')">
         <div class="pay-header">
             <span class="material-symbols-rounded" style="color: #007aff;">chat</span>
-            <span>Уточнити деталі з адмінами</span>
+            <span>Спочатку уточнити деталі з адмінами</span>
         </div>
         <div class="pay-info-text">Ви перейдете в бот з автоматичним повідомленням про ваше замовлення.</div>
     </div>
@@ -626,12 +629,13 @@ body.no-scroll {
         <div class="pay-header">
             <span class="material-symbols-rounded" style="color: #8e8e93;">credit_card_heart</span>
             <span>Сплатити на Монобанку</span>
-            <span style="font-size: 11px; margin-left: auto; color: var(--sub);">Недоступно</span>
+            <span style="font-size: 11px; margin-left: auto; color: var(--sub);">Наразі недоступно</span>
         </div>
     </div>
 
     <button class="primary-btn" id="final-btn" style="display: none;" onclick="processFinalAction()">Замовити</button>
 </div>
+
 
 
 <div id="dev-toast" class="toast-msg">Наразі в розробці. Очікуйте оновлень. 🛠️</div>
@@ -1149,10 +1153,6 @@ body.no-scroll {
     </div>
 </div>
 
-<a href="https://donatello.to/valkyads" class="footer-link">
-    <span class="material-symbols-rounded" style="font-size: 18px;">coffee</span> Підтримати
-</a>
-
 <script>
 const tg = window.Telegram.WebApp;
 tg.expand();
@@ -1275,16 +1275,23 @@ function goToCheckout() {
     else if(activePage === 'page-chatik') currentOrder.platform = "в Валківському Чатіку";
     else if(activePage === 'page-bazar' || activePage === 'page-limits') currentOrder.platform = "в Валківському Базарчику";
     else currentOrder.platform = "";
+    
     currentOrder.name = document.getElementById('m-title').innerText;
     currentOrder.price = document.getElementById('m-price').innerText;
+    
     document.getElementById('check-name-display').innerText = currentOrder.name;
     document.getElementById('check-price-display').innerText = currentOrder.price;
+    
+    let justPrice = currentOrder.price.split('/')[0].replace(' ₴', '');
+    document.getElementById('d-price-insert').innerText = justPrice + ' грн';
+
     selectedMethod = null;
     document.querySelectorAll('.pay-option').forEach(el => el.classList.remove('selected'));
     document.getElementById('final-btn').style.display = 'none';
     lastPage = activePage;
     nav('page-checkout');
 }
+
 
 document.getElementById('m-btn').onclick = goToCheckout;
 
