@@ -182,6 +182,35 @@ body {
 .post-meta { display: flex; justify-content: flex-end; align-items: center; gap: 6px; font-size: 12px; color: var(--sub); margin-top: 8px; }
 .post-meta .material-symbols-rounded { font-size: 16px; }
 
+.poll-tooltip {
+    display: none;
+    background: #2c2c2e;
+    color: #ffffff;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-top: 12px;
+    line-height: 1.4;
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+}
+.poll-tooltip::before {
+    content: "💡";
+    margin-right: 6px;
+    font-size: 16px;
+}
+.reaction.active {
+    background: rgba(0, 122, 255, 0.15);
+    border: 1px solid rgba(0, 122, 255, 0.3);
+}
+.poll-opt {
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+.poll-opt:active {
+    opacity: 0.7;
+}
+
 </style>
 </head>
 <body>
@@ -302,10 +331,6 @@ body {
     <div class="in-title"><span class="material-symbols-rounded">push_pin</span> Закріплення оголошення</div>
     <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
 </div>
-        <div class="in-btn" onclick="nav('page-packages')">
-            <div class="in-title"><span class="material-symbols-rounded">more_horiz</span> Інші варіанти</div>
-            <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
-        </div>
     </div>
 </div>
 
@@ -444,12 +469,28 @@ body {
     </div>
 </div>
     <div class="card-group">
-        <div class="in-btn" onclick="openModal('Інфо-пост', 'Нативний огляд.', '400 ₴', 'nat_info', false)"><div class="in-title">Інфо-пост</div></div>
-        <div class="in-btn" onclick="openModal('Інтерактив', 'Залучення аудиторії.', '350 ₴', 'nat_inter', false)"><div class="in-title">Інтерактив</div></div>
-        <div class="in-btn disabled"><div class="in-title">Кружечок</div></div>
-        <div class="in-btn" onclick="openModal('Стікер-пак', 'Брендовані стікери.', '500 ₴', 'nat_stickers', false)"><div class="in-title">Стікер-пак</div></div>
-        <div class="in-btn" onclick="openModal('Діалог', 'Формат інтерв\'ю.', '450 ₴', 'nat_dialog', false)"><div class="in-title">Діалог</div></div>
+    <div class="in-btn" onclick="openModal('Інфо-пост', 'Нативний огляд.', '400 ₴', 'nat_info', false)">
+        <div class="in-title"><span class="material-symbols-rounded">article_shortcut</span> Інфо-пост</div>
+        <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
     </div>
+    <div class="in-btn" onclick="openModal('Інтерактив', 'Залучення аудиторії.', '350 ₴', 'nat_inter', false)">
+        <div class="in-title"><span class="material-symbols-rounded">touch_app</span> Інтерактив</div>
+        <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+    </div>
+    <div class="in-btn disabled">
+        <div class="in-title"><span class="material-symbols-rounded">play_circle</span> Кружечок</div>
+        <div class="in-action">Недоступно</div>
+    </div>
+    <div class="in-btn" onclick="openModal('Стікер-пак', 'Брендовані стікери.', '500 ₴', 'nat_stickers', false)">
+        <div class="in-title"><span class="material-symbols-rounded">sticky_note_2</span> Стікер-пак</div>
+        <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+    </div>
+    <div class="in-btn" onclick="openModal('Діалог', 'Формат інтерв\'ю.', '450 ₴', 'nat_dialog', false)">
+        <div class="in-title"><span class="material-symbols-rounded">forum</span> Діалог</div>
+        <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+    </div>
+</div>
+
 </div>
 
 <div id="page-info" class="page">
@@ -474,13 +515,13 @@ body {
         <div class="carousel-card">
             <img src="assets/vsht.PNG" alt="" class="c-img-logo">
             <div class="c-title">Валки, шо там?</div>
-            <div class="c-stat">4.8K</div>
+            <div class="c-stat">4.7К</div>
             <div class="c-desc">Телеграм-канал</div>
         </div>
         <div class="carousel-card">
             <img src="assets/vch.PNG" alt="" class="c-img-logo">
             <div class="c-title">Чатік</div>
-            <div class="c-stat">5K</div>
+            <div class="c-stat">4.9K</div>
             <div class="c-desc">Живе спілкування.</div>
         </div>
     </div>
@@ -500,7 +541,6 @@ body {
     </div>
     <div class="modal-price" id="m-price">0 ₴</div>
     
-    <button class="secondary-btn" id="m-ex-btn" style="display:none;" onclick="act('example')">Переглянути приклад</button>
     <button class="primary-btn" id="m-btn" onclick="act(this.dataset.action)">Замовити</button>
 </div>
 <div id="clients-html" style="display: none;">
@@ -690,63 +730,68 @@ body {
     <div style="font-weight: 600; margin: 20px 0 8px; color: var(--text);">Приклад формату:</div>
     
     <div class="channel-sim">
-        <div class="channel-post">
-            <div class="post-header">
-                <img src="assets/vsht.PNG" class="post-avatar">
-                Валки, шо там? 🇺🇦
-            </div>
-            <div class="poll-q">🎁 Вже підготували подарунки своїм близьким?</div>
-            <div class="poll-sub">Анонімна вікторина</div>
-            <div class="poll-opt">
+    <div class="channel-post">
+        <div class="post-header">
+            <img src="assets/vsht.PNG" class="post-avatar">
+            Валки, шо там? 🇺🇦
+        </div>
+        <div class="poll-q">🎁 Вже підготували подарунки своїм близьким?</div>
+        <div class="poll-sub">Анонімна вікторина</div>
+        
+        <div id="quiz-container">
+            <div class="poll-opt" onclick="votePoll(this, false)">
                 <div class="poll-circle"></div> <div class="poll-text">Так ❤️</div>
             </div>
-            <div class="poll-opt">
+            <div class="poll-opt" onclick="votePoll(this, true)">
                 <div class="poll-circle"></div> <div class="poll-text">Нє 😟</div>
             </div>
-            <div class="poll-bot">Відповіли 306 людей</div>
-            <div class="reactions">
-                <div class="reaction">👍🏻 6</div>
-                <div class="reaction">⛄️ 2</div>
-                <div class="reaction">❤️ 2</div>
-            </div>
-            <div class="post-meta">
-                <span class="material-symbols-rounded">visibility</span> 1.5K
-                <span>11:12</span>
-            </div>
+            <div class="poll-tooltip" id="poll-tip">Час ще є, а ми з магазином «ВШТ» підготували для вас топ-5 ідей для подарунків 🎁 Дивіться нижче</div>
         </div>
 
-        <div class="channel-post">
-            <div class="post-header">
-                <img src="assets/vsht.PNG" class="post-avatar">
-                Валки, шо там? 🇺🇦
-            </div>
-            <div class="reply-preview">
-                <div class="reply-name">Валки, шо там? 🇺🇦</div>
-                <div class="reply-text-prev">🎁 Вже підготували подарунки своїм бл...</div>
-            </div>
-            <div class="post-body">
-                ❄️ Зима, мандарини, вогники і вічне питання — що подарувати близьким цього року?<br>
-                Зібрали кілька перевірених ідей подарунків, які точно не покриються пилом після свят.<br><br>
-                🎁 <b>Тримайте ТОП ідей від онлайн-магазину «ВШТ»</b><br>
-                <ol>
-                    <li><b>🔋 Повербанк Xiaomi 20000 mAh</b><br>Надійний, компактний, із швидкою зарядкою.<br><a href="#" class="post-link">👉🏻 posylannya.com.ua</a></li>
-                    <li><b>🧴Косметичний сет Nivea</b><br>Знайома якість, нейтральні аромати.<br><a href="#" class="post-link">👉🏻 posylannya.com.ua</a></li>
-                </ol>
-                Шукайте ще більше ідей в магазині «ВШТ» 🤩<br><br>
-                Магазин «ВШТ»<br>
-                <a href="#" class="post-link">➡️ t.me/tutvashmagazyn</a>
-            </div>
-            <div class="reactions">
-                <div class="reaction">👍🏻 14</div>
-                <div class="reaction">🔥 8</div>
-                <div class="reaction">❤️ 5</div>
-            </div>
-            <div class="post-meta">
-                <span class="material-symbols-rounded">visibility</span> 1.6K
-                <span>11:13</span>
-            </div>
+        <div class="poll-bot">Відповіли 408 людей</div>
+        <div class="reactions">
+            <div class="reaction" onclick="toggleReaction(this)">👍🏻 6</div>
+            <div class="reaction" onclick="toggleReaction(this)">⛄️ 2</div>
+            <div class="reaction" onclick="toggleReaction(this)">❤️ 2</div>
+        </div>
+        <div class="post-meta">
+            <span class="material-symbols-rounded">visibility</span> 1.5K
+            <span>11:12</span>
         </div>
     </div>
+
+    <div class="channel-post">
+        <div class="post-header">
+            <img src="assets/vsht.PNG" class="post-avatar">
+            Валки, шо там? 🇺🇦
+        </div>
+        <div class="reply-preview">
+            <div class="reply-name">Валки, шо там? 🇺🇦</div>
+            <div class="reply-text-prev">🎁 Вже підготували подарунки своїм бл...</div>
+        </div>
+        <div class="post-body">
+            ❄️ Зима, мандарини, вогники і вічне питання — що подарувати близьким цього року?<br>
+            Зібрали кілька перевірених ідей подарунків, які точно не покриються пилом після свят.<br><br>
+            🎁 <b>Тримайте ТОП ідей від онлайн-магазину «ВШТ»</b><br>
+            
+            <img src="assets/vshtop.WEBP" style="max-width: 140px; border-radius: 8px; pointer-events: none; margin: 12px 0; display: block;">
+            
+            Шукайте ще більше ідей в магазині «ВШТ» 🤩<br><br>
+            Магазин «ВШТ»<br>
+            <a href="#" class="post-link">➡️ t.me/tutvashmagazyn</a>
+        </div>
+        <div class="reactions">
+            <div class="reaction" onclick="toggleReaction(this)">👍🏻 14</div>
+            <div class="reaction" onclick="toggleReaction(this)">🔥 8</div>
+            <div class="reaction" onclick="toggleReaction(this)">❤️ 5</div>
+        </div>
+        <div class="post-meta">
+            <span class="material-symbols-rounded">visibility</span> 1.6K
+            <span>11:13</span>
+        </div>
+    </div>
+</div>
+
 
     <div class="donation-block" style="margin-top: 16px;">
         <span class="material-symbols-rounded" style="flex-shrink: 0;">loyalty</span>
@@ -943,7 +988,7 @@ function nav(pageId) {
     }
 }
 
-function openModal(title, desc, price, action, hasExample) {
+function openModal(title, desc, price, action) {
     tg.HapticFeedback.impactOccurred('medium');
     document.getElementById('m-title').innerText = title;
     
@@ -964,13 +1009,45 @@ function openModal(title, desc, price, action, hasExample) {
         priceEl.style.display = 'none';
         btnEl.style.display = 'none';
     }
-
-    document.getElementById('m-ex-btn').style.display = hasExample ? 'block' : 'none';
     
     document.getElementById('modal-overlay').classList.add('show');
     document.getElementById('dynamic-modal').classList.add('show');
     const descEl = document.getElementById('m-desc');
-gentleAutoScroll(descEl);
+    gentleAutoScroll(descEl);
+}
+
+function toggleReaction(el) {
+    tg.HapticFeedback.impactOccurred('light');
+    let textParts = el.innerText.trim().split(' ');
+    let emoji = textParts[0];
+    let count = parseInt(textParts[1]);
+
+    if (el.classList.contains('active')) {
+        el.classList.remove('active');
+        el.innerText = `${emoji} ${count - 1}`;
+    } else {
+        el.classList.add('active');
+        el.innerText = `${emoji} ${count + 1}`;
+    }
+}
+
+function votePoll(el, isWrong) {
+    tg.HapticFeedback.impactOccurred('medium');
+    let container = el.parentElement;
+    let opts = container.querySelectorAll('.poll-opt');
+    
+    opts.forEach(o => o.style.pointerEvents = 'none');
+    
+    let circle = el.querySelector('.poll-circle');
+    circle.style.borderWidth = '6px';
+    circle.style.borderColor = '#007aff';
+    
+    if (isWrong) {
+        circle.style.borderColor = '#ff3b30';
+        document.getElementById('poll-tip').style.display = 'block';
+    } else {
+        circle.style.borderColor = '#34c759';
+    }
 }
 
 function closeModal() {
