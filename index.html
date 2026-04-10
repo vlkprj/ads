@@ -108,7 +108,12 @@ body {
 .contact-btn { display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--card); color: var(--text); padding: 16px; border-radius: var(--radius); font-size: 17px; font-weight: 600; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
 .client-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--sep); font-size: 15px; font-weight: 500; }
 .client-item:last-child { border-bottom: none; }
-.client-item .material-symbols-rounded { color: var(--accent); font-size: 20px; }
+.client-item .material-symbols-rounded { 
+    color: var(--sub) !important; 
+    font-size: 16px !important; 
+    background: rgba(142, 142, 147, 0.1); 
+    padding: 6px; 
+    border-radius: 50%; 
 .modal-desc { scroll-behavior: smooth; }
 .donation-block {
     background: rgba(142, 142, 147, 0.12) !important;
@@ -213,6 +218,48 @@ body {
 body.no-scroll {
     overflow: hidden;
 }
+
+/* Футер */
+.footer-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 32px;
+    font-size: 13px;
+    color: var(--sub);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+.footer-link:active { opacity: 1; }
+
+/* Стилі для сторінки чекауту */
+.checkout-card { background: var(--card); border-radius: var(--radius); padding: 20px; margin-bottom: 24px; text-align: center; }
+.check-label { font-size: 14px; color: var(--sub); margin-bottom: 4px; }
+.check-name { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.check-price { font-size: 28px; font-weight: 800; color: var(--accent); }
+
+.pay-option { 
+    background: var(--card); 
+    border-radius: 18px; 
+    padding: 16px; 
+    margin-bottom: 12px; 
+    border: 2px solid transparent; 
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.pay-option.selected { border-color: var(--accent); }
+.pay-header { display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 16px; }
+.pay-info-text { font-size: 13px; color: var(--sub); margin-top: 8px; line-height: 1.4; display: none; }
+.pay-option.selected .pay-info-text { display: block; }
+
+.donatello-guide { background: var(--bg); border-radius: 12px; padding: 12px; margin-top: 12px; text-align: left; }
+.donatello-guide ol { padding-left: 18px; font-size: 13px; color: var(--text); }
+.donatello-guide li { margin-bottom: 6px; }
+
+.mini-hint { font-size: 12px; color: var(--sub); text-decoration: underline; cursor: pointer; display: block; margin-top: 4px; }
+
 
 </style>
 </head>
@@ -484,10 +531,11 @@ body.no-scroll {
         <div class="in-title"><span class="material-symbols-rounded">play_circle</span> Кружечок</div>
         <div class="in-action">Недоступно</div>
     </div>
-    <div class="in-btn" onclick="openModal('Стікер-пак', 'Брендовані стікери.', '500 ₴', 'nat_stickers')">
-        <div class="in-title"><span class="material-symbols-rounded">sticky_note_2</span> Стікер-пак</div>
-        <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
-    </div>
+    <div class="in-btn disabled">
+    <div class="in-title"><span class="material-symbols-rounded">sticky_note_2</span> Стікер-пак</div>
+    <div class="in-action">Недоступно</div>
+</div>
+
     <div class="in-btn" onclick="openModal('Діалог', document.getElementById('chat-dialog-html').innerHTML, '450 ₴', 'nat_dialog')">
         <div class="in-title"><span class="material-symbols-rounded">forum</span> Діалог</div>
         <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
@@ -530,6 +578,59 @@ body.no-scroll {
         </div>
     </div>
 </div>
+
+<div id="page-checkout" class="page">
+    <div class="nav-bar">
+        <div class="back-btn" onclick="nav(lastPage)"><span class="material-symbols-rounded">arrow_back</span></div>
+        <div class="nav-title">Оформлення</div>
+    </div>
+
+    <div class="checkout-card">
+        <div class="check-label">Ваше замовлення:</div>
+        <div class="check-name" id="check-name-display">---</div>
+        <div class="check-price" id="check-price-display">0 ₴</div>
+    </div>
+
+    <p class="section-label">Спосіб оплати</p>
+    
+    <div class="pay-option" onclick="selectPay('donatello')">
+        <div class="pay-header">
+            <span class="material-symbols-rounded" style="color: #ff9500;">volunteer_activism</span>
+            <span>Сплатити через Donatello</span>
+            <img src="assets/donatello_logo.png" style="width: 20px; margin-left: auto;">
+        </div>
+        <div class="pay-info-text">
+            <span class="mini-hint" onclick="tg.openLink('https://donatello.to/about'); event.stopPropagation();">Що таке Donatello?</span>
+            <div class="donatello-guide">
+                <ol>
+                    <li>На сторінці введіть суму в поле (або оберіть шаблон)</li>
+                    <li>Натисніть «Надіслати»</li>
+                    <li>Введіть дані для оплати на сторінці Donatello</li>
+                    <li>На всяк випадок, зробіть скріншот платежу і надішліть нам в бот <b>@valkysho_bot</b></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div class="pay-option" onclick="selectPay('admin')">
+        <div class="pay-header">
+            <span class="material-symbols-rounded" style="color: #007aff;">chat</span>
+            <span>Уточнити деталі з адмінами</span>
+        </div>
+        <div class="pay-info-text">Ви перейдете в бот з автоматичним повідомленням про ваше замовлення.</div>
+    </div>
+
+    <div class="pay-option disabled">
+        <div class="pay-header">
+            <span class="material-symbols-rounded" style="color: #8e8e93;">credit_card_heart</span>
+            <span>Сплатити на Монобанку</span>
+            <span style="font-size: 11px; margin-left: auto; color: var(--sub);">Недоступно</span>
+        </div>
+    </div>
+
+    <button class="primary-btn" id="final-btn" style="display: none;" onclick="processFinalAction()">Замовити</button>
+</div>
+
 
 <div id="dev-toast" class="toast-msg">Наразі в розробці. Очікуйте оновлень. 🛠️</div>
 <div class="overlay" id="modal-overlay" onclick="closeModal()"></div>
@@ -578,7 +679,7 @@ body.no-scroll {
         <span style="font-size: 14px; line-height: 1.4;"><b>Репост:</b> ми беремо ваше основне оголошення і публікуємо його на каналі «Валки, шо там?» з посиланням на вашу гілку.</span>
     </div>
     <div style="display: flex; gap: 12px; align-items: flex-start;">
-        <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">list_alt_add</span>
+        <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">add_box</span>
         <span style="font-size: 14px; line-height: 1.4;"><b>Кнопка в боті:</b> На 2 дні додаємо кнопку з назвою вашого бізнесу в щоденне повідомлення бота в чаті «Валківський Чатік». Один клік і люди переходять до вашого оголошення/гілки/інстаграму. Назву кнопки підберемо разом з вами.</span>
     </div>
 </div>
@@ -607,7 +708,7 @@ body.no-scroll {
         <span style="font-size: 14px; line-height: 1.4;">Анти-бот (бот більше не просить у вас підтверджень і забуває про ваше існування)</span>
     </div>
     <div style="display: flex; gap: 12px; align-items: flex-start;">
-        <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">list_alt_add</span>
+        <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">add_box</span>
         <span style="font-size: 14px; line-height: 1.4;">На 2 дні додаємо кнопку з назвою вашого бізнесу в щоденне повідомлення бота в чаті «Валківський Чатік». Один клік і люди переходять до вашого оголошення/гілки/інстаграму. Назву кнопки підберемо разом з вами.</span>
     </div>
 </div>
@@ -1046,7 +1147,9 @@ body.no-scroll {
     </div>
 </div>
 
-
+<a href="https://donatello.to/valkyads" class="footer-link">
+    <span class="material-symbols-rounded" style="font-size: 18px;">coffee</span> Підтримати
+</a>
 
 <script>
 const tg = window.Telegram.WebApp;
@@ -1158,6 +1261,67 @@ function act(id) {
     tg.HapticFeedback.notificationOccurred('success');
     tg.sendData(id);
 }
+
+let currentOrder = { name: '', price: '', platform: '' };
+let lastPage = 'home';
+let selectedMethod = null;
+
+function goToCheckout() {
+    closeModal();
+    const activePage = document.querySelector('.page.active').id;
+    if(activePage === 'page-vsht') currentOrder.platform = "в Валки, шо там? 🇺🇦";
+    else if(activePage === 'page-chatik') currentOrder.platform = "в Валківському Чатіку";
+    else if(activePage === 'page-bazar' || activePage === 'page-limits') currentOrder.platform = "в Валківському Базарчику";
+    else currentOrder.platform = "";
+    currentOrder.name = document.getElementById('m-title').innerText;
+    currentOrder.price = document.getElementById('m-price').innerText;
+    document.getElementById('check-name-display').innerText = currentOrder.name;
+    document.getElementById('check-price-display').innerText = currentOrder.price;
+    selectedMethod = null;
+    document.querySelectorAll('.pay-option').forEach(el => el.classList.remove('selected'));
+    document.getElementById('final-btn').style.display = 'none';
+    lastPage = activePage;
+    nav('page-checkout');
+}
+
+document.getElementById('m-btn').onclick = goToCheckout;
+
+function selectPay(method) {
+    tg.HapticFeedback.impactOccurred('light');
+    selectedMethod = method;
+    document.querySelectorAll('.pay-option').forEach(el => el.classList.remove('selected'));
+    event.currentTarget.classList.add('selected');
+    const btn = document.getElementById('final-btn');
+    btn.style.display = 'block';
+    if(method === 'donatello') {
+        btn.innerHTML = `Сплатити ${currentOrder.price.split('/')[0]} через Donatello`;
+        btn.className = 'primary-btn';
+    } else {
+        btn.innerHTML = `Написати адмінам`;
+        btn.className = 'secondary-btn';
+        btn.style.marginTop = '16px';
+        btn.style.background = 'var(--card)';
+    }
+}
+
+function processFinalAction() {
+    if(selectedMethod === 'donatello') {
+        tg.openLink('https://donatello.to/valkyads');
+    } else if(selectedMethod === 'admin') {
+        let msg = "";
+        const name = currentOrder.name;
+        const plat = currentOrder.platform;
+        if (name.includes('Безлім') || name === 'Pro' || name === 'Lite') {
+            msg = `Вітаю! Хочу замовити ${name} у групі Валківський Базарчик`;
+        } else if (name.toLowerCase().includes('пакет')) {
+            msg = `Вітаю! Хочу замовити рекламу. Мене цікавить рекламний пакет «${name}»`;
+        } else {
+            msg = `Вітаю! Хочу замовити рекламу. Мене цікавить варіант ${name} ${plat}`;
+        }
+        tg.openTelegramLink('https://t.me/valkysho_bot?text=' + encodeURIComponent(msg));
+    }
+}
+
 
 function showDevToast() {
     tg.HapticFeedback.notificationOccurred('warning');
