@@ -533,13 +533,25 @@ body.no-scroll {
         <div class="nav-title">Пакети</div>
     </div>
     <div class="card-group">
-        <div class="in-btn" onclick="openModal('Стандарт', 'Базовий набір.', '350 ₴', 'pack_std', false)"><div class="in-title"><span class="material-symbols-rounded" style="color: #8e8e93;">layers</span> Стандарт</div></div>
-        <div class="in-btn" onclick="openModal('Стандарт+', 'Розширений набір.', '450 ₴', 'pack_std_plus', false)"><div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">layers</span> Стандарт+</div></div>
-        <div class="in-btn" onclick="openModal('Pro', 'Оптимально для бізнесу.', '600 ₴', 'pack_pro', false)"><div class="in-title"><span class="material-symbols-rounded" style="color: #ff9500;">layers</span> Pro</div></div>
-        <div class="in-btn" onclick="openModal('Premium', 'Максимальне охоплення.', '1000 ₴', 'pack_prem', false)"><div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">workspace_premium</span> Premium</div></div>
-        <div class="in-btn" onclick="openModal('Кастомний', 'Зберемо пакет під вас.', '...', 'pack_custom', false)"><div class="in-title"><span class="material-symbols-rounded" style="color: #1a1a1c;">dashboard_customize</span> Кастомний</div></div>
+        <div class="in-btn" onclick="openModal('Стандарт+', document.getElementById('pack-std-plus-html').innerHTML, '300 ₴', 'pack_std_plus')">
+            <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">layers</span> Стандарт+</div>
+            <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+        </div>
+        <div class="in-btn" onclick="openModal('Базарчик+', document.getElementById('pack-baz-plus-html').innerHTML, '400 ₴', 'pack_baz_plus')">
+            <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">layers</span> Базарчик+</div>
+            <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+        </div>
+        <div class="in-btn" onclick="openModal('Кастомний', document.getElementById('pack-custom-html').innerHTML, '...', 'pack_custom')">
+            <div class="in-title"><span class="material-symbols-rounded" style="color: #1a1a1c;">dashboard_customize</span> Кастомний</div>
+            <div class="in-action">Домовитись <span class="material-symbols-rounded arrow">chevron_right</span></div>
+        </div>
+        <div class="in-btn disabled">
+            <div class="in-title"><span class="material-symbols-rounded">add_ad</span> Створення оголошення</div>
+            <div class="in-action">Наразі недоступно</div>
+        </div>
     </div>
 </div>
+
 
 <div id="page-native" class="page">
     <div class="nav-bar">
@@ -1180,6 +1192,65 @@ body.no-scroll {
         <span style="font-size: 14.5px; color: var(--text); line-height: 1.4;">Працюємо над «сценарієм», узгоджуючи всі деталі з вами.</span>
     </div>
 </div>
+
+<div id="pack-std-plus-html" style="display: none;">
+    <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <img src="assets/vsht.PNG" style="width: 24px; height: 24px; border-radius: 6px; flex-shrink: 0;">
+        <span style="font-size: 14.5px; line-height: 1.4;">Публікація вашого готового оголошення на каналі «Валки, шо там? 🇺🇦»</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <img src="assets/vch.PNG" style="width: 24px; height: 24px; border-radius: 6px; flex-shrink: 0;">
+        <span style="font-size: 14.5px; line-height: 1.4;">Репост вашого оголошення в чат «Валківський Чатік»</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0;">keep</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Закріплення вашого оголошення на 24 години</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">add_box</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Додаємо клікабельну кнопку з вашим оголошенням в щоденне повідомлення від бота в чаті «Валківський Чатік».</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">list_alt_add</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Додаємо оголошення з посиланням в повідомлення від бота «Базарчик Бот» на 24 години</span>
+    </div>
+    <div class="donation-block">
+        <span class="material-symbols-rounded" style="flex-shrink: 0;">loyalty</span>
+        <span>Або 200 грн + скріншот, на якому видно, що ви задонатили не менше 50 гривень на будь-який перевірений місцевий волонтерський збір на потреби ЗСУ.</span>
+    </div>
+</div>
+
+<div id="pack-baz-plus-html" style="display: none;">
+    <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">key</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Власну індивідуальну гілку в групі протягом тижня</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <img src="assets/vch.PNG" style="width: 24px; height: 24px; border-radius: 6px; flex-shrink: 0;">
+        <span style="font-size: 14.5px; line-height: 1.4;">Репост основного оголошення в чат «Валківський Чатік»</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <img src="assets/vsht.PNG" style="width: 24px; height: 24px; border-radius: 6px; flex-shrink: 0;">
+        <span style="font-size: 14.5px; line-height: 1.4;">Репост основного оголошення в канал «Валки, шо там? 🇺🇦» з посиланням на вашу гілку в групі «Валківський Базарчик»</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">add_box</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Клікабельна текстова кнопка в боті в чаті «Валківський Чатік», яка веде на вашу гілку / сайт / сторінку протягом 2 днів.</span>
+    </div>
+    <div class="donation-block">
+        <span class="material-symbols-rounded" style="flex-shrink: 0;">loyalty</span>
+        <span>Або 300 грн + скріншот, на якому видно, що ви задонатили не менше 50 гривень на будь-який перевірений місцевий волонтерський збір на потреби ЗСУ.</span>
+    </div>
+</div>
+
+<div id="pack-custom-html" style="display: none;">
+    <div style="font-size: 14.5px; line-height: 1.4; margin-bottom: 12px;">🙂 Ви переглянули рекламні плани і знайшли те, що вас цікавить, але там чогось не вистачає або щось зайве?</div>
+    <div style="font-size: 14.5px; line-height: 1.4; margin-bottom: 12px;">Не проблема. Ви можете самостійно обрати варіанти і ми складемо із них ваш індивідуальний план.</div>
+    <div style="font-size: 14.5px; line-height: 1.4;">Також, ви можете запропонувати свої власні ідеї.</div>
+</div>
+
 
 <script>
 const tg = window.Telegram.WebApp;
