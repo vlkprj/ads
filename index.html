@@ -210,6 +210,9 @@ body {
 .poll-opt:active {
     opacity: 0.7;
 }
+body.no-scroll {
+    overflow: hidden;
+}
 
 </style>
 </head>
@@ -468,12 +471,12 @@ body {
         <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
     </div>
 </div>
-    <div class="card-group">
-    <div class="in-btn" onclick="openModal('Інфо-пост', 'Нативний огляд.', '400 ₴', 'nat_info', false)">
+  <div class="card-group">
+    <div class="in-btn" onclick="openModal('Інфо-пост', document.getElementById('vsht-info-html').innerHTML, '400 ₴', 'nat_info')">
         <div class="in-title"><span class="material-symbols-rounded">article_shortcut</span> Інфо-пост</div>
         <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
     </div>
-    <div class="in-btn" onclick="openModal('Інтерактив', 'Залучення аудиторії.', '350 ₴', 'nat_inter', false)">
+    <div class="in-btn" onclick="openModal('Інтерактив', document.getElementById('vsht-inter-html').innerHTML, '350 ₴', 'nat_inter')">
         <div class="in-title"><span class="material-symbols-rounded">touch_app</span> Інтерактив</div>
         <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
     </div>
@@ -481,15 +484,16 @@ body {
         <div class="in-title"><span class="material-symbols-rounded">play_circle</span> Кружечок</div>
         <div class="in-action">Недоступно</div>
     </div>
-    <div class="in-btn" onclick="openModal('Стікер-пак', 'Брендовані стікери.', '500 ₴', 'nat_stickers', false)">
+    <div class="in-btn" onclick="openModal('Стікер-пак', 'Брендовані стікери.', '500 ₴', 'nat_stickers')">
         <div class="in-title"><span class="material-symbols-rounded">sticky_note_2</span> Стікер-пак</div>
         <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
     </div>
-    <div class="in-btn" onclick="openModal('Діалог', 'Формат інтерв\'ю.', '450 ₴', 'nat_dialog', false)">
+    <div class="in-btn" onclick="openModal('Діалог', document.getElementById('chat-dialog-html').innerHTML, '450 ₴', 'nat_dialog')">
         <div class="in-title"><span class="material-symbols-rounded">forum</span> Діалог</div>
         <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
     </div>
 </div>
+
 
 </div>
 
@@ -990,6 +994,7 @@ function nav(pageId) {
 
 function openModal(title, desc, price, action) {
     tg.HapticFeedback.impactOccurred('medium');
+    document.body.classList.add('no-scroll');
     document.getElementById('m-title').innerText = title;
     
     if (!desc.includes('<div') && !desc.includes('<span')) {
@@ -1051,9 +1056,11 @@ function votePoll(el, isWrong) {
 }
 
 function closeModal() {
+    document.body.classList.remove('no-scroll');
     document.getElementById('modal-overlay').classList.remove('show');
     document.getElementById('dynamic-modal').classList.remove('show');
 }
+
 
 function gentleAutoScroll(container) {
     if (!container) return;
