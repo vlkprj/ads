@@ -1438,16 +1438,26 @@ function processFinalAction() {
         msg = `Вітаю! Хочу замовити рекламу. Мене цікавить варіант ${name} ${plat}`;
     }
 
-    if(selectedMethod === 'donatello') {
+    if (selectedMethod === 'donatello') {
         tg.openLink('https://donatello.to/valkyads');
-    } else if(selectedMethod === 'admin') {
-        // Повертаємо твій sendData. Працюватиме лише при запуску не через інлайн-кнопку!
-        tg.sendData(msg);
+    } else if (selectedMethod === 'admin') {
+        const userData = tg.initDataUnsafe.user || {};
+
+        fetch('https://ТВІЙ_ЛІНК_НА_ВОРКЕР.workers.dev/order', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                type: 'new_order',
+                user: userData,
+                text: msg
+            })
+        }).then(() => {
+            tg.close();
+        }).catch(e => {
+            alert("Сталася помилка. Спробуйте пізніше.");
+        });
     }
 }
-
-
-
 
 
 function showDevToast() {
