@@ -318,13 +318,38 @@ body.no-scroll {
     font-size: 16px;
     transition: transform 0.1s;
 }
-.support-btn img {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
+.support-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 12px;
+    border-radius: 12px;
+
+    background: rgba(255,255,255,0.06);
+    color: #fff;
+
+    text-decoration: none;
+    font-weight: 500;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    transition: transform 0.15s ease, background 0.2s ease;
 }
+
+.support-btn:hover {
+    background: rgba(255,255,255,0.1);
+}
+
 .support-btn:active {
     transform: scale(0.96);
+}
+
+.support-btn .material-symbols-rounded {
+    font-size: 20px;
+    opacity: 0.9;
 }
 .main-logo {
     width: 64px;
@@ -365,13 +390,14 @@ body.no-scroll {
 <div id="home" class="page active">
     <div class="header">
         <div class="main-logo">
-    <span class="material-symbols-rounded">campaign</span>
-    <img src="assets/vsht.PNG" alt="">
-</div>
+            <span class="material-symbols-rounded">campaign</span>
+            <img src="assets/vsht.PNG" alt="">
+        </div>
         <div class="title"><h1>ВШТ • Реклама</h1></div>
     </div>
 
     <p class="section-label">Оберіть:</p>
+
     <div class="card-group">
         <div class="main-btn" onclick="nav('page-bazar')">
             <div class="logo-container">
@@ -384,6 +410,7 @@ body.no-scroll {
             </div>
             <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
+
         <div class="main-btn" onclick="nav('page-vsht')">
             <div class="logo-container">
                 <img src="assets/vsht.PNG" alt="" class="img-logo">
@@ -395,6 +422,7 @@ body.no-scroll {
             </div>
             <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
+
         <div class="main-btn" onclick="nav('page-chatik')">
             <div class="logo-container">
                 <img src="assets/vch.PNG" alt="" class="img-logo">
@@ -408,49 +436,68 @@ body.no-scroll {
         </div>
     </div>
 
-            <div class="card-group">
-    <div class="main-btn" onclick="nav('page-packages')">
-        <div class="btn-icon"><span class="material-symbols-rounded">cards_stack</span></div>
-        <div class="btn-content">
-            
-            <div class="main-btn" onclick="nav('page-quiz')">
-        <div class="btn-icon"><span class="material-symbols-rounded">quiz</span></div>
-        <div class="btn-content">
-            <div class="btn-title">Тест «Швидкий старт»</div>
+    <div class="card-group">
+
+        <div class="main-btn" onclick="nav('page-quiz')">
+            <div class="btn-icon">
+                <span class="material-symbols-rounded">quiz</span>
+            </div>
+            <div class="btn-content">
+                <div class="btn-title">Тест «Швидкий старт»</div>
+            </div>
+            <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
-        <span class="material-symbols-rounded arrow">chevron_right</span>
-    </div>
-            <div class="btn-title">Готові рекламні пакети</div>
+
+        <div class="main-btn" onclick="nav('page-packages')">
+            <div class="btn-icon">
+                <span class="material-symbols-rounded">cards_stack</span>
+            </div>
+            <div class="btn-content">
+                <div class="btn-title">Готові рекламні пакети</div>
+            </div>
+            <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
-        <span class="material-symbols-rounded arrow">chevron_right</span>
-    </div>
-    <div class="main-btn" onclick="nav('page-native')">
-        <div class="btn-icon"><span class="material-symbols-rounded">auto_awesome</span></div>
-        <div class="btn-content">
-            <div class="btn-title">Нативна реклама <span class="material-symbols-rounded new-badge" style="font-size: 18px; margin-left: 4px;">fiber_new</span></div>
+
+        <div class="main-btn" onclick="nav('page-native')">
+            <div class="btn-icon">
+                <span class="material-symbols-rounded">auto_awesome</span>
+            </div>
+            <div class="btn-content">
+                <div class="btn-title">
+                    Нативна реклама 
+                    <span class="material-symbols-rounded new-badge" style="font-size: 18px; margin-left: 4px;">fiber_new</span>
+                </div>
+            </div>
+            <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
-        <span class="material-symbols-rounded arrow">chevron_right</span>
+
     </div>
-</div>
 
     <div class="card-group">
         <div class="main-btn" onclick="nav('page-info')">
             <div class="btn-icon"><span class="material-symbols-rounded">info</span></div>
-            <div class="btn-content"><div class="btn-title">Інформація</div></div>
+            <div class="btn-content">
+                <div class="btn-title">Інформація</div>
+            </div>
             <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
+
         <div class="main-btn" onclick="openModal('Наші клієнти', document.getElementById('clients-html').innerHTML, '', '', false)">
             <div class="btn-icon"><span class="material-symbols-rounded">handshake</span></div>
-            <div class="btn-content"><div class="btn-title">Наші клієнти</div></div>
+            <div class="btn-content">
+                <div class="btn-title">Наші клієнти</div>
+            </div>
             <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
     </div>
 
-        <div class="contact-btn" onclick="tg.openTelegramLink('https://t.me/valkysho_bot')">
-    <span class="material-symbols-rounded">mail</span> Написати
-</div>
-<a href="https://donatello.to/valkyads" class="support-btn">
-    <img src="assets/donatello_logo.png" alt=""> Підтримати проєкт
+    <div class="contact-btn" onclick="tg.openTelegramLink('https://t.me/valkysho_bot')">
+        <span class="material-symbols-rounded">mail</span> Написати
+    </div>
+
+    <a href="https://donatello.to/valkyads" class="support-btn">
+    <span class="material-symbols-rounded">coffee</span>
+    Підтримати
 </a>
 
 </div>
