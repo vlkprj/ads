@@ -668,11 +668,416 @@ body.no-scroll {
 
 <div id="page-quiz" class="page">
     <div class="nav-bar">
-        <div class="back-btn" onclick="nav('home')"><span class="material-symbols-rounded">arrow_back</span></div>
+        <div class="back-btn" onclick="resetQuiz(); nav('home');"><span class="material-symbols-rounded">arrow_back</span></div>
         <div class="nav-title">Швидкий підбір</div>
     </div>
-    <div class="intro-box">Тут буде твій супер-тест. Чекаю код.</div>
+
+    <div id="quiz-main">
+        <p class="section-label">Оберіть ваш варіант:</p>
+        <div class="card-group">
+            <div class="in-btn" onclick="showQuizStep('q-a')">
+                <div class="in-title"><span class="material-symbols-rounded" style="color: #34c759;">check_circle</span> У мене вже є готове оголошення</div>
+                <span class="material-symbols-rounded arrow">chevron_right</span>
+            </div>
+            <div class="in-btn" onclick="showQuizStep('q-b')">
+                <div class="in-title"><span class="material-symbols-rounded" style="color: #ff9500;">storefront</span> Хочу орендувати гілку на Базарчику</div>
+                <span class="material-symbols-rounded arrow">chevron_right</span>
+            </div>
+            <div class="in-btn" onclick="showQuizStep('q-c')">
+                <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">speed</span> Хочу збільшити ліміт / безліміт</div>
+                <span class="material-symbols-rounded arrow">chevron_right</span>
+            </div>
+            <div class="in-btn" onclick="showQuizStep('q-d')">
+                <div class="in-title"><span class="material-symbols-rounded" style="color: #ff2d55;">redeem</span> Хочу розіграти товар / послугу</div>
+                <span class="material-symbols-rounded arrow">chevron_right</span>
+            </div>
+            <div class="in-btn" onclick="showQuizStep('q-e')">
+                <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">layers</span> Хочу переглянути готові плани</div>
+                <span class="material-symbols-rounded arrow">chevron_right</span>
+            </div>
+            <div class="in-btn" onclick="showQuizStep('q-f')">
+                <div class="in-title"><span class="material-symbols-rounded" style="color: var(--sub);">edit_document</span> У мене ще немає готового оголошення</div>
+                <span class="material-symbols-rounded arrow">chevron_right</span>
+            </div>
+            <div class="in-btn" onclick="showQuizStep('q-g')">
+                <div class="in-title"><span class="material-symbols-rounded" style="color: #1a1a1c;">dizzy</span> Ніфіга незрозуміло. Дайте адміна</div>
+                <span class="material-symbols-rounded arrow">chevron_right</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="q-a" class="q-step" style="display:none;">
+        <div class="chat-sim" style="background: transparent; padding: 0; margin: 0 0 24px;">
+            <div class="chat-msg reply">
+                <img src="assets/vsht.PNG" class="chat-avatar">
+                <div class="bubble" style="border-radius: 14px 14px 14px 4px; background: #e5e5ea;">
+                    <span class="bubble-text">🤓 Окей, що ви б хотіли зробити?</span>
+                </div>
+            </div>
+        </div>
+        <div class="card-group q-a-group">
+            <div class="in-btn" onclick="showQuizRes('res-a1', 'q-a-group')">
+                <div class="in-title"><span class="material-symbols-rounded">campaign</span> Опублікувати на каналі ВШТ</div>
+                <span class="material-symbols-rounded arrow">chevron_right</span>
+            </div>
+            <div class="in-btn" onclick="showQuizRes('res-a2', 'q-a-group')">
+                <div class="in-title"><span class="material-symbols-rounded">chat</span> Опублікувати в чаті</div>
+                <span class="material-symbols-rounded arrow">chevron_right</span>
+            </div>
+            <div class="in-btn" onclick="showQuizRes('res-a3', 'q-a-group')">
+                <div class="in-title"><span class="material-symbols-rounded">done_all</span> Опублікувати і на каналі, і в чаті</div>
+                <span class="material-symbols-rounded arrow">chevron_right</span>
+            </div>
+            <div class="in-btn" onclick="showQuizRes('res-a4', 'q-a-group')">
+                <div class="in-title"><span class="material-symbols-rounded">store</span> Власна гілка + канал + чат</div>
+                <span class="material-symbols-rounded arrow">chevron_right</span>
+            </div>
+            <div class="in-btn" onclick="showQuizRes('res-a5', 'q-a-group')">
+                <div class="in-title"><span class="material-symbols-rounded">auto_awesome</span> Хочеться спробувати щось цікавіше</div>
+                <span class="material-symbols-rounded arrow">chevron_right</span>
+            </div>
+        </div>
+
+        <div id="res-a1" class="q-res" style="display:none;">
+            <div class="chat-sim" style="background: transparent; padding: 0; margin: 0 0 24px;">
+                <div class="chat-msg reply">
+                    <img src="assets/vsht.PNG" class="chat-avatar">
+                    <div class="bubble" style="border-radius: 14px 14px 14px 4px; background: #e5e5ea;">
+                        <span class="bubble-text">В такому випадку вам підійде:</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-group">
+                <div class="in-btn" onclick="openModal('Стандартне', document.getElementById('vsht-std-html').innerHTML, '100 ₴', 'vsht_std', false)">
+                    <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">campaign</span> Стандартна реклама на каналі</div>
+                    <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="res-a2" class="q-res" style="display:none;">
+            <div class="chat-sim" style="background: transparent; padding: 0; margin: 0 0 24px;">
+                <div class="chat-msg reply">
+                    <img src="assets/vsht.PNG" class="chat-avatar">
+                    <div class="bubble" style="border-radius: 14px 14px 14px 4px; background: #e5e5ea;">
+                        <span class="bubble-text">👌🏻 Ясно, тоді вам підійде:</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-group">
+                <div class="in-btn" onclick="openModal('Стандартне', document.getElementById('chat-std-html').innerHTML, '100 ₴', 'chat_std', false)">
+                    <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">chat</span> Стандартна реклама в чаті</div>
+                    <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="res-a3" class="q-res" style="display:none;">
+            <div class="chat-sim" style="background: transparent; padding: 0; margin: 0 0 24px;">
+                <div class="chat-msg reply">
+                    <img src="assets/vsht.PNG" class="chat-avatar">
+                    <div class="bubble" style="border-radius: 14px 14px 14px 4px; background: #e5e5ea;">
+                        <span class="bubble-text">Ось що вам підійде:</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-group">
+                <div class="in-btn" onclick="openModal('Стандарт+', document.getElementById('pack-std-plus-html').innerHTML, '300 ₴', 'pack_std_plus')">
+                    <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">layers</span> Рекламний пакет Стандарт+</div>
+                    <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="res-a4" class="q-res" style="display:none;">
+            <div class="chat-sim" style="background: transparent; padding: 0; margin: 0 0 24px;">
+                <div class="chat-msg reply">
+                    <img src="assets/vsht.PNG" class="chat-avatar">
+                    <div class="bubble" style="border-radius: 14px 14px 14px 4px; background: #e5e5ea;">
+                        <span class="bubble-text">Ось що вам підійде:</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-group">
+                <div class="in-btn" onclick="openModal('Базарчик+', document.getElementById('pack-baz-plus-html').innerHTML, '400 ₴', 'pack_baz_plus')">
+                    <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">layers</span> Рекламний пакет Базарчик+</div>
+                    <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="res-a5" class="q-res" style="display:none;">
+            <div class="chat-sim" style="background: transparent; padding: 0; margin: 0 0 24px;">
+                <div class="chat-msg reply">
+                    <img src="assets/vsht.PNG" class="chat-avatar">
+                    <div class="bubble" style="border-radius: 14px 14px 14px 4px; background: #e5e5ea;">
+                        <span class="bubble-text">Окей, можливо вас зацікавлять наші варіанти нативної реклами:</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-group">
+                <div class="in-btn" onclick="openModal('Стандартний розіграш', document.getElementById('gw-std-html').innerHTML, '150 ₴', 'gw_std', false)">
+                    <div class="in-title"><span class="material-symbols-rounded">redeem</span> Розіграш</div>
+                    <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+                </div>
+                <div class="in-btn" onclick="openModal('Міні-інтервʼю', document.getElementById('vsht-interview-html').innerHTML, '300 ₴', 'vsht_interview', false)">
+                    <div class="in-title"><span class="material-symbols-rounded">text_snippet</span> Міні-інтервʼю</div>
+                    <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+                </div>
+                <div class="in-btn" onclick="openModal('Інфо-пост', document.getElementById('vsht-info-html').innerHTML, '250 ₴', 'nat_info')">
+                    <div class="in-title"><span class="material-symbols-rounded">article_shortcut</span> Інфо-пост</div>
+                    <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+                </div>
+                <div class="in-btn" onclick="openModal('Інтерактив', document.getElementById('vsht-inter-html').innerHTML, '350 ₴', 'nat_inter')">
+                    <div class="in-title"><span class="material-symbols-rounded">touch_app</span> Інтерактив</div>
+                    <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+                </div>
+                <div class="in-btn" onclick="openModal('Діалог', document.getElementById('chat-dialog-html').innerHTML, '250 ₴', 'nat_dialog')">
+                    <div class="in-title"><span class="material-symbols-rounded">forum</span> Діалог</div>
+                    <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="q-b" class="q-step" style="display:none;">
+        <div class="chat-sim" style="background: transparent; padding: 0; margin: 0 0 24px;">
+            <div class="chat-msg reply">
+                <img src="assets/vsht.PNG" class="chat-avatar">
+                <div class="bubble" style="border-radius: 14px 14px 14px 4px; background: #e5e5ea;">
+                    <span class="bubble-text">😎 Ізі. Ознайомитись детальніше можна тут:</span>
+                </div>
+            </div>
+        </div>
+        <div class="card-group">
+            <div class="in-btn" onclick="openModal('Оренда гілки', document.getElementById('baz-branch-html').innerHTML, '150 ₴ / тиж', 'baz_branch', false)">
+                <div class="in-title"><span class="material-symbols-rounded" style="color: #ff9500;">splitscreen_top</span> Оренда гілки</div>
+                <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="q-c" class="q-step" style="display:none;">
+        <div class="card-group q-c-group">
+            <div class="in-btn" onclick="showQuizRes('res-c1', 'q-c-group')">
+                <div class="in-title"><span class="material-symbols-rounded">filter_1</span> Публікую небагато, але хочу трохи збільшити ліміт і без перевірок</div>
+                <span class="material-symbols-rounded arrow">chevron_right</span>
+            </div>
+            <div class="in-btn" onclick="showQuizRes('res-c2', 'q-c-group')">
+                <div class="in-title"><span class="material-symbols-rounded">filter_2</span> Публікую багато (10+ на тиждень) і без перевірок</div>
+                <span class="material-symbols-rounded arrow">chevron_right</span>
+            </div>
+            <div class="in-btn" onclick="showQuizRes('res-c3', 'q-c-group')">
+                <div class="in-title"><span class="material-symbols-rounded">filter_3</span> Хочу повний безліміт і щоб бот відчепився взагалі</div>
+                <span class="material-symbols-rounded arrow">chevron_right</span>
+            </div>
+        </div>
+
+        <div id="res-c1" class="q-res" style="display:none;">
+            <div class="chat-sim" style="background: transparent; padding: 0; margin: 0 0 24px;">
+                <div class="chat-msg reply">
+                    <img src="assets/vsht.PNG" class="chat-avatar">
+                    <div class="bubble" style="border-radius: 14px 14px 14px 4px; background: #e5e5ea;">
+                        <span class="bubble-text">Вам підійде:</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-group">
+                <div class="in-btn" onclick="openModal('Lite', document.getElementById('baz-lite-html').innerHTML, '30 ₴ / міс', 'baz_lite', false)">
+                    <div class="in-title"><span class="material-symbols-rounded" style="color: #34c759;">check_circle</span> Тариф Lite</div>
+                    <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="res-c2" class="q-res" style="display:none;">
+            <div class="chat-sim" style="background: transparent; padding: 0; margin: 0 0 24px;">
+                <div class="chat-msg reply">
+                    <img src="assets/vsht.PNG" class="chat-avatar">
+                    <div class="bubble" style="border-radius: 14px 14px 14px 4px; background: #e5e5ea;">
+                        <span class="bubble-text">Вам підійде:</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-group">
+                <div class="in-btn" onclick="openModal('Pro', document.getElementById('baz-pro-html').innerHTML, '50 ₴ / міс', 'baz_pro', false)">
+                    <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">verified</span> Тариф Pro</div>
+                    <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="res-c3" class="q-res" style="display:none;">
+            <div class="chat-sim" style="background: transparent; padding: 0; margin: 0 0 24px;">
+                <div class="chat-msg reply">
+                    <img src="assets/vsht.PNG" class="chat-avatar">
+                    <div class="bubble" style="border-radius: 14px 14px 14px 4px; background: #e5e5ea;">
+                        <span class="bubble-text">До речі, зараз діє акція: Безлім всього за 100 грн на 3 місяці. Спробуйте:</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-group">
+                <div class="in-btn" onclick="openModal('Безлім+', document.getElementById('baz-bezlim-html').innerHTML, '<s style=\'color: var(--sub); font-size: 18px; margin-right: 4px;\'>150 ₴</s> 100 ₴ / 3 міс', 'baz_bezlim', false)">
+                    <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">all_inclusive</span> Тариф Безлім+</div>
+                    <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="q-d" class="q-step" style="display:none;">
+        <div class="intro-box" style="margin-bottom: 12px; background: transparent; padding: 0;">У вас вже все готово (текст, умови, формат проведення) і ви хочете, щоб ми просто опублікували ваш розіграш?</div>
+        <div class="card-group">
+            <div class="in-btn" onclick="showQuizSub('res-d1')">
+                <div class="in-title"><span class="material-symbols-rounded" style="color: #34c759;">done</span> Так</div>
+            </div>
+            <div class="in-btn" onclick="showQuizSub('res-d2')">
+                <div class="in-title"><span class="material-symbols-rounded" style="color: #ff3b30;">close</span> Ні, треба допомогти з організацією</div>
+            </div>
+        </div>
+
+        <div id="res-d1" class="q-sub" style="display:none;">
+            <div class="chat-sim" style="background: transparent; padding: 0; margin: 16px 0 24px;">
+                <div class="chat-msg reply">
+                    <img src="assets/vsht.PNG" class="chat-avatar">
+                    <div class="bubble" style="border-radius: 14px 14px 14px 4px; background: #e5e5ea;">
+                        <span class="bubble-text">🙂 Супер. Тоді вам підійде цей варіант:</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-group">
+                <div class="in-btn" onclick="openModal('Стандартний', document.getElementById('gw-std-html').innerHTML, '150 ₴', 'gw_std', false)">
+                    <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">send</span> Стандартний розіграш</div>
+                    <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="res-d2" class="q-sub" style="display:none;">
+            <div class="chat-sim" style="background: transparent; padding: 0; margin: 16px 0 24px;">
+                <div class="chat-msg reply">
+                    <img src="assets/vsht.PNG" class="chat-avatar">
+                    <div class="bubble" style="border-radius: 14px 14px 14px 4px; background: #e5e5ea;">
+                        <span class="bubble-text">😌 Окей, готові вам допомогти. Ознайомтесь з цим варіантом і / або відпишіть нам в бот:</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-group">
+                <div class="in-btn" onclick="openModal('Організація', document.getElementById('gw-org-html').innerHTML, '350 ₴', 'gw_org', false)">
+                    <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">wand_stars</span> Організація розіграшу</div>
+                    <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+                </div>
+            </div>
+            <div class="contact-btn" style="margin-top: 12px;" onclick="tg.openTelegramLink('https://t.me/valkysho_bot')">
+                <span class="material-symbols-rounded">chat</span> Написати в бот
+            </div>
+        </div>
+    </div>
+
+    <div id="q-e" class="q-step" style="display:none;">
+        <div class="chat-sim" style="background: transparent; padding: 0; margin: 0 0 24px;">
+            <div class="chat-msg reply">
+                <img src="assets/vsht.PNG" class="chat-avatar">
+                <div class="bubble" style="border-radius: 14px 14px 14px 4px; background: #e5e5ea;">
+                    <span class="bubble-text">Ось тут можна глянути:</span>
+                </div>
+            </div>
+        </div>
+        <div class="card-group">
+            <div class="in-btn" onclick="openModal('Стандарт+', document.getElementById('pack-std-plus-html').innerHTML, '300 ₴', 'pack_std_plus')">
+                <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">layers</span> Стандарт+</div>
+                <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+            </div>
+            <div class="in-btn" onclick="openModal('Базарчик+', document.getElementById('pack-baz-plus-html').innerHTML, '400 ₴', 'pack_baz_plus')">
+                <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">layers</span> Базарчик+</div>
+                <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+            </div>
+            <div class="in-btn" onclick="openModal('Кастомний', document.getElementById('pack-custom-html').innerHTML, '...', 'pack_custom')">
+                <div class="in-title"><span class="material-symbols-rounded" style="color: #1a1a1c;">dashboard_customize</span> Кастомний</div>
+                <div class="in-action">Домовитись <span class="material-symbols-rounded arrow">chevron_right</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="q-f" class="q-step" style="display:none;">
+        <div class="chat-sim" style="background: transparent; padding: 0; margin: 0 0 24px;">
+            <div class="chat-msg reply">
+                <img src="assets/vsht.PNG" class="chat-avatar">
+                <div class="bubble" style="border-radius: 14px 14px 14px 4px; background: #e5e5ea;">
+                    <span class="bubble-text">Не проблема! Можемо допомогти з цим.</span>
+                </div>
+            </div>
+        </div>
+        <div class="card-group">
+            <div class="in-btn" onclick="showQuizSub('res-f1')">
+                <div class="in-title"><span class="material-symbols-rounded">edit_note</span> Допомогти з текстом</div>
+            </div>
+            <div class="in-btn" onclick="showQuizSub('res-f2')">
+                <div class="in-title"><span class="material-symbols-rounded">palette</span> Допомогти з візуалом (банер/плакат)</div>
+            </div>
+            <div class="in-btn" onclick="showQuizSub('res-f3')">
+                <div class="in-title"><span class="material-symbols-rounded">design_services</span> Створити повністю з нуля</div>
+            </div>
+        </div>
+
+        <div id="res-f1" class="q-sub" style="display:none;">
+            <div class="chat-sim" style="background: transparent; padding: 0; margin: 16px 0 24px;">
+                <div class="chat-msg reply">
+                    <img src="assets/vsht.PNG" class="chat-avatar">
+                    <div class="bubble" style="border-radius: 14px 14px 14px 4px; background: #e5e5ea;">
+                        <span class="bubble-text">👌🏻 Без питань! Напишіть нам і ми допоможемо оформити ваше оголошення.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-btn" onclick="tg.openTelegramLink('https://t.me/valkysho_bot')">
+                <span class="material-symbols-rounded">chat</span> Написати
+            </div>
+        </div>
+
+        <div id="res-f2" class="q-sub" style="display:none;">
+            <div class="chat-sim" style="background: transparent; padding: 0; margin: 16px 0 24px;">
+                <div class="chat-msg reply">
+                    <img src="assets/vsht.PNG" class="chat-avatar">
+                    <div class="bubble" style="border-radius: 14px 14px 14px 4px; background: #e5e5ea;">
+                        <span class="bubble-text">Зробимо все красиво 🎨 Напишіть нам, обговоримо все детальніше.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-btn" onclick="tg.openTelegramLink('https://t.me/valkysho_bot')">
+                <span class="material-symbols-rounded">chat</span> Написати
+            </div>
+        </div>
+
+        <div id="res-f3" class="q-sub" style="display:none;">
+            <div class="chat-sim" style="background: transparent; padding: 0; margin: 16px 0 24px;">
+                <div class="chat-msg reply">
+                    <img src="assets/vsht.PNG" class="chat-avatar">
+                    <div class="bubble" style="border-radius: 14px 14px 14px 4px; background: #e5e5ea;">
+                        <span class="bubble-text">Задачу зрозуміли 🤓 Напишіть нам, обговоримо все детальніше.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-btn" onclick="tg.openTelegramLink('https://t.me/valkysho_bot')">
+                <span class="material-symbols-rounded">chat</span> Написати
+            </div>
+        </div>
+    </div>
+
+    <div id="q-g" class="q-step" style="display:none;">
+        <div class="chat-sim" style="background: transparent; padding: 0; margin: 0 0 24px;">
+            <div class="chat-msg reply">
+                <img src="assets/vsht.PNG" class="chat-avatar">
+                <div class="bubble" style="border-radius: 14px 14px 14px 4px; background: #e5e5ea;">
+                    <span class="bubble-text">🥲</span>
+                </div>
+            </div>
+        </div>
+        <div class="contact-btn" onclick="tg.openTelegramLink('https://t.me/valkysho_bot')">
+            <span class="material-symbols-rounded">chat</span> Написати адмінам
+        </div>
+    </div>
 </div>
+
 
 
 <div id="page-info" class="page">
@@ -1558,6 +1963,51 @@ function showDevToast() {
         t.classList.remove('show');
     }, 2500);
 }
+
+function showQuizStep(stepId) {
+    tg.HapticFeedback.impactOccurred('light');
+    document.getElementById('quiz-main').style.display = 'none';
+    document.querySelectorAll('.q-step').forEach(el => el.style.display = 'none');
+    
+    const target = document.getElementById(stepId);
+    if (target) {
+        target.style.display = 'block';
+        gentleAutoScroll(document.documentElement);
+    }
+}
+
+function showQuizRes(resId, groupClass) {
+    tg.HapticFeedback.impactOccurred('light');
+    document.querySelector(`.${groupClass}`).style.display = 'none';
+    const target = document.getElementById(resId);
+    if (target) {
+        target.style.display = 'block';
+        gentleAutoScroll(document.documentElement);
+    }
+}
+
+function showQuizSub(subId) {
+    tg.HapticFeedback.impactOccurred('light');
+    document.querySelectorAll('.q-sub').forEach(el => el.style.display = 'none');
+    const target = document.getElementById(subId);
+    if (target) {
+        target.style.display = 'block';
+        setTimeout(() => {
+            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
+    }
+}
+
+function resetQuiz() {
+    document.getElementById('quiz-main').style.display = 'block';
+    document.querySelectorAll('.q-step').forEach(el => el.style.display = 'none');
+    document.querySelectorAll('.q-res').forEach(el => el.style.display = 'none');
+    document.querySelectorAll('.q-sub').forEach(el => el.style.display = 'none');
+    
+    document.querySelectorAll('.q-a-group').forEach(el => el.style.display = 'block');
+    document.querySelectorAll('.q-c-group').forEach(el => el.style.display = 'block');
+}
+
 </script>
 </body>
 </html>
