@@ -1425,6 +1425,8 @@ function selectPay(method, element) {
 }
 
 
+
+
 function processFinalAction() {
     let msg = "";
     const name = currentOrder.name;
@@ -1452,12 +1454,15 @@ function processFinalAction() {
                 text: msg
             })
         }).then(() => {
-            tg.close();
+            tg.showAlert("✅ Успішно надіслано!\n\nЯкщо ви зайшли сюди за прямим посиланням, обов'язково запустіть бота командою /start, щоб ми могли вам відповісти.", () => {
+                tg.close();
+            });
         }).catch(e => {
-            alert("Сталася помилка. Спробуйте пізніше.");
+            tg.showAlert("❌ Сталася помилка. Спробуйте пізніше.");
         });
     }
 }
+
 
 
 function showDevToast() {
