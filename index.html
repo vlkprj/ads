@@ -1443,6 +1443,7 @@ function processFinalAction() {
     if (selectedMethod === 'donatello') {
         tg.openLink('https://donatello.to/valkyads');
     } else if (selectedMethod === 'admin') {
+        tg.HapticFeedback.notificationOccurred('success');
         const userData = tg.initDataUnsafe.user || {};
 
         fetch('https://vlk-ads-worker.bananahbrain.workers.dev/order', {
@@ -1454,9 +1455,7 @@ function processFinalAction() {
                 text: msg
             })
         }).then(() => {
-            tg.showAlert("✅ Успішно надіслано!\n\nЯкщо ви зайшли сюди за прямим посиланням, обов'язково запустіть бота командою /start, щоб ми могли вам відповісти.", () => {
-                tg.close();
-            });
+            tg.openTelegramLink('https://t.me/vlkrek_bot');
         }).catch(e => {
             tg.showAlert("❌ Сталася помилка. Спробуйте пізніше.");
         });
