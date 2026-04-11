@@ -66,7 +66,18 @@ body {
 .btn-icon.gray { color: var(--sub); }
 .btn-content { flex-grow: 1; min-width: 0; }
 .btn-title { font-size: 17px; font-weight: 600; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.mini-tag { background: var(--tag-gray); color: #ffffff; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 8px; }
+.mini-tag {
+    background: var(--tag-gray);
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
 .new-badge { color: #34c759; display: flex; align-items: center; }
 .btn-desc { font-size: 13px; color: var(--sub); margin-top: 2px; }
 .arrow { color: #c7c7cc; }
@@ -84,9 +95,9 @@ body {
 .bento-card { background: var(--card); border-radius: 18px; padding: 16px; display: flex; flex-direction: column; gap: 12px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
 .bento-card .btn-icon { margin: 0; }
 .bento-title { font-size: 15px; font-weight: 600; }
-.overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 10; }
+.overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 1000; }
 .overlay.show { opacity: 1; pointer-events: auto; }
-.modal { position: fixed; bottom: -100%; left: 0; width: 100%; background: var(--card); border-radius: 24px 24px 0 0; padding: 24px 20px; padding-bottom: calc(24px + env(safe-area-inset-bottom)); transition: bottom 0.3s cubic-bezier(0.25, 1, 0.5, 1); z-index: 11; box-shadow: 0 -4px 20px rgba(0,0,0,0.1); display: flex; flex-direction: column; max-height: 95dvh; }
+.modal { position: fixed; bottom: -100%; left: 0; width: 100%; background: var(--card); border-radius: 24px 24px 0 0; padding: 24px 20px; padding-bottom: calc(24px + env(safe-area-inset-bottom)); transition: bottom 0.3s cubic-bezier(0.25, 1, 0.5, 1); z-index: 1001; box-shadow: 0 -4px 20px rgba(0,0,0,0.1); display: flex; flex-direction: column; max-height: 95dvh; }
 .intro-box { background: rgba(142, 142, 147, 0.12); color: var(--sub); padding: 14px 16px; border-radius: 14px; font-size: 14.5px; font-weight: 500; margin-bottom: 16px; }
 .modal-desc { font-size: 15px; var(--text); line-height: 1.4; margin-bottom: 16px; overflow-y: auto; flex-shrink: 1; padding-right: 4px; /*box-shadow: inset 0 -24px 20px -24px rgba(0,0,0,0.12); */padding-bottom: 16px; }
 .modal.show { bottom: 0; }
@@ -292,6 +303,59 @@ body.no-scroll {
 }
 
 .primary-btn:active { transform: scale(0.97); }
+.support-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 14px;
+    background: rgba(255, 149, 0, 0.1);
+    color: #ff9500;
+    text-decoration: none;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 16px;
+    transition: transform 0.1s;
+}
+.support-btn img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+.support-btn:active {
+    transform: scale(0.96);
+}
+.main-logo {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 12px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main-logo span, .main-logo img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+    animation: iconSwap 6s infinite ease-in-out;
+}
+.main-logo span {
+    font-size: 32px;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation-delay: -3s;
+}
+@keyframes iconSwap {
+    0%, 40% { opacity: 1; transform: scale(1); }
+    50%, 90% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+}
 
 
 </style>
@@ -300,7 +364,10 @@ body.no-scroll {
 
 <div id="home" class="page active">
     <div class="header">
-        <div class="main-logo"><span class="material-symbols-rounded" style="font-size: 32px;">campaign</span></div>
+        <div class="main-logo">
+    <span class="material-symbols-rounded">campaign</span>
+    <img src="assets/vsht.PNG" alt="">
+</div>
         <div class="title"><h1>ВШТ • Реклама</h1></div>
     </div>
 
@@ -342,21 +409,29 @@ body.no-scroll {
     </div>
 
             <div class="card-group">
-        <div class="main-btn" onclick="showDevToast()">
-            <div class="btn-icon"><span class="material-symbols-rounded">cards_stack</span></div>
-            <div class="btn-content">
-                <div class="btn-title">Готові рекламні пакети</div>
-            </div>
-            <span class="material-symbols-rounded arrow">chevron_right</span>
+    <div class="main-btn" onclick="nav('page-packages')">
+        <div class="btn-icon"><span class="material-symbols-rounded">cards_stack</span></div>
+        <div class="btn-content">
+            <div class="btn-title">Готові рекламні пакети</div>
         </div>
-        <div class="main-btn" onclick="nav('page-native')">
-            <div class="btn-icon"><span class="material-symbols-rounded">auto_awesome</span></div>
-            <div class="btn-content">
-                <div class="btn-title">Нативна реклама <span class="material-symbols-rounded new-badge" style="font-size: 18px; margin-left: 4px;">fiber_new</span></div>
-            </div>
-            <span class="material-symbols-rounded arrow">chevron_right</span>
-        </div>
+        <span class="material-symbols-rounded arrow">chevron_right</span>
     </div>
+    <div class="main-btn" onclick="nav('page-quiz')">
+        <div class="btn-icon"><span class="material-symbols-rounded">quiz</span></div>
+        <div class="btn-content">
+            <div class="btn-title">Тест «Швидкий старт»</div>
+        </div>
+        <span class="material-symbols-rounded arrow">chevron_right</span>
+    </div>
+    <div class="main-btn" onclick="nav('page-native')">
+        <div class="btn-icon"><span class="material-symbols-rounded">auto_awesome</span></div>
+        <div class="btn-content">
+            <div class="btn-title">Нативна реклама <span class="material-symbols-rounded new-badge" style="font-size: 18px; margin-left: 4px;">fiber_new</span></div>
+        </div>
+        <span class="material-symbols-rounded arrow">chevron_right</span>
+    </div>
+</div>
+
 
 
     <div class="bento-grid">
@@ -383,12 +458,13 @@ body.no-scroll {
         </div>
     </div>
 
-        <div class="contact-btn" onclick="act('contact')">
-        <span class="material-symbols-rounded">mail</span> Написати
-    </div>
-    <a href="https://donatello.to/valkyads" class="footer-link">
-        <span class="material-symbols-rounded" style="font-size: 18px;">coffee</span> Підтримати
-    </a>
+        <div class="contact-btn" onclick="tg.openTelegramLink('https://t.me/valkysho_bot')">
+    <span class="material-symbols-rounded">mail</span> Написати
+</div>
+<a href="https://donatello.to/valkyads" class="support-btn">
+    <img src="assets/donatello_logo.png" alt=""> Підтримати проєкт
+</a>
+
 </div>
 
 
@@ -589,6 +665,15 @@ body.no-scroll {
 
 
 </div>
+
+<div id="page-quiz" class="page">
+    <div class="nav-bar">
+        <div class="back-btn" onclick="nav('home')"><span class="material-symbols-rounded">arrow_back</span></div>
+        <div class="nav-title">Швидкий підбір</div>
+    </div>
+    <div class="intro-box">Тут буде твій супер-тест. Чекаю код.</div>
+</div>
+
 
 <div id="page-info" class="page">
     <div class="nav-bar">
