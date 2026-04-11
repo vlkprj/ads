@@ -327,20 +327,19 @@ body.no-scroll {
     padding: 12px;
     border-radius: 12px;
 
-    background: rgba(255,255,255,0.06);
-    color: #fff;
+    background: var(--card);
+    color: var(--text);
+
+    border: 1px solid var(--sep);
 
     text-decoration: none;
     font-weight: 500;
-
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
 
     transition: transform 0.15s ease, background 0.2s ease;
 }
 
 .support-btn:hover {
-    background: rgba(255,255,255,0.1);
+    background: #f7f7f9;
 }
 
 .support-btn:active {
@@ -349,7 +348,7 @@ body.no-scroll {
 
 .support-btn .material-symbols-rounded {
     font-size: 20px;
-    opacity: 0.9;
+    color: var(--sub);
 }
 .main-logo {
     width: 64px;
