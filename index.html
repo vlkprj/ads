@@ -700,45 +700,49 @@ body.no-scroll {
 
 </div>
 
-<div id="page-quiz" class="page">
-    <div class="nav-bar">
-        <div class="back-btn" onclick="resetQuiz(); nav('home');"><span class="material-symbols-rounded">arrow_back</span></div>
-        <div class="nav-title">Швидкий підбір</div>
+<div class="nav-bar">
+    <div class="back-btn" onclick="quizGoBack()"><span class="material-symbols-rounded">arrow_back</span></div>
+    <div class="nav-title">Швидкий підбір</div>
+    <div class="back-btn" style="margin-left: auto; box-shadow: none; background: transparent; color: var(--sub);" onclick="resetQuiz(); nav('home');">
+        <span class="material-symbols-rounded">close</span>
     </div>
+</div>
 
-    <div id="quiz-main">
+
+<div id="quiz-main">
     <p class="section-label">Оберіть ваш варіант:</p>
     <div class="card-group">
         <div class="in-btn" onclick="showQuizStep('q-a')">
-            <div class="in-title"><div class="quiz-radio"></div> У мене вже є готове оголошення</div>
+            <div class="in-title"><span class="material-symbols-rounded" style="color: #34c759;">check_circle</span> У мене вже є готове оголошення</div>
             <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
         <div class="in-btn" onclick="showQuizStep('q-b')">
-            <div class="in-title"><div class="quiz-radio"></div> Хочу орендувати гілку на Базарчику</div>
+            <div class="in-title"><span class="material-symbols-rounded" style="color: #ff9500;">storefront</span> Хочу орендувати гілку на Базарчику</div>
             <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
         <div class="in-btn" onclick="showQuizStep('q-c')">
-            <div class="in-title"><div class="quiz-radio"></div> Хочу збільшити ліміт / безліміт на Базарчику</div>
+            <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">speed</span> Хочу збільшити ліміт / безліміт</div>
             <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
         <div class="in-btn" onclick="showQuizStep('q-d')">
-            <div class="in-title"><div class="quiz-radio"></div> Хочу розіграти товар / послугу</div>
+            <div class="in-title"><span class="material-symbols-rounded" style="color: #ff2d55;">redeem</span> Хочу розіграти товар / послугу</div>
             <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
         <div class="in-btn" onclick="showQuizStep('q-e')">
-            <div class="in-title"><div class="quiz-radio"></div> Хочу переглянути готові рекламні плани</div>
+            <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">layers</span> Хочу переглянути готові плани</div>
             <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
         <div class="in-btn" onclick="showQuizStep('q-f')">
-            <div class="in-title"><div class="quiz-radio"></div> У мене ще немає готового оголошення</div>
+            <div class="in-title"><span class="material-symbols-rounded" style="color: var(--sub);">edit_document</span> У мене ще немає готового оголошення</div>
             <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
         <div class="in-btn" onclick="showQuizStep('q-g')">
-            <div class="in-title"><div class="quiz-radio"></div> 😵‍💫 Ніфіга у вас тут незрозуміло. Дайте побалакати з адмінами </div>
+            <div class="in-title"><span class="material-symbols-rounded" style="color: #1a1a1c;">support_agent</span> Ніфіга незрозуміло. Дайте адміна</div>
             <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
     </div>
 </div>
+
 
     <div id="q-a" class="q-step" style="display:none;">
         <div class="chat-sim" style="background: transparent; padding: 0; margin: 0 0 24px;">
@@ -960,7 +964,14 @@ body.no-scroll {
     </div>
 
     <div id="q-d" class="q-step" style="display:none;">
-        <div class="intro-box" style="margin-bottom: 12px; background: transparent; padding: 0;">У вас вже все готово (текст, умови, формат проведення) і ви хочете, щоб ми просто опублікували ваш розіграш?</div>
+        <div class="chat-sim" style="background: transparent; padding: 0; margin: 0 0 24px;">
+    <div class="chat-msg reply">
+        <img src="assets/vsht.PNG" class="chat-avatar">
+        <div class="bubble" style="border-radius: 14px 14px 14px 4px; background: #e5e5ea;">
+            <span class="bubble-text">У вас вже все готово (текст, умови, формат проведення) і ви хочете, щоб ми просто опублікували ваш розіграш?</span>
+        </div>
+    </div>
+</div>
         <div class="card-group">
             <div class="in-btn" onclick="showQuizSub('res-d1')">
                 <div class="in-title"><span class="material-symbols-rounded" style="color: #34c759;">done</span> Так</div>
@@ -2023,6 +2034,7 @@ function showQuizRes(resId, groupClass) {
 function showQuizSub(subId) {
     tg.HapticFeedback.impactOccurred('light');
     document.querySelectorAll('.q-sub').forEach(el => el.style.display = 'none');
+    document.querySelector('#q-d .card-group').style.display = 'none';
     const target = document.getElementById(subId);
     if (target) {
         target.style.display = 'block';
@@ -2038,8 +2050,27 @@ function resetQuiz() {
     document.querySelectorAll('.q-res').forEach(el => el.style.display = 'none');
     document.querySelectorAll('.q-sub').forEach(el => el.style.display = 'none');
     
-    document.querySelectorAll('.q-a-group').forEach(el => el.style.display = 'block');
-    document.querySelectorAll('.q-c-group').forEach(el => el.style.display = 'block');
+    document.querySelectorAll('.q-a-group, .q-c-group').forEach(el => el.style.display = 'block');
+let dGroup = document.querySelector('#q-d .card-group');
+if (dGroup) dGroup.style.display = 'block';
+}
+
+function quizGoBack() {
+    tg.HapticFeedback.impactOccurred('light');
+    let activeRes = document.querySelector('.q-res[style*="display: block"], .q-sub[style*="display: block"]');
+    if (activeRes) {
+        activeRes.style.display = 'none';
+        document.querySelectorAll('.q-a-group, .q-c-group').forEach(el => el.style.display = 'block');
+        let dGroup = document.querySelector('#q-d .card-group');
+        if (dGroup) dGroup.style.display = 'block';
+        return;
+    }
+    let activeStep = document.querySelector('.q-step[style*="display: block"]');
+    if (activeStep) {
+        resetQuiz();
+        return;
+    }
+    nav('home');
 }
 
 </script>
