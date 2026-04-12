@@ -372,15 +372,16 @@ body.no-scroll {
     50%, 90% { opacity: 0; transform: scale(0.8); }
     100% { opacity: 1; transform: scale(1); }
 }
-.quiz-radio {
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    border: 2px solid #c7c7cc;
-    flex-shrink: 0;
-    transition: background 0.2s, border-color 0.2s;
+.chat-sim.dimmed-chat {
+    opacity: 0.4;
+    transform: scale(0.96) translateY(-4px);
+    transform-origin: top left;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
-
+.chat-sim {
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
 
 </style>
 </head>
@@ -2019,6 +2020,13 @@ function showQuizStep(stepId) {
 function showQuizRes(resId, groupClass) {
     tg.HapticFeedback.impactOccurred('light');
     document.querySelector(`.${groupClass}`).style.display = 'none';
+
+    let activeStep = document.querySelector('.q-step[style*="display: block"]');
+    if (activeStep) {
+        let firstChat = activeStep.querySelector('.chat-sim');
+        if (firstChat) firstChat.classList.add('dimmed-chat');
+    }
+
     const target = document.getElementById(resId);
     if (target) {
         target.style.display = 'block';
@@ -2029,7 +2037,18 @@ function showQuizRes(resId, groupClass) {
 function showQuizSub(subId) {
     tg.HapticFeedback.impactOccurred('light');
     document.querySelectorAll('.q-sub').forEach(el => el.style.display = 'none');
-    document.querySelector('#q-d .card-group').style.display = 'none';
+    
+    let dGroup = document.querySelector('#q-d .card-group');
+    if(dGroup) dGroup.style.display = 'none';
+    let fGroup = document.querySelector('#q-f .card-group');
+    if(fGroup) fGroup.style.display = 'none';
+
+    let activeStep = document.querySelector('.q-step[style*="display: block"]');
+    if (activeStep) {
+        let firstChat = activeStep.querySelector('.chat-sim');
+        if (firstChat) firstChat.classList.add('dimmed-chat');
+    }
+
     const target = document.getElementById(subId);
     if (target) {
         target.style.display = 'block';
@@ -2041,13 +2060,15 @@ function showQuizSub(subId) {
 
 function resetQuiz() {
     document.getElementById('quiz-main').style.display = 'block';
-    document.querySelectorAll('.q-step').forEach(el => el.style.display = 'none');
-    document.querySelectorAll('.q-res').forEach(el => el.style.display = 'none');
-    document.querySelectorAll('.q-sub').forEach(el => el.style.display = 'none');
+    document.querySelectorAll('.q-step, .q-res, .q-sub').forEach(el => el.style.display = 'none');
     
     document.querySelectorAll('.q-a-group, .q-c-group').forEach(el => el.style.display = 'block');
-let dGroup = document.querySelector('#q-d .card-group');
-if (dGroup) dGroup.style.display = 'block';
+    let dGroup = document.querySelector('#q-d .card-group');
+    if (dGroup) dGroup.style.display = 'block';
+    let fGroup = document.querySelector('#q-f .card-group');
+    if (fGroup) fGroup.style.display = 'block';
+
+    document.querySelectorAll('.dimmed-chat').forEach(el => el.classList.remove('dimmed-chat'));
 }
 
 function quizGoBack() {
@@ -2056,17 +2077,26 @@ function quizGoBack() {
     if (activeRes) {
         activeRes.style.display = 'none';
         document.querySelectorAll('.q-a-group, .q-c-group').forEach(el => el.style.display = 'block');
+        
         let dGroup = document.querySelector('#q-d .card-group');
         if (dGroup) dGroup.style.display = 'block';
+        let fGroup = document.querySelector('#q-f .card-group');
+        if (fGroup) fGroup.style.display = 'block';
+
+        document.querySelectorAll('.dimmed-chat').forEach(el => el.classList.remove('dimmed-chat'));
         return;
     }
+    
     let activeStep = document.querySelector('.q-step[style*="display: block"]');
     if (activeStep) {
         resetQuiz();
         return;
     }
+    
+    document.querySelectorAll('.dimmed-chat').forEach(el => el.classList.remove('dimmed-chat'));
     nav('home');
 }
+
 
 </script>
 </body>
