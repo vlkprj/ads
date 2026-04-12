@@ -357,7 +357,7 @@ body.no-scroll {
     height: 100%;
     border-radius: 16px;
     object-fit: cover;
-    animation: iconSwap 3s infinite ease-in-out;
+    animation: iconSwap 4s infinite ease-in-out;
 }
 .main-logo span {
     font-size: 32px;
@@ -365,13 +365,14 @@ body.no-scroll {
     display: flex;
     align-items: center;
     justify-content: center;
-    animation-delay: -3s;
+    animation-delay: -2s;
 }
 @keyframes iconSwap {
     0%, 40% { opacity: 1; transform: scale(1); }
     50%, 90% { opacity: 0; transform: scale(0.8); }
     100% { opacity: 1; transform: scale(1); }
 }
+
 .chat-sim.dimmed-chat {
     opacity: 0.4;
     transform: scale(0.96) translateY(-4px);
