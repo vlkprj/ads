@@ -383,6 +383,35 @@ body.no-scroll {
 .chat-sim {
     transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
+.tg-capsule-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 16px;
+}
+.tg-capsule-btn {
+    background: rgba(142, 142, 147, 0.12);
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.15s;
+    cursor: pointer;
+}
+.tg-capsule-btn:active {
+    transform: scale(0.94);
+    opacity: 0.7;
+}
+.tg-capsule-btn .material-symbols-rounded {
+    font-size: 16px;
+    color: var(--sub);
+}
 
 </style>
 </head>
@@ -531,6 +560,14 @@ body.no-scroll {
     <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
 </div>
     </div>
+    <div class="tg-capsule-container">
+        <a href="https://t.me/valky_bazar" target="_blank" class="tg-capsule-btn">
+            <span class="material-symbols-rounded">open_in_new</span> Відкрити Базарчик
+        </a>
+        <div class="tg-capsule-btn" onclick="openModal('Правила', 'Тут текст правил', '', 'rules', false)">
+            <span class="material-symbols-rounded">gavel</span> Правила
+        </div>
+    </div>
 </div>
 
 <div id="page-limits" class="page">
@@ -554,6 +591,14 @@ body.no-scroll {
     <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
 </div>
 
+    </div>
+    <div class="tg-capsule-container">
+        <div class="tg-capsule-btn" onclick="nav('page-bazar')">
+            <span class="material-symbols-rounded">arrow_back</span> Назад до Базарчику
+        </div>
+        <div class="tg-capsule-btn" onclick="openModal('Як працюють ліміти?', 'Текст про ліміти', '', 'limits_info', false)">
+            <span class="material-symbols-rounded">help</span> Як це працює
+        </div>
     </div>
 </div>
 
@@ -593,6 +638,14 @@ body.no-scroll {
 </div>
 
     </div>
+    <div class="tg-capsule-container">
+        <a href="https://t.me/valky_shotam" target="_blank" class="tg-capsule-btn">
+            <span class="material-symbols-rounded">open_in_new</span> Переглянути канал
+        </a>
+        <div class="tg-capsule-btn" onclick="openModal('Статистика', 'Текст про стату', '', 'stats', false)">
+            <span class="material-symbols-rounded">query_stats</span> Статистика
+        </div>
+    </div>
 </div>
 
 <div id="page-giveaways" class="page">
@@ -608,6 +661,14 @@ body.no-scroll {
         <div class="in-btn" onclick="openModal('Організація', document.getElementById('gw-org-html').innerHTML, '350 ₴', 'gw_org', false)">
             <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">wand_stars</span> Організація</div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+        </div>
+    </div>
+    <div class="tg-capsule-container">
+        <div class="tg-capsule-btn" onclick="nav('page-vsht')">
+            <span class="material-symbols-rounded">arrow_back</span> Назад до каналу
+        </div>
+        <div class="tg-capsule-btn" onclick="openModal('Умови', 'Текст умов розіграшу', '', 'gw_rules', false)">
+            <span class="material-symbols-rounded">format_list_bulleted</span> Умови
         </div>
     </div>
 </div>
@@ -641,7 +702,16 @@ body.no-scroll {
             <div class="in-action">Недоступно</div>
         </div>
     </div>
+    <div class="tg-capsule-container">
+        <a href="https://t.me/valky_chatik" target="_blank" class="tg-capsule-btn">
+            <span class="material-symbols-rounded">open_in_new</span> Відкрити чат
+        </a>
+        <div class="tg-capsule-btn" onclick="openModal('Правила чату', 'Текст правил чату', '', 'chat_rules', false)">
+            <span class="material-symbols-rounded">gavel</span> Правила
+        </div>
+    </div>
 </div>
+
 
 
 <div id="page-packages" class="page">
@@ -1135,11 +1205,11 @@ body.no-scroll {
     </div>
     
     <div class="carousel" id="info-carousel">
-        <div class="carousel-card">
+        <div class="carousel-card"> 
             <img src="assets/vb.PNG" alt="" class="c-img-logo">
             <div class="c-title">Базарчик</div>
             <div class="c-stat">7.1K</div>
-            <div class="c-desc">Найбільша Telegram-група для торгівлі та послуг у громаді.</div>
+            <div class="c-desc">Найбільша Telegram-група для оголошень у громаді.</div>
         </div>
         <div class="carousel-card">
             <img src="assets/vsht.PNG" alt="" class="c-img-logo">
