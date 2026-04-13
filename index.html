@@ -416,37 +416,33 @@ body.no-scroll {
     position: relative;
 }
 
-.side-tag {
-    position: absolute;
-    top: 90px;
+.side-logo-tag {
+    position: fixed;
+    bottom: 80px;
     right: 0;
-    background: var(--accent);
-    color: var(--btn-text);
-    padding: 14px 6px;
-    border-radius: 12px 0 0 12px;
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-decoration: none;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
+    background: var(--card);
+    padding: 6px 6px 6px 8px;
+    border-radius: 16px 0 0 16px;
+    box-shadow: -4px 4px 16px rgba(0,0,0,0.06);
     display: flex;
     align-items: center;
-    gap: 8px;
-    box-shadow: -2px 2px 12px rgba(0,0,0,0.15);
-    transition: right 0.15s ease;
-    z-index: 50;
+    justify-content: center;
+    transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 90;
 }
 
-.side-tag:active {
-    right: -4px;
+.side-logo-tag:active {
+    transform: translateX(4px);
 }
 
-.side-tag .material-symbols-rounded {
-    font-size: 16px;
-    transform: rotate(90deg);
+.side-logo-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--sep);
 }
+
 </style>
 </head>
 <body>
@@ -580,9 +576,7 @@ body.no-scroll {
         <div class="promo-desc">Спробуйте «Безлім+» протягом <b>трьох</b> місяців лише за 100 грн</div>
         <div class="promo-btn" onclick="openModal('Безлім+', document.getElementById('baz-bezlim-html').innerHTML, '<s style=\'color: var(--sub); font-size: 18px; margin-right: 4px;\'>150 ₴</s> 100 ₴ / 3 міс', 'baz_bezlim', false)">Спробувати</div>
     </div>
-    <a href="https://t.me/valkybazar" target="_blank" class="side-tag">
-    <span class="material-symbols-rounded">open_in_new</span> Базарчик
-</a>
+    
     <div class="card-group">
         <div class="in-btn" onclick="openModal('Оренда гілки', document.getElementById('baz-branch-html').innerHTML, '150 ₴ / тиж', 'baz_branch', false)">
             <div class="in-title"><span class="material-symbols-rounded">splitscreen_top</span> Оренда гілки</div>
@@ -596,6 +590,9 @@ body.no-scroll {
     <div class="in-title"><span class="material-symbols-rounded">push_pin</span> Закріплення оголошення</div>
     <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
 </div>
+    <a href="https://t.me/valkybazar" target="_blank" class="side-logo-tag">
+        <img src="assets/vb.PNG" class="side-logo-img">
+    </a>
     </div>
 </div>
 
@@ -628,9 +625,6 @@ body.no-scroll {
         <div class="back-btn" onclick="nav('home')"><span class="material-symbols-rounded">arrow_back</span></div>
         <div class="nav-title">Валки, шо там?</div>
     </div>
-    <a href="https://t.me/valkyoperatyvno" target="_blank" class="side-tag">
-    <span class="material-symbols-rounded">open_in_new</span> Канал
-</a>
     <div class="card-group">
        <div class="in-btn" onclick="openModal('Стандартне', document.getElementById('vsht-std-html').innerHTML, '100 ₴', 'vsht_std', false)">
     <div class="in-title"><span class="material-symbols-rounded">campaign</span> Стандартне </div>
@@ -678,6 +672,9 @@ body.no-scroll {
             <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">wand_stars</span> Організація</div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
+            <a href="https://t.me/valkyoperatyvno" target="_blank" class="side-logo-tag">
+        <img src="assets/vsht.PNG" class="side-logo-img">
+    </a>
     </div>
 </div>
 
@@ -687,9 +684,6 @@ body.no-scroll {
         <div class="back-btn" onclick="nav('home')"><span class="material-symbols-rounded">arrow_back</span></div>
         <div class="nav-title">Валківський Чатік</div>
     </div>
-    <a href="https://t.me/+6xkXZcagVnI0ZDU6" target="_blank" class="side-tag">
-    <span class="material-symbols-rounded">open_in_new</span> Чат
-</a>
     <div class="card-group">
         <div class="in-btn" onclick="openModal('Стандартне', document.getElementById('chat-std-html').innerHTML, '100 ₴', 'chat_std', false)">
             <div class="in-title"><span class="material-symbols-rounded">chat</span> Стандартне</div>
@@ -711,6 +705,9 @@ body.no-scroll {
             <div class="in-title"><span class="material-symbols-rounded">play_circle</span> Кружечок</div>
             <div class="in-action">Недоступно</div>
         </div>
+            <a href="https://t.me/+6xkXZcagVnI0ZDU6" target="_blank" class="side-logo-tag">
+        <img src="assets/vch.PNG" class="side-logo-img">
+    </a>
     </div>
 </div>
 
