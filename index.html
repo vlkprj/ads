@@ -1873,22 +1873,35 @@ tg.expand();
 tg.setHeaderColor('#f2f2f7');
 tg.setBackgroundColor('#f2f2f7');
 
+let currentTgLink = '';
+let smartTagState = 0; 
+
 function nav(pageId) {
     tg.HapticFeedback.impactOccurred('light');
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById(pageId).classList.add('active');
     window.scrollTo(0, 0);
-    
-    const activeTag = document.querySelector(`#${pageId} .side-logo-tag`);
-    if(activeTag) {
-        activeTag.classList.remove('expanded');
-        void activeTag.offsetWidth; 
-        activeTag.classList.add('expanded');
-        setTimeout(() => {
-            activeTag.classList.remove('expanded');
-        }, 3000);
+
+    const tag = document.getElementById('global-smart-tag');
+    tag.classList.remove('active');
+    smartTagState = 1;
+
+    if (pageId === 'page-bazar') {
+        tag.style.display = 'flex';
+        document.getElementById('smart-img').src = 'assets/vb.PNG';
+        currentTgLink = 'https://t.me/valkybazar';
+    } else if (pageId === 'page-vsht') {
+        tag.style.display = 'flex';
+        document.getElementById('smart-img').src = 'assets/vsht.PNG';
+        currentTgLink = 'https://t.me/valkyoperatyvno';
+    } else if (pageId === 'page-chatik') {
+        tag.style.display = 'flex';
+        document.getElementById('smart-img').src = 'assets/vch.PNG';
+        currentTgLink = 'https://t.me/+6xkXZcagVnI0ZDU6';
+    } else {
+        tag.style.display = 'none';
     }
-    
+
     if(pageId === 'page-info') {
         setTimeout(() => {
             const car = document.getElementById('info-carousel');
@@ -1898,10 +1911,27 @@ function nav(pageId) {
     }
 }
 
-function openTgLink(url) {
-    tg.HapticFeedback.impactOccurred('medium');
-    tg.openTelegramLink(url);
+function handleSmartTag() {
+    const tag = document.getElementById('global-smart-tag');
+    if (smartTagState === 1) {
+        tg.HapticFeedback.impactOccurred('medium');
+        tag.classList.add('active');
+        smartTagState = 2;
+        
+        setTimeout(() => {
+            if (smartTagState === 2) {
+                tag.classList.remove('active');
+                smartTagState = 1;
+            }
+        }, 3000);
+    } else if (smartTagState === 2) {
+        tg.HapticFeedback.impactOccurred('light');
+        tg.openTelegramLink(currentTgLink);
+        tag.classList.remove('active');
+        smartTagState = 1;
+    }
 }
+
 
 function openModal(title, desc, price, action) {
     tg.HapticFeedback.impactOccurred('medium');
@@ -2199,5 +2229,12 @@ function quizGoBack() {
 
 
 </script>
+<div id="global-smart-tag" class="smart-tag" onclick="handleSmartTag()">
+    <span class="material-symbols-rounded smart-icon">link</span>
+    <div class="smart-tag-content">
+        <img src="" id="smart-img" class="smart-img">
+        <span class="smart-text">Перейти</span>
+    </div>
+</div>
 </body>
 </html>
