@@ -594,13 +594,14 @@ body.no-scroll {
         <div class="back-btn" onclick="nav('home')"><span class="material-symbols-rounded">arrow_back</span></div>
         <div class="nav-title">Базарчик</div>
     </div>
-        <div class="promo-banner" id="baz-promo">
+    
+    <div class="promo-banner" id="baz-promo">
         <div class="promo-close" onclick="document.getElementById('baz-promo').style.display='none'">
             <span class="material-symbols-rounded" style="font-size: 16px;">close</span>
         </div>
         <div class="promo-title">🔥 Акційна пропозиція</div>
-        <div class="promo-desc">Спробуйте «Безлім+» протягом <b>трьох</b> місяців лише за 100 грн</div>
-        <div class="promo-btn" onclick="openModal('Безлім+', document.getElementById('baz-bezlim-html').innerHTML, '<s style=\'color: var(--sub); font-size: 18px; margin-right: 4px;\'>150 ₴</s> 100 ₴ / 3 міс', 'baz_bezlim', false)">Спробувати</div>
+        <div class="promo-desc">Спробуйте тариф «Pro» протягом <b>трьох</b> місяців лише за 100 грн</div>
+        <div class="promo-btn" onclick="openModal('Pro', document.getElementById('baz-pro-html').innerHTML, '<s style=\'color: var(--sub); font-size: 18px; margin-right: 4px;\'>150 ₴</s> 100 ₴ / 3 міс', 'baz_pro', false)">Спробувати</div>
     </div>
     
     <div class="card-group">
@@ -609,13 +610,13 @@ body.no-scroll {
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
         <div class="in-btn" onclick="nav('page-limits')">
-            <div class="in-title"><span class="material-symbols-rounded">crown</span> Збільшити ліміт, безлім</div>
+            <div class="in-title"><span class="material-symbols-rounded">crown</span> Збільшити ліміт</div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
         <div class="in-btn" onclick="openModal('Закріплення', document.getElementById('baz-pin-html').innerHTML, '50 ₴ / 14 днів', 'baz_pin', false)">
-    <div class="in-title"><span class="material-symbols-rounded">push_pin</span> Закріплення оголошення</div>
-    <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
-</div>
+            <div class="in-title"><span class="material-symbols-rounded">push_pin</span> Закріплення оголошення</div>
+            <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+        </div>
     </div>
 </div>
 
@@ -626,22 +627,17 @@ body.no-scroll {
     </div>
     <div style="font-weight: 600; margin: 16px 0 12px; color: var(--sub);">Збільшити свій ліміт оголошень в групі «Валківський Базарчик»</div>
     <div class="card-group">
-       <div class="in-btn" onclick="openModal('Безлім+', document.getElementById('baz-bezlim-html').innerHTML, '<s style=\'color: var(--sub); font-size: 18px; margin-right: 4px;\'>150 ₴</s> 100 ₴ / 3 міс', 'baz_bezlim', false)">
-    <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">all_inclusive</span> Безлім+</div>
-    <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
-</div>
-
         <div class="in-btn" onclick="openModal('Pro', document.getElementById('baz-pro-html').innerHTML, '50 ₴ / міс', 'baz_pro', false)">
-    <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">verified</span> Pro</div>
-    <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
-</div>
-<div class="in-btn" onclick="openModal('Lite', document.getElementById('baz-lite-html').innerHTML, '30 ₴ / міс', 'baz_lite', false)">
-    <div class="in-title"><span class="material-symbols-rounded" style="color: #34c759;">check_circle</span> Lite</div>
-    <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
-</div>
-
+            <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">verified</span> Pro</div>
+            <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+        </div>
+        <div class="in-btn" onclick="openModal('Lite', document.getElementById('baz-lite-html').innerHTML, '30 ₴ / міс', 'baz_lite', false)">
+            <div class="in-title"><span class="material-symbols-rounded" style="color: #34c759;">check_circle</span> Lite</div>
+            <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+        </div>
     </div>
 </div>
+
 
 <div id="page-vsht" class="page">
     <div class="nav-bar">
@@ -1346,31 +1342,11 @@ body.no-scroll {
 </div>
 
 <div id="baz-pin-html" style="display: none;">
-      <div class="intro-box">Ваше оголошення завжди в топі обраної гілки.</div>
+    <div class="intro-box">Ваше оголошення завжди в топі обраної гілки.</div>
     <div style="font-weight: 600; margin: 16px 0 12px; color: var(--text);">Що входить:</div>
     <div style="display: flex; gap: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #ff2d55; flex-shrink: 0;">pinboard</span>
         <span style="font-size: 14px; line-height: 1.4;">Закріплення вашого оголошення в обраній вами гілці на два тижні.</span>
-    </div>
-</div>
-
-<div id="baz-bezlim-html" style="display: none;">
-    <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start; background: rgba(52, 199, 89, 0.1); padding: 12px; border-radius: 12px;">
-        <span class="material-symbols-rounded" style="color: #34c759; flex-shrink: 0;">percent_discount</span>
-        <span style="font-size: 14px; line-height: 1.4; color: #34c759; font-weight: 600;">Акція! Спробуйте «Безлім+» протягом трьох місяців за 100 грн.</span>
-    </div>
-    <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що входить:</div>
-    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
-        <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0;">all_inclusive</span>
-        <span style="font-size: 14px; line-height: 1.4;">Абсолютний безліміт</span>
-    </div>
-    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
-        <span class="material-symbols-rounded" style="color: var(--sub); flex-shrink: 0;">smart_toy</span>
-        <span style="font-size: 14px; line-height: 1.4;">Анти-бот (бот більше не просить у вас підтверджень і забуває про ваше існування)</span>
-    </div>
-    <div style="display: flex; gap: 12px; align-items: flex-start;">
-        <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">add_box</span>
-        <span style="font-size: 14px; line-height: 1.4;">На 2 дні додаємо кнопку з назвою вашого бізнесу в щоденне повідомлення бота в чаті «Валківський Чатік». Один клік і люди переходять до вашого оголошення/гілки/інстаграму. Назву кнопки підберемо разом з вами.</span>
     </div>
 </div>
 
@@ -1401,6 +1377,7 @@ body.no-scroll {
         <span style="font-size: 14px; line-height: 1.4;">Анти-бот (бот більше не просить у вас підтверджень і забуває про ваше існування)</span>
     </div>
 </div>
+
 
  <!--WHY--> 
 <div id="info-why-html" style="display: none;">
