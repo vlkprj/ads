@@ -1248,30 +1248,12 @@ body.no-scroll {
         <div class="check-price" id="check-price-display">0 ₴</div>
     </div>
 
-    <p class="section-label">Спосіб оплати</p>
+    <p class="section-label">Спосіб оформлення</p>
     
-    <div class="pay-option" onclick="selectPay('donatello', this)">
-        <div class="pay-header">
-            <img src="assets/donatello_logo.png" style="width: 24px; height: 24px; object-fit: contain;">
-            <span>Сплатити через Donatello</span>
-        </div>
-        <div class="pay-info-text">
-            <span class="mini-hint" onclick="openModal('Що таке Donatello?', 'Donatello — українська платформа донатів та регулярних підписок.<br><br><a href=\'https://donatello.to/about\' target=\'_blank\' class=\'post-link\'>Дізнатись більше</a>', '', '', false); event.stopPropagation();">Що таке Donatello?</span>
-            <div class="donatello-guide">
-                <ol>
-                    <li>На нашій сторінці Donatello введіть <b id="d-price-insert">суму</b> в поле з сумою (або оберіть готовий шаблон з вартістю)</li>
-                    <li>Натисніть «Надіслати»</li>
-                    <li>Введіть дані для оплати на сторінці Donatello</li>
-                    <li>На всяк випадок, зробіть скріншот платежу і надішліть нам в бот <b>@valkysho_bot</b></li>
-                </ol>
-            </div>
-        </div>
-    </div>
-
-   <div class="pay-option" onclick="selectPay('admin', this)">
+   <div class="pay-option selected" onclick="selectPay('admin', this)">
         <div class="pay-header">
             <span class="material-symbols-rounded" style="color: #007aff;">chat</span>
-            <span>Спочатку уточнити деталі з адмінами</span>
+            <span>Замовити</span>
         </div>
         <div class="pay-info-text">Ви перейдете в бот з автоматичним повідомленням про ваше замовлення.</div>
     </div>
@@ -1284,9 +1266,8 @@ body.no-scroll {
         </div>
     </div>
 
-    <button class="primary-btn" id="final-btn" style="display: none;" onclick="processFinalAction()">Замовити</button>
+    <button class="primary-btn" id="final-btn" onclick="processFinalAction()">Замовити</button>
 </div>
-
 
 
 <div id="dev-toast" class="toast-msg">Наразі в розробці. Очікуйте оновлень. 🛠️</div>
@@ -2014,7 +1995,6 @@ function goToCheckout() {
     
     currentOrder.name = document.getElementById('m-title').innerText;
     
-    
     let priceEl = document.getElementById('m-price');
     let priceHtml = priceEl.innerHTML;
     let finalPriceText = "";
@@ -2029,42 +2009,21 @@ function goToCheckout() {
     
     document.getElementById('check-name-display').innerText = currentOrder.name;
     document.getElementById('check-price-display').innerText = currentOrder.price;
-    
-    let justPrice = currentOrder.price.split('/')[0].replace(/[^\d]/g, '');
-    document.getElementById('d-price-insert').innerText = justPrice + ' грн';
 
-    selectedMethod = null;
-    document.querySelectorAll('.pay-option').forEach(el => el.classList.remove('selected'));
-    document.getElementById('final-btn').style.display = 'none';
+    selectedMethod = 'admin';
     lastPage = activePage;
     nav('page-checkout');
 }
-
-
 
 document.getElementById('m-btn').onclick = goToCheckout;
 
 function selectPay(method, element) {
     tg.HapticFeedback.impactOccurred('light');
+    if (element.classList.contains('disabled')) return;
     selectedMethod = method;
     document.querySelectorAll('.pay-option').forEach(el => el.classList.remove('selected'));
     element.classList.add('selected');
-    
-    const btn = document.getElementById('final-btn');
-    btn.style.display = 'flex';
-    
-    if(method === 'donatello') {
-        let cleanPrice = currentOrder.price.split('/')[0].trim();
-        btn.innerHTML = `Сплатити ${cleanPrice} через Donatello`;
-        btn.className = 'primary-btn';
-    } else {
-        btn.innerHTML = `<span class="material-symbols-rounded">chat</span> Написати адмінам`;
-        btn.className = 'primary-btn';
-    }
 }
-
-
-
 
 function processFinalAction() {
     let msg = "";
@@ -2079,28 +2038,23 @@ function processFinalAction() {
         msg = `Вітаю! Хочу замовити рекламу. Мене цікавить варіант ${name} ${plat}`;
     }
 
-    if (selectedMethod === 'donatello') {
-        tg.openLink('https://donatello.to/valkyads');
-    } else if (selectedMethod === 'admin') {
-        tg.HapticFeedback.notificationOccurred('success');
-        const userData = tg.initDataUnsafe.user || {};
+    tg.HapticFeedback.notificationOccurred('success');
+    const userData = tg.initDataUnsafe.user || {};
 
-        fetch('https://vlk-ads-worker.bananahbrain.workers.dev/order', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                type: 'new_order',
-                user: userData,
-                text: msg
-            })
-        }).then(() => {
-            tg.openTelegramLink('https://t.me/vlkrek_bot');
-        }).catch(e => {
-            tg.showAlert("❌ Сталася помилка. Спробуйте пізніше.");
-        });
-    }
+    fetch('https://vlk-ads-worker.bananahbrain.workers.dev/order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            type: 'new_order',
+            user: userData,
+            text: msg
+        })
+    }).then(() => {
+        tg.openTelegramLink('https://t.me/vlkrek_bot');
+    }).catch(e => {
+        tg.showAlert("❌ Сталася помилка. Спробуйте пізніше.");
+    });
 }
-
 
 
 function showDevToast() {
