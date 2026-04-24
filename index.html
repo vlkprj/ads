@@ -469,6 +469,43 @@ body.no-scroll {
     100% { transform: scale(1) translateX(0); opacity: 1; }
 }
 
+.marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 20px;
+    border-radius: 12px;
+    background: rgba(142, 142, 147, 0.08);
+    padding: 10px 0;
+    /* 12 секунд * 2 рази = 24 секунди до зникнення */
+    animation: fadeOutMarquee 0.5s ease 24s forwards; 
+}
+
+.marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--sub);
+    padding-left: 100%;
+    animation: scrollMarquee 12s linear 2 forwards;
+}
+
+@keyframes scrollMarquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+@keyframes fadeOutMarquee {
+    to { 
+        opacity: 0; 
+        height: 0; 
+        padding: 0; 
+        margin: 0; 
+        pointer-events: none; 
+    }
+}
+
+
 </style>
 </head>
 <body>
@@ -641,6 +678,12 @@ body.no-scroll {
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
     </div>
+        <div class="marquee-wrapper">
+        <div class="marquee-content">
+            ❕ Тариф «Безлім+» скасовано. Повний безліміт тепер доступний лише в межах оренди власної гілки. Скористайтесь Pro ❇️
+        </div>
+    </div>
+
 </div>
 
 
