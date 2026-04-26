@@ -505,6 +505,22 @@ body.no-scroll {
     }
 }
 
+.comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 20px; }
+.comp-card { background: rgba(142, 142, 147, 0.08); border-radius: 16px; padding: 12px; display: flex; flex-direction: column; border: 2px solid transparent; }
+.comp-card.active { border-color: var(--accent); background: var(--card); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+.comp-title { font-size: 14.5px; font-weight: 700; margin-bottom: 2px; }
+.comp-price { font-size: 12.5px; font-weight: 600; color: var(--sub); margin-bottom: 10px; }
+.comp-item { display: flex; gap: 6px; font-size: 12.5px; color: var(--text); margin-bottom: 8px; line-height: 1.3; font-weight: 500; }
+.comp-item .material-symbols-rounded { font-size: 16px; color: var(--sub); flex-shrink: 0; }
+.comp-item.plus .material-symbols-rounded { color: #34c759; }
+
+.week-try { background: rgba(142, 142, 147, 0.08); border-radius: 16px; padding: 14px; margin-top: 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.week-info { flex-grow: 1; }
+.week-title { font-size: 14.5px; font-weight: 700; display: flex; align-items: center; gap: 6px; margin-bottom: 4px; color: var(--text); }
+.week-title .material-symbols-rounded { font-size: 18px; }
+.week-desc { font-size: 12.5px; color: var(--sub); line-height: 1.3; font-weight: 500; }
+.week-btn { background: var(--accent); color: #ffffff; font-size: 14px; font-weight: 700; padding: 10px 14px; border-radius: 12px; cursor: pointer; flex-shrink: 0; text-align: center; transition: transform 0.1s; }
+.week-btn:active { transform: scale(0.95); }
 
 </style>
 </head>
@@ -642,11 +658,11 @@ body.no-scroll {
     </div>
     
     <div class="card-group">
-               <div class="in-btn" onclick="openModal('Гілка Стандарт', document.getElementById('baz-branch-std-html').innerHTML, '100 ₴ / тиж', 'baz_branch_std', false)">
+               <div class="in-btn" onclick="openModal('Гілка Стандарт', document.getElementById('baz-branch-std-html').innerHTML, '300 ₴ / міс', 'baz_branch_std', false)">
             <div class="in-title"><span class="material-symbols-rounded" style="color: #ff9500;">splitscreen_top</span> Власна гілка Стандарт</div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
-        <div class="in-btn" onclick="openModal('Гілка Premium', document.getElementById('baz-branch-prem-html').innerHTML, '150 ₴ / тиж', 'baz_branch_prem', false)">
+        <div class="in-btn" onclick="openModal('Гілка Premium', document.getElementById('baz-branch-prem-html').innerHTML, '400 ₴ / місяць', 'baz_branch_prem', false)">
             <div class="in-title"><span class="material-symbols-rounded" style="color: #3192d4;">diamond_shine</span> Власна гілка Premium</div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
@@ -669,11 +685,11 @@ body.no-scroll {
     </div>
     <div style="font-weight: 600; margin: 16px 0 12px; color: var(--sub);">Збільшити свій ліміт оголошень в групі «Валківський Базарчик»</div>
     <div class="card-group">
-        <div class="in-btn" onclick="openModal('Pro', document.getElementById('baz-pro-html').innerHTML, '50 ₴ / міс', 'baz_pro', false)">
+        <div class="in-btn" onclick="openModal('Pro', document.getElementById('baz-pro-html').innerHTML, '150 ₴ / 3 місяці', 'baz_pro', false)">
             <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">verified</span> Pro</div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
-        <div class="in-btn" onclick="openModal('Lite', document.getElementById('baz-lite-html').innerHTML, '30 ₴ / міс', 'baz_lite', false)">
+        <div class="in-btn" onclick="openModal('Lite', document.getElementById('baz-lite-html').innerHTML, '90 ₴ / 3 місяці', 'baz_lite', false)">
             <div class="in-title"><span class="material-symbols-rounded" style="color: #34c759;">check_circle</span> Lite</div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
@@ -1013,11 +1029,11 @@ body.no-scroll {
             </div>
         </div>
                    <div class="card-group">
-                <div class="in-btn" onclick="openModal('Гілка Стандарт', document.getElementById('baz-branch-std-html').innerHTML, '100 ₴ / тиж', 'baz_branch_std', false)">
+                <div class="in-btn" onclick="openModal('Гілка Стандарт', document.getElementById('baz-branch-std-html').innerHTML, '300 ₴ / міс', 'baz_branch_std', false)">
                     <div class="in-title"><span class="material-symbols-rounded" style="color: #ff9500;">splitscreen_top</span> Гілка Стандарт</div>
                     <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
                 </div>
-                <div class="in-btn" onclick="openModal('Гілка Premium', document.getElementById('baz-branch-prem-html').innerHTML, '150 ₴ / тиж', 'baz_branch_prem', false)">
+                <div class="in-btn" onclick="openModal('Гілка Premium', document.getElementById('baz-branch-prem-html').innerHTML, '400 ₴ / міс', 'baz_branch_prem', false)">
                     <div class="in-title"><span class="material-symbols-rounded" style="color: #3192d4;">diamond_shine</span> Гілка Premium</div>
                     <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
                 </div>
@@ -1051,7 +1067,7 @@ body.no-scroll {
                 </div>
             </div>
             <div class="card-group">
-                <div class="in-btn" onclick="openModal('Lite', document.getElementById('baz-lite-html').innerHTML, '30 ₴ / міс', 'baz_lite', false)">
+                <div class="in-btn" onclick="openModal('Lite', document.getElementById('baz-lite-html').innerHTML, '90 ₴ / 3 місяці', 'baz_lite', false)">
                     <div class="in-title"><span class="material-symbols-rounded" style="color: #34c759;">check_circle</span> Тариф Lite</div>
                     <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
                 </div>
@@ -1085,11 +1101,11 @@ body.no-scroll {
                 </div>
             </div>
                        <div class="card-group">
-                <div class="in-btn" onclick="openModal('Гілка Стандарт', document.getElementById('baz-branch-std-html').innerHTML, '100 ₴ / тиж', 'baz_branch_std', false)">
+                <div class="in-btn" onclick="openModal('Гілка Стандарт', document.getElementById('baz-branch-std-html').innerHTML, '300 ₴ / міс', 'baz_branch_std', false)">
                     <div class="in-title"><span class="material-symbols-rounded" style="color: #ff9500;">splitscreen_top</span> Гілка Стандарт</div>
                     <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
                 </div>
-                <div class="in-btn" onclick="openModal('Гілка Premium', document.getElementById('baz-branch-prem-html').innerHTML, '150 ₴ / тиж', 'baz_branch_prem', false)">
+                <div class="in-btn" onclick="openModal('Гілка Premium', document.getElementById('baz-branch-prem-html').innerHTML, '400 ₴ / міс', 'baz_branch_prem', false)">
                     <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">diamond_shine</span> Гілка Premium</div>
                     <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
                 </div>
@@ -1356,61 +1372,111 @@ body.no-scroll {
     <div class="client-item"><span class="material-symbols-rounded">thread_unread</span> Магазин «Пряжа» <span class="mini-tag">1</span></div>
 </div>
 <div id="baz-branch-std-html" style="display: none;">
-    <div class="intro-box">Це ваш власний розділ в групі, який повністю належить вам протягом тижня. По суті, це ваш міні-сайт і вітрина всередині Базарчика.</div>
+    <div class="intro-box">Це ваш власний розділ в групі, який повністю належить вам протягом місяця. По суті, це ваш міні-сайт і вітрина всередині Базарчика.</div>
     
-    <div style="font-weight: 600; margin: 16px 0 12px; color: var(--text);">Що ви отримуєте:</div>
-    
-    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
-        <span class="material-symbols-rounded" style="color: #34c759; flex-shrink: 0;">add_reaction</span>
-        <span style="font-size: 14px; line-height: 1.4;"><b>Ваш логотип</b> (за бажанням) або емодзі на ваш вибір в якості іконки для гілки.</span>
+<div style="font-weight: 600; margin: 16px 0 12px; color: var(--text);">Що ви отримуєте:</div>
+
+<div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+    <span class="material-symbols-rounded" style="color: #34c759; flex-shrink: 0;">add_reaction</span>
+    <span style="font-size: 14px; line-height: 1.4;"><b>Ваш логотип</b> (за бажанням) або емодзі на ваш вибір в якості іконки для гілки.</span>
+</div>
+
+<div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+    <span class="material-symbols-rounded" style="color: var(--accent); flex-shrink: 0;">custom_typography</span>
+    <span style="font-size: 14px; line-height: 1.4;"><b>Власна назва гілки.</b> Це може бути як назва вашого магазину/закладу, так і назва послуги, яку ви надаєте. Ви можете обрати будь-яку назву.</span>
+</div>
+
+<div style="display: flex; gap: 12px; align-items: flex-start;">
+    <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0;">all_inclusive</span>
+    <span style="font-size: 14px; line-height: 1.4;"><b>Необмежена кількість публікацій</b> всередині гілки. Це може бути асортимент магазину, фото ваших робіт, опис послуг, прайс, акції, корисна інформація тощо.</span>
+</div>
+
+<div class="comp-grid">
+    <div class="comp-card active">
+        <div class="comp-title">Стандарт</div>
+        <div class="comp-price">300 ₴ / міс</div>
+        <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Логотип / Емодзі</div>
+        <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Власна назва</div>
+        <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Безліміт постів</div>
     </div>
-    
-    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
-        <span class="material-symbols-rounded" style="color: var(--accent); flex-shrink: 0;">custom_typography</span>
-        <span style="font-size: 14px; line-height: 1.4;"><b>Власна назва гілки.</b> Це може бути як назва вашого магазину/закладу, так і назва послуги, яку ви надаєте. Ви можете обрати будь-яку назву.</span>
-    </div>
-    
-    <div style="display: flex; gap: 12px; align-items: flex-start;">
-        <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0;">all_inclusive</span>
-        <span style="font-size: 14px; line-height: 1.4;"><b>Необмежена кількість публікацій</b> всередині гілки протягом тижня. Це може бути асортимент магазину, фото ваших робіт, опис послуг, прайс, акції, корисна інформація про товари/послуги, місцезнаходження, контакти тощо.</span>
+    <div class="comp-card">
+        <div class="comp-title">Premium</div>
+        <div class="comp-price">400 ₴ / міс</div>
+        <div class="comp-item"><span class="material-symbols-rounded">add</span> Все з Стандарту</div>
+        <div class="comp-item"><span class="material-symbols-rounded">add</span> ТОП-5 закріплення</div>
+        <div class="comp-item"><span class="material-symbols-rounded">add</span> Репост у канал</div>
+        <div class="comp-item"><span class="material-symbols-rounded">add</span> Кнопка в боті</div>
     </div>
 </div>
+
+<div class="week-try">
+    <div class="week-info">
+        <div class="week-title"><span class="material-symbols-rounded" style="color: #ff9500;">splitscreen_top</span> Гілка Стандарт • Тижнева</div>
+        <div class="week-desc">Спробуйте формат на тиждень, щоб зрозуміти, чи підходить він вам.</div>
+    </div>
+    <div class="week-btn" onclick="closeModal(); setTimeout(() => openModal('Власна гілка Стандарт • Тижнева', 'Тестовий тиждень для вашої гілки. Усі переваги стандарту на 7 днів.', '100 ₴ / тиж', 'baz_branch_std_week', false), 300)">Замовити</div>
+</div>
+
 
 <div id="baz-branch-prem-html" style="display: none;">
-    <div class="intro-box">Це ваш власний розділ в групі, який повністю належить вам протягом тижня. По суті, це ваш міні-сайт і вітрина всередині Базарчика. </div>
-    
-    <div style="font-weight: 600; margin: 16px 0 12px; color: var(--text);">Що ви отримуєте:</div>
+<div class="intro-box">Це ваш власний розділ в групі, який повністю належить вам протягом місяця. По суті, це ваш міні-сайт і вітрина всередині Базарчика.</div>
 
-    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
-        <span class="material-symbols-rounded" style="color: #ed5853; flex-shrink: 0;">keep</span>
-        <span style="font-size: 14px; line-height: 1.4;"><b>ТОП-5:</b> Ваша гілка закріплена у топі групи.</span>
-    </div>
+<div style="font-weight: 600; margin: 16px 0 12px; color: var(--text);">Що ви отримуєте:</div>
 
-    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
-        <span class="material-symbols-rounded" style="color: #34c759; flex-shrink: 0;">add_reaction</span>
-        <span style="font-size: 14px; line-height: 1.4;"><b>Ваш логотип</b> (за бажанням) або емодзі на ваш вибір в якості іконки для гілки.</span>
+<div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+    <span class="material-symbols-rounded" style="color: #ed5853; flex-shrink: 0;">keep</span>
+    <span style="font-size: 14px; line-height: 1.4;"><b>ТОП-5:</b> Ваша гілка закріплена у топі групи.</span>
+</div>
+
+<div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+    <span class="material-symbols-rounded" style="color: #34c759; flex-shrink: 0;">add_reaction</span>
+    <span style="font-size: 14px; line-height: 1.4;"><b>Ваш логотип</b> (за бажанням) або емодзі на ваш вибір в якості іконки для гілки.</span>
+</div>
+
+<div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+    <span class="material-symbols-rounded" style="color: var(--accent); flex-shrink: 0;">custom_typography</span>
+    <span style="font-size: 14px; line-height: 1.4;"><b>Власна назва гілки.</b> Це може бути як назва вашого магазину/закладу, так і назва послуги, яку ви надаєте. Ви можете обрати будь-яку назву.</span>
+</div>
+
+<div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+    <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0;">all_inclusive</span>
+    <span style="font-size: 14px; line-height: 1.4;"><b>Необмежена кількість публікацій</b> всередині гілки. Це може бути асортимент магазину, фото ваших робіт, опис послуг, прайс, акції, корисна інформація тощо.</span>
+</div>
+
+<div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+    <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">repeat</span>
+    <span style="font-size: 14px; line-height: 1.4;"><b>Репост:</b> ми беремо ваше основне оголошення і публікуємо його на каналі «Валки, шо там?» з посиланням на вашу гілку.</span>
+</div>
+
+<div style="display: flex; gap: 12px; align-items: flex-start;">
+    <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">add_box</span>
+    <span style="font-size: 14px; line-height: 1.4;"><b>Кнопка в боті:</b> На 2 дні додаємо кнопку з назвою вашого бізнесу в щоденне повідомлення бота в чаті «Валківський Чатік». Один клік і люди переходять до вашого оголошення/гілки/інстаграму. Назву кнопки підберемо разом з вами.</span>
+</div>
+
+<div class="comp-grid">
+    <div class="comp-card">
+        <div class="comp-title">Стандарт</div>
+        <div class="comp-price">300 ₴ / міс</div>
+        <div class="comp-item"><span class="material-symbols-rounded">check</span> Базові функції гілки</div>
+        <div class="comp-item"><span class="material-symbols-rounded">close</span> Без ТОП закріплення</div>
     </div>
-    
-    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
-        <span class="material-symbols-rounded" style="color: var(--accent); flex-shrink: 0;">custom_typography</span>
-        <span style="font-size: 14px; line-height: 1.4;"><b>Власна назва гілки.</b> Це може бути як назва вашого магазину/закладу, так і назва послуги, яку ви надаєте. Ви можете обрати будь-яку назву.</span>
-    </div>
-    
-    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
-        <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0;">all_inclusive</span>
-        <span style="font-size: 14px; line-height: 1.4;"><b>Необмежена кількість публікацій</b> всередині гілки протягом тижня. Це може бути асортимент магазину, фото ваших робіт, опис послуг, прайс, акції, корисна інформація про товари/послуги, місцезнаходження, контакти тощо.</span>
-    </div>
-    
-    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
-        <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">repeat</span>
-        <span style="font-size: 14px; line-height: 1.4;"><b>Репост:</b> ми беремо ваше основне оголошення і публікуємо його на каналі «Валки, шо там?» з посиланням на вашу гілку.</span>
-    </div>
-    
-    <div style="display: flex; gap: 12px; align-items: flex-start;">
-        <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">add_box</span>
-        <span style="font-size: 14px; line-height: 1.4;"><b>Кнопка в боті:</b> На 2 дні додаємо кнопку з назвою вашого бізнесу в щоденне повідомлення бота в чаті «Валківський Чатік». Один клік і люди переходять до вашого оголошення/гілки/інстаграму. Назву кнопки підберемо разом з вами.</span>
+    <div class="comp-card active">
+        <div class="comp-title">Premium</div>
+        <div class="comp-price">400 ₴ / міс</div>
+        <div class="comp-item plus"><span class="material-symbols-rounded">check</span> ТОП-5 закріплення</div>
+        <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Репост у канал</div>
+        <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Кнопка в боті</div>
     </div>
 </div>
+
+<div class="week-try">
+    <div class="week-info">
+        <div class="week-title"><span class="material-symbols-rounded" style="color: #3192d4;">diamond_shine</span> Гілка Premium • Тижнева</div>
+        <div class="week-desc">Спробуйте преміум-формат на тиждень зі всіма плюшками.</div>
+    </div>
+    <div class="week-btn" onclick="closeModal(); setTimeout(() => openModal('Власна гілка Premium • Тижнева', 'Тестовий тиждень преміум-гілки з закріпленням у ТОП-5 та репостом.', '150 ₴ / тиж', 'baz_branch_prem_week', false), 300)">Замовити</div>
+</div>
+
 
 
 
@@ -1425,31 +1491,62 @@ body.no-scroll {
 
 <div id="baz-pro-html" style="display: none;">
     <div style="font-weight: 600; margin: 16px 0 12px; color: var(--text);">Що входить:</div>
-    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
-        <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">stat_3</span>
-        <span style="font-size: 14px; line-height: 1.4;">Збільшений ліміт до 50 оголошень на місяць</span>
+<div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+    <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">stat_3</span>
+    <span style="font-size: 14px; line-height: 1.4;">Збільшений ліміт до 50 оголошень на місяць</span>
+</div>
+<div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+    <span class="material-symbols-rounded" style="color: var(--sub); flex-shrink: 0;">smart_toy</span>
+    <span style="font-size: 14px; line-height: 1.4;">Анти-бот (бот більше не просить у вас підтверджень і забуває про ваше існування)</span>
+</div>
+<div style="display: flex; gap: 12px; align-items: flex-start;">
+    <span class="material-symbols-rounded" style="color: #e59d2c; flex-shrink: 0;">loyalty</span>
+    <span style="font-size: 14px; line-height: 1.4;">Бонус: Закріплення вашого оголошення в обраній вами гілці на 2 дні</span>
+</div>
+
+<div class="comp-grid">
+    <div class="comp-card">
+        <div class="comp-title">Базовий</div>
+        <div class="comp-price">Безкоштовно</div>
+        <div class="comp-item"><span class="material-symbols-rounded">close</span> 3 оголошення / тиж</div>
+        <div class="comp-item"><span class="material-symbols-rounded">close</span> Перевірки від бота</div>
     </div>
-    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
-        <span class="material-symbols-rounded" style="color: var(--sub); flex-shrink: 0;">smart_toy</span>
-        <span style="font-size: 14px; line-height: 1.4;">Анти-бот (бот більше не просить у вас підтверджень і забуває про ваше існування)</span>
-    </div>
-    <div style="display: flex; gap: 12px; align-items: flex-start;">
-        <span class="material-symbols-rounded" style="color: #e59d2c; flex-shrink: 0;">loyalty</span>
-        <span style="font-size: 14px; line-height: 1.4;">Бонус: Закріплення вашого оголошення в обраній вами гілці на 2 дні</span>
+    <div class="comp-card active">
+        <div class="comp-title">Pro</div>
+        <div class="comp-price">150 ₴ / 3 міс</div>
+        <div class="comp-item plus"><span class="material-symbols-rounded">check</span> 50 оголошень / міс</div>
+        <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Без перевірок</div>
+        <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Бонус: закріплення</div>
     </div>
 </div>
 
+
 <div id="baz-lite-html" style="display: none;">
     <div style="font-weight: 600; margin: 16px 0 12px; color: var(--text);">Що входить:</div>
-    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
-        <span class="material-symbols-rounded" style="color: #34c759; flex-shrink: 0;">stat_3</span>
-        <span style="font-size: 14px; line-height: 1.4;">Збільшений ліміт до 30 оголошень на місяць</span>
+<div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+    <span class="material-symbols-rounded" style="color: #34c759; flex-shrink: 0;">stat_3</span>
+    <span style="font-size: 14px; line-height: 1.4;">Збільшений ліміт до 30 оголошень на місяць</span>
+</div>
+<div style="display: flex; gap: 12px; align-items: flex-start;">
+    <span class="material-symbols-rounded" style="color: var(--sub); flex-shrink: 0;">smart_toy</span>
+    <span style="font-size: 14px; line-height: 1.4;">Анти-бот (бот більше не просить у вас підтверджень і забуває про ваше існування)</span>
+</div>
+
+<div class="comp-grid">
+    <div class="comp-card">
+        <div class="comp-title">Базовий</div>
+        <div class="comp-price">Безкоштовно</div>
+        <div class="comp-item"><span class="material-symbols-rounded">close</span> 3 оголошення / тиж</div>
+        <div class="comp-item"><span class="material-symbols-rounded">close</span> Перевірки від бота</div>
     </div>
-    <div style="display: flex; gap: 12px; align-items: flex-start;">
-        <span class="material-symbols-rounded" style="color: var(--sub); flex-shrink: 0;">smart_toy</span>
-        <span style="font-size: 14px; line-height: 1.4;">Анти-бот (бот більше не просить у вас підтверджень і забуває про ваше існування)</span>
+    <div class="comp-card active">
+        <div class="comp-title">Lite</div>
+        <div class="comp-price">90 ₴ / 3 міс</div>
+        <div class="comp-item plus"><span class="material-symbols-rounded">check</span> 30 оголошень / міс</div>
+        <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Без перевірок</div>
     </div>
 </div>
+
 
 
  <!--WHY--> 
