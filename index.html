@@ -2229,7 +2229,20 @@ function selectPay(method, element) {
     element.classList.add('selected');
 }
 
+let isOrdering = false;
+
 function processFinalAction() {
+    if (isOrdering) return;
+    isOrdering = true;
+
+    // Шукаємо твою кнопку (поміняй ID, якщо він інший на сторінці чекауту)
+    const orderBtn = document.getElementById('m-btn'); 
+    const originalText = orderBtn.innerText;
+    
+    // Робимо візуальний фідбек, що процес пішов
+    orderBtn.innerText = "⏳ Відправляємо...";
+    orderBtn.style.opacity = "0.7";
+
     let msg = "";
     const name = currentOrder.name;
     const plat = currentOrder.platform;
@@ -2254,11 +2267,21 @@ function processFinalAction() {
             text: msg
         })
     }).then(() => {
-        tg.openTelegramLink('https://t.me/vlkrek_bot');
+        orderBtn.innerText = "✅ Надіслано!";
+        // Викликаємо нативне віконце Телеграму
+        tg.showAlert("✅ Замовлення успішно надіслано! Адміністратор скоро зв'яжеться з вами.", function() {
+            // Ця функція виконається ТІЛЬКИ коли юзер натисне "ОК" у віконці
+            tg.close();
+        });
     }).catch(e => {
+        // Якщо помилка - повертаємо кнопку в нормальний стан, щоб можна було спробувати ще раз
+        isOrdering = false;
+        orderBtn.innerText = originalText;
+        orderBtn.style.opacity = "1";
         tg.showAlert("❌ Сталася помилка. Спробуйте пізніше.");
     });
 }
+
 
 
 function showDevToast() {
