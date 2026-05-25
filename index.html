@@ -161,19 +161,24 @@ body {
 }
 
 .premium-shimmer {
-    background: linear-gradient(90deg, #94a3b8, #f8fafc, #cbd5e1, #f8fafc, #94a3b8);
+    background: linear-gradient(90deg, #000000, #555555, #000000, #222222, #000000);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: metallic-glow 3s linear infinite;
+    animation: metallic-glow 2.8s linear infinite;
     display: inline-flex;
     align-items: center;
-    font-weight: 700;
+    font-weight: 800;
+    gap: 0 !important; 
 }
 
+
 .premium-shimmer .material-symbols-rounded {
-    margin-right: 1px;
-    margin-left: -3px;
+    width: 16px !important;         
+    overflow: visible !important;    
+    margin-right: 4px !important;    
+    display: inline-flex !important;
+    align-items: center;
 }
 
 @keyframes geminiSoftThink {
@@ -1665,7 +1670,7 @@ body.no-scroll {
 <div id="baz-pro-html" style="display: none;">
     <div style="font-weight: 600; margin: 16px 0 12px; color: var(--text);">Що входить:</div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
-        <span class="material-symbols-rounded" style="color: #cbd5e1; flex-shrink: 0;">stat_3</span>
+        <span class="material-symbols-rounded" style="color: #222222; flex-shrink: 0;">stat_3</span>
         <span style="font-size: 14px; line-height: 1.4;">Збільшений ліміт до 50 оголошень на місяць</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
@@ -1673,7 +1678,7 @@ body.no-scroll {
         <span style="font-size: 14px; line-height: 1.4;">Анти-бот (бот більше не просить у вас підтверджень і забуває про ваше існування)</span>
     </div>
     <div style="display: flex; gap: 12px; align-items: flex-start;">
-        <span class="material-symbols-rounded" style="color: #f8fafc; flex-shrink: 0;">loyalty</span>
+        <span class="material-symbols-rounded" style="color: #444444; flex-shrink: 0;">loyalty</span>
         <span style="font-size: 14px; line-height: 1.4;">Бонус: Закріплення вашого оголошення в обраній вами гілці на 2 дні</span>
     </div>
 
