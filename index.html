@@ -154,6 +154,23 @@ body {
     animation: geminiSoftThink 1.8s ease-in-out infinite;
 }
 
+@keyframes premium-glow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.premium-shimmer {
+    background: linear-gradient(90deg, #ffb703, #fb8500, #ffbe0b, #ffb703);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: premium-glow 3s linear infinite;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
 @keyframes geminiSoftThink {
     0% {
         transform: scale(1) translateY(0px);
@@ -827,22 +844,22 @@ body.no-scroll {
         <div class="nav-title">Ліміти</div>
     </div>
     <div style="font-weight: 600; margin: 16px 0 12px; color: var(--sub);">Збільшити свій ліміт оголошень в групі «Валківський Базарчик»</div>
+    
     <div class="card-group">
         <div class="in-btn" onclick="openModal('Pro', document.getElementById('baz-pro-html').innerHTML, '150 ₴ / 3 місяці', 'baz_pro', false)">
-            <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">bolt_boost</span> Pro</div>
+            <div class="in-title premium-shimmer">
+                <span class="material-symbols-rounded">bolt_boost</span> Pro
+            </div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
+        
         <div class="in-btn" onclick="openModal('Lite', document.getElementById('baz-lite-html').innerHTML, '90 ₴ / 3 місяці', 'baz_lite', false)">
-            <div class="in-title"><span class="material-symbols-rounded" style="color: #34c759;">bolt</span> Lite</div>
+            <div class="in-title" style="color: #10b981; display: flex; align-items: center; gap: 6px;">
+                <span class="material-symbols-rounded" style="color: #10b981;">bolt</span> Lite
+            </div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
     </div>
-        <div class="marquee-wrapper">
-        <div class="marquee-content">
-            ❗️Безлім+ більше недоступний як окремий тариф. Функціонал безліміту перенесено як базовий для власників гілок і працює тільки всередині власної гілки. ❇️ Основні тарифи тепер — Pro і Lite: під різні потреби та обсяг публікацій.
-        </div>
-    </div>
-
 </div>
 
 
@@ -1646,59 +1663,61 @@ body.no-scroll {
 
 <div id="baz-pro-html" style="display: none;">
     <div style="font-weight: 600; margin: 16px 0 12px; color: var(--text);">Що входить:</div>
-<div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
-    <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">stat_3</span>
-    <span style="font-size: 14px; line-height: 1.4;">Збільшений ліміт до 50 оголошень на місяць</span>
-</div>
-<div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
-    <span class="material-symbols-rounded" style="color: var(--sub); flex-shrink: 0;">smart_toy</span>
-    <span style="font-size: 14px; line-height: 1.4;">Анти-бот (бот більше не просить у вас підтверджень і забуває про ваше існування)</span>
-</div>
-<div style="display: flex; gap: 12px; align-items: flex-start;">
-    <span class="material-symbols-rounded" style="color: #e59d2c; flex-shrink: 0;">loyalty</span>
-    <span style="font-size: 14px; line-height: 1.4;">Бонус: Закріплення вашого оголошення в обраній вами гілці на 2 дні</span>
-</div>
-
-<div class="comp-grid">
-    <div class="comp-card">
-        <div class="comp-title">Базовий</div>
-        <div class="comp-price">Безкоштовно</div>
-        <div class="comp-item"><span class="material-symbols-rounded">check</span> 3 оголошення / тиж</div>
-        <div class="comp-item"><span class="material-symbols-rounded">close</span> Перевірки від бота</div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #fb8500; flex-shrink: 0;">stat_3</span>
+        <span style="font-size: 14px; line-height: 1.4;">Збільшений ліміт до 50+ оголошень на місяць</span>
     </div>
-    <div class="comp-card active">
-        <div class="comp-title">Pro</div>
-        <div class="comp-price">150 ₴ / 3 місяці</div>
-        <div class="comp-item plus"><span class="material-symbols-rounded">check</span> 50+ оголошень / міс</div>
-        <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Анти-бот</div>
-        <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Бонус: закріплення</div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: var(--sub); flex-shrink: 0;">smart_toy</span>
+        <span style="font-size: 14px; line-height: 1.4;">Анти-бот (бот більше не просить у вас підтверджень і забуває про ваше існування)</span>
+    </div>
+    <div style="display: flex; gap: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #ffb703; flex-shrink: 0;">loyalty</span>
+        <span style="font-size: 14px; line-height: 1.4;">Бонус: Закріплення вашого оголошення в обраній вами гілці на 2 дні</span>
+    </div>
+
+    <div class="comp-grid">
+        <div class="comp-card">
+            <div class="comp-title">Базовий</div>
+            <div class="comp-price">Безкоштовно</div>
+            <div class="comp-item"><span class="material-symbols-rounded">check</span> 3 оголошення / тиж</div>
+            <div class="comp-item"><span class="material-symbols-rounded">check</span> Перевірки від бота</div>
+        </div>
+        <div class="comp-card active">
+            <div class="comp-title premium-shimmer">Pro</div>
+            <div class="comp-price">150 ₴ / 3 місяці</div>
+            <div class="comp-item plus"><span class="material-symbols-rounded">check</span> 50+ оголошень / міс</div>
+            <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Анти-бот</div>
+            <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Бонус: закріплення</div>
+        </div>
     </div>
 </div>
 
 
 <div id="baz-lite-html" style="display: none;">
     <div style="font-weight: 600; margin: 16px 0 12px; color: var(--text);">Що входить:</div>
-<div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
-    <span class="material-symbols-rounded" style="color: #34c759; flex-shrink: 0;">stat_3</span>
-    <span style="font-size: 14px; line-height: 1.4;">Збільшений ліміт до 30 оголошень на місяць</span>
-</div>
-<div style="display: flex; gap: 12px; align-items: flex-start;">
-    <span class="material-symbols-rounded" style="color: var(--sub); flex-shrink: 0;">smart_toy</span>
-    <span style="font-size: 14px; line-height: 1.4;">Анти-бот (бот більше не просить у вас підтверджень і забуває про ваше існування)</span>
-</div>
-
-<div class="comp-grid">
-    <div class="comp-card">
-        <div class="comp-title">Базовий</div>
-        <div class="comp-price">Безкоштовно</div>
-        <div class="comp-item"><span class="material-symbols-rounded">close</span> 3 оголошення / тиж</div>
-        <div class="comp-item"><span class="material-symbols-rounded">close</span> Перевірки від бота</div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #10b981; flex-shrink: 0;">stat_3</span>
+        <span style="font-size: 14px; line-height: 1.4;">Збільшений ліміт до 30+ оголошень на місяць</span>
     </div>
-    <div class="comp-card active">
-        <div class="comp-title">Lite</div>
-        <div class="comp-price">90 ₴ / 3 міс</div>
-        <div class="comp-item plus"><span class="material-symbols-rounded">check</span> 30+ оголошень / міс</div>
-        <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Анти-бот</div>
+    <div style="display: flex; gap: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: var(--sub); flex-shrink: 0;">smart_toy</span>
+        <span style="font-size: 14px; line-height: 1.4;">Анти-бот (бот більше не просить у вас підтверджень і забуває про ваше існування)</span>
+    </div>
+
+    <div class="comp-grid">
+        <div class="comp-card">
+            <div class="comp-title">Базовий</div>
+            <div class="comp-price">Безкоштовно</div>
+            <div class="comp-item"><span class="material-symbols-rounded">check</span> 3 оголошення / тиж</div>
+            <div class="comp-item"><span class="material-symbols-rounded">check</span> Перевірки від бота</div>
+        </div>
+        <div class="comp-card active">
+            <div class="comp-title" style="color: #10b981;">Lite</div>
+            <div class="comp-price">90 ₴ / 3 міс</div>
+            <div class="comp-item plus"><span class="material-symbols-rounded">check</span> 30+ оголошень / міс</div>
+            <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Анти-бот</div>
+        </div>
     </div>
 </div>
 
