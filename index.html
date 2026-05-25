@@ -860,21 +860,17 @@ body.no-scroll {
     </div>
     <div style="font-weight: 600; margin: 16px 0 12px; color: var(--sub); padding: 0 16px;">Збільшити ліміт оголошень</div>
     
-    <div class="card-group">
-        <div class="in-btn pro-button-premium" onclick="openModal('Pro', document.getElementById('baz-pro-html').innerHTML, '150 ₴ / 3 місяці', 'baz_pro', false)">
-            <div class="in-title premium-shimmer">
-                <span class="material-symbols-rounded">bolt_boost</span> Pro
-            </div>
-            <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
-        </div>
-        
-        
-        <div class="in-btn" onclick="openModal('Lite', document.getElementById('baz-lite-html').innerHTML, '90 ₴ / 3 місяці', 'baz_lite', false)">
-            <div class="in-title" style="color: #10b981; display: flex; align-items: center; gap: 6px;">
-                <span class="material-symbols-rounded" style="color: #10b981;">bolt</span> Lite
-            </div>
-            <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
-        </div>
+<div class="card-group">
+    <!-- Кнопка PRO -->
+    <div class="in-btn pro-premium-box" onclick="openModal('Pro', document.getElementById('baz-pro-html').innerHTML, '150 ₴ / 3 місяці', 'baz_pro', false)">
+        <div class="in-title premium-shimmer"><span class="material-symbols-rounded">bolt_boost</span><span>Pro</span></div>
+        <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+    </div>
+    
+    <!-- Кнопка LITE -->
+    <div class="in-btn" onclick="openModal('Lite', document.getElementById('baz-lite-html').innerHTML, '90 ₴ / 3 місяці', 'baz_lite', false)">
+        <div class="in-title" style="color: #10b981; display: flex; align-items: center; gap: 6px;"><span class="material-symbols-rounded" style="color: #10b981;">bolt</span><span>Lite</span></div>
+        <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
     </div>
 </div>
 
