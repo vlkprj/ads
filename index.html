@@ -46,75 +46,76 @@ body {
 
 .page { display: none; padding: 20px; padding-top: calc(20px + env(safe-area-inset-top)); padding-bottom: 40px; animation: slideIn 0.3s cubic-bezier(0.25, 1, 0.5, 1); }
 .page.active { display: block; }
-.promo-banner {
+.promo-banner.promo-purple {
+    background: linear-gradient(135deg, #2d0a6e 0%, #6d28d9 70%, #8b5cf6 100%);
     position: relative;
     overflow: hidden;
-    border-radius: var(--radius);
-    padding: 20px;
-    margin-bottom: 24px;
-    color: #ffffff;
-    background: var(--accent);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
-.promo-banner::before {
-    display: none;
-}
-.promo-close {
+.promo-banner.promo-purple::after {
+    content: '';
     position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 28px;
-    height: 28px;
-    background: rgba(255,255,255,0.12);
+    top: -30px; right: -30px;
+    width: 120px; height: 120px;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background 0.2s;
+    background: radial-gradient(circle, rgba(167,139,250,0.25) 0%, transparent 70%);
+    pointer-events: none;
 }
-.promo-close:active {
-    background: rgba(255,255,255,0.2);
+.promo-banner.promo-purple .promo-btn {
+    background: rgba(255,255,255,0.15);
+    color: #ffffff;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(8px);
 }
-.promo-title {
-    font-size: 17px;
+.promo-banner.promo-purple .promo-btn:active {
+    background: rgba(255,255,255,0.25);
+}
+.promo-discount-badge.purple {
+    background: rgba(255,255,255,0.15);
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* ---- Premium promo banner ---- */
+.promo-banner.promo-gold {
+    background: linear-gradient(135deg, #1a0f00 0%, #5c3200 55%, #9a5a00 100%);
+    position: relative;
+    overflow: hidden;
+}
+.promo-banner.promo-gold::after {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,190,50,0.18) 0%, transparent 70%);
+    pointer-events: none;
+}
+.promo-eyebrow {
+    font-size: 11px;
     font-weight: 700;
-    margin-bottom: 6px;
-    padding-right: 36px;
-    color: #ffffff;
-}
-.promo-desc {
-    font-size: 14.5px;
-    line-height: 1.4;
-    margin-bottom: 8px;
-    font-weight: 400;
-    opacity: 0.8;
-    color: #ffffff;
-}
-.promo-meta {
-    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
     color: rgba(255,255,255,0.5);
-    margin-bottom: 16px;
-    font-weight: 500;
+    margin-bottom: 8px;
 }
-.promo-btn {
-    background: #ffffff;
-    color: var(--accent);
-    font-weight: 700;
-    font-size: 15px;
-    padding: 12px 18px;
-    border-radius: 14px;
+.promo-discount-badge {
     display: inline-block;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.1s, opacity 0.1s;
-    animation: none;
-    box-shadow: none;
+    background: #ffb820;
+    color: #1a0f00;
+    font-size: 22px;
+    font-weight: 900;
+    padding: 4px 14px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
 }
-.promo-btn:active {
-    transform: scale(0.96);
-    opacity: 0.9;
+.promo-banner.promo-gold .promo-btn {
+    background: #ffb820;
+    color: #1a0f00;
+    font-weight: 800;
 }
+
+
 @keyframes pulse-btn {}
 
 
@@ -652,6 +653,21 @@ body.no-scroll {
         <div class="title"><h1>ВШТ • Реклама</h1></div>
     </div>
 
+<div class="promo-banner promo-gold" id="home-promo-premium">
+    <div class="promo-close" onclick="document.getElementById('home-promo-premium').style.display='none'">
+        <span class="material-symbols-rounded" style="font-size: 16px;">close</span>
+    </div>
+    <div class="promo-eyebrow">❤️‍🔥 Обмежена пропозиція</div>
+    <div class="promo-discount-badge">−50%</div>
+    <div class="promo-title">Гілка Premium</div>
+    <div class="promo-desc">Власна гілка на Базарчику на місяць — усього за <b>150 грн</b> замість 399 ₴</div>
+    <div class="promo-meta">До 10.06.2026 · Кількість місць обмежена</div>
+    <div class="promo-btn" onclick="nav('page-bazar'); setTimeout(() => openModal('Гілка Premium', document.getElementById('baz-branch-prem-html').innerHTML, '<s style=\'color: rgba(0,0,0,0.3); font-size: 18px; margin-right: 4px;\'>399 ₴</s> 150 ₴ / місяць', 'baz_branch_prem', false), 300)">
+        Замовити
+    </div>
+</div>
+
+
     <p class="section-label">Оберіть:</p>
 
     <div class="card-group">
@@ -765,15 +781,17 @@ body.no-scroll {
         <div class="nav-title">Базарчик</div>
     </div>
     
-<div class="promo-banner" id="baz-promo">
+<div class="promo-banner promo-purple" id="baz-promo">
     <div class="promo-close" onclick="document.getElementById('baz-promo').style.display='none'">
         <span class="material-symbols-rounded" style="font-size: 16px;">close</span>
     </div>
 
-    <div class="promo-title">🔥 Акційна пропозиція</div>
+    <div class="promo-eyebrow">💟 Акційна пропозиція</div>
+    <div class="promo-discount-badge purple">−33%</div>
+    <div class="promo-title">Тариф Pro</div>
 
     <div class="promo-desc">
-        Спробуйте тариф «Pro» протягом <b>трьох</b> місяців лише за 100 грн
+        Три місяці Pro лише за <b>100 грн</b> замість 150 ₴
     </div>
 
     <div class="promo-meta">
@@ -784,6 +802,7 @@ body.no-scroll {
         Спробувати
     </div>
 </div>
+
     
 <div class="card-group">
 
@@ -1569,7 +1588,7 @@ body.no-scroll {
     </div>
     <div class="week-btn" onclick="closeModal(); setTimeout(() => openModal('Власна гілка Стандарт • Тижнева', 'Тестовий тиждень для вашої гілки. Усі переваги стандарту на 7 днів.', '100 ₴ / тиж', 'baz_branch_std_week', false), 300)">Замовити</div>
 </div>
-
+</div>
 
 <div id="baz-branch-prem-html" style="display: none;">
 <div class="intro-box">Це ваш власний розділ в групі, який повністю належить вам протягом місяця. По суті, це ваш міні-сайт і вітрина всередині Базарчика.</div>
@@ -1635,7 +1654,7 @@ body.no-scroll {
     </div>
     <div class="week-btn" onclick="closeModal(); setTimeout(() => openModal('Власна гілка Premium • Тижнева', 'Тестовий тиждень преміум-гілки з закріпленням у ТОП-4 та репостом.', '150 ₴ / тиж', 'baz_branch_prem_week', false), 300)">Замовити</div>
 </div>
-
+</div>
 
 
 
