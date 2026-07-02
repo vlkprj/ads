@@ -55,51 +55,75 @@ body {
     margin-bottom: 24px;
     color: #ffffff;
     background: var(--accent);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 .promo-close {
     position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 28px;
-    height: 28px;
-    background: rgba(255,255,255,0.12);
-    border-radius: 50%;
+    top: 18px;
+    right: 18px;
+    width: 24px;
+    height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: background 0.2s;
+    color: rgba(255, 255, 255, 0.35);
+    transition: color 0.2s;
 }
-.promo-close:active { background: rgba(255,255,255,0.2); }
+.promo-close:active { 
+    color: #ffffff; 
+}
+.promo-body {
+    margin-bottom: 20px;
+    padding-right: 20px;
+}
 .promo-title {
-    font-size: 17px;
+    font-size: 19px;
     font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.3px;
     margin-bottom: 6px;
-    padding-right: 36px;
-    color: #ffffff;
 }
-.promo-desc {
-    font-size: 14.5px;
-    line-height: 1.4;
+.promo-text {
+    font-size: 14px;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.7);
     margin-bottom: 8px;
-    font-weight: 400;
-    opacity: 0.8;
+}
+.promo-text b {
     color: #ffffff;
+    font-weight: 600;
+}
+.promo-benefit {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.06);
+    padding: 4px 10px;
+    border-radius: 8px;
+}
+.promo-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 14px;
 }
 .promo-meta {
     font-size: 12px;
-    color: rgba(255,255,255,0.5);
-    margin-bottom: 16px;
+    color: rgba(255, 255, 255, 0.35);
     font-weight: 500;
 }
 .promo-btn {
     background: #ffffff;
     color: var(--accent);
-    font-weight: 700;
-    font-size: 15px;
-    padding: 12px 18px;
-    border-radius: 14px;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 18px;
+    border-radius: 12px;
     display: inline-block;
     text-align: center;
     cursor: pointer;
@@ -107,37 +131,9 @@ body {
 }
 .promo-btn:active {
     transform: scale(0.96);
-    opacity: 0.9;
+    opacity: 0.95;
 }
 
-.promo-banner.promo-purple {
-    background: linear-gradient(135deg, #2d0a6e 0%, #6d28d9 70%, #8b5cf6 100%);
-    position: relative;
-    overflow: hidden;
-}
-.promo-banner.promo-purple::after {
-    content: '';
-    position: absolute;
-    top: -30px; right: -30px;
-    width: 120px; height: 120px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(167,139,250,0.25) 0%, transparent 70%);
-    pointer-events: none;
-}
-.promo-banner.promo-purple .promo-btn {
-    background: rgba(255,255,255,0.15);
-    color: #ffffff;
-    border: 1.5px solid rgba(255,255,255,0.3);
-    backdrop-filter: blur(8px);
-}
-.promo-banner.promo-purple .promo-btn:active {
-    background: rgba(255,255,255,0.25);
-}
-.promo-discount-badge.purple {
-    background: rgba(255,255,255,0.15);
-    color: #ffffff;
-    border: 1px solid rgba(255,255,255,0.3);
-}
 
 /* ---- Premium promo banner ---- */
 .promo-banner.promo-gold {
@@ -839,31 +835,22 @@ body.no-scroll {
 </div>
 
 
-<div id="page-bazar" class="page">
-    <div class="nav-bar">
-        <div class="back-btn" onclick="nav('home')"><span class="material-symbols-rounded">arrow_back</span></div>
-        <div class="nav-title">Базарчик</div>
+<div class="promo-banner" id="baz-promo">
+    <div class="promo-close" onclick="document.getElementById('baz-promo').style.display='none'">
+        <span class="material-symbols-rounded" style="font-size: 18px;">close</span>
     </div>
     
-<div class="promo-banner promo-purple" id="baz-promo">
-    <div class="promo-close" onclick="document.getElementById('baz-promo').style.display='none'">
-        <span class="material-symbols-rounded" style="font-size: 16px;">close</span>
+    <div class="promo-body">
+        <div class="promo-title">Цілий рік тарифу Pro</div>
+        <div class="promo-text">Максимум можливостей для твоїх оголошень за <b>390 ₴</b> замість 600 ₴.</div>
+        <div class="promo-benefit">Економія 210 ₴ • Знижка 35%</div>
     </div>
 
-    <div class="promo-eyebrow">💟 Акційна пропозиція</div>
-    <div class="promo-discount-badge purple">−33%</div>
-    <div class="promo-title">Тариф Pro</div>
-
-    <div class="promo-desc">
-        Три місяці Pro лише за <b>100 грн</b> замість 150 ₴
-    </div>
-
-    <div class="promo-meta">
-        Акція діє до 10.06.2026
-    </div>
-
-    <div class="promo-btn" onclick="openModal('Pro', document.getElementById('baz-pro-html').innerHTML, '<s style=\'color: var(--sub); font-size: 18px; margin-right: 4px;\'>150 ₴</s> 100 ₴ / 3 місяці', 'baz_pro', false)">
-        Спробувати
+    <div class="promo-footer">
+        <div class="promo-meta">Діє до 01.08.2026</div>
+        <div class="promo-btn" onclick="openModal('Pro', document.getElementById('baz-pro-html').innerHTML, '<s style=\'color: var(--sub); font-size: 18px; margin-right: 4px;\'>150 ₴</s> 100 ₴ / 3 місяці', 'baz_pro', false)">
+            Підключити Pro
+        </div>
     </div>
 </div>
 
