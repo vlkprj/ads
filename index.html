@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -717,17 +719,37 @@ body.no-scroll {
         <div class="title"><h1>ВШТ • Реклама</h1></div>
     </div>
 
-<div class="promo-banner promo-gold" id="home-promo-premium" style="display:none;">
-    <div class="promo-close" onclick="document.getElementById('home-promo-premium').style.display='none'">
+
+
+<div class="promo-banner modern" id="home-promo-pro-annual">
+    <div class="promo-close" onclick="document.getElementById(\'home-promo-pro-annual\').style.display=\'none\'">
         <span class="material-symbols-rounded" style="font-size: 16px;">close</span>
     </div>
-    <div class="promo-eyebrow">❤️‍🔥 Обмежена пропозиція</div>
-    <div class="promo-discount-badge">−50%</div>
-    <div class="promo-title">Гілка Premium</div>
-    <div class="promo-desc">Власна гілка на Базарчику на місяць — усього за <b>150 грн</b> замість 399 ₴</div>
-    <div class="promo-meta">До 10.06.2026 · Кількість місць обмежена</div>
-    <div class="promo-btn" onclick="nav('page-bazar'); setTimeout(() => openModal('Гілка Premium', document.getElementById('baz-branch-prem-html').innerHTML, '<s style=\'color: rgba(0,0,0,0.3); font-size: 18px; margin-right: 4px;\'>399 ₴</s> 150 ₴ / місяць', 'baz_branch_prem', false), 300)">
-        Замовити
+    <div class="promo-eyebrow">🔥 Спеціальна пропозиція</div>
+    <div class="promo-title">Тариф Pro на цілий рік</div>
+    <div class="promo-desc">Отримайте всі переваги Pro підписки на 12 місяців за акційною ціною!</div>
+    <div class="promo-price-display">
+        <s style=\'color: var(--sub); font-size: 18px; font-weight: 600; opacity: 0.7;\'>450 ₴</s> 390 ₴
+    </div>
+    <div class="promo-meta">Діє до 01.08.2026</div>
+    <div class="promo-btn" onclick="openModal(\'Тариф Pro (рік)\', document.getElementById(\'baz-pro-html\').innerHTML, \'<s style=\\'color: var(--sub); font-size: 18px; margin-right: 4px;\'>450 ₴</s> 390 ₴ / рік\', \'baz_pro_annual\')">
+        <span class="material-symbols-rounded">auto_awesome</span> Спробувати
+    </div>
+</div>
+
+<div class="promo-banner modern standard-offer" id="home-promo-standard-2month">
+    <div class="promo-close" onclick="document.getElementById(\'home-promo-standard-2month\').style.display=\'none\'">
+        <span class="material-symbols-rounded" style="font-size: 16px;">close</span>
+    </div>
+    <div class="promo-eyebrow">✨ Вигідна пропозиція</div>
+    <div class="promo-title">Гілка Стандарт на 2 місяці</div>
+    <div class="promo-desc">Орендуйте власну гілку Стандарт на два місяці за спеціальною ціною!</div>
+    <div class="promo-price-display">
+        <s style=\'color: var(--sub); font-size: 18px; font-weight: 600; opacity: 0.7;\'>600 ₴</s> 300 ₴
+    </div>
+    <div class="promo-meta">Діє до 15.07.2026</div>
+    <div class="promo-btn" onclick="openModal(\'Гілка Стандарт (2 місяці)\', document.getElementById(\'baz-branch-std-html\').innerHTML, \'<s style=\'color: var(--sub); font-size: 18px; margin-right: 4px;\'>600 ₴</s> 300 ₴ / 2 місяці\', \'baz_branch_std_2month\')">
+        <span class="material-symbols-rounded">splitscreen_top</span> Замовити
     </div>
 </div>
 
@@ -2324,7 +2346,7 @@ function handleSmartTag() {
 }
 
 
-function openModal(title, desc, price, action) {
+function openModal(title, desc, price, action, isPromo = false) {
     tg.HapticFeedback.impactOccurred('medium');
     document.body.classList.add('no-scroll');
     document.getElementById('m-title').innerText = title;
@@ -2342,6 +2364,7 @@ function openModal(title, desc, price, action) {
         priceEl.innerHTML = price;
         btnEl.style.display = 'block';
         btnEl.dataset.action = action;
+        btnEl.dataset.isPromo = isPromo;
     } else {
         priceEl.style.display = 'none';
         btnEl.style.display = 'none';
@@ -2431,9 +2454,13 @@ function goToCheckout() {
     let priceEl = document.getElementById('m-price');
     let priceHtml = priceEl.innerHTML;
     let finalPriceText = "";
-    
-    if (priceHtml.includes('</s>')) {
-        finalPriceText = priceHtml.split('</s>')[1].trim();
+    let isPromoOrder = document.getElementById(\'m-btn\').dataset.isPromo === \'true\';
+
+    if (isPromoOrder) {
+        // For promo banners, the price is already formatted correctly in the openModal call
+        finalPriceText = priceEl.innerText.trim();
+    } else if (priceHtml.includes(\'</s>\')) {
+        finalPriceText = priceHtml.split(\'</s>\')[1].trim();
     } else {
         finalPriceText = priceEl.innerText.trim();
     }
@@ -2625,3 +2652,102 @@ function quizGoBack() {
 </div>
 </body>
 </html>
+
+/* --- New Modern Promo Banner Styles --- */
+.promo-banner.modern {
+    background: linear-gradient(135deg, #f0f2f5 0%, #e0e2e6 100%);
+    color: var(--accent);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    border: 1px solid var(--sep);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+}
+.promo-banner.modern .promo-close {
+    background: rgba(0,0,0,0.05);
+    color: var(--sub);
+}
+.promo-banner.modern .promo-close:active { background: rgba(0,0,0,0.1); }
+.promo-banner.modern .promo-eyebrow {
+    color: #6366f1; /* Indigo */
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+.promo-banner.modern .promo-title {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: var(--text);
+    line-height: 1.2;
+}
+.promo-banner.modern .promo-desc {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    color: var(--sub);
+    font-weight: 500;
+}
+.promo-banner.modern .promo-price-display {
+    font-size: 28px;
+    font-weight: 900;
+    color: #6366f1; /* Indigo */
+    margin-bottom: 16px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+.promo-banner.modern .promo-price-display s {
+    color: var(--sub);
+    font-size: 18px;
+    font-weight: 600;
+    opacity: 0.7;
+}
+.promo-banner.modern .promo-meta {
+    font-size: 12px;
+    color: var(--sub);
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+.promo-banner.modern .promo-btn {
+    background: #6366f1; /* Indigo */
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 14px 24px;
+    border-radius: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: transform 0.1s, opacity 0.1s, background 0.2s;
+}
+.promo-banner.modern .promo-btn:active {
+    transform: scale(0.96);
+    opacity: 0.9;
+    background: #4f46e5;
+}
+.promo-banner.modern .promo-btn .material-symbols-rounded {
+    font-size: 20px;
+}
+
+/* Specific styles for the Standard banner */
+.promo-banner.modern.standard-offer .promo-eyebrow {
+    color: #06b6d4; /* Cyan */
+}
+.promo-banner.modern.standard-offer .promo-price-display {
+    color: #06b6d4; /* Cyan */
+}
+.promo-banner.modern.standard-offer .promo-btn {
+    background: #06b6d4; /* Cyan */
+}
+.promo-banner.modern.standard-offer .promo-btn:active {
+    background: #0891b2;
+}
+
+/* Remove old promo-discount-badge styles if not used elsewhere */
+.promo-discount-badge { display: none; }
