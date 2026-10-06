@@ -704,6 +704,21 @@ body.no-scroll {
 .week-btn { background: var(--accent); color: #ffffff; font-size: 14px; font-weight: 700; padding: 10px 14px; border-radius: 12px; cursor: pointer; flex-shrink: 0; text-align: center; transition: transform 0.1s; }
 .week-btn:active { transform: scale(0.95); }
 
+.beta-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 6px;
+    border-radius: 6px;
+    background: rgba(255, 149, 0, 0.15);
+    color: #ff9500;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+.beta-item { opacity: 0.7; }
+
 </style>
 </head>
 <body>
@@ -900,11 +915,14 @@ body.no-scroll {
         </div>
     </div>
 
-    <div class="in-btn" onclick="openModal('Закріплення', document.getElementById('baz-pin-html').innerHTML, '50 ₴ / 14 днів', 'baz_pin', false)">
-        <div class="in-title">
-            <span class="material-symbols-rounded" style="color: #ec4899;">push_pin</span>
-            Закріплення оголошення
-        </div>
+    <div class="in-btn disabled">
+    <div class="in-title">
+        <span class="material-symbols-rounded" style="color: #ec4899;">push_pin</span>
+        Закріплення оголошення
+    </div>
+    <div class="in-action">Недоступно</div>
+</div>
+
         <div class="in-action">
             Переглянути <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
@@ -1521,19 +1539,19 @@ body.no-scroll {
         <div class="carousel-card"> 
             <img src="assets/vb.PNG" alt="" class="c-img-logo">
             <div class="c-title">Базарчик</div>
-            <div class="c-stat">7.1K</div>
+            <div class="c-stat">8K</div>
             <div class="c-desc">Найбільша Telegram-група для оголошень у громаді.</div>
         </div>
         <div class="carousel-card">
             <img src="assets/vsht.PNG" alt="" class="c-img-logo">
             <div class="c-title">Валки, шо там?</div>
-            <div class="c-stat">4.7К</div>
+            <div class="c-stat">5К</div>
             <div class="c-desc">Телеграм-канал</div>
         </div>
         <div class="carousel-card">
             <img src="assets/vch.PNG" alt="" class="c-img-logo">
             <div class="c-title">Чатік</div>
-            <div class="c-stat">4.9K</div>
+            <div class="c-stat">5.7K</div>
             <div class="c-desc">Живе спілкування.</div>
         </div>
     </div>
@@ -1617,9 +1635,10 @@ body.no-scroll {
     <span style="font-size: 14px; line-height: 1.4;"><b>Власна назва гілки.</b> Це може бути як назва вашого магазину/закладу, так і назва послуги, яку ви надаєте. Ви можете обрати будь-яку назву.</span>
 </div>
 
-<div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+<div class="beta-item" style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
     <span class="material-symbols-rounded" style="color: #32ade6; flex-shrink: 0;">robot_2</span>
-    <span style="font-size: 14px; line-height: 1.4;"><b>Особистий бот-асистент:</b> розумний інструмент, який сам красиво оформить ваше оголошення, прикрутить фірмові кнопки (купити, інстаграм, контакти) і автоматично опублікує пост у вашій гілці в заданий час.</span>
+    <span style="font-size: 14px; line-height: 1.4;"><b>Особистий бот-асистент</b><span class="beta-badge">beta</span><b>:</b>
+ розумний інструмент, який сам красиво оформить ваше оголошення, прикрутить фірмові кнопки (купити, інстаграм, контакти) і автоматично опублікує пост у вашій гілці в заданий час.</span>
 </div>
 
 <div style="display: flex; gap: 12px; align-items: flex-start;">
@@ -1664,9 +1683,10 @@ body.no-scroll {
     <span style="font-size: 14px; line-height: 1.4;"><b>ТОП-4:</b> Ваша гілка закріплена у топі групи.</span>
 </div>
 
-<div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+<div class="beta-item" style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
     <span class="material-symbols-rounded" style="color: #32ade6; flex-shrink: 0;">robot_2</span>
-    <span style="font-size: 14px; line-height: 1.4;"><b>Особистий бот-асистент:</b> розумний інструмент, який сам красиво оформить ваше оголошення, прикрутить фірмові кнопки (купити, інстаграм, контакти) і автоматично опублікує пост у вашій гілці в заданий час.</span>
+    <span style="font-size: 14px; line-height: 1.4;"><b>Особистий бот-асистент</b><span class="beta-badge">beta</span><b>:</b>
+ розумний інструмент, який сам красиво оформить ваше оголошення, прикрутить фірмові кнопки (купити, інстаграм, контакти) і автоматично опублікує пост у вашій гілці в заданий час.</span>
 </div>
 
 
