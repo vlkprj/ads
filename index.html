@@ -2498,6 +2498,10 @@ function processFinalAction() {
     } else {
         msg = `Вітаю! Хочу замовити рекламу. Мене цікавить варіант ${name} ${plat}`;
     }
+    const priceLine = (currentOrder.price && currentOrder.price !== '...')
+        ? currentOrder.price
+        : 'за домовленістю';
+    msg += `\n\n💰 Ціна: ${priceLine}`;
 
     tg.HapticFeedback.notificationOccurred('success');
     const userData = tg.initDataUnsafe.user || {};
