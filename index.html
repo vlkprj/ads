@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -719,6 +720,22 @@ body.no-scroll {
 }
 .beta-item { opacity: 0.7; }
 
+
+/* ---- Plan picker (вибір терміну) ---- */
+.plan-picker { display: none; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 6px 0 12px; flex-shrink: 0; }
+.plan-picker.show { display: grid; }
+.plan-opt { position: relative; background: rgba(142, 142, 147, 0.08); border: 2px solid transparent; border-radius: 16px; padding: 16px 4px 11px; text-align: center; cursor: pointer; transition: transform 0.1s, border-color 0.2s, background 0.2s, box-shadow 0.2s; }
+.plan-opt:active { transform: scale(0.96); }
+.plan-opt.active { border-color: var(--accent); background: var(--card); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+.plan-term { font-size: 12.5px; font-weight: 600; color: var(--sub); margin-bottom: 4px; }
+.plan-opt.active .plan-term { color: var(--text); }
+.plan-sum { font-size: 18px; font-weight: 800; letter-spacing: -0.5px; }
+.plan-per { font-size: 11px; font-weight: 500; color: var(--sub); margin-top: 2px; }
+.plan-badge { position: absolute; top: -9px; left: 50%; transform: translateX(-50%); background: #34c759; color: #ffffff; font-size: 10.5px; font-weight: 800; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+.plan-save { font-size: 13px; font-weight: 600; color: #34c759; margin-top: 4px; letter-spacing: 0; }
+.plan-note { display: none; align-items: flex-start; gap: 10px; background: rgba(255, 184, 32, 0.14); border-radius: 14px; padding: 12px 14px; margin: 0 0 12px; font-size: 13px; line-height: 1.35; font-weight: 500; flex-shrink: 0; animation: popIn 0.25s ease; }
+.plan-note.show { display: flex; }
+.plan-note .material-symbols-rounded { font-size: 20px; color: #c28a00; flex-shrink: 0; }
 </style>
 </head>
 <body>
@@ -1598,6 +1615,11 @@ body.no-scroll {
         <div class="modal-includes-title">Що входить</div>
         <div id="m-inc-text">...</div>
     </div>
+    <div class="plan-picker" id="m-plans"></div>
+    <div class="plan-note" id="m-plan-note">
+        <span class="material-symbols-rounded">loyalty</span>
+        <span><b>Для постійних клієнтів — додаткові знижки.</b> Залишаєтесь з нами надовго? Напишіть адміністратору після замовлення, і ми щось придумаємо 😉</span>
+    </div>
     <div class="modal-price" id="m-price">0 ₴</div>
     
     <button class="primary-btn" id="m-btn" onclick="act(this.dataset.action)">Замовити</button>
@@ -1616,7 +1638,7 @@ body.no-scroll {
     <div class="client-item"><span class="material-symbols-rounded">thread_unread</span> Магазин «Пряжа» <span class="mini-tag">1</span></div>
 </div>
 <div id="baz-branch-std-html" style="display: none;">
-    <div class="intro-box">Це ваш власний розділ в групі, який повністю належить вам протягом місяця. По суті, це ваш міні-сайт і вітрина всередині Базарчика.</div>
+    <div class="intro-box">Це ваш власний розділ в групі, який повністю належить вам протягом обраного терміну. По суті, це ваш міні-сайт і вітрина всередині Базарчика.</div>
     
 <div style="font-weight: 600; margin: 16px 0 12px; color: var(--text);">Що ви отримуєте:</div>
 
@@ -1644,14 +1666,14 @@ body.no-scroll {
 <div class="comp-grid">
     <div class="comp-card active">
         <div class="comp-title">Стандарт</div>
-        <div class="comp-price">299 ₴ / міс</div>
+        <div class="comp-price">від 299 ₴ / міс</div>
         <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Логотип / Емодзі</div>
         <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Власна назва</div>
         <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Безліміт постів</div>
     </div>
     <div class="comp-card">
         <div class="comp-title">Premium</div>
-        <div class="comp-price">399 ₴ / міс</div>
+        <div class="comp-price">від 399 ₴ / міс</div>
         <div class="comp-item"><span class="material-symbols-rounded">add</span> Все з Стандарту</div>
         <div class="comp-item"><span class="material-symbols-rounded">add</span> ТОП-4 закріплення</div>
         <div class="comp-item"><span class="material-symbols-rounded">add</span> Репост у канал</div>
@@ -1669,7 +1691,7 @@ body.no-scroll {
 </div>
 
 <div id="baz-branch-prem-html" style="display: none;">
-<div class="intro-box">Це ваш власний розділ в групі, який повністю належить вам протягом місяця. По суті, це ваш міні-сайт і вітрина всередині Базарчика.</div>
+<div class="intro-box">Це ваш власний розділ в групі, який повністю належить вам протягом обраного терміну. По суті, це ваш міні-сайт і вітрина всередині Базарчика.</div>
 
 <div style="font-weight: 600; margin: 16px 0 12px; color: var(--text);">Що ви отримуєте:</div>
 
@@ -1713,13 +1735,13 @@ body.no-scroll {
 <div class="comp-grid">
     <div class="comp-card">
         <div class="comp-title">Стандарт</div>
-        <div class="comp-price">299 ₴ / міс</div>
+        <div class="comp-price">від 299 ₴ / міс</div>
         <div class="comp-item"><span class="material-symbols-rounded">check</span> Базові функції гілки</div>
         <div class="comp-item"><span class="material-symbols-rounded">close</span> Без ТОП закріплення</div>
     </div>
     <div class="comp-card active">
         <div class="comp-title">Premium</div>
-        <div class="comp-price">399 ₴ / міс</div>
+        <div class="comp-price">від 399 ₴ / міс</div>
         <div class="comp-item plus"><span class="material-symbols-rounded">check</span> ТОП-4 закріплення</div>
         <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Репост у канал</div>
         <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Кнопка в боті</div>
@@ -1770,7 +1792,7 @@ body.no-scroll {
         </div>
         <div class="comp-card active">
             <div class="comp-title premium-shimmer">Pro</div>
-            <div class="comp-price">150 ₴ / 3 місяці</div>
+            <div class="comp-price">від 150 ₴ / 3 міс</div>
             <div class="comp-item plus"><span class="material-symbols-rounded">check</span> 50+ оголошень / міс</div>
             <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Анти-бот</div>
             <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Бонус: закріплення</div>
@@ -2339,6 +2361,64 @@ function handleSmartTag() {
 }
 
 
+// ---- Терміни та ціни (редагуй тут: [місяців, ціна ₴]) ----
+const PLANS = {
+    baz_branch_std:  { options: [[1, 299], [2, 550], [3, 700]] },
+    baz_branch_prem: { options: [[1, 399], [2, 750], [3, 1000]], loyalty: 3 },
+    baz_pro:         { options: [[3, 150], [6, 275], [12, 500]] }
+};
+let modalPlan = null;
+
+function monthsLabel(m) {
+    if (m === 1) return '1 місяць';
+    if (m >= 2 && m <= 4) return m + ' місяці';
+    return m + ' місяців';
+}
+
+function perMonthText(price, months) {
+    const exact = price % months === 0;
+    return (exact ? '' : '≈') + Math.round(price / months) + ' ₴/міс';
+}
+
+function renderPlans(action, idx) {
+    const cfg = PLANS[action];
+    const [m0, p0] = cfg.options[0];
+    const basePerMonth = p0 / m0;
+    const picker = document.getElementById('m-plans');
+    const note = document.getElementById('m-plan-note');
+
+    picker.innerHTML = cfg.options.map(([months, price], i) => {
+        const full = Math.round(basePerMonth * months);
+        const disc = Math.round((1 - price / full) * 100);
+        return `<div class="plan-opt ${i === idx ? 'active' : ''}" onclick="pickPlan(${i})">` +
+            (disc > 0 ? `<span class="plan-badge">−${disc}%</span>` : '') +
+            `<div class="plan-term">${months} міс</div>` +
+            `<div class="plan-sum">${price} ₴</div>` +
+            `<div class="plan-per">${perMonthText(price, months)}</div>` +
+        `</div>`;
+    }).join('');
+    picker.classList.add('show');
+
+    const [months, price] = cfg.options[idx];
+    const full = Math.round(basePerMonth * months);
+    const save = full - price;
+    const long = monthsLabel(months);
+    modalPlan = { action, idx, months, price, long };
+
+    document.getElementById('m-price').innerHTML =
+        (save > 0 ? `<s style="color: var(--sub); font-size: 18px; margin-right: 4px;">${full} ₴</s> ` : '') +
+        `${price} ₴ / ${long}` +
+        (save > 0 ? `<div class="plan-save">Економія ${save} ₴</div>` : '');
+
+    note.classList.toggle('show', cfg.loyalty === months);
+}
+
+function pickPlan(idx) {
+    if (!modalPlan || modalPlan.idx === idx) return;
+    tg.HapticFeedback.impactOccurred('light');
+    renderPlans(modalPlan.action, idx);
+}
+
 function openModal(title, desc, price, action) {
     tg.HapticFeedback.impactOccurred('medium');
     document.body.classList.add('no-scroll');
@@ -2362,6 +2442,13 @@ function openModal(title, desc, price, action) {
         btnEl.style.display = 'none';
     }
     
+    modalPlan = null;
+    document.getElementById('m-plans').classList.remove('show');
+    document.getElementById('m-plan-note').classList.remove('show');
+    if (price && PLANS[action] && !String(price).includes('<s')) {
+        renderPlans(action, 0);
+    }
+
     document.getElementById('modal-overlay').classList.add('show');
     document.getElementById('dynamic-modal').classList.add('show');
     const descEl = document.getElementById('m-desc');
@@ -2429,7 +2516,7 @@ function act(id) {
     tg.sendData(id);
 }
 
-let currentOrder = { name: '', price: '', platform: '' };
+let currentOrder = { name: '', price: '', platform: '', term: '', months: 0, total: 0, planId: '' };
 let lastPage = 'home';
 let selectedMethod = null;
 
@@ -2453,9 +2540,23 @@ function goToCheckout() {
         finalPriceText = priceEl.innerText.trim();
     }
     
+    currentOrder.term = '';
+    currentOrder.months = 0;
+    currentOrder.total = 0;
+    currentOrder.planId = '';
+    if (modalPlan) {
+        currentOrder.term = modalPlan.long;
+        currentOrder.months = modalPlan.months;
+        currentOrder.total = modalPlan.price;
+        currentOrder.planId = modalPlan.action;
+        finalPriceText = `${modalPlan.price} ₴ / ${modalPlan.long}`;
+    }
+
     currentOrder.price = finalPriceText;
     
-    document.getElementById('check-name-display').innerText = currentOrder.name;
+    document.getElementById('check-name-display').innerText = currentOrder.term
+        ? `${currentOrder.name} · ${currentOrder.term}`
+        : currentOrder.name;
     document.getElementById('check-price-display').innerText = currentOrder.price;
 
     selectedMethod = 'admin';
@@ -2498,10 +2599,18 @@ function processFinalAction() {
     } else {
         msg = `Вітаю! Хочу замовити рекламу. Мене цікавить варіант ${name} ${plat}`;
     }
-    const priceLine = (currentOrder.price && currentOrder.price !== '...')
-        ? currentOrder.price
-        : 'за домовленістю';
-    msg += `\n\n💰 Ціна: ${priceLine}`;
+    if (currentOrder.term) {
+        const perMonth = currentOrder.months > 1
+            ? ` (${perMonthText(currentOrder.total, currentOrder.months)})`
+            : '';
+        msg += `\n\n📅 Термін: ${currentOrder.term}`;
+        msg += `\n💰 Ціна: ${currentOrder.total} ₴${perMonth}`;
+    } else {
+        const priceLine = (currentOrder.price && currentOrder.price !== '...')
+            ? currentOrder.price
+            : 'за домовленістю';
+        msg += `\n\n💰 Ціна: ${priceLine}`;
+    }
 
     tg.HapticFeedback.notificationOccurred('success');
     const userData = tg.initDataUnsafe.user || {};
@@ -2512,7 +2621,12 @@ function processFinalAction() {
         body: JSON.stringify({
             type: 'new_order',
             user: userData,
-            text: msg
+            text: msg,
+            plan: currentOrder.term ? {
+                id: currentOrder.planId,
+                months: currentOrder.months,
+                total: currentOrder.total
+            } : null
         })
     }).then(() => {
         orderBtn.innerText = "✅ Надіслано!";
