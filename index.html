@@ -261,7 +261,7 @@ body {
     border-radius: 50%;
 }
 .new-badge { color: #34c759; display: flex; align-items: center; }
-.btn-desc { font-size: 13px; color: var(--sub); margin-top: 2px; }
+.btn-desc { font-size: 13px; color: #6c6c70; margin-top: 2px; }
 .arrow { color: #c7c7cc; }
 .in-btn { display: flex; justify-content: space-between; align-items: center; padding: 16px; border-bottom: 1px solid var(--sep); cursor: pointer; transition: background 0.2s; }
 .in-btn:active { background: #f9f9f9; }
@@ -280,7 +280,7 @@ body {
 .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 1000; }
 .overlay.show { opacity: 1; pointer-events: auto; }
 .modal { position: fixed; bottom: -100%; left: 0; width: 100%; background: var(--card); border-radius: 24px 24px 0 0; padding: 24px 20px; padding-bottom: calc(24px + env(safe-area-inset-bottom)); transition: bottom 0.3s cubic-bezier(0.25, 1, 0.5, 1); z-index: 1001; box-shadow: 0 -4px 20px rgba(0,0,0,0.1); display: flex; flex-direction: column; max-height: 95dvh; }
-.intro-box { background: rgba(142, 142, 147, 0.12); color: var(--sub); padding: 14px 16px; border-radius: 14px; font-size: 14.5px; font-weight: 500; margin-bottom: 16px; }
+.intro-box { background: rgba(142, 142, 147, 0.14); color: #48484a; border-left: 3px solid rgba(142, 142, 147, 0.45); padding: 14px 16px; border-radius: 14px; font-size: 14.5px; line-height: 1.45; font-weight: 500; margin-bottom: 16px; }
 .modal-desc { font-size: 15px; var(--text); line-height: 1.4; margin-bottom: 16px; overflow-y: auto; flex-shrink: 1; padding-right: 4px; /*box-shadow: inset 0 -24px 20px -24px rgba(0,0,0,0.12); */padding-bottom: 16px; }
 .modal.show { bottom: 0; }
 .modal-close { position: absolute; top: 16px; right: 16px; width: 32px; height: 32px; background: var(--bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--sub); transition: background 0.2s; }
@@ -298,7 +298,7 @@ body {
 .c-img-logo { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; border-radius: 10px; object-fit: cover; }
 .c-title { font-size: 18px; font-weight: 700; margin-bottom: 4px; width: 80%; }
 .c-stat { font-size: 24px; font-weight: 800; color: var(--accent); margin: 12px 0; }
-.c-desc { font-size: 13px; color: var(--sub); }
+.c-desc { font-size: 13px; color: #636366; }
 .contact-btn { display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--card); color: var(--text); padding: 16px; border-radius: var(--radius); font-size: 17px; font-weight: 600; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
 .client-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--sep); font-size: 15px; font-weight: 500; }
 .client-item:last-child { border-bottom: none; }
@@ -735,6 +735,32 @@ body.no-scroll {
 .plan-note { display: none; align-items: flex-start; gap: 10px; background: rgba(255, 184, 32, 0.14); border-radius: 14px; padding: 12px 14px; margin: 0 0 12px; font-size: 13px; line-height: 1.35; font-weight: 500; flex-shrink: 0; animation: popIn 0.25s ease; }
 .plan-note.show { display: flex; }
 .plan-note .material-symbols-rounded { font-size: 20px; color: #c28a00; flex-shrink: 0; }
+
+/* ---- Нові елементи ---- */
+.in-title .new-badge { font-size: 18px; margin-left: -6px; }
+.pack-title { font-weight: 700; }
+
+/* ---- Сторінка «Важливо» ---- */
+.doc-title { font-size: 20px; font-weight: 700; line-height: 1.25; letter-spacing: -0.3px; margin: 0 0 12px; }
+.doc-card { background: var(--card); border-radius: var(--radius); padding: 18px 16px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+.doc-h { display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; margin-bottom: 10px; color: var(--text); }
+.doc-h .material-symbols-rounded { font-size: 20px; flex-shrink: 0; }
+.doc-sub { font-size: 14.5px; font-weight: 600; margin: 16px 0 6px; color: var(--text); }
+.doc-p { font-size: 14.5px; line-height: 1.45; color: #3a3a3c; margin-bottom: 10px; }
+.doc-card .doc-p:last-child { margin-bottom: 0; }
+.doc-list { padding-left: 20px; margin: 0 0 10px; font-size: 14.5px; line-height: 1.45; color: #3a3a3c; }
+.doc-list li { margin-bottom: 6px; }
+.doc-note { background: rgba(255, 184, 32, 0.14); border-radius: 12px; padding: 10px 12px; font-size: 14px; line-height: 1.4; color: #3a3a3c; margin-bottom: 10px; }
+.doc-link { color: #007aff; text-decoration: none; font-weight: 500; }
+
+/* ---- Віконце при запуску ---- */
+.launch-wrap { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.45); z-index: 1100; display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+.launch-wrap.show { opacity: 1; pointer-events: auto; }
+.launch-wrap .promo-banner { margin: 0; width: 100%; max-width: 420px; transform: translateY(16px) scale(0.97); transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1); }
+.launch-wrap.show .promo-banner { transform: none; }
+.launch-actions { display: flex; align-items: center; gap: 12px; }
+.launch-skip { color: rgba(255,255,255,0.75); font-size: 14.5px; font-weight: 600; cursor: pointer; padding: 12px 8px; }
+.launch-skip:active { opacity: 0.6; }
 </style>
 </head>
 <body>
@@ -856,6 +882,14 @@ body.no-scroll {
             </div>
             <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
+
+        <div class="main-btn" onclick="nav('page-important')">
+            <div class="btn-icon"><span class="material-symbols-rounded">priority_high</span></div>
+            <div class="btn-content">
+                <div class="btn-title">Важливо</div>
+            </div>
+            <span class="material-symbols-rounded arrow">chevron_right</span>
+        </div>
     </div>
 
     <div class="contact-btn" onclick="tg.openTelegramLink('https://t.me/valkysho_bot')">
@@ -931,6 +965,11 @@ body.no-scroll {
         </div>
     </div>
 
+    <div class="in-btn" onclick="openModal('Реклама в боті', document.getElementById('baz-bot-html').innerHTML, '100 ₴', 'baz_bot', false)">
+        <div class="in-title"><span class="material-symbols-rounded" style="color: #ff9500;">smart_toy</span> Реклама в боті <span class="material-symbols-rounded new-badge">fiber_new</span></div>
+        <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+    </div>
+
     <div class="in-btn disabled">
     <div class="in-title">
         <span class="material-symbols-rounded" style="color: #ec4899;">push_pin</span>
@@ -946,7 +985,7 @@ body.no-scroll {
         <div class="back-btn" onclick="nav('page-bazar')"><span class="material-symbols-rounded">arrow_back</span></div>
         <div class="nav-title">Ліміти</div>
     </div>
-    <div style="font-weight: 600; margin: 16px 0 12px; color: var(--sub);">Збільшити свій ліміт оголошень в групі «Валківський Базарчик»</div>
+    <div class="intro-box">Збільшити свій ліміт оголошень в групі «Валківський Базарчик»</div>
     
     <div class="card-group">
         <div class="in-btn" onclick="openModal('Pro', document.getElementById('baz-pro-html').innerHTML, '150 ₴ / 3 місяці', 'baz_pro', false)">
@@ -1035,7 +1074,12 @@ body.no-scroll {
             <div class="in-title"><span class="material-symbols-rounded">ads_click</span> Кнопка в боті</div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
-        <div class="in-btn" onclick="openModal('Діалог в чаті', document.getElementById('chat-dialog-html').innerHTML, '250 ₴', 'chat_dialog', false)">
+        <div class="in-btn" onclick="openModal('Реклама в боті', document.getElementById('chat-bot-html').innerHTML, '250 ₴', 'chat_bot', false)">
+        <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">smart_toy</span> Реклама в боті <span class="material-symbols-rounded new-badge">fiber_new</span></div>
+        <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+    </div>
+
+    <div class="in-btn" onclick="openModal('Діалог в чаті', document.getElementById('chat-dialog-html').innerHTML, '250 ₴', 'chat_dialog', false)">
     <div class="in-title"><span class="material-symbols-rounded">forum</span> Діалог в чаті</div>
     <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
 </div>
@@ -1054,15 +1098,19 @@ body.no-scroll {
     </div>
     <div class="card-group">
         <div class="in-btn" onclick="openModal('Стандарт+', document.getElementById('pack-std-plus-html').innerHTML, '400 ₴', 'pack_std_plus')">
-            <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">layers</span> Стандарт+</div>
+            <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">layers</span> <span class="pack-title" style="color: #007aff;">Стандарт+</span></div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
         <div class="in-btn" onclick="openModal('Базарчик+', document.getElementById('pack-baz-plus-html').innerHTML, '400 ₴', 'pack_baz_plus')">
-            <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">layers</span> Базарчик+</div>
+            <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">layers</span> <span class="pack-title" style="color: #af52de;">Базарчик+</span></div>
+            <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+        </div>
+        <div class="in-btn" onclick="openModal('Реклама в ботах+', document.getElementById('pack-bots-plus-html').innerHTML, '400 ₴', 'pack_bots_plus')">
+            <div class="in-title"><span class="material-symbols-rounded" style="color: #ff2d55;">layers</span> <span class="pack-title" style="color: #ff2d55;">Реклама в ботах+</span> <span class="material-symbols-rounded new-badge">fiber_new</span></div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
         <div class="in-btn" onclick="openModal('Кастомний', document.getElementById('pack-custom-html').innerHTML, '...', 'pack_custom')">
-            <div class="in-title"><span class="material-symbols-rounded" style="color: #1a1a1c;">dashboard_customize</span> Кастомний</div>
+            <div class="in-title"><span class="material-symbols-rounded" style="color: #1a1a1c;">dashboard_customize</span> <span class="pack-title">Кастомний</span></div>
             <div class="in-action">Домовитись <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
         <div class="in-btn disabled">
@@ -1439,15 +1487,19 @@ body.no-scroll {
         </div>
         <div class="card-group">
             <div class="in-btn" onclick="openModal('Стандарт+', document.getElementById('pack-std-plus-html').innerHTML, '400 ₴', 'pack_std_plus')">
-                <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">layers</span> Стандарт+</div>
+                <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">layers</span> <span class="pack-title" style="color: #007aff;">Стандарт+</span></div>
                 <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
             </div>
             <div class="in-btn" onclick="openModal('Базарчик+', document.getElementById('pack-baz-plus-html').innerHTML, '400 ₴', 'pack_baz_plus')">
-                <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">layers</span> Базарчик+</div>
+                <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">layers</span> <span class="pack-title" style="color: #af52de;">Базарчик+</span></div>
                 <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
             </div>
-            <div class="in-btn" onclick="openModal('Кастомний', document.getElementById('pack-custom-html').innerHTML, '...', 'pack_custom')">
-                <div class="in-title"><span class="material-symbols-rounded" style="color: #1a1a1c;">dashboard_customize</span> Кастомний</div>
+            <div class="in-btn" onclick="openModal('Реклама в ботах+', document.getElementById('pack-bots-plus-html').innerHTML, '400 ₴', 'pack_bots_plus')">
+            <div class="in-title"><span class="material-symbols-rounded" style="color: #ff2d55;">layers</span> <span class="pack-title" style="color: #ff2d55;">Реклама в ботах+</span> <span class="material-symbols-rounded new-badge">fiber_new</span></div>
+            <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+        </div>
+        <div class="in-btn" onclick="openModal('Кастомний', document.getElementById('pack-custom-html').innerHTML, '...', 'pack_custom')">
+                <div class="in-title"><span class="material-symbols-rounded" style="color: #1a1a1c;">dashboard_customize</span> <span class="pack-title">Кастомний</span></div>
                 <div class="in-action">Домовитись <span class="material-symbols-rounded arrow">chevron_right</span></div>
             </div>
         </div>
@@ -1568,6 +1620,118 @@ body.no-scroll {
     </div>
 </div>
 
+<div id="page-important" class="page">
+    <div class="nav-bar">
+        <div class="back-btn" onclick="nav('home')"><span class="material-symbols-rounded">arrow_back</span></div>
+        <div class="nav-title">Важливо</div>
+    </div>
+    <div class="doc-title">Важливо: правила та умови надання рекламних послуг</div>
+    <div class="intro-box">Тут зібрані основні умови замовлення, оплати та розміщення реклами в наших Telegram-ресурсах. Будь ласка, ознайомтеся з ними перед оформленням замовлення.</div>
+
+    <div class="doc-card">
+        <div class="doc-h"><span class="material-symbols-rounded" style="color: #34c759;">payments</span> 1. Ціни та способи оплати</div>
+        <div class="doc-p">Актуальні ціни на рекламні послуги, доступні тарифи та умови їх надання зазначені в нашому міні-додатку <a class="doc-link" href="https://t.me/vlkrek_bot" onclick="tg.openTelegramLink(this.href);return false;">@vlkrek_bot</a>.</div>
+        <div class="doc-p">Ціни можуть змінюватися, але якщо ви вже оплатили послугу, для вашого замовлення зберігається ціна, яка діяла на момент оплати.</div>
+        <div class="doc-p">Оплата здійснюється у форматі донату на підтримку наших ресурсів. Залежно від послуги та доступних способів оплати, ви можете скористатися українським сервісом Donatello або здійснити переказ на банківську картку.</div>
+        <div class="doc-sub">Донати на місцеві волонтерські збори</div>
+        <div class="doc-p">Для деяких рекламних послуг доступна можливість часткової або повної оплати донатом на будь-який місцевий волонтерський збір.</div>
+        <div class="doc-p">Умови участі та розмір знижки, якщо вона передбачена, зазначені в міні-додатку біля відповідної послуги.</div>
+        <div class="doc-p">Щоб скористатися цією можливістю:</div>
+        <ol class="doc-list">
+            <li>Зробіть донат на обраний місцевий волонтерський збір.</li>
+            <li>Укажіть в описі платежу «ВШТ реклама».</li>
+            <li>Зробіть скриншот підтвердження оплати та надішліть його адміністраторам через <a class="doc-link" href="https://t.me/valkysho_bot" onclick="tg.openTelegramLink(this.href);return false;">@valkysho_bot</a>.</li>
+        </ol>
+        <div class="doc-p">Після перевірки платежу ми підтвердимо можливість застосування відповідних умов до вашого замовлення.</div>
+        <div class="doc-note"><b>Зверніть увагу:</b> часткова або повна оплата донатом на волонтерський збір доступна лише для тих послуг, де ця можливість зазначена в міні-додатку.</div>
+        <div class="doc-sub">Знижки для військовослужбовців та їхніх рідних</div>
+        <div class="doc-p">На всі рекламні послуги для військовослужбовців та їхніх рідних діє знижка 50%.</div>
+        <div class="doc-p">Для отримання знижки напишіть адміністраторам через <a class="doc-link" href="https://t.me/valkysho_bot" onclick="tg.openTelegramLink(this.href);return false;">@valkysho_bot</a> перед оплатою. У більшості випадків достатньо буде підтвердити свій статус у приватному листуванні. Ми не вимагатимемо зберігати або надсилати зайві персональні дані.</div>
+        <div class="doc-sub">Безкоштовний тариф Pro для військовослужбовців та їхніх рідних</div>
+        <div class="doc-p">Військовослужбовці та їхні рідні можуть отримати тариф Pro у групі «Валківський Базарчик» безкоштовно один раз на календарний рік.</div>
+        <div class="doc-p">Для цього зверніться до адміністраторів через <a class="doc-link" href="https://t.me/valkysho_bot" onclick="tg.openTelegramLink(this.href);return false;">@valkysho_bot</a>. Після підтвердження права на отримання тарифу ми активуємо його безкоштовно.</div>
+        <div class="doc-p">Ця пропозиція передбачає одне безкоштовне підключення на рік для одного отримувача та не обмінюється на грошові кошти.</div>
+    </div>
+    <div class="doc-card">
+        <div class="doc-h"><span class="material-symbols-rounded" style="color: #af52de;">bolt_boost</span> 2. Збільшення ліміту оголошень у «Валківському Базарчику»</div>
+        <div class="doc-p">Для користувачів, які бажають публікувати більше оголошень у групі «Валківський Базарчик», доступні платні тарифи Lite та Pro.</div>
+        <div class="doc-p">Зазвичай ми підключаємо обраний тариф одразу після отримання донату.</div>
+        <div class="doc-p">Якщо підключити тариф одразу неможливо, ми зв’яжемося з вами та повідомимо про ситуацію.</div>
+        <div class="doc-p">Якщо ви оплатили тариф, але він не активувався, з вами не зв’язалися або виникла інша проблема, зверніться до адміністраторів через <a class="doc-link" href="https://t.me/valkysho_bot" onclick="tg.openTelegramLink(this.href);return false;">@valkysho_bot</a>.</div>
+    </div>
+    <div class="doc-card">
+        <div class="doc-h"><span class="material-symbols-rounded" style="color: #ff9500;">splitscreen_top</span> 3. Послуга «Власна гілка» у «Валківському Базарчику»</div>
+        <div class="doc-p">Послуга «Власна гілка» передбачає створення та налаштування окремої гілки для ваших оголошень у групі «Валківський Базарчик».</div>
+        <div class="doc-p">Зазвичай ми попередньо обговорюємо деталі та налаштування з вами, щоб узгодити формат послуги до оплати. Після погодження умов та отримання донату ми надаємо вам доступ до гілки.</div>
+        <div class="doc-p">Якщо надати доступ одразу неможливо, ми зв’яжемося з вами та повідомимо про ситуацію.</div>
+        <div class="doc-p">Якщо ви оплатили послугу, але гілку не створено, доступ не надано або виникли інші проблеми, зверніться до адміністраторів через <a class="doc-link" href="https://t.me/valkysho_bot" onclick="tg.openTelegramLink(this.href);return false;">@valkysho_bot</a>.</div>
+    </div>
+    <div class="doc-card">
+        <div class="doc-h"><span class="material-symbols-rounded" style="color: #007aff;">cards_stack</span> 4. Рекламні пакети та розміщення реклами</div>
+        <div class="doc-p">Якщо ви замовили рекламний пакет або окреме розміщення реклами в наших Telegram-групах чи каналах і здійснили оплату, ми зобов’язуємося зв’язатися з вами протягом 24 годин.</div>
+        <div class="doc-p">Ми уточнимо необхідні деталі замовлення, зокрема формат реклами, матеріали для публікації та бажаний час розміщення, якщо це передбачено обраною послугою.</div>
+        <div class="doc-p">Строки та умови публікації залежать від конкретного рекламного пакета й попередніх домовленостей.</div>
+        <div class="doc-p">Якщо після оплати з вами не зв’язалися протягом зазначеного строку, зверніться до адміністраторів через <a class="doc-link" href="https://t.me/valkysho_bot" onclick="tg.openTelegramLink(this.href);return false;">@valkysho_bot</a>.</div>
+        <div class="doc-note"><b>Зверніть увагу:</b> оплата не гарантує автоматичного погодження будь-якого рекламного матеріалу. Реклама має відповідати правилам наших ресурсів.</div>
+    </div>
+    <div class="doc-card">
+        <div class="doc-h"><span class="material-symbols-rounded" style="color: #32ade6;">currency_exchange</span> 5. Повернення коштів</div>
+        <div class="doc-p">Ми намагаємося вирішувати проблеми із замовленнями та знаходити рішення, яке влаштує обидві сторони.</div>
+        <div class="doc-sub">Якщо ми не можемо надати оплачену послугу</div>
+        <div class="doc-p">Якщо через технічні чи інші обставини ми не можемо надати оплачену послугу, ми повідомимо вас про ситуацію та можливі варіанти її вирішення.</div>
+        <div class="doc-p">Якщо ви не бажаєте очікувати на вирішення проблеми, ви можете звернутися із запитом на повернення коштів за ненадану послугу.</div>
+        <div class="doc-p">Повернення здійснюється протягом 3–14 календарних днів після погодження повернення.</div>
+        <div class="doc-sub">Якщо ви випадково сплатили більше</div>
+        <div class="doc-p">Якщо ви випадково переказали суму, яка перевищує вартість замовленої послуги, ми повернемо різницю.</div>
+        <div class="doc-p">Строк повернення становить від 3 до 20 календарних днів залежно від суми та обставин платежу.</div>
+        <div class="doc-sub">Як оформити повернення</div>
+        <div class="doc-p">Напишіть адміністраторам через <a class="doc-link" href="https://t.me/valkysho_bot" onclick="tg.openTelegramLink(this.href);return false;">@valkysho_bot</a>, коротко опишіть ситуацію та додайте:</div>
+        <ul class="doc-list">
+            <li>підтвердження оплати;</li>
+            <li>суму, яку необхідно повернути;</li>
+            <li>реквізити для повернення коштів.</li>
+        </ul>
+        <div class="doc-p">За потреби ми можемо попросити додаткову інформацію, необхідну для перевірки платежу.</div>
+        <div class="doc-p">Строк повернення відраховується після погодження повернення та отримання необхідних даних.</div>
+        <div class="doc-sub">У яких випадках кошти не повертаються</div>
+        <div class="doc-p">Якщо ви самостійно обрали та оплатили послугу, яка відповідає опису в міні-додатку, але згодом вирішили, що вона вам не підходить, це саме по собі не є підставою для повернення коштів за вже надану послугу.</div>
+        <div class="doc-p">Перед оплатою рекомендуємо уважно ознайомитися з описом, умовами та вартістю послуги. Якщо щось незрозуміло, зверніться до адміністраторів — ми допоможемо розібратися.</div>
+        <div class="doc-p">Якщо після оплати ви зрозуміли, що обраний формат вам не підходить, ми можемо запропонувати альтернативну послугу з доступних варіантів за погодженням із вами.</div>
+    </div>
+    <div class="doc-card">
+        <div class="doc-h"><span class="material-symbols-rounded" style="color: #ff3b30;">block</span> 6. Яку рекламу ми не розміщуємо</div>
+        <div class="doc-p">Ми не рекламуємо:</div>
+        <ul class="doc-list">
+            <li>Казино, букмекерські контори та інші азартні ігри.</li>
+            <li>Криптовалютні проєкти, біржі та пов’язані з ними рекламні пропозиції.</li>
+            <li>Російські сервіси, компанії та проєкти, рекламу яких ми не підтримуємо.</li>
+            <li>Шахрайські схеми, сумнівні фінансові пропозиції та матеріали, що можуть вводити користувачів в оману.</li>
+            <li>Інші товари, послуги або проєкти, які суперечать правилам наших ресурсів.</li>
+        </ul>
+        <div class="doc-p">Ми також залишаємо за собою право відмовити в розміщенні реклами, якщо її зміст або оформлення не відповідають правилам відповідної групи чи каналу.</div>
+        <div class="doc-p">Якщо ми відмовляємо в розміщенні вже оплаченої реклами, питання повернення коштів за ненадану послугу вирішується відповідно до розділу «Повернення коштів».</div>
+    </div>
+    <div class="doc-card">
+        <div class="doc-h"><span class="material-symbols-rounded" style="color: #8e8e93;">gavel</span> 7. Відповідальність за рекламні матеріали</div>
+        <div class="doc-p">Замовник відповідає за достовірність інформації, наданої для розміщення реклами, а також за наявність необхідних прав на використання переданих текстів, фотографій, відео, логотипів та інших матеріалів.</div>
+        <div class="doc-p">Ми можемо попросити виправити або замінити матеріали, якщо вони містять неправдиву інформацію, порушують правила наших ресурсів або можуть вводити користувачів в оману.</div>
+        <div class="doc-p">Якщо для підготовки реклами потрібні додаткові матеріали від замовника, строк виконання замовлення може збільшитися.</div>
+    </div>
+    <div class="doc-card">
+        <div class="doc-h"><span class="material-symbols-rounded" style="color: #ff9500;">update</span> 8. Зміни в роботі сервісу</div>
+        <div class="doc-p">Ми можемо змінювати вартість послуг, доступні тарифи, формати реклами та інші умови роботи наших ресурсів.</div>
+        <div class="doc-p">Актуальна інформація публікується в міні-додатку <a class="doc-link" href="https://t.me/vlkrek_bot" onclick="tg.openTelegramLink(this.href);return false;">@vlkrek_bot</a>.</div>
+        <div class="doc-p">Зміни цін не впливають на вже оплачені замовлення.</div>
+        <div class="doc-p">У разі технічних проблем, збоїв у роботі Telegram або інших обставин, які перешкоджають наданню послуги, ми повідомимо вас про ситуацію та намагатимемося знайти прийнятне рішення.</div>
+    </div>
+    <div class="doc-card">
+        <div class="doc-h"><span class="material-symbols-rounded" style="color: #34c759;">support_agent</span> 9. Зв’язок з адміністрацією</div>
+        <div class="doc-p">Якщо у вас виникли питання щодо оплати, замовлення, тарифів, розміщення реклами або повернення коштів, звертайтеся до адміністраторів через <a class="doc-link" href="https://t.me/valkysho_bot" onclick="tg.openTelegramLink(this.href);return false;">@valkysho_bot</a>.</div>
+        <div class="doc-p">Будь ласка, за можливості додавайте до звернення опис проблеми та підтвердження оплати. Це допоможе нам швидше розглянути вашу ситуацію.</div>
+        <div class="doc-p">Дякуємо, що підтримуєте наші ресурси та користуєтеся нашими послугами!</div>
+    </div>
+</div>
+
 <div id="page-checkout" class="page">
     <div class="nav-bar">
         <div class="back-btn" onclick="nav(lastPage)"><span class="material-symbols-rounded">arrow_back</span></div>
@@ -1602,6 +1766,22 @@ body.no-scroll {
 </div>
 
 
+<div class="launch-wrap" id="launch-offer">
+    <div class="promo-banner promo-purple">
+        <div class="promo-close" onclick="launchOfferHide(false)">
+            <span class="material-symbols-rounded" style="font-size: 16px;">close</span>
+        </div>
+        <div class="promo-eyebrow">💟 Валківський Базарчик</div>
+        <div class="promo-title">Збільшити ліміт у групі «Валківський Базарчик»</div>
+        <div class="promo-desc">Тариф <b>Pro</b>: 50+ оголошень на місяць і жодних перевірок від бота.</div>
+        <div class="promo-meta">Від 150 ₴ на 3 місяці</div>
+        <div class="launch-actions">
+            <div class="promo-btn" onclick="launchOfferOpenPro()">Переглянути Pro</div>
+            <div class="launch-skip" onclick="launchOfferHide(true)">Не цікаво</div>
+        </div>
+    </div>
+</div>
+
 <div id="dev-toast" class="toast-msg">Наразі в розробці. Очікуйте оновлень. 🛠️</div>
 <div class="overlay" id="modal-overlay" onclick="closeModal()"></div>
 <div class="modal" id="dynamic-modal">
@@ -1635,6 +1815,7 @@ body.no-scroll {
     <div class="client-item"><span class="material-symbols-rounded">school</span> Каразінський Університет <span class="mini-tag">1</span></div>
     <div class="client-item"><span class="material-symbols-rounded">school</span> ХПІ <span class="mini-tag">1</span></div>
     <div class="client-item"><span class="material-symbols-rounded">thread_unread</span> Магазин «Пряжа» <span class="mini-tag">1</span></div>
+    <div class="client-item"><span class="material-symbols-rounded">kebab_dining</span> Магазин «Мʼясний Барон» <span class="mini-tag">1</span></div>
 </div>
 <div id="baz-branch-std-html" style="display: none;">
     <div class="intro-box">Це ваш власний розділ в групі, який повністю належить вам протягом обраного терміну. По суті, це ваш міні-сайт і вітрина всередині Базарчика.</div>
@@ -1830,30 +2011,30 @@ body.no-scroll {
     <div style="font-size: 16px; font-weight: 600; margin: 16px 0 8px; display: flex; align-items: center; gap: 8px; color: var(--text);">
         <span class="material-symbols-rounded" style="color: #ff9500; font-size: 20px;">campaign</span> Вашу рекламу дійсно помітять
     </div>
-    <div style="font-size: 14.5px; color: var(--sub); line-height: 1.4; margin-bottom: 8px;">Наприклад, у чаті немає безкінечного потоку оголошень завдяки обмеженням на оголошення — саме тому ваша реклама не залишиться без уваги і не загубиться. Ми її закріпимо, а у разі, якщо час публікації потрапив у момент, коли в чаті почалось занадто активне спілкування, ми безкоштовно опублікуємо ваше оголошення знову.</div>
-    <div style="font-size: 14.5px; color: var(--sub); line-height: 1.4; margin-bottom: 20px;">А в групі «Валківський Базарчик» ви маєте можливість орендувати під свій бізнес цілу індивідуальну гілку, що також значно підвищує ефективність реклами.</div>
+    <div style="font-size: 14.5px; color: #3a3a3c; line-height: 1.4; margin-bottom: 8px;">Наприклад, у чаті немає безкінечного потоку оголошень завдяки обмеженням на оголошення — саме тому ваша реклама не залишиться без уваги і не загубиться. Ми її закріпимо, а у разі, якщо час публікації потрапив у момент, коли в чаті почалось занадто активне спілкування, ми безкоштовно опублікуємо ваше оголошення знову.</div>
+    <div style="font-size: 14.5px; color: #3a3a3c; line-height: 1.4; margin-bottom: 20px;">А в групі «Валківський Базарчик» ви маєте можливість орендувати під свій бізнес цілу індивідуальну гілку, що також значно підвищує ефективність реклами.</div>
 
     <div style="font-size: 16px; font-weight: 600; margin: 0 0 8px; display: flex; align-items: center; gap: 8px; color: var(--text);">
         <span class="material-symbols-rounded" style="color: #34c759; font-size: 20px;">group</span> Лояльна та зацікавлена авдиторія
     </div>
     <div style="display: flex; gap: 8px; margin-bottom: 8px; align-items: flex-start;">
-        <span style="color: var(--sub); font-size: 14.5px;">•</span>
-        <span style="font-size: 14.5px; color: var(--sub); line-height: 1.4;">Більшість (91%) опитаних лояльно ставляться до реклами на каналі/у наших групах.</span>
+        <span style="color: #3a3a3c; font-size: 14.5px;">•</span>
+        <span style="font-size: 14.5px; color: #3a3a3c; line-height: 1.4;">Більшість (91%) опитаних лояльно ставляться до реклами на каналі/у наших групах.</span>
     </div>
     <div style="display: flex; gap: 8px; margin-bottom: 20px; align-items: flex-start;">
-        <span style="color: var(--sub); font-size: 14.5px;">•</span>
-        <span style="font-size: 14.5px; color: var(--sub); line-height: 1.4;">Близько 80% підписників — це платоспроможна аудиторія в широкому віковому діапазоні від 20 і до 50+ років.</span>
+        <span style="color: #3a3a3c; font-size: 14.5px;">•</span>
+        <span style="font-size: 14.5px; color: #3a3a3c; line-height: 1.4;">Близько 80% підписників — це платоспроможна аудиторія в широкому віковому діапазоні від 20 і до 50+ років.</span>
     </div>
 
     <div style="font-size: 16px; font-weight: 600; margin: 0 0 8px; display: flex; align-items: center; gap: 8px; color: var(--text);">
         <span class="material-symbols-rounded" style="color: #007aff; font-size: 20px;">handshake</span> Індивідуальний підхід
     </div>
-    <div style="font-size: 14.5px; color: var(--sub); line-height: 1.4; margin-bottom: 20px;">Іноді недостаньо просто опублікувати оголошення. Ми пропонуємо цікаві і нестандартні для нашого невеликого міста варіанти реклами, які точно привернуть увагу і їх варто спробувати. Ми все підкажемо, пояснимо, допоможемо, уважно поставимося до ваших пропозицій і бажань.</div>
+    <div style="font-size: 14.5px; color: #3a3a3c; line-height: 1.4; margin-bottom: 20px;">Іноді недостаньо просто опублікувати оголошення. Ми пропонуємо цікаві і нестандартні для нашого невеликого міста варіанти реклами, які точно привернуть увагу і їх варто спробувати. Ми все підкажемо, пояснимо, допоможемо, уважно поставимося до ваших пропозицій і бажань.</div>
 
     <div style="font-size: 16px; font-weight: 600; margin: 0 0 8px; display: flex; align-items: center; gap: 8px; color: var(--text);">
         <span class="material-symbols-rounded" style="color: #ff2d55; font-size: 20px;">favorite</span> Допомога військовим
     </div>
-    <div style="font-size: 14.5px; color: var(--sub); line-height: 1.4;">Ви можете спрямувати частину (або навіть повністю всю суму) грошей за рекламу на будь-який місцевий волонтерський збір коштів на потреби наших військових.</div>
+    <div style="font-size: 14.5px; color: #3a3a3c; line-height: 1.4;">Ви можете спрямувати частину (або навіть повністю всю суму) грошей за рекламу на будь-який місцевий волонтерський збір коштів на потреби наших військових.</div>
 </div>
 
  <!--ВШТ>стандартне--> 
@@ -2282,6 +2463,69 @@ body.no-scroll {
     </div>
 </div>
 
+<!--Базарчик > реклама в боті-->
+<div id="baz-bot-html" style="display: none;">
+    <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">text_ad</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Розміщення вашого рекламного повідомлення та/або посилання у повідомленні від бота «Базарчик-бот».</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #34c759; flex-shrink: 0;">visibility</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Реклама постійно відображається в повідомленнях бота у групі.</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 0; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">calendar_clock</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Термін розміщення — 7 днів.</span>
+    </div>
+    <div style="font-weight: 600; margin: 20px 0 8px; color: var(--text);">Вам може бути цікаво:</div>
+    <div class="week-try" style="margin-top: 0;">
+        <div class="week-info">
+            <div class="week-title"><span class="material-symbols-rounded" style="color: #ff2d55;">layers</span> Рекламний пакет «Реклама в ботах+»</div>
+            <div class="week-desc">Публікація в чаті + реклама в обох ботах на 7 днів. Усього 400 ₴</div>
+        </div>
+        <div class="week-btn" onclick="closeModal(); setTimeout(() => openModal('Реклама в ботах+', document.getElementById('pack-bots-plus-html').innerHTML, '400 ₴', 'pack_bots_plus'), 300)">Детальніше</div>
+    </div>
+</div>
+
+<!--Чатік > реклама в боті-->
+<div id="chat-bot-html" style="display: none;">
+    <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">add_box</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Рекламну кнопку у щоденних повідомленнях бота двічі на день (вранці та ввечері) в групі «Валківський Чатік». Кнопка може вести на ваше оголошення, сторінку в соц. мережах, ваш контакт у Telegram тощо.</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 0; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">text_ad</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Розміщення оголошення в повідомленнях, які бот надсилає двічі на день — вранці та ввечері.</span>
+    </div>
+    <div style="font-weight: 600; margin: 20px 0 8px; color: var(--text);">Вам може бути цікаво:</div>
+    <div class="week-try" style="margin-top: 0;">
+        <div class="week-info">
+            <div class="week-title"><span class="material-symbols-rounded" style="color: #ff2d55;">layers</span> Рекламний пакет «Реклама в ботах+»</div>
+            <div class="week-desc">Публікація в чаті + реклама в обох ботах на 7 днів. Усього 400 ₴</div>
+        </div>
+        <div class="week-btn" onclick="closeModal(); setTimeout(() => openModal('Реклама в ботах+', document.getElementById('pack-bots-plus-html').innerHTML, '400 ₴', 'pack_bots_plus'), 300)">Детальніше</div>
+    </div>
+</div>
+
+<!--Пакет Реклама в ботах+-->
+<div id="pack-bots-plus-html" style="display: none;">
+    <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">send</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Стандартна публікація вашого оголошення у групі «Валківський Чатік».</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">add_box</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Рекламна кнопка з посиланням на рекламу в щоденних повідомленнях бота у групі «Валківський Чатік» на 7 днів (бот публікує повідомлення двічі на день — вранці та ввечері). Кнопка може вести на ваше оголошення, сторінку в соц. мережах, ваш контакт у Telegram тощо.</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 0; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0;">list_alt_add</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Розміщення вашого рекламного повідомлення та/або посилання у повідомленні від бота «Базарчик-бот» у групі «Валківський Базарчик» на 7 днів (реклама постійно відображається в повідомленнях бота у групі).</span>
+    </div>
+</div>
+
 <div id="pack-custom-html" style="display: none;">
     <div style="font-size: 14.5px; line-height: 1.4; margin-bottom: 12px;">🙂 Ви переглянули рекламні плани і знайшли те, що вас цікавить, але там чогось не вистачає або щось зайве?</div>
     <div style="font-size: 14.5px; line-height: 1.4; margin-bottom: 12px;">Не проблема. Ви можете самостійно обрати варіанти і ми складемо із них ваш індивідуальний план.</div>
@@ -2358,7 +2602,7 @@ function handleSmartTag() {
 // ---- Терміни та ціни (редагуй тут: [місяців, ціна ₴]) ----
 const PLANS = {
     baz_branch_std:  { options: [[1, 300], [2, 500], [3, 650]] },
-    baz_branch_prem: { options: [[1, 450], [2, 750], [3, 1000]], loyalty: 3 },
+    baz_branch_prem: { options: [[1, 450], [2, 750], [3, 950]], loyalty: 3 },
     baz_pro:         { options: [[3, 150], [6, 250], [12, 450]] }
 };
 let modalPlan = null;
@@ -2588,7 +2832,7 @@ function processFinalAction() {
 
     if (name.includes('Безлім') || name === 'Pro' || name === 'Lite') {
         msg = `Вітаю! Хочу замовити ${name} у групі Валківський Базарчик`;
-    } else if (name.toLowerCase().includes('пакет')) {
+    } else if (name.toLowerCase().includes('пакет') || name.includes('ботах+')) {
         msg = `Вітаю! Хочу замовити рекламу. Мене цікавить рекламний пакет «${name}»`;
     } else {
         msg = `Вітаю! Хочу замовити рекламу. Мене цікавить варіант ${name} ${plat}`;
@@ -2741,6 +2985,32 @@ function quizGoBack() {
     nav('home');
 }
 
+
+
+// ---- Віконце при запуску: пропозиція Pro ----
+const LAUNCH_KEY = 'vsht_launch_offer_until';
+function launchOfferHide(snooze) {
+    document.getElementById('launch-offer').classList.remove('show');
+    document.body.classList.remove('no-scroll');
+    if (snooze) {
+        try { localStorage.setItem(LAUNCH_KEY, String(Date.now() + 7 * 24 * 3600 * 1000)); } catch (e) {}
+    }
+}
+function launchOfferOpenPro() {
+    launchOfferHide(false);
+    nav('page-limits');
+    setTimeout(() => openModal('Pro', document.getElementById('baz-pro-html').innerHTML, '150 ₴ / 3 місяці', 'baz_pro', false), 300);
+}
+window.addEventListener('load', () => {
+    let until = 0;
+    try { until = parseInt(localStorage.getItem(LAUNCH_KEY) || '0', 10) || 0; } catch (e) {}
+    if (Date.now() < until) return;
+    setTimeout(() => {
+        if (!document.getElementById('home').classList.contains('active')) return;
+        document.getElementById('launch-offer').classList.add('show');
+        document.body.classList.add('no-scroll');
+    }, 600);
+});
 
 </script>
 <div id="global-smart-tag" class="smart-tag" onclick="handleSmartTag()">
