@@ -294,7 +294,7 @@ body {
 .secondary-btn { width: 100%; background: #f2f2f7; color: var(--text); border: none; padding: 16px; border-radius: 16px; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 8px; }
 .carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; padding-bottom: 12px; scrollbar-width: none; }
 .carousel::-webkit-scrollbar { display: none; }
-.carousel-card { flex: 0 0 85%; scroll-snap-align: center; background: var(--card); border-radius: 20px; padding: 20px; position: relative; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+.carousel-card { cursor: pointer; flex: 0 0 85%; scroll-snap-align: center; background: var(--card); border-radius: 20px; padding: 20px; position: relative; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
 .c-img-logo { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; border-radius: 10px; object-fit: cover; }
 .c-title { font-size: 18px; font-weight: 700; margin-bottom: 4px; width: 80%; }
 .c-stat { font-size: 24px; font-weight: 800; color: var(--accent); margin: 12px 0; }
@@ -738,7 +738,6 @@ body.no-scroll {
 
 /* ---- Нові елементи ---- */
 .in-title .new-badge { font-size: 18px; margin-left: -6px; }
-.pack-title { font-weight: 700; }
 
 /* ---- Сторінка «Важливо» ---- */
 .doc-title { font-size: 20px; font-weight: 700; line-height: 1.25; letter-spacing: -0.3px; margin: 0 0 12px; }
@@ -1054,7 +1053,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
     
     <div class="card-group">
         <div class="in-btn" onclick="openModal('Pro', document.getElementById('baz-pro-html').innerHTML, '150 ₴ / 3 місяці', 'baz_pro', false)">
-            <div class="in-title" style="display: flex; align-items: center; gap: 6px;"><span class="material-symbols-rounded" style="color: #007aff;">workspace_premium</span><span style="color: #007aff; font-weight: 700;">Pro</span></div>
+            <div class="in-title" style="display: flex; align-items: center; gap: 6px;"><span class="material-symbols-rounded gold-crown">workspace_premium</span><span class="gold-crown" style="font-weight: 700;">Pro</span></div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
         
@@ -1163,19 +1162,19 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
     </div>
     <div class="card-group">
         <div class="in-btn" onclick="openModal('Стандарт+', document.getElementById('pack-std-plus-html').innerHTML, '400 ₴', 'pack_std_plus')">
-            <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">layers</span> <span class="pack-title" style="color: #007aff;">Стандарт+</span></div>
+            <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">layers</span> Стандарт+</div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
         <div class="in-btn" onclick="openModal('Базарчик+', document.getElementById('pack-baz-plus-html').innerHTML, '400 ₴', 'pack_baz_plus')">
-            <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">layers</span> <span class="pack-title" style="color: #af52de;">Базарчик+</span></div>
+            <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">layers</span> Базарчик+</div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
         <div class="in-btn" onclick="openModal('Реклама в ботах+', document.getElementById('pack-bots-plus-html').innerHTML, '400 ₴', 'pack_bots_plus')">
-            <div class="in-title"><span class="material-symbols-rounded" style="color: #ff2d55;">layers</span> <span class="pack-title" style="color: #ff2d55;">Реклама в ботах+</span> <span class="material-symbols-rounded new-badge">fiber_new</span></div>
+            <div class="in-title"><span class="material-symbols-rounded" style="color: #ff2d55;">layers</span> Реклама в ботах+ <span class="material-symbols-rounded new-badge">fiber_new</span></div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
         <div class="in-btn" onclick="openModal('Кастомний', document.getElementById('pack-custom-html').innerHTML, '...', 'pack_custom')">
-            <div class="in-title"><span class="material-symbols-rounded" style="color: #1a1a1c;">dashboard_customize</span> <span class="pack-title">Кастомний</span></div>
+            <div class="in-title"><span class="material-symbols-rounded" style="color: #1a1a1c;">dashboard_customize</span> Кастомний</div>
             <div class="in-action">Домовитись <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
         <div class="in-btn disabled">
@@ -1457,7 +1456,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
             </div>
             <div class="card-group">
                 <div class="in-btn" onclick="openModal('Pro', document.getElementById('baz-pro-html').innerHTML, '150 ₴ / 3 місяці', 'baz_pro', false)">
-                    <div class="in-title"><span class="material-symbols-rounded" style="color: #3b82f6;">workspace_premium</span> Тариф Pro</div>
+                    <div class="in-title"><span class="material-symbols-rounded gold-crown">workspace_premium</span> Тариф Pro</div>
                     <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
                 </div>
             </div>
@@ -1552,19 +1551,19 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
         </div>
         <div class="card-group">
             <div class="in-btn" onclick="openModal('Стандарт+', document.getElementById('pack-std-plus-html').innerHTML, '400 ₴', 'pack_std_plus')">
-                <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">layers</span> <span class="pack-title" style="color: #007aff;">Стандарт+</span></div>
+                <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">layers</span> Стандарт+</div>
                 <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
             </div>
             <div class="in-btn" onclick="openModal('Базарчик+', document.getElementById('pack-baz-plus-html').innerHTML, '400 ₴', 'pack_baz_plus')">
-                <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">layers</span> <span class="pack-title" style="color: #af52de;">Базарчик+</span></div>
+                <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">layers</span> Базарчик+</div>
                 <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
             </div>
             <div class="in-btn" onclick="openModal('Реклама в ботах+', document.getElementById('pack-bots-plus-html').innerHTML, '400 ₴', 'pack_bots_plus')">
-            <div class="in-title"><span class="material-symbols-rounded" style="color: #ff2d55;">layers</span> <span class="pack-title" style="color: #ff2d55;">Реклама в ботах+</span> <span class="material-symbols-rounded new-badge">fiber_new</span></div>
+            <div class="in-title"><span class="material-symbols-rounded" style="color: #ff2d55;">layers</span> Реклама в ботах+ <span class="material-symbols-rounded new-badge">fiber_new</span></div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
         <div class="in-btn" onclick="openModal('Кастомний', document.getElementById('pack-custom-html').innerHTML, '...', 'pack_custom')">
-                <div class="in-title"><span class="material-symbols-rounded" style="color: #1a1a1c;">dashboard_customize</span> <span class="pack-title">Кастомний</span></div>
+                <div class="in-title"><span class="material-symbols-rounded" style="color: #1a1a1c;">dashboard_customize</span> Кастомний</div>
                 <div class="in-action">Домовитись <span class="material-symbols-rounded arrow">chevron_right</span></div>
             </div>
         </div>
@@ -1664,19 +1663,19 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
     </div>
     
     <div class="carousel" id="info-carousel">
-        <div class="carousel-card"> 
+        <div class="carousel-card" onclick="openResource('bazar')"> 
             <img src="assets/vb.PNG" alt="" class="c-img-logo">
             <div class="c-title">Базарчик</div>
             <div class="c-stat">8K</div>
             <div class="c-desc">Найбільша Telegram-група для оголошень у громаді.</div>
         </div>
-        <div class="carousel-card">
+        <div class="carousel-card" onclick="openResource('vsht')">
             <img src="assets/vsht.PNG" alt="" class="c-img-logo">
             <div class="c-title">Валки, шо там?</div>
             <div class="c-stat">5К</div>
             <div class="c-desc">Телеграм-канал</div>
         </div>
-        <div class="carousel-card">
+        <div class="carousel-card" onclick="openResource('chatik')">
             <img src="assets/vch.PNG" alt="" class="c-img-logo">
             <div class="c-title">Чатік</div>
             <div class="c-stat">5.7K</div>
@@ -2133,15 +2132,15 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
     <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">sticky_note</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Ми публікуємо ваше готове оголошення на каналі.</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Ми публікуємо <b>ваше готове оголошення</b> на каналі.</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">calendar_clock</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Час публікації обираєте самостійно.</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Час публікації</b> обираєте самостійно.</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0;">keep</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Закріплення оголошення на 24 години.</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Закріплення</b> оголошення на 24 години.</span>
     </div>
     <div class="donation-block">
         <span class="material-symbols-rounded" style="flex-shrink: 0;">loyalty</span>
@@ -2155,15 +2154,15 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
     <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">article_shortcut</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Не просто реклама, а пост, який виглядає як нормальний корисний контент. Ми пишемо текст у форматі новини або підбірки, який повʼязаний з вашим бізнесом/послугою/товарами, і який читають як «о, цікаво», а не «о, знову реклама» — і ненавʼязливо додаємо вашу пропозицію. Це також може бути топ товарів / послуг.</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Не просто реклама, а пост, який виглядає як нормальний корисний контент.</b> Ми пишемо текст у форматі новини або підбірки, який повʼязаний з вашим бізнесом/послугою/товарами, і який читають як «о, цікаво», а не «о, знову реклама» — і ненавʼязливо додаємо вашу пропозицію. Це також може бути топ товарів / послуг.</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0;">keep</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Закріплення публікації на 24 години.</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Закріплення</b> публікації на 24 години.</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">calendar_clock</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Час публікації обираєте самостійно.</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Час публікації</b> обираєте самостійно.</span>
     </div>
     
     <div class="donation-block">
@@ -2253,15 +2252,15 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
     <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
     <div style="display: flex; gap: 12px; margin-bottom: 8px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">ballot</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Ми створюємо і публікуємо опитування або вікторину (до 3), яке так чи інакше пов’язано з товаром, послугами, закладом (і т.д), які Ви хочете прорекламувати, а після цього у відповідь до квізу публікуємо ваше основне оголошення двічі:</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Ми створюємо і публікуємо <b>опитування або вікторину (до 3)</b>, яке так чи інакше пов’язано з товаром, послугами, закладом (і т.д), які Ви хочете прорекламувати, а після цього у відповідь до квізу публікуємо ваше основне оголошення двічі:</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 8px; align-items: flex-start; padding-left: 36px;">
         <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0; font-size: 18px; margin-top: 2px;">chat</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">в коментарях до допису з опитуванням</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>в коментарях</b> до допису з опитуванням</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start; padding-left: 36px;">
         <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0; font-size: 18px; margin-top: 2px;">send</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">окремим рекламним постом</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>окремим рекламним постом</b></span>
     </div>
 
     <div style="font-weight: 600; margin: 20px 0 8px; color: var(--text);">Приклад формату:</div>
@@ -2358,7 +2357,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
     <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
     <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">send</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Публікуємо ваш розіграш або конкурс: ви даєте готовий текст і умови — ми просто розміщуємо.</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Публікуємо ваш розіграш або конкурс:</b> ви даєте готовий текст і умови — ми просто розміщуємо.</span>
     </div>
     <div class="donation-block">
         <span class="material-symbols-rounded" style="flex-shrink: 0;">loyalty</span>
@@ -2371,19 +2370,19 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
     <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0;">wand_stars</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Допомагаємо вам організувати і провести розіграш / конкурс. Сюди входить текст, умови і т.д.</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Допомагаємо вам організувати і провести розіграш / конкурс.</b> Сюди входить текст, умови і т.д.</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">mobile_layout</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Створюємо візуал для розіграшу.</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Створюємо візуал</b> для розіграшу.</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #34c759; flex-shrink: 0;">repeat</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Репостимо в чат «Валківський Чатік».</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Репостимо</b> в чат «Валківський Чатік».</span>
     </div>
     <div style="display: flex; gap: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">add_box</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">На 2 дні додаємо кнопку з назвою вашого бізнесу в щоденне повідомлення бота в чаті «Валківський Чатік». Її бачать усі — один клік і люди переходять до вашого оголошення/гілки/інстаграму. Назву кнопки підберемо разом з вами.</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">На 2 дні додаємо <b>кнопку з назвою вашого бізнесу</b> в щоденне повідомлення бота в чаті «Валківський Чатік». Її бачать усі — один клік і люди переходять до вашого оголошення/гілки/інстаграму. Назву кнопки підберемо разом з вами.</span>
     </div>
     <div class="donation-block" style="margin-top: 16px;">
         <span class="material-symbols-rounded" style="flex-shrink: 0;">loyalty</span>
@@ -2396,11 +2395,11 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
     <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">send</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Стандартна публікація вашого готового оголошення.</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Стандартна публікація</b> вашого готового оголошення.</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0;">keep</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Закріплення на 24 години.</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Закріплення</b> на 24 години.</span>
     </div>
     <div class="donation-block">
         <span class="material-symbols-rounded">loyalty</span>
@@ -2412,15 +2411,15 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
     <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">send</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Стандартна публікація вашого готового оголошення.</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Стандартна публікація</b> вашого готового оголошення.</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0;">keep</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Закріплення на 24 години.</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Закріплення</b> на 24 години.</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">add_box</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">На 2 дні додаємо кнопку з назвою вашого бізнесу в щоденне повідомлення бота в чаті «Валківський Чатік». Її бачать усі — один клік і люди переходять до вашого оголошення/гілки/інстаграму. Назву кнопки підберемо разом з вами.</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">На 2 дні додаємо <b>кнопку з назвою вашого бізнесу</b> в щоденне повідомлення бота в чаті «Валківський Чатік». Її бачать усі — один клік і люди переходять до вашого оголошення/гілки/інстаграму. Назву кнопки підберемо разом з вами.</span>
     </div>
     <div class="donation-block">
         <span class="material-symbols-rounded">loyalty</span>
@@ -2432,11 +2431,11 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
     <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">add_box</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">На тиждень додаємо кнопку з назвою вашого бізнесу в щоденне повідомлення бота в чаті «Валківський Чатік». Її бачать усі — один клік і люди переходять до вашого оголошення/гілки/інстаграму. Назву кнопки підберемо разом з вами.</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">На тиждень додаємо <b>кнопку з назвою вашого бізнесу</b> в щоденне повідомлення бота в чаті «Валківський Чатік». Її бачать усі — один клік і люди переходять до вашого оголошення/гілки/інстаграму. Назву кнопки підберемо разом з вами.</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">text_ad</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">До повідомлення від бота додаємо ваше оголошення.</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">До повідомлення від бота додаємо <b>ваше оголошення</b>.</span>
     </div>
 </div>
 
@@ -2506,23 +2505,23 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
     <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <img src="assets/vsht.PNG" style="width: 24px; height: 24px; border-radius: 6px; flex-shrink: 0;">
-        <span style="font-size: 14.5px; line-height: 1.4;">Публікація вашого готового оголошення на каналі «Валки, шо там? 🇺🇦»</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Публікація вашого готового оголошення</b> на каналі «Валки, шо там? 🇺🇦»</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <img src="assets/vch.PNG" style="width: 24px; height: 24px; border-radius: 6px; flex-shrink: 0;">
-        <span style="font-size: 14.5px; line-height: 1.4;">Репост вашого оголошення в чат «Валківський Чатік»</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Репост</b> вашого оголошення в чат «Валківський Чатік»</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0;">keep</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Закріплення вашого оголошення на тиждень на каналі і в чаті</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Закріплення</b> вашого оголошення на тиждень на каналі і в чаті</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">add_box</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Додаємо клікабельну кнопку з вашим оголошенням в щоденне повідомлення від бота в чаті «Валківський Чатік» на тиждень.</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Додаємо <b>клікабельну кнопку</b> з вашим оголошенням в щоденне повідомлення від бота в чаті «Валківський Чатік» на тиждень.</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">list_alt_add</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Додаємо оголошення з посиланням в повідомлення від бота «Базарчик Бот» на тиждень</span>
+        <span style="font-size: 14.5px; line-height: 1.4;">Додаємо <b>оголошення з посиланням</b> в повідомлення від бота «Базарчик Бот» на тиждень</span>
     </div>
     <div class="donation-block">
         <span class="material-symbols-rounded" style="flex-shrink: 0;">loyalty</span>
@@ -2534,19 +2533,19 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
     <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">key</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Власну індивідуальну гілку в групі протягом 14 днів</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Власну індивідуальну гілку</b> в групі протягом 14 днів</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <img src="assets/vch.PNG" style="width: 24px; height: 24px; border-radius: 6px; flex-shrink: 0;">
-        <span style="font-size: 14.5px; line-height: 1.4;">Репост основного оголошення в чат «Валківський Чатік»</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Репост основного оголошення</b> в чат «Валківський Чатік»</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <img src="assets/vsht.PNG" style="width: 24px; height: 24px; border-radius: 6px; flex-shrink: 0;">
-        <span style="font-size: 14.5px; line-height: 1.4;">Репост основного оголошення в канал «Валки, шо там? 🇺🇦» з посиланням на вашу гілку в групі «Валківський Базарчик»</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Репост основного оголошення</b> в канал «Валки, шо там? 🇺🇦» з посиланням на вашу гілку в групі «Валківський Базарчик»</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">add_box</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Клікабельна текстова кнопка в боті в чаті «Валківський Чатік», яка веде на вашу гілку / сайт / сторінку протягом 2 днів.</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Клікабельна текстова кнопка</b> в боті в чаті «Валківський Чатік», яка веде на вашу гілку / сайт / сторінку протягом 2 днів.</span>
     </div>
     <div class="donation-block">
         <span class="material-symbols-rounded" style="flex-shrink: 0;">loyalty</span>
@@ -2559,15 +2558,15 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
     <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">text_ad</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Розміщення вашого рекламного повідомлення та/або посилання у повідомленні від бота «Базарчик-бот».</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Розміщення вашого рекламного повідомлення та/або посилання</b> у повідомленні від бота «Базарчик-бот».</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #34c759; flex-shrink: 0;">visibility</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Реклама постійно відображається в повідомленнях бота у групі.</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Реклама постійно відображається</b> в повідомленнях бота у групі.</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 0; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">calendar_clock</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Термін розміщення — 7 днів.</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Термін розміщення — 7 днів.</b></span>
     </div>
     <div style="font-weight: 600; margin: 20px 0 8px; color: var(--text);">Вам може бути цікаво:</div>
     <div class="week-try" style="margin-top: 0;">
@@ -2584,11 +2583,11 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
     <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">add_box</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Рекламну кнопку у щоденних повідомленнях бота двічі на день (вранці та ввечері) в групі «Валківський Чатік». Кнопка може вести на ваше оголошення, сторінку в соц. мережах, ваш контакт у Telegram тощо.</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Рекламну кнопку</b> у щоденних повідомленнях бота двічі на день (вранці та ввечері) в групі «Валківський Чатік». Кнопка може вести на ваше оголошення, сторінку в соц. мережах, ваш контакт у Telegram тощо.</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 0; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">text_ad</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Розміщення оголошення в повідомленнях, які бот надсилає двічі на день — вранці та ввечері.</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Розміщення оголошення</b> в повідомленнях, які бот надсилає двічі на день — вранці та ввечері.</span>
     </div>
     <div style="font-weight: 600; margin: 20px 0 8px; color: var(--text);">Вам може бути цікаво:</div>
     <div class="week-try" style="margin-top: 0;">
@@ -2605,15 +2604,15 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
     <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">send</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Стандартна публікація вашого оголошення у групі «Валківський Чатік».</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Стандартна публікація</b> вашого оголошення у групі «Валківський Чатік».</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">add_box</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Рекламна кнопка з посиланням на рекламу в щоденних повідомленнях бота у групі «Валківський Чатік» на 7 днів (бот публікує повідомлення двічі на день — вранці та ввечері). Кнопка може вести на ваше оголошення, сторінку в соц. мережах, ваш контакт у Telegram тощо.</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Рекламна кнопка</b> з посиланням на рекламу в щоденних повідомленнях бота у групі «Валківський Чатік» на 7 днів (бот публікує повідомлення двічі на день — вранці та ввечері). Кнопка може вести на ваше оголошення, сторінку в соц. мережах, ваш контакт у Telegram тощо.</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 0; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0;">list_alt_add</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">Розміщення вашого рекламного повідомлення та/або посилання у повідомленні від бота «Базарчик-бот» у групі «Валківський Базарчик» на 7 днів (реклама постійно відображається в повідомленнях бота у групі).</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Розміщення вашого рекламного повідомлення та/або посилання</b> у повідомленні від бота «Базарчик-бот» у групі «Валківський Базарчик» на 7 днів (реклама постійно відображається в повідомленнях бота у групі).</span>
     </div>
 </div>
 
@@ -2630,7 +2629,7 @@ tg.expand();
 tg.setHeaderColor('#f2f2f7');
 tg.setBackgroundColor('#f2f2f7');
 
-let currentTgLink = '';
+let currentResource = '';
 let smartTagState = 0; 
 
 function nav(pageId) {
@@ -2647,15 +2646,15 @@ function nav(pageId) {
     if (pageId === 'page-bazar') {
         tag.style.display = 'flex';
         document.getElementById('smart-img').src = 'assets/vb.PNG';
-        currentTgLink = 'https://t.me/valkybazar';
+        currentResource = 'bazar';
     } else if (pageId === 'page-vsht') {
         tag.style.display = 'flex';
         document.getElementById('smart-img').src = 'assets/vsht.PNG';
-        currentTgLink = 'https://t.me/valkyoperatyvno';
+        currentResource = 'vsht';
     } else if (pageId === 'page-chatik') {
         tag.style.display = 'flex';
         document.getElementById('smart-img').src = 'assets/vch.PNG';
-        currentTgLink = 'https://t.me/+6xkXZcagVnI0ZDU6';
+        currentResource = 'chatik';
     } else {
         tag.style.display = 'none';
     }
@@ -2667,6 +2666,30 @@ function nav(pageId) {
             setTimeout(() => car.scrollBy({left: -280, behavior: 'smooth'}), 800);
         }, 300);
     }
+}
+
+// ---- Картки ресурсів (відкриваються з кнопки «Перейти» та з каруселі в «Інформація») ----
+// embed: щоб показати живе превʼю допису з каналу, впиши 'юзернейм/номер_допису', напр. 'valkyoperatyvno/123'.
+// Працює лише для публічних каналів (для приватного чату превʼю неможливе). '' — без превʼю.
+const RESOURCES = {
+    bazar:  { title: 'Базарчик',          img: 'assets/vb.PNG',   stat: '8K',   desc: 'Найбільша Telegram-група для оголошень у громаді.', url: 'https://t.me/valkybazar',        btn: 'Глянути Базарчик', embed: '' },
+    vsht:   { title: 'Валки, шо там?',    img: 'assets/vsht.PNG', stat: '5K',   desc: 'Телеграм-канал.',                                   url: 'https://t.me/valkyoperatyvno',   btn: 'Глянути канал',    embed: '' },
+    chatik: { title: 'Валківський Чатік', img: 'assets/vch.PNG',  stat: '5.7K', desc: 'Живе спілкування.',                                 url: 'https://t.me/+6xkXZcagVnI0ZDU6', btn: 'Глянути чат',      embed: '' }
+};
+function openResource(key) {
+    const r = RESOURCES[key];
+    if (!r) return;
+    const embed = r.embed
+        ? `<iframe src="https://t.me/${r.embed}?embed=1&mode=tme" loading="lazy" style="width:100%;height:320px;border:0;border-radius:14px;margin-bottom:16px;background:var(--bg);"></iframe>`
+        : '';
+    const html =
+        `<div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">` +
+            `<img src="${r.img}" alt="" style="width:56px;height:56px;border-radius:16px;object-fit:cover;">` +
+            `<div class="capsule-tag" style="font-size:14px;padding:4px 12px;">${r.stat}</div>` +
+        `</div>` +
+        `<div class="intro-box">${r.desc}</div>` + embed +
+        `<button class="primary-btn" onclick="tg.openTelegramLink('${r.url}')"><span class="material-symbols-rounded">open_in_new</span> ${r.btn}</button>`;
+    openModal(r.title, html, '', '', false);
 }
 
 function handleSmartTag() {
@@ -2684,7 +2707,7 @@ function handleSmartTag() {
         }, 3000);
     } else if (smartTagState === 2) {
         tg.HapticFeedback.impactOccurred('light');
-        tg.openTelegramLink(currentTgLink);
+        openResource(currentResource);
         tag.classList.remove('active');
         smartTagState = 1;
     }
