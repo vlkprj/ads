@@ -761,7 +761,72 @@ body.no-scroll {
 .launch-actions { display: flex; align-items: center; gap: 12px; }
 .launch-skip { color: rgba(255,255,255,0.75); font-size: 14.5px; font-weight: 600; cursor: pointer; padding: 12px 8px; }
 .launch-skip:active { opacity: 0.6; }
+
+/* ---- Золота корона Premium ---- */
+@keyframes goldShine { 0% { background-position: 160% center; } 55%, 100% { background-position: -60% center; } }
+.gold-crown {
+    display: inline-block;
+    background: linear-gradient(110deg, #a56f00 0%, #c99200 38%, #ffe27a 50%, #c99200 62%, #a56f00 100%);
+    background-size: 250% auto;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent !important;
+    filter: drop-shadow(0 0 2px rgba(255, 190, 40, 0.55));
+    animation: goldShine 3.5s ease-in-out infinite;
+}
+
+/* ---- Місця для Premium-гілки ---- */
+.slots-card { background: rgba(142, 142, 147, 0.08); border-radius: 16px; padding: 14px; margin-top: 16px; }
+.slots-title { font-size: 14.5px; font-weight: 700; display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+.slots-title .material-symbols-rounded { font-size: 18px; color: #c28a00; }
+.slots-row { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.35; margin-bottom: 8px; color: var(--text); }
+.slots-row > .material-symbols-rounded { font-size: 20px; color: var(--sub); flex-shrink: 0; }
+.slots-free.ok { color: #1f9d45; }
+.slots-free.none { color: #d9480f; }
+.slots-asof { display: block; font-size: 12px; font-weight: 500; color: #6c6c70; margin-top: 1px; }
+.slots-note { display: flex; align-items: flex-start; gap: 8px; background: rgba(255, 184, 32, 0.14); border-radius: 12px; padding: 10px 12px; font-size: 13px; line-height: 1.35; font-weight: 500; margin-top: 10px; }
+.slots-note .material-symbols-rounded { font-size: 18px; color: #c28a00; flex-shrink: 0; }
+
+/* ---- «Важливо»: липка шапка зі стрілкою назад ---- */
+#page-important .nav-bar { position: sticky; top: 0; z-index: 50; background: var(--bg); padding: 12px 0; margin: -12px 0 12px; }
+
+/* ---- Бот-помічник ---- */
+.bot-fab { position: fixed; left: 0; bottom: 80px; background: var(--card); color: var(--accent); padding: 10px 14px 10px 12px; border-radius: 0 20px 20px 0; box-shadow: 4px 4px 16px rgba(0,0,0,0.06); cursor: pointer; z-index: 900; display: flex; align-items: center; transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1); }
+.bot-fab:active { transform: translateX(-4px); }
+.bot-fab .material-symbols-rounded { font-size: 24px; }
+body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
+
+.bot-sheet { position: fixed; top: 0; left: 0; width: 100%; height: 100%; height: 100dvh; background: var(--bg); z-index: 1200; display: flex; flex-direction: column; transform: translateY(100%); visibility: hidden; transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), visibility 0s linear 0.35s; }
+.bot-sheet.show { transform: none; visibility: visible; transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), visibility 0s; }
+.bot-head { display: flex; align-items: center; gap: 12px; padding: calc(14px + env(safe-area-inset-top)) 20px 12px; border-bottom: 1px solid var(--sep); flex-shrink: 0; }
+.bot-head-ava { width: 38px; height: 38px; border-radius: 50%; background: var(--card); display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.bot-head-title { font-size: 17px; font-weight: 700; line-height: 1.15; }
+.bot-head-sub { font-size: 12.5px; color: #6c6c70; }
+.bot-head .back-btn { margin-left: auto; }
+.bot-log { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; }
+.bm { display: flex; gap: 8px; align-items: flex-end; max-width: 92%; animation: popIn 0.25s ease; }
+.bm-bot { align-self: flex-start; }
+.bm-ava { width: 28px; height: 28px; border-radius: 50%; background: var(--card); display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; margin-bottom: 2px; }
+.bm-col { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.bm-bubble { background: #e5e5ea; padding: 10px 14px; border-radius: 16px 16px 16px 4px; font-size: 15px; line-height: 1.45; }
+.bm-user { align-self: flex-end; background: var(--accent); color: #ffffff; padding: 10px 14px; border-radius: 16px 16px 4px 16px; font-size: 15.5px; line-height: 1.4; max-width: 82%; white-space: pre-wrap; animation: popIn 0.2s ease; }
+.bm-actions { margin: 0 !important; border-radius: 16px; }
+.bm-actions .in-btn { padding: 12px 14px; }
+.bm-actions .in-title { font-size: 15px; gap: 10px; }
+.bm-actions .in-title .material-symbols-rounded { font-size: 20px; }
+.bm-fb { margin-top: 0 !important; justify-content: flex-start !important; }
+.bm-fb .tg-capsule-btn { background: var(--card); }
+.bm-typing { display: flex; gap: 4px; padding: 14px 16px; }
+.bm-typing i { width: 7px; height: 7px; border-radius: 50%; background: #8e8e93; animation: botDot 1s infinite ease-in-out; }
+.bm-typing i:nth-child(2) { animation-delay: 0.15s; }
+.bm-typing i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes botDot { 0%, 60%, 100% { transform: translateY(0); opacity: 0.4; } 30% { transform: translateY(-4px); opacity: 1; } }
+.bot-input { display: flex; gap: 8px; align-items: center; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); border-top: 1px solid var(--sep); flex-shrink: 0; }
+.bot-input input { flex: 1; min-width: 0; border: none; background: var(--card); color: var(--text); border-radius: 22px; padding: 12px 16px; font-size: 16px; -webkit-appearance: none; }
+.bot-input input::placeholder { color: #8e8e93; }
+.bot-send { width: 44px; height: 44px; border-radius: 50%; background: var(--btn-bg); color: #ffffff; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; transition: transform 0.1s; }
+.bot-send:active { transform: scale(0.92); }
 </style>
+
 </head>
 <body>
 
@@ -875,18 +940,18 @@ body.no-scroll {
             <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
 
-        <div class="main-btn" onclick="openModal('Наші клієнти', document.getElementById('clients-html').innerHTML, '', '', false)">
-            <div class="btn-icon"><span class="material-symbols-rounded">handshake</span></div>
-            <div class="btn-content">
-                <div class="btn-title">Наші клієнти</div>
-            </div>
-            <span class="material-symbols-rounded arrow">chevron_right</span>
-        </div>
-
         <div class="main-btn" onclick="nav('page-important')">
             <div class="btn-icon"><span class="material-symbols-rounded">priority_high</span></div>
             <div class="btn-content">
                 <div class="btn-title">Важливо</div>
+            </div>
+            <span class="material-symbols-rounded arrow">chevron_right</span>
+        </div>
+
+        <div class="main-btn" onclick="openModal('Наші клієнти', document.getElementById('clients-html').innerHTML, '', '', false)">
+            <div class="btn-icon"><span class="material-symbols-rounded">handshake</span></div>
+            <div class="btn-content">
+                <div class="btn-title">Наші клієнти</div>
             </div>
             <span class="material-symbols-rounded arrow">chevron_right</span>
         </div>
@@ -937,7 +1002,7 @@ body.no-scroll {
 
     <div class="in-btn" onclick="openModal('Гілка Стандарт', document.getElementById('baz-branch-std-html').innerHTML, '300 ₴ / міс.', 'baz_branch_std', false)">
         <div class="in-title">
-            <span class="material-symbols-rounded" style="color: #ff9500;">splitscreen_top</span>
+            <span class="material-symbols-rounded">storefront</span>
             Власна гілка Стандарт
         </div>
         <div class="in-action">
@@ -947,7 +1012,7 @@ body.no-scroll {
 
     <div class="in-btn" onclick="openModal('Гілка Premium', document.getElementById('baz-branch-prem-html').innerHTML, '450 ₴ / місяць', 'baz_branch_prem', false)">
         <div class="in-title">
-            <span class="material-symbols-rounded" style="color: #c28a00;">crown</span>
+            <span class="material-symbols-rounded gold-crown">crown</span>
             Власна гілка Premium
         </div>
         <div class="in-action">
@@ -957,7 +1022,7 @@ body.no-scroll {
 
     <div class="in-btn" onclick="nav('page-limits')">
         <div class="in-title">
-            <span class="material-symbols-rounded" style="color: #af52de;">bolt_boost</span>
+            <span class="material-symbols-rounded">bolt_boost</span>
             Збільшити ліміт
         </div>
         <div class="in-action">
@@ -966,13 +1031,13 @@ body.no-scroll {
     </div>
 
     <div class="in-btn" onclick="openModal('Реклама в боті', document.getElementById('baz-bot-html').innerHTML, '100 ₴', 'baz_bot', false)">
-        <div class="in-title"><span class="material-symbols-rounded" style="color: #ff9500;">smart_toy</span> Реклама в боті <span class="material-symbols-rounded new-badge">fiber_new</span></div>
+        <div class="in-title"><span class="material-symbols-rounded" >smart_toy</span> Реклама в боті <span class="material-symbols-rounded new-badge">fiber_new</span></div>
         <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
     </div>
 
     <div class="in-btn disabled">
     <div class="in-title">
-        <span class="material-symbols-rounded" style="color: #ec4899;">push_pin</span>
+        <span class="material-symbols-rounded">push_pin</span>
         Закріплення оголошення
     </div>
     <div class="in-action">Недоступно</div>
@@ -989,7 +1054,7 @@ body.no-scroll {
     
     <div class="card-group">
         <div class="in-btn" onclick="openModal('Pro', document.getElementById('baz-pro-html').innerHTML, '150 ₴ / 3 місяці', 'baz_pro', false)">
-            <div class="in-title" style="display: flex; align-items: center; gap: 6px;"><span class="material-symbols-rounded" style="color: #af52de;">workspace_premium</span><span style="color: #af52de; font-weight: 700;">Pro</span></div>
+            <div class="in-title" style="display: flex; align-items: center; gap: 6px;"><span class="material-symbols-rounded" style="color: #007aff;">workspace_premium</span><span style="color: #007aff; font-weight: 700;">Pro</span></div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
         
@@ -1075,7 +1140,7 @@ body.no-scroll {
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
         <div class="in-btn" onclick="openModal('Реклама в боті', document.getElementById('chat-bot-html').innerHTML, '250 ₴', 'chat_bot', false)">
-        <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">smart_toy</span> Реклама в боті <span class="material-symbols-rounded new-badge">fiber_new</span></div>
+        <div class="in-title"><span class="material-symbols-rounded" >smart_toy</span> Реклама в боті <span class="material-symbols-rounded new-badge">fiber_new</span></div>
         <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
     </div>
 
@@ -1337,11 +1402,11 @@ body.no-scroll {
         </div>
                    <div class="card-group">
                 <div class="in-btn" onclick="openModal('Гілка Стандарт', document.getElementById('baz-branch-std-html').innerHTML, '300 ₴ / міс.', 'baz_branch_std', false)">
-                    <div class="in-title"><span class="material-symbols-rounded" style="color: #ff9500;">splitscreen_top</span> Гілка Стандарт</div>
+                    <div class="in-title"><span class="material-symbols-rounded" style="color: #ff9500;">storefront</span> Гілка Стандарт</div>
                     <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
                 </div>
                 <div class="in-btn" onclick="openModal('Гілка Premium', document.getElementById('baz-branch-prem-html').innerHTML, '450 ₴ / міс.', 'baz_branch_prem', false)">
-                    <div class="in-title"><span class="material-symbols-rounded" style="color: #3192d4;">crown</span> Гілка Premium</div>
+                    <div class="in-title"><span class="material-symbols-rounded gold-crown">crown</span> Гілка Premium</div>
                     <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
                 </div>
             </div>
@@ -1409,11 +1474,11 @@ body.no-scroll {
             </div>
                        <div class="card-group">
                 <div class="in-btn" onclick="openModal('Гілка Стандарт', document.getElementById('baz-branch-std-html').innerHTML, '300 ₴ / міс.', 'baz_branch_std', false)">
-                    <div class="in-title"><span class="material-symbols-rounded" style="color: #f59e0b;">splitscreen_top</span> Гілка Стандарт</div>
+                    <div class="in-title"><span class="material-symbols-rounded" style="color: #f59e0b;">storefront</span> Гілка Стандарт</div>
                     <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
                 </div>
                 <div class="in-btn" onclick="openModal('Гілка Premium', document.getElementById('baz-branch-prem-html').innerHTML, '450 ₴ / міс.', 'baz_branch_prem', false)">
-                    <div class="in-title"><span class="material-symbols-rounded" style="color: #7c3aed;">crown</span> Гілка Premium</div>
+                    <div class="in-title"><span class="material-symbols-rounded gold-crown">crown</span> Гілка Premium</div>
                     <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
                 </div>
             </div>
@@ -1730,6 +1795,7 @@ body.no-scroll {
         <div class="doc-p">Будь ласка, за можливості додавайте до звернення опис проблеми та підтвердження оплати. Це допоможе нам швидше розглянути вашу ситуацію.</div>
         <div class="doc-p">Дякуємо, що підтримуєте наші ресурси та користуєтеся нашими послугами!</div>
     </div>
+    <button class="primary-btn" onclick="nav('home')"><span class="material-symbols-rounded">arrow_back</span> Назад</button>
 </div>
 
 <div id="page-checkout" class="page">
@@ -1779,6 +1845,25 @@ body.no-scroll {
             <div class="promo-btn" onclick="launchOfferOpenPro()">Переглянути Pro</div>
             <div class="launch-skip" onclick="launchOfferHide(true)">Не цікаво</div>
         </div>
+    </div>
+</div>
+
+<div class="bot-fab" id="bot-fab" onclick="openBot()" aria-label="Помічник">
+    <span class="material-symbols-rounded">smart_toy</span>
+</div>
+<div class="bot-sheet" id="bot-sheet">
+    <div class="bot-head">
+        <div class="bot-head-ava">🤖</div>
+        <div>
+            <div class="bot-head-title">Помічник</div>
+            <div class="bot-head-sub">Відповідає на питання про рекламу</div>
+        </div>
+        <div class="back-btn" onclick="closeBot()"><span class="material-symbols-rounded">close</span></div>
+    </div>
+    <div class="bot-log" id="bot-log"></div>
+    <div class="bot-input">
+        <input id="bot-in" type="text" maxlength="200" placeholder="Напишіть питання…" enterkeyhint="send" autocomplete="off" onkeydown="if(event.key==='Enter'){event.preventDefault();botSubmit();}">
+        <button class="bot-send" onclick="botSubmit()" aria-label="Надіслати"><span class="material-symbols-rounded">arrow_upward</span></button>
     </div>
 </div>
 
@@ -1832,15 +1917,15 @@ body.no-scroll {
     <span style="font-size: 14px; line-height: 1.4;"><b>Власна назва гілки.</b> Це може бути як назва вашого магазину/закладу, так і назва послуги, яку ви надаєте. Ви можете обрати будь-яку назву.</span>
 </div>
 
-<div class="beta-item" style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+<div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+    <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0;">all_inclusive</span>
+    <span style="font-size: 14px; line-height: 1.4;"><b>Необмежена кількість публікацій</b> всередині гілки. Це може бути асортимент магазину, фото ваших робіт, опис послуг, прайс, акції, корисна інформація тощо.</span>
+</div>
+
+<div class="beta-item" style="display: flex; gap: 12px; margin-bottom: 0; align-items: flex-start;">
     <span class="material-symbols-rounded" style="color: #32ade6; flex-shrink: 0;">robot_2</span>
     <span style="font-size: 14px; line-height: 1.4;"><b>Особистий бот-асистент</b><span class="beta-badge">beta</span><b>:</b>
  розумний інструмент, який сам красиво оформить ваше оголошення, прикрутить фірмові кнопки (купити, інстаграм, контакти) і автоматично опублікує пост у вашій гілці в заданий час.</span>
-</div>
-
-<div style="display: flex; gap: 12px; align-items: flex-start;">
-    <span class="material-symbols-rounded" style="color: #af52de; flex-shrink: 0;">all_inclusive</span>
-    <span style="font-size: 14px; line-height: 1.4;"><b>Необмежена кількість публікацій</b> всередині гілки. Це може бути асортимент магазину, фото ваших робіт, опис послуг, прайс, акції, корисна інформація тощо.</span>
 </div>
 
 <div class="comp-grid">
@@ -1863,7 +1948,7 @@ body.no-scroll {
 
 <div class="week-try">
     <div class="week-info">
-        <div class="week-title"><span class="material-symbols-rounded" style="color: #ff9500;">splitscreen_top</span> Гілка Стандарт • Тижнева</div>
+        <div class="week-title"><span class="material-symbols-rounded" style="color: #ff9500;">storefront</span> Гілка Стандарт • Тижнева</div>
         <div class="week-desc">Спробуйте формат на тиждень, щоб зрозуміти, чи підходить він вам.</div>
     </div>
     <div class="week-btn" onclick="closeModal(); setTimeout(() => openModal('Власна гілка Стандарт • Тижнева', 'Тестовий тиждень для вашої гілки. Усі переваги стандарту на 7 днів.', '100 ₴ / тиж', 'baz_branch_std_week', false), 300)">Замовити</div>
@@ -1880,12 +1965,10 @@ body.no-scroll {
     <span style="font-size: 14px; line-height: 1.4;"><b>ТОП-4:</b> Ваша гілка закріплена у топі групи.</span>
 </div>
 
-<div class="beta-item" style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
-    <span class="material-symbols-rounded" style="color: #32ade6; flex-shrink: 0;">robot_2</span>
-    <span style="font-size: 14px; line-height: 1.4;"><b>Особистий бот-асистент</b><span class="beta-badge">beta</span><b>:</b>
- розумний інструмент, який сам красиво оформить ваше оголошення, прикрутить фірмові кнопки (купити, інстаграм, контакти) і автоматично опублікує пост у вашій гілці в заданий час.</span>
+<div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+    <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">repeat</span>
+    <span style="font-size: 14px; line-height: 1.4;"><b>Репост:</b> ми беремо ваше основне оголошення і публікуємо його на каналі «Валки, шо там?» з посиланням на вашу гілку.</span>
 </div>
-
 
 <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
     <span class="material-symbols-rounded" style="color: #34c759; flex-shrink: 0;">add_reaction</span>
@@ -1903,13 +1986,14 @@ body.no-scroll {
 </div>
 
 <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
-    <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">repeat</span>
-    <span style="font-size: 14px; line-height: 1.4;"><b>Репост:</b> ми беремо ваше основне оголошення і публікуємо його на каналі «Валки, шо там?» з посиланням на вашу гілку.</span>
-</div>
-
-<div style="display: flex; gap: 12px; align-items: flex-start;">
     <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">add_box</span>
     <span style="font-size: 14px; line-height: 1.4;"><b>Кнопка в боті:</b> На тиждень додаємо кнопку з назвою вашого бізнесу в щоденне повідомлення бота в чаті «Валківський Чатік». Один клік і люди переходять до вашого оголошення/гілки/інстаграму. Назву кнопки підберемо разом з вами.</span>
+</div>
+
+<div class="beta-item" style="display: flex; gap: 12px; margin-bottom: 0; align-items: flex-start;">
+    <span class="material-symbols-rounded" style="color: #32ade6; flex-shrink: 0;">robot_2</span>
+    <span style="font-size: 14px; line-height: 1.4;"><b>Особистий бот-асистент</b><span class="beta-badge">beta</span><b>:</b>
+ розумний інструмент, який сам красиво оформить ваше оголошення, прикрутить фірмові кнопки (купити, інстаграм, контакти) і автоматично опублікує пост у вашій гілці в заданий час.</span>
 </div>
 
 <div class="comp-grid">
@@ -1928,9 +2012,16 @@ body.no-scroll {
     </div>
 </div>
 
+<div class="slots-card">
+    <div class="slots-title"><span class="material-symbols-rounded">event_seat</span> Місця для Premium-гілки</div>
+    <div class="slots-row"><span class="material-symbols-rounded">storefront</span><span>Вільних гілок: <b class="slots-free">–</b> <span class="slots-asof"></span></span></div>
+    <div class="slots-row slots-next-row"><span class="material-symbols-rounded">event_upcoming</span><span>Наступна гілка буде доступна: <b class="slots-next">–</b></span></div>
+    <div class="slots-note"><span class="material-symbols-rounded">info</span><span>Кількість Premium-гілок обмежена, тому перед замовленням уточніть у адмінів, чи є вільне місце.</span></div>
+</div>
+
 <div class="week-try">
     <div class="week-info">
-        <div class="week-title"><span class="material-symbols-rounded" style="color: #3192d4;">crown</span> Гілка Premium • Тижнева</div>
+        <div class="week-title"><span class="material-symbols-rounded gold-crown">crown</span> Гілка Premium • Тижнева</div>
         <div class="week-desc">Спробуйте преміум-формат на тиждень зі всіма плюшками.</div>
     </div>
     <div class="week-btn" onclick="closeModal(); setTimeout(() => openModal('Власна гілка Premium • Тижнева', 'Тестовий тиждень преміум-гілки з закріпленням у ТОП-4 та репостом.', '200 ₴ / тиж', 'baz_branch_prem_week', false), 300)">Замовити</div>
@@ -2547,6 +2638,7 @@ function nav(pageId) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById(pageId).classList.add('active');
     window.scrollTo(0, 0);
+    document.body.classList.toggle('on-checkout', pageId === 'page-checkout');
 
     const tag = document.getElementById('global-smart-tag');
     tag.classList.remove('active');
@@ -2598,6 +2690,24 @@ function handleSmartTag() {
     }
 }
 
+
+// ---- Місця для Premium-гілки (РЕДАГУЙ ТУТ) ----
+const PREMIUM_SLOTS = {
+    free: 1,               // скільки гілок вільно зараз (0 — вільних немає)
+    next: '19 жовтня',     // коли буде доступна наступна гілка ('' — рядок сховається)
+    asOf: '18 жовтня'      // на яку дату актуальні дані
+};
+(function renderPremiumSlots() {
+    const root = document.getElementById('baz-branch-prem-html');
+    if (!root) return;
+    const free = root.querySelector('.slots-free');
+    free.textContent = PREMIUM_SLOTS.free;
+    free.classList.add(PREMIUM_SLOTS.free > 0 ? 'ok' : 'none');
+    root.querySelector('.slots-asof').textContent = PREMIUM_SLOTS.asOf ? 'станом на ' + PREMIUM_SLOTS.asOf : '';
+    const nextRow = root.querySelector('.slots-next-row');
+    if (PREMIUM_SLOTS.next) root.querySelector('.slots-next').textContent = PREMIUM_SLOTS.next;
+    else nextRow.style.display = 'none';
+})();
 
 // ---- Терміни та ціни (редагуй тут: [місяців, ціна ₴]) ----
 const PLANS = {
@@ -3011,6 +3121,327 @@ window.addEventListener('load', () => {
         document.body.classList.add('no-scroll');
     }, 600);
 });
+
+
+// =====================================================================
+//  БОТ-ПОМІЧНИК: інтерактивний FAQ за ключовими словами.
+//  Працює повністю всередині міні-апу, нічого нікуди не надсилає і не зберігає.
+//  Щоб додати/змінити відповідь — правиш BOT_INTENTS (слова) і BOT_REPLIES (тексти).
+// =====================================================================
+const BOT_ADMIN_URL = 'https://t.me/valkysho_bot';
+
+// ключ → [сторінка (для правильного оформлення), заголовок, id блоку з описом, ціна, action]
+const BOT_MODALS = {
+    pro:           ['page-limits',   'Pro',                  'baz-pro-html',          '150 ₴ / 3 місяці', 'baz_pro'],
+    lite:          ['page-limits',   'Lite',                 'baz-lite-html',         '90 ₴ / 3 місяці',  'baz_lite'],
+    branch_std:    ['page-bazar',    'Гілка Стандарт',       'baz-branch-std-html',   '300 ₴ / міс.',     'baz_branch_std'],
+    branch_prem:   ['page-bazar',    'Гілка Premium',        'baz-branch-prem-html',  '450 ₴ / місяць',   'baz_branch_prem'],
+    baz_bot:       ['page-bazar',    'Реклама в боті',       'baz-bot-html',          '100 ₴',            'baz_bot'],
+    vsht_std:      ['page-vsht',     'Стандартне',           'vsht-std-html',         '150 ₴',            'vsht_std'],
+    vsht_info:     ['page-vsht',     'Інфо-пост',            'vsht-info-html',        '250 ₴',            'vsht_info'],
+    chat_std:      ['page-chatik',   'Стандартне',           'chat-std-html',         '150 ₴',            'chat_std'],
+    chat_btn_std:  ['page-chatik',   'Стандартне + кнопка',  'chat-btn-std-html',     '200 ₴',            'chat_btn_std'],
+    chat_bot:      ['page-chatik',   'Реклама в боті',       'chat-bot-html',         '250 ₴',            'chat_bot'],
+    pack_std_plus: ['page-packages', 'Стандарт+',            'pack-std-plus-html',    '400 ₴',            'pack_std_plus'],
+    pack_baz_plus: ['page-packages', 'Базарчик+',            'pack-baz-plus-html',    '400 ₴',            'pack_baz_plus'],
+    pack_bots:     ['page-packages', 'Реклама в ботах+',     'pack-bots-plus-html',   '400 ₴',            'pack_bots_plus'],
+    gw_std:        ['page-giveaways','Стандартний',          'gw-std-html',           '150 ₴',            'gw_std'],
+    gw_org:        ['page-giveaways','Організація',          'gw-org-html',           '350 ₴',            'gw_org'],
+    why:           ['page-info',     'Чому саме у нас?',     'info-why-html',         '',                 '']
+};
+
+// tier: 0 — конкретна тема, 1 — загальне (ціна / «реклама»), 2 — привітання/подяка.
+// Беремо найнижчий tier, де є збіг; усередині tier — найбільша сума балів; при рівності — той, що вище в списку.
+// Слово без позначок = початок слова («чат» ловить «чаті», «чатік»); «слово$» = точний збіг; з пробілом = фраза.
+const BOT_INTENTS = [
+    { id: 'admin', tier: 0, kw: [['адмін',3],['оператор',3],['менеджер',3],['людин',2],['підтримк',2],['звязатис',2],['звязок',2],['живий',2]] },
+    { id: 'whoami', tier: 0, kw: [['ти бот',5],['ви бот',5],['хто ти',5],['хто ви',5],['ти людин',5],['ви людин',5],['ти робот',5],['ви робот',5],['ти ші',4],['ви ші',4]] },
+    { id: 'forbidden', tier: 0, kw: [['казино',4],['крипт',4],['букмекер',4],['азарт',4],['ставк',3],['шахрай',3],['заборон',3],['не рекламуєте',4],['яку рекламу',3],['що не можна',3],['можна рекламув',3],['росій',2],['порн',3],['18+',3]] },
+    { id: 'refund', tier: 0, kw: [['поверн',3],['поверт',3],['скасув',3],['відмін',2],['гроші назад',3],['рефанд',3],['переплат',3],['помилково',2]] },
+    { id: 'discounts', tier: 0, kw: [['військов',3],['зсу$',3],['знижк',3],['пільг',3],['волонтер',3],['захисник',3],['бойов',1],['рідн',1],['безкоштовний pro',4],['безкоштовно pro',4]] },
+    { id: 'payment', tier: 0, kw: [['оплат',3],['сплат',3],['платит',3],['заплат',3],['донат',2],['картк',2],['donatello',3],['переказ',2],['монобан',2],['mono$',2],['реквізит',2],['як платити',3]] },
+    { id: 'process', tier: 0, kw: [['правила$',2],['правилах$',2],['правилами$',2],['правил$',2],['умов',2],['24 год',3],['після оплат',3],['скільки чекат',3],['як швидко',2],['строк',2],['термін',2],['коли опублік',3],['коли зв',2]] },
+    { id: 'how_order', tier: 0, kw: [['як замов',4],['замовит',2],['оформит',2],['як купит',3],['хочу купит',2],['замовлен',2],['як працює',2],['як це працює',3]] },
+    { id: 'audience', tier: 0, kw: [['аудитор',3],['охопл',3],['підписник',3],['перегляд',2],['ефективн',2],['статистик',3],['чому ви',2],['чому у вас',3],['чому саме',3],['скільки людей',3],['учасник',2],['результат',1]] },
+    { id: 'quiz_help', tier: 0, kw: [['підібрат',3],['підбір',3],['що обрат',3],['що вибрат',3],['що краще',3],['порадьте',3],['порад',2],['не знаю',2],['тест',3],['швидкий старт',4],['з чого почат',3]] },
+    { id: 'help_create', tier: 0, kw: [['немає оголошення',4],['нема оголошення',4],['немає тексту',4],['текст',2],['візуал',3],['банер',3],['плакат',3],['дизайн',3],['з нуля',3],['створит оголошення',3],['написати текст',3],['оформити текст',3],['картинк',2],['фото',1]] },
+    { id: 'pin', tier: 0, kw: [['закріп',3]] },
+    { id: 'bot_ad', tier: 0, kw: [['реклама в боті',3],['реклама в ботах',3],['ботах',2],['бот',2],['кнопк',2]] },
+    { id: 'premium', tier: 0, kw: [['premium',3],['преміум',3],['топ-4',3],['топ',1],['вільн',2],['наявн',2],['місц',1]] },
+    { id: 'branch', tier: 0, kw: [['гілк',3],['оренд',2],['розділ',1],['вітрин',1],['власн',1]] },
+    { id: 'limits', tier: 0, kw: [['ліміт',3],['безліміт',3],['обмеж',2],['анти',2],['перевірк',2],['lite$',3],['pro$',3],['тариф',2],['більше оголошен',3],['скільки оголошен',4],['бот просить',3],['підтвердж',1]] },
+    { id: 'packages', tier: 0, kw: [['пакет',3],['комплекс',2],['стандарт+',10],['базарчик+',10],['ботах+',10],['кастомн',3],['індивідуальн',1],['кілька майданчик',3],['усе разом',3]] },
+    { id: 'giveaway', tier: 0, kw: [['розіг',3],['конкурс',3],['подарунк',1],['giveaway',3]] },
+    { id: 'native', tier: 0, kw: [['нативн',3],['інфо',2],['інтерактив',3],['інтерв',3],['діалог',3],['вікторин',2],['опитуван',2]] },
+    { id: 'vsht', tier: 0, kw: [['канал',2],['вшт',3],['шо там',3],['валки',2],['вшт$',3]] },
+    { id: 'chatik', tier: 0, kw: [['чатік',3],['чат',2],['вч$',2]] },
+    { id: 'bazar', tier: 0, kw: [['базарчик',3],['базар',3],['оголош',2],['продат',1],['продаж',1],['продам',1],['куплю',1],['товар',1],['вб$',2]] },
+    { id: 'prices', tier: 1, kw: [['цін',1],['скільки кошт',2],['кошт',2],['вартіст',2],['прайс',3],['почім',2],['цена',2],['сколько',1],['стоит',2]] },
+    { id: 'ad_where', tier: 1, kw: [['реклам',1],['прорекл',1],['розмістит',1],['розміщен',1]] },
+    { id: 'greet', tier: 2, kw: [['привіт',2],['вітаю',2],['добрий',2],['доброго',2],['здоров',2],['hello$',2],['hi$',2],['хай$',2],['салют',2],['привет',2]] },
+    { id: 'thanks', tier: 2, kw: [['дяк',2],['спасиб',2],['thanks',2],['thx$',2],['дуже круто',2]] }
+];
+
+function botNorm(t) {
+    return t.toLowerCase().replace(/[ʼ'’`´]/g, '').replace(/ё/g, 'е')
+        .replace(/[^a-zа-яєіїґ0-9+\- ]/g, ' ').replace(/\s+/g, ' ').trim();
+}
+function botScore(norm, tokens, kw) {
+    let sc = 0;
+    for (const [stem, w] of kw) {
+        if (stem.endsWith('$')) { if (tokens.includes(stem.slice(0, -1))) sc += w; }
+        else if (stem.includes(' ')) { if (norm.includes(stem)) sc += w; }
+        else if (tokens.some(t => t.startsWith(stem))) sc += w;
+    }
+    return sc;
+}
+function botDetect(text) {
+    const norm = botNorm(text);
+    if (!norm) return null;
+    const tokens = norm.split(' ');
+    let best = null;
+    for (const it of BOT_INTENTS) {
+        const sc = botScore(norm, tokens, it.kw);
+        if (sc <= 0) continue;
+        if (!best || it.tier < best.tier || (it.tier === best.tier && sc > best.sc)) best = { id: it.id, tier: it.tier, sc };
+    }
+    return best ? best.id : null;
+}
+
+// ---------- Тексти відповідей (редагуй тут) ----------
+const ba = (icon, label, t, v) => ({ icon, label, t, v });
+const BA_ADMIN = ba('chat', 'Написати адмінам', 'admin');
+
+function botSlotsLine() {
+    const s = PREMIUM_SLOTS;
+    let t = s.free > 0 ? `Зараз вільних Premium-гілок: <b>${s.free}</b>` : 'Зараз вільних Premium-гілок <b>немає</b>';
+    if (s.asOf) t += ` (станом на ${s.asOf})`;
+    if (s.next) t += `. Наступна гілка буде доступна: <b>${s.next}</b>`;
+    return t + '. Місць небагато, тому краще уточнити в адмінів перед замовленням.';
+}
+
+const BOT_REPLIES = {
+    menu: () => ({ html: 'Оберіть:', actions: [ba('quiz', 'Тест «Швидкий старт»', 'quiz'), ba('chat', 'Написати адміністраторам', 'admin')], admin: false }),
+
+    greet: () => ({ html: 'Привіт! 👋 Я допомагаю розібратися з рекламою, тарифами та правилами. Напишіть, що вас цікавить, або оберіть варіант нижче.',
+        actions: [ba('quiz', 'Тест «Швидкий старт»', 'quiz')] }),
+
+    thanks: () => ({ html: 'Будь ласка! 😊 Якщо будуть ще питання — я поруч. Завершую чат.', admin: false, end: true }),
+
+    whoami: () => ({ html: 'Я міні-помічник цього додатку 🤖 Не штучний інтелект, а скоріше розумний FAQ: розумію прості питання про ціни, формати реклами, тарифи й правила. З чимось складнішим допоможуть адміністратори.' }),
+
+    admin: () => ({ html: 'Звісно, зв’яжу вас з адміністраторами 👇', actions: [ba('chat', 'Написати адміністраторам', 'admin')], admin: false }),
+
+    fallback: () => ({ html: 'Щось я вас не дуже зрозумів 🤔 Спробуйте ще раз більш детально описати, з чим саме я вам можу допомогти.',
+        actions: [ba('menu', 'Переглянути меню', 'menu')] }),
+
+    prices: () => ({ fb: true, html: 'Орієнтири по цінах 💸<br><br>• <b>Канал «Валки, шо там?»</b> — від 150 ₴<br>• <b>Чатік</b> — публікація від 150 ₴, реклама/кнопка в боті від 100 ₴<br>• <b>Базарчик</b> — Lite 90 ₴ / 3 міс., Pro 150 ₴ / 3 міс., гілка від 300 ₴ / міс., реклама в боті 100 ₴<br>• <b>Пакети</b> — від 400 ₴<br><br>Що саме вас цікавить?',
+        actions: [ba('campaign', 'Канал «Валки, шо там?»', 'say', 'vsht'), ba('chat', 'Чатік', 'say', 'chatik'), ba('storefront', 'Базарчик', 'say', 'bazar'), ba('layers', 'Рекламні пакети', 'say', 'packages')] }),
+
+    ad_where: () => ({ html: 'Рекламу — де саме хочете розмістити? 📣',
+        actions: [ba('campaign', 'На каналі «Валки, шо там?»', 'say', 'vsht'), ba('chat', 'У «Валківському Чатіку»', 'say', 'chatik'), ba('storefront', 'У «Валківському Базарчику»', 'say', 'bazar'), ba('layers', 'Одразу в кількох місцях (пакети)', 'say', 'packages'), ba('quiz', 'Не знаю, допоможіть підібрати', 'quiz')] }),
+
+    vsht: () => ({ fb: true, html: '<b>Канал «Валки, шо там?»</b> (5K підписників) 📣<br><br>• <b>Стандартне</b> — 150 ₴: ваше готове оголошення + закріплення на 24 год<br>• <b>Інфо-пост</b> — 250 ₴: корисний пост, де ваша пропозиція подана ненав’язливо<br>• <b>Міні-інтервʼю</b> — 300 ₴<br>• <b>Інтерактив</b> (вікторина/опитування) та <b>розіграші</b> — є окремо<br><br>За донату від 50 ₴ на місцевий збір репостимо оголошення в «Чатік» безкоштовно.',
+        actions: [ba('campaign', 'Стандартне', 'modal', 'vsht_std'), ba('feed', 'Інфо-пост', 'modal', 'vsht_info'), ba('list', 'Усі варіанти каналу', 'page', 'page-vsht')] }),
+
+    chatik: () => ({ fb: true, html: '<b>Валківський Чатік</b> (5.7K) 💬<br><br>• <b>Стандартне</b> — 150 ₴ (+ закріплення на 24 год)<br>• <b>Стандартне + кнопка</b> — 200 ₴ (кнопка в щоденному повідомленні бота на 2 дні)<br>• <b>Кнопка в боті</b> — 100 ₴ на тиждень<br>• <b>Реклама в боті</b> — 250 ₴, кнопка двічі на день (вранці й ввечері)<br>• <b>Діалог у чаті</b> — 250 ₴: ми ставимо цікаві питання у відповідь на вашу рекламу',
+        actions: [ba('chat', 'Стандартне', 'modal', 'chat_std'), ba('smart_button', 'Стандартне + кнопка', 'modal', 'chat_btn_std'), ba('smart_toy', 'Реклама в боті', 'modal', 'chat_bot'), ba('list', 'Усі варіанти чату', 'page', 'page-chatik')] }),
+
+    bazar: () => ({ fb: true, html: '<b>Валківський Базарчик</b> (8K) 🛒<br><br>• Публікувати оголошення можна безкоштовно: до <b>3 на тиждень</b><br>• Більше оголошень і без перевірок бота — тарифи <b>Lite</b> (90 ₴ / 3 міс.) та <b>Pro</b> (150 ₴ / 3 міс.)<br>• <b>Власна гілка</b> — від 300 ₴ / міс.<br>• <b>Реклама в боті</b> Базарчика — 100 ₴ на 7 днів',
+        actions: [ba('bolt_boost', 'Збільшити ліміт', 'say', 'limits'), ba('storefront', 'Власна гілка', 'say', 'branch'), ba('smart_toy', 'Реклама в боті', 'modal', 'baz_bot')] }),
+
+    limits: () => ({ fb: true, html: '<b>Ліміти оголошень у Базарчику</b> 📈<br><br>Безкоштовно: 3 оголошення на тиждень + перевірки від бота.<br><br>• <b>Lite</b> — 90 ₴ / 3 міс.: до 30+ оголошень на місяць, без перевірок бота<br>• <b>Pro</b> — від 150 ₴ / 3 міс.: 50+ оголошень на місяць, без перевірок бота<br><br>Хочете безліміт — для цього є власна гілка. А військовим і їхнім рідним Pro дається безкоштовно раз на рік.',
+        actions: [ba('workspace_premium', 'Переглянути Pro', 'modal', 'pro'), ba('license', 'Переглянути Lite', 'modal', 'lite'), ba('storefront', 'Власна гілка (безліміт)', 'say', 'branch')] }),
+
+    branch: () => ({ fb: true, html: '<b>Власна гілка в Базарчику</b> — ваш міні-сайт усередині групи 🏪<br><br>• <b>Стандарт</b> — 300 ₴ / міс.: логотип чи емодзі, власна назва, безліміт публікацій<br>• <b>Premium</b> — 450 ₴ / міс.: усе зі Стандарту + ТОП-4 закріплення, репост на канал і кнопка в боті<br><br>Для проби є тижневі версії: Стандарт — 100 ₴, Premium — 200 ₴.<br><br>' + botSlotsLine(),
+        actions: [ba('storefront', 'Гілка Стандарт', 'modal', 'branch_std'), ba('crown', 'Гілка Premium', 'modal', 'branch_prem')] }),
+
+    premium: () => ({ fb: true, html: '<b>Гілка Premium</b> 👑 — 450 ₴ / міс. (750 ₴ на 2 міс., 950 ₴ на 3 міс.)<br><br>Усе зі Стандарту + ТОП-4 закріплення в групі, репост на канал «Валки, шо там?» і кнопка в боті на тиждень.<br><br>' + botSlotsLine(),
+        actions: [ba('crown', 'Переглянути Premium', 'modal', 'branch_prem')] }),
+
+    pin: () => ({ fb: true, html: '<b>Закріплення</b> 📌<br><br>• На каналі та в чаті у «Стандартному» закріплення на 24 години вже входить у ціну<br>• Пакет «Стандарт+» — закріплення на тиждень<br>• У Базарчику окреме закріплення оголошення зараз недоступне, але гілка Premium потрапляє в ТОП-4 групи',
+        actions: [ba('crown', 'Гілка Premium', 'say', 'premium'), ba('layers', 'Рекламні пакети', 'say', 'packages')] }),
+
+    packages: () => ({ fb: true, html: '<b>Рекламні пакети</b> 🎁 — кілька майданчиків одним замовленням:<br><br>• <b>Стандарт+</b> — 400 ₴: канал + репост у чат, закріплення на тиждень, кнопка і реклама в ботах<br>• <b>Базарчик+</b> — 400 ₴: власна гілка на 14 днів + репости в чат і на канал + кнопка в боті<br>• <b>Реклама в ботах+</b> — 400 ₴: публікація в чаті + реклама в обох ботах на 7 днів<br>• <b>Кастомний</b> — збираємо під вас<br><br>Для «Стандарт+» і «Базарчик+» є варіант 300 ₴ + донат від 50 ₴ на місцевий збір.',
+        actions: [ba('layers', 'Стандарт+', 'modal', 'pack_std_plus'), ba('layers', 'Базарчик+', 'modal', 'pack_baz_plus'), ba('layers', 'Реклама в ботах+', 'modal', 'pack_bots'), ba('dashboard_customize', 'Усі пакети та кастомний', 'page', 'page-packages')] }),
+
+    bot_ad: () => ({ fb: true, html: '<b>Реклама в ботах</b> 🤖<br><br>• <b>Базарчик-бот</b> — 100 ₴ на 7 днів: ваше повідомлення та/або посилання постійно показується в повідомленнях бота в групі<br>• <b>Бот у Чатіку</b> — 250 ₴: рекламна кнопка в щоденних повідомленнях двічі на день (вранці й ввечері)<br>• <b>Пакет «Реклама в ботах+»</b> — 400 ₴: обидва боти + стандартна публікація в чаті',
+        actions: [ba('smart_toy', 'Реклама в боті Базарчика', 'modal', 'baz_bot'), ba('smart_toy', 'Реклама в боті Чатіка', 'modal', 'chat_bot'), ba('layers', 'Пакет «Реклама в ботах+»', 'modal', 'pack_bots')] }),
+
+    native: () => ({ fb: true, html: '<b>Нативна реклама</b> ✨ — коли це читають як цікавий контент, а не «знову реклама»:<br><br>• <b>Інфо-пост</b> — 250 ₴<br>• <b>Інтерактив</b> — опитування чи вікторина + ваше оголошення двічі<br>• <b>Міні-інтервʼю</b> — 300 ₴<br>• <b>Діалог у чаті</b> — 250 ₴<br>• <b>Розіграші</b> — від 150 ₴',
+        actions: [ba('feed', 'Інфо-пост', 'modal', 'vsht_info'), ba('redeem', 'Розіграші', 'say', 'giveaway'), ba('auto_awesome', 'Усі варіанти нативної реклами', 'page', 'page-native')] }),
+
+    giveaway: () => ({ fb: true, html: '<b>Розіграші</b> 🎁<br><br>• <b>Стандартний</b> — 150 ₴: публікуємо ваш готовий розіграш чи конкурс<br>• <b>Організація</b> — 350 ₴: допомагаємо з умовами та текстом, робимо візуал, репостимо в чат і додаємо кнопку в боті на 2 дні',
+        actions: [ba('send', 'Стандартний розіграш', 'modal', 'gw_std'), ba('wand_stars', 'Організація розіграшу', 'modal', 'gw_org')] }),
+
+    payment: () => ({ fb: true, html: '<b>Оплата</b> 💛<br><br>Оплата — у форматі донату на підтримку наших ресурсів: через Donatello або переказом на картку. Якщо ціна змінилась, для вже оплаченого замовлення діє та, що була на момент оплати.<br><br>Для деяких послуг можна оплатити повністю чи частково донатом на місцевий волонтерський збір — це зазначено в картці послуги.',
+        actions: [ba('percent', 'Знижки та донати', 'say', 'discounts'), ba('priority_high', 'Правила й умови', 'page', 'page-important')] }),
+
+    discounts: () => ({ fb: true, html: '<b>Знижки та донати</b> 💛<br><br>• Військовослужбовцям та їхнім рідним — <b>знижка 50%</b> на всі рекламні послуги (напишіть адмінам до оплати)<br>• Тариф <b>Pro</b> у Базарчику для них безкоштовний раз на календарний рік<br>• Для деяких послуг можна оплатити донатом на місцевий волонтерський збір: у описі платежу вкажіть «ВШТ реклама» і надішліть скриншот адмінам',
+        actions: [ba('priority_high', 'Правила й умови', 'page', 'page-important')] }),
+
+    refund: () => ({ fb: true, html: '<b>Повернення коштів</b> 🔁<br><br>• Не можемо надати оплачену послугу — повернемо кошти (3–14 днів після погодження)<br>• Випадково переплатили — повернемо різницю (3–20 днів)<br>• Послуга надана за описом, але вам не підійшла — повернення не передбачено, проте можемо запропонувати іншу<br><br>Для повернення напишіть адмінам: підтвердження оплати, сума й реквізити.',
+        actions: [ba('priority_high', 'Правила й умови', 'page', 'page-important')] }),
+
+    forbidden: () => ({ fb: true, html: '<b>Що ми не рекламуємо</b> 🚫<br><br>Казино, букмекерів і азартні ігри; криптопроєкти та біржі; російські сервіси й проєкти; шахрайські чи сумнівні фінансові схеми; усе, що суперечить правилам наших ресурсів. Якщо сумніваєтесь — напишіть адмінам, підкажуть.',
+        actions: [ba('priority_high', 'Правила й умови', 'page', 'page-important')] }),
+
+    process: () => ({ fb: true, html: '<b>Як це відбувається</b> ⏱<br><br>Після замовлення й оплати ми зв’яжемося з вами протягом <b>24 годин</b>: уточнимо формат, матеріали й бажаний час публікації. Оплата не гарантує автоматичного погодження матеріалу: реклама має відповідати правилам наших ресурсів.',
+        actions: [ba('priority_high', 'Правила й умови', 'page', 'page-important')] }),
+
+    how_order: () => ({ fb: true, html: '<b>Як замовити</b> 🛍<br><br>1. Оберіть послугу у меню та відкрийте її картку<br>2. Натисніть «Замовити» й підтвердьте на екрані оформлення<br>3. Адміністратори отримають замовлення й напишуть вам<br><br>Не знаєте, що обрати? Пройдіть тест — підберемо під вашу задачу.',
+        actions: [ba('quiz', 'Тест «Швидкий старт»', 'quiz'), ba('priority_high', 'Правила й умови', 'page', 'page-important')] }),
+
+    audience: () => ({ fb: true, html: '<b>Аудиторія</b> 👥<br><br>Базарчик — 8K, «Валки, шо там?» — 5K, Чатік — 5.7K. 91% опитаних лояльно ставляться до реклами, а близько 80% підписників — платоспроможна аудиторія від 20 до 50+ років. А ще ми закріплюємо рекламу, і якщо її публікація потрапила на надто активний момент у чаті — безкоштовно опублікуємо ще раз.',
+        actions: [ba('help', 'Чому саме у нас?', 'modal', 'why')] }),
+
+    help_create: () => ({ fb: true, html: 'Немає готового оголошення — не проблема 🙂 Допоможемо з текстом, зробимо візуал (банер чи плакат) або створимо оголошення з нуля. Напишіть адмінам, обговоримо деталі.',
+        actions: [ba('chat', 'Написати адміністраторам', 'admin')], admin: false }),
+
+    quiz_help: () => ({ html: 'Не знаєте, що обрати? Пройдіть тест «Швидкий старт»: кілька кліків — і ми підкажемо підходящий варіант 🎯',
+        actions: [ba('quiz', 'Пройти тест', 'quiz')] })
+};
+
+// ---------- Інтерфейс чату ----------
+let botBusy = false, botSession = 0, botEndTimer = null;
+const botEl = id => document.getElementById(id);
+
+function botScroll() {
+    const l = botEl('bot-log');
+    setTimeout(() => l.scrollTo({ top: l.scrollHeight, behavior: 'smooth' }), 30);
+}
+function botUser(text) {
+    document.querySelectorAll('.bm-fb').forEach(e => e.remove());
+    const d = document.createElement('div');
+    d.className = 'bm-user';
+    d.textContent = text;
+    botEl('bot-log').appendChild(d);
+    botScroll();
+}
+function botRowsEl(actions) {
+    const g = document.createElement('div');
+    g.className = 'card-group bm-actions';
+    actions.forEach(a => {
+        const r = document.createElement('div');
+        r.className = 'in-btn';
+        r.innerHTML = `<div class="in-title"><span class="material-symbols-rounded">${a.icon}</span><span>${a.label}</span></div><span class="material-symbols-rounded arrow">chevron_right</span>`;
+        r.onclick = () => botDo(a);
+        g.appendChild(r);
+    });
+    return g;
+}
+function botFbEl() {
+    const c = document.createElement('div');
+    c.className = 'tg-capsule-container bm-fb';
+    [['Так, дякую 👍', 'yes'], ['Ні, я не це маю на увазі', 'no']].forEach(([label, t]) => {
+        const b = document.createElement('div');
+        b.className = 'tg-capsule-btn';
+        b.textContent = label;
+        b.onclick = () => botDo({ label, t });
+        c.appendChild(b);
+    });
+    return c;
+}
+function botBuildMsg(reply) {
+    const wrap = document.createElement('div');
+    wrap.className = 'bm bm-bot';
+    const ava = document.createElement('div');
+    ava.className = 'bm-ava';
+    ava.textContent = '🤖';
+    const col = document.createElement('div');
+    col.className = 'bm-col';
+    const bub = document.createElement('div');
+    bub.className = 'bm-bubble';
+    bub.innerHTML = reply.html;
+    col.appendChild(bub);
+    const actions = (reply.actions || []).slice();
+    if (reply.admin !== false && !actions.some(a => a.t === 'admin')) actions.push(BA_ADMIN);
+    if (actions.length) col.appendChild(botRowsEl(actions));
+    if (reply.fb) col.appendChild(botFbEl());
+    wrap.appendChild(ava);
+    wrap.appendChild(col);
+    return wrap;
+}
+function botSend(reply) {
+    botBusy = true;
+    const session = botSession;
+    const log = botEl('bot-log');
+    const typing = document.createElement('div');
+    typing.className = 'bm bm-bot';
+    typing.innerHTML = '<div class="bm-ava">🤖</div><div class="bm-bubble bm-typing"><i></i><i></i><i></i></div>';
+    log.appendChild(typing);
+    botScroll();
+    setTimeout(() => {
+        if (session !== botSession) return;
+        typing.remove();
+        log.appendChild(botBuildMsg(reply));
+        botBusy = false;
+        botScroll();
+        if (reply.end) botEndTimer = setTimeout(closeBot, 2600);
+    }, 550);
+}
+function botReply(id) {
+    return (BOT_REPLIES[id] || BOT_REPLIES.fallback)();
+}
+function botDo(a) {
+    if (botBusy) return;
+    tg.HapticFeedback.impactOccurred('light');
+    switch (a.t) {
+        case 'say':   botUser(a.label); botSend(botReply(a.v)); break;
+        case 'menu':  botUser(a.label); botSend(botReply('menu')); break;
+        case 'yes':
+            botUser(a.label);
+            botSend({ html: 'Радий був допомогти! 😊 Завершую чат — якщо щось знадобиться, я поруч.', admin: false, end: true });
+            break;
+        case 'no':
+            botUser(a.label);
+            botSend({ html: 'Ой, не вгадав 🙈 Спробуйте описати інакше, перегляньте меню ще раз або напишіть адмінам — вони точно допоможуть.',
+                actions: [ba('menu', 'Переглянути меню', 'menu')] });
+            break;
+        case 'quiz':  closeBot(); resetQuiz(); nav('page-quiz'); break;
+        case 'admin': tg.openTelegramLink(BOT_ADMIN_URL); break;
+        case 'page':  closeBot(); nav(a.v); break;
+        case 'modal': openBotModal(a.v); break;
+    }
+}
+function openBotModal(key) {
+    const m = BOT_MODALS[key];
+    if (!m) return;
+    closeBot();
+    setTimeout(() => {
+        nav(m[0]);
+        setTimeout(() => openModal(m[1], document.getElementById(m[2]).innerHTML, m[3], m[4], false), 300);
+    }, 250);
+}
+function botSubmit() {
+    if (botBusy) return;
+    const inp = botEl('bot-in');
+    const text = inp.value.trim();
+    if (!text) return;
+    inp.value = '';
+    botUser(text);
+    const id = botDetect(text);
+    botSend(botReply(id || 'fallback'));
+}
+function openBot() {
+    tg.HapticFeedback.impactOccurred('medium');
+    botSession++;
+    clearTimeout(botEndTimer);
+    botBusy = false;
+    botEl('bot-log').innerHTML = '';
+    botEl('bot-in').value = '';
+    document.body.classList.add('no-scroll');
+    botEl('bot-sheet').classList.add('show');
+    botSend({ html: 'Вітаю! З чим я можу вам допомогти? Оберіть варіант або напишіть і я спробую вам допомогти.', admin: false });
+    setTimeout(() => { if (botEl('bot-sheet').classList.contains('show')) botSend(botReply('menu')); }, 1300);
+}
+function closeBot() {
+    botSession++;
+    clearTimeout(botEndTimer);
+    botBusy = false;
+    botEl('bot-sheet').classList.remove('show');
+    document.body.classList.remove('no-scroll');
+}
 
 </script>
 <div id="global-smart-tag" class="smart-tag" onclick="handleSmartTag()">
