@@ -773,6 +773,61 @@ body.no-scroll {
     animation: goldShine 3.5s ease-in-out infinite;
 }
 
+/* ---- Срібні іконки (Lite, Гілка Стандарт) ---- */
+@keyframes silverShine { 0% { background-position: 160% center; } 55%, 100% { background-position: -60% center; } }
+.silver-shine {
+    display: inline-block;
+    background: linear-gradient(110deg, #7a808b 0%, #a4aab5 36%, #f7f9fc 50%, #a4aab5 64%, #7a808b 100%);
+    background-size: 250% auto;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent !important;
+    filter: drop-shadow(0 0 2px rgba(150, 165, 190, 0.65));
+    animation: silverShine 3.5s ease-in-out infinite;
+}
+
+/* ---- Електричний метал: «Збільшити ліміт» ---- */
+@keyframes boltSheen { 0% { background-position: 160% center; } 55%, 100% { background-position: -60% center; } }
+@keyframes boltCharge {
+    0%, 100% { filter: drop-shadow(0 0 1px rgba(70, 165, 255, 0.7)) drop-shadow(0 0 3px rgba(70, 165, 255, 0.4)); }
+    40%      { filter: drop-shadow(0 0 2px rgba(120, 210, 255, 0.95)) drop-shadow(0 0 7px rgba(60, 160, 255, 0.75)); }
+    46%      { filter: drop-shadow(0 0 1px rgba(70, 165, 255, 0.5)); }
+    50%      { filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1)) drop-shadow(0 0 10px rgba(90, 190, 255, 0.95)); }
+    56%      { filter: drop-shadow(0 0 1px rgba(70, 165, 255, 0.6)); }
+    62%      { filter: drop-shadow(0 0 2px rgba(120, 210, 255, 0.9)) drop-shadow(0 0 6px rgba(60, 160, 255, 0.7)); }
+}
+.electric-bolt {
+    display: inline-block;
+    background: linear-gradient(110deg, #2c5aa0 0%, #4a9dff 32%, #f2fbff 50%, #4a9dff 68%, #2c5aa0 100%);
+    background-size: 250% auto;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent !important;
+    animation: boltSheen 2.4s ease-in-out infinite, boltCharge 2.2s linear infinite;
+}
+
+/* ---- Живий розмитий мікс кольорів: готові рекламні пакети ----
+   Кожна іконка тримає свій основний колір (--c1), а довкола нього повільно переливаються сусідні відтінки. */
+@keyframes mixX { from { background-position: 0 0, 0 0; } to { background-position: 34px 0, 0 -26px; } }
+.chrome-grad {
+    --c1: #007aff; --c2: #5ac8fa; --c3: #5856d6; --c4: #af52de;
+    display: inline-block;
+    background:
+        linear-gradient(0deg, transparent 0%, color-mix(in srgb, var(--c4) 75%, transparent) 30%, transparent 55%, color-mix(in srgb, var(--c2) 70%, transparent) 80%, transparent 100%),
+        linear-gradient(90deg, var(--c1) 0%, var(--c1) 22%, var(--c2) 44%, var(--c1) 58%, var(--c3) 78%, var(--c1) 100%);
+    background-size: 100% 26px, 34px 100%;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent !important;
+    filter: saturate(1.2) drop-shadow(0 0 3px color-mix(in srgb, var(--c1) 55%, transparent));
+    animation: mixX 3.2s linear infinite;
+}
+.chrome-blue   { --c1: #007aff; --c2: #5ac8fa; --c3: #5856d6; --c4: #af52de; }
+.chrome-purple { --c1: #af52de; --c2: #ff6bd6; --c3: #5856d6; --c4: #5ac8fa; }
+.chrome-red    { --c1: #ff2d55; --c2: #ff9500; --c3: #af52de; --c4: #ff6bd6; }
+.in-btn:nth-child(2) .chrome-grad { animation-delay: -1s; }
+.in-btn:nth-child(3) .chrome-grad { animation-delay: -2s; }
+@media (prefers-reduced-motion: reduce) {
+    .silver-shine, .electric-bolt, .chrome-grad { animation: none; }
+}
+
 /* ---- Місця для Premium-гілки ---- */
 .slots-card { background: rgba(142, 142, 147, 0.08); border-radius: 16px; padding: 14px; margin-top: 16px; }
 .slots-title { font-size: 14.5px; font-weight: 700; display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
@@ -1001,7 +1056,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
 
     <div class="in-btn" onclick="openModal('Гілка Стандарт', document.getElementById('baz-branch-std-html').innerHTML, '300 ₴ / міс.', 'baz_branch_std', false)">
         <div class="in-title">
-            <span class="material-symbols-rounded">storefront</span>
+            <span class="material-symbols-rounded silver-shine">storefront</span>
             Власна гілка Стандарт
         </div>
         <div class="in-action">
@@ -1021,7 +1076,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
 
     <div class="in-btn" onclick="nav('page-limits')">
         <div class="in-title">
-            <span class="material-symbols-rounded">bolt_boost</span>
+            <span class="material-symbols-rounded electric-bolt">bolt_boost</span>
             Збільшити ліміт
         </div>
         <div class="in-action">
@@ -1058,7 +1113,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
         </div>
         
         <div class="in-btn" onclick="openModal('Lite', document.getElementById('baz-lite-html').innerHTML, '90 ₴ / 3 місяці', 'baz_lite', false)">
-            <div class="in-title" style="color: #10b981; display: flex; align-items: center; gap: 6px;"><span class="material-symbols-rounded" style="color: #10b981;">license</span><span>Lite</span></div>
+            <div class="in-title" style="display: flex; align-items: center; gap: 6px;"><span class="material-symbols-rounded silver-shine">license</span><span class="silver-shine" style="font-weight: 700;">Lite</span></div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
     </div>
@@ -1134,10 +1189,6 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
             <div class="in-title"><span class="material-symbols-rounded">smart_button</span> Стандартне + кнопка</div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
-        <div class="in-btn" onclick="openModal('Кнопка в боті', document.getElementById('chat-btn-html').innerHTML, '100 ₴', 'chat_btn', false)">
-            <div class="in-title"><span class="material-symbols-rounded">ads_click</span> Кнопка в боті</div>
-            <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
-        </div>
         <div class="in-btn" onclick="openModal('Реклама в боті', document.getElementById('chat-bot-html').innerHTML, '250 ₴', 'chat_bot', false)">
         <div class="in-title"><span class="material-symbols-rounded" >smart_toy</span> Реклама в боті <span class="material-symbols-rounded new-badge">fiber_new</span></div>
         <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
@@ -1162,15 +1213,15 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
     </div>
     <div class="card-group">
         <div class="in-btn" onclick="openModal('Стандарт+', document.getElementById('pack-std-plus-html').innerHTML, '400 ₴', 'pack_std_plus')">
-            <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">layers</span> Стандарт+</div>
+            <div class="in-title"><span class="material-symbols-rounded chrome-grad chrome-blue">layers</span> Стандарт+</div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
         <div class="in-btn" onclick="openModal('Базарчик+', document.getElementById('pack-baz-plus-html').innerHTML, '400 ₴', 'pack_baz_plus')">
-            <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">layers</span> Базарчик+</div>
+            <div class="in-title"><span class="material-symbols-rounded chrome-grad chrome-purple">layers</span> Базарчик+</div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
         <div class="in-btn" onclick="openModal('Реклама в ботах+', document.getElementById('pack-bots-plus-html').innerHTML, '400 ₴', 'pack_bots_plus')">
-            <div class="in-title"><span class="material-symbols-rounded" style="color: #ff2d55;">layers</span> Реклама в ботах+ <span class="material-symbols-rounded new-badge">fiber_new</span></div>
+            <div class="in-title"><span class="material-symbols-rounded chrome-grad chrome-red">layers</span> Реклама в ботах+ <span class="material-symbols-rounded new-badge">fiber_new</span></div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
         <div class="in-btn" onclick="openModal('Кастомний', document.getElementById('pack-custom-html').innerHTML, '...', 'pack_custom')">
@@ -1337,7 +1388,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
             </div>
             <div class="card-group">
                 <div class="in-btn" onclick="openModal('Стандарт+', document.getElementById('pack-std-plus-html').innerHTML, '400 ₴', 'pack_std_plus')">
-                    <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">layers</span> Рекламний пакет Стандарт+</div>
+                    <div class="in-title"><span class="material-symbols-rounded chrome-grad chrome-blue">layers</span> Рекламний пакет Стандарт+</div>
                     <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
                 </div>
             </div>
@@ -1354,7 +1405,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
             </div>
             <div class="card-group">
                 <div class="in-btn" onclick="openModal('Базарчик+', document.getElementById('pack-baz-plus-html').innerHTML, '400 ₴', 'pack_baz_plus')">
-                    <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">layers</span> Рекламний пакет Базарчик+</div>
+                    <div class="in-title"><span class="material-symbols-rounded chrome-grad chrome-purple">layers</span> Рекламний пакет Базарчик+</div>
                     <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
                 </div>
             </div>
@@ -1401,7 +1452,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
         </div>
                    <div class="card-group">
                 <div class="in-btn" onclick="openModal('Гілка Стандарт', document.getElementById('baz-branch-std-html').innerHTML, '300 ₴ / міс.', 'baz_branch_std', false)">
-                    <div class="in-title"><span class="material-symbols-rounded" style="color: #ff9500;">storefront</span> Гілка Стандарт</div>
+                    <div class="in-title"><span class="material-symbols-rounded silver-shine">storefront</span> Гілка Стандарт</div>
                     <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
                 </div>
                 <div class="in-btn" onclick="openModal('Гілка Premium', document.getElementById('baz-branch-prem-html').innerHTML, '450 ₴ / міс.', 'baz_branch_prem', false)">
@@ -1439,7 +1490,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
             </div>
             <div class="card-group">
                 <div class="in-btn" onclick="openModal('Lite', document.getElementById('baz-lite-html').innerHTML, '90 ₴ / 3 місяці', 'baz_lite', false)">
-                    <div class="in-title"><span class="material-symbols-rounded" style="color: #f59e0b;">license</span> Тариф Lite</div>
+                    <div class="in-title"><span class="material-symbols-rounded silver-shine">license</span> Тариф Lite</div>
                     <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
                 </div>
             </div>
@@ -1473,7 +1524,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
             </div>
                        <div class="card-group">
                 <div class="in-btn" onclick="openModal('Гілка Стандарт', document.getElementById('baz-branch-std-html').innerHTML, '300 ₴ / міс.', 'baz_branch_std', false)">
-                    <div class="in-title"><span class="material-symbols-rounded" style="color: #f59e0b;">storefront</span> Гілка Стандарт</div>
+                    <div class="in-title"><span class="material-symbols-rounded silver-shine">storefront</span> Гілка Стандарт</div>
                     <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
                 </div>
                 <div class="in-btn" onclick="openModal('Гілка Premium', document.getElementById('baz-branch-prem-html').innerHTML, '450 ₴ / міс.', 'baz_branch_prem', false)">
@@ -1551,15 +1602,15 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
         </div>
         <div class="card-group">
             <div class="in-btn" onclick="openModal('Стандарт+', document.getElementById('pack-std-plus-html').innerHTML, '400 ₴', 'pack_std_plus')">
-                <div class="in-title"><span class="material-symbols-rounded" style="color: #007aff;">layers</span> Стандарт+</div>
+                <div class="in-title"><span class="material-symbols-rounded chrome-grad chrome-blue">layers</span> Стандарт+</div>
                 <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
             </div>
             <div class="in-btn" onclick="openModal('Базарчик+', document.getElementById('pack-baz-plus-html').innerHTML, '400 ₴', 'pack_baz_plus')">
-                <div class="in-title"><span class="material-symbols-rounded" style="color: #af52de;">layers</span> Базарчик+</div>
+                <div class="in-title"><span class="material-symbols-rounded chrome-grad chrome-purple">layers</span> Базарчик+</div>
                 <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
             </div>
             <div class="in-btn" onclick="openModal('Реклама в ботах+', document.getElementById('pack-bots-plus-html').innerHTML, '400 ₴', 'pack_bots_plus')">
-            <div class="in-title"><span class="material-symbols-rounded" style="color: #ff2d55;">layers</span> Реклама в ботах+ <span class="material-symbols-rounded new-badge">fiber_new</span></div>
+            <div class="in-title"><span class="material-symbols-rounded chrome-grad chrome-red">layers</span> Реклама в ботах+ <span class="material-symbols-rounded new-badge">fiber_new</span></div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
         <div class="in-btn" onclick="openModal('Кастомний', document.getElementById('pack-custom-html').innerHTML, '...', 'pack_custom')">
@@ -1947,7 +1998,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
 
 <div class="week-try">
     <div class="week-info">
-        <div class="week-title"><span class="material-symbols-rounded" style="color: #ff9500;">storefront</span> Гілка Стандарт • Тижнева</div>
+        <div class="week-title"><span class="material-symbols-rounded silver-shine">storefront</span> Гілка Стандарт • Тижнева</div>
         <div class="week-desc">Спробуйте формат на тиждень, щоб зрозуміти, чи підходить він вам.</div>
     </div>
     <div class="week-btn" onclick="closeModal(); setTimeout(() => openModal('Власна гілка Стандарт • Тижнева', 'Тестовий тиждень для вашої гілки. Усі переваги стандарту на 7 днів.', '100 ₴ / тиж', 'baz_branch_std_week', false), 300)">Замовити</div>
@@ -2427,18 +2478,6 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
     </div>
 </div>
 
-<div id="chat-btn-html" style="display: none;">
-    <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
-    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
-        <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">add_box</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">На тиждень додаємо <b>кнопку з назвою вашого бізнесу</b> в щоденне повідомлення бота в чаті «Валківський Чатік». Її бачать усі — один клік і люди переходять до вашого оголошення/гілки/інстаграму. Назву кнопки підберемо разом з вами.</span>
-    </div>
-    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
-        <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">text_ad</span>
-        <span style="font-size: 14.5px; line-height: 1.4;">До повідомлення від бота додаємо <b>ваше оголошення</b>.</span>
-    </div>
-</div>
-
 <!--діалог--> 
 <div id="chat-dialog-html" style="display: none;">
     <div style="font-weight: 600; margin: 16px 0 12px; color: var(--sub);">Як це буде:</div>
@@ -2571,7 +2610,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
     <div style="font-weight: 600; margin: 20px 0 8px; color: var(--text);">Вам може бути цікаво:</div>
     <div class="week-try" style="margin-top: 0;">
         <div class="week-info">
-            <div class="week-title"><span class="material-symbols-rounded" style="color: #ff2d55;">layers</span> Рекламний пакет «Реклама в ботах+»</div>
+            <div class="week-title"><span class="material-symbols-rounded chrome-grad chrome-red">layers</span> Рекламний пакет «Реклама в ботах+»</div>
             <div class="week-desc">Публікація в чаті + реклама в обох ботах на 7 днів. Усього 400 ₴</div>
         </div>
         <div class="week-btn" onclick="closeModal(); setTimeout(() => openModal('Реклама в ботах+', document.getElementById('pack-bots-plus-html').innerHTML, '400 ₴', 'pack_bots_plus'), 300)">Детальніше</div>
@@ -2583,16 +2622,16 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
     <div style="font-weight: 600; margin: 0 0 12px; color: var(--text);">Що ви отримуєте:</div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #007aff; flex-shrink: 0;">add_box</span>
-        <span style="font-size: 14.5px; line-height: 1.4;"><b>Рекламну кнопку</b> у щоденних повідомленнях бота двічі на день (вранці та ввечері) в групі «Валківський Чатік». Кнопка може вести на ваше оголошення, сторінку в соц. мережах, ваш контакт у Telegram тощо.</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Рекламну кнопку</b> у щоденних повідомленнях бота двічі на день (вранці та ввечері) в групі «Валківський Чатік» <b>на тиждень</b>. Кнопка може вести на ваше оголошення, сторінку в соц. мережах, ваш контакт у Telegram тощо.</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 0; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #ff9500; flex-shrink: 0;">text_ad</span>
-        <span style="font-size: 14.5px; line-height: 1.4;"><b>Розміщення оголошення</b> в повідомленнях, які бот надсилає двічі на день — вранці та ввечері.</span>
+        <span style="font-size: 14.5px; line-height: 1.4;"><b>Розміщення оголошення</b> в повідомленнях, які бот надсилає двічі на день — вранці та ввечері, також <b>на тиждень</b>.</span>
     </div>
     <div style="font-weight: 600; margin: 20px 0 8px; color: var(--text);">Вам може бути цікаво:</div>
     <div class="week-try" style="margin-top: 0;">
         <div class="week-info">
-            <div class="week-title"><span class="material-symbols-rounded" style="color: #ff2d55;">layers</span> Рекламний пакет «Реклама в ботах+»</div>
+            <div class="week-title"><span class="material-symbols-rounded chrome-grad chrome-red">layers</span> Рекламний пакет «Реклама в ботах+»</div>
             <div class="week-desc">Публікація в чаті + реклама в обох ботах на 7 днів. Усього 400 ₴</div>
         </div>
         <div class="week-btn" onclick="closeModal(); setTimeout(() => openModal('Реклама в ботах+', document.getElementById('pack-bots-plus-html').innerHTML, '400 ₴', 'pack_bots_plus'), 300)">Детальніше</div>
@@ -3232,16 +3271,10 @@ function botDetect(text) {
 }
 
 // ---------- Тексти відповідей (редагуй тут) ----------
-const ba = (icon, label, t, v) => ({ icon, label, t, v });
+const ba = (icon, label, t, v, fx) => ({ icon, label, t, v, fx });
+const chromeCls = l => 'chrome-grad ' + (l.includes('Базарчик+') ? 'chrome-purple' : l.includes('ботах+') ? 'chrome-red' : 'chrome-blue');
+const ICON_FX = { layers: 'chrome-grad', bolt_boost: 'electric-bolt', license: 'silver-shine' };
 const BA_ADMIN = ba('chat', 'Написати адмінам', 'admin');
-
-function botSlotsLine() {
-    const s = PREMIUM_SLOTS;
-    let t = s.free > 0 ? `Зараз вільних Premium-гілок: <b>${s.free}</b>` : 'Зараз вільних Premium-гілок <b>немає</b>';
-    if (s.asOf) t += ` (станом на ${s.asOf})`;
-    if (s.next) t += `. Наступна гілка буде доступна: <b>${s.next}</b>`;
-    return t + '. Місць небагато, тому краще уточнити в адмінів перед замовленням.';
-}
 
 const BOT_REPLIES = {
     menu: () => ({ html: 'Оберіть:', actions: [ba('quiz', 'Тест «Швидкий старт»', 'quiz'), ba('chat', 'Написати адміністраторам', 'admin')], admin: false }),
@@ -3258,7 +3291,7 @@ const BOT_REPLIES = {
     fallback: () => ({ html: 'Щось я вас не дуже зрозумів 🤔 Спробуйте ще раз більш детально описати, з чим саме я вам можу допомогти.',
         actions: [ba('menu', 'Переглянути меню', 'menu')] }),
 
-    prices: () => ({ fb: true, html: 'Орієнтири по цінах 💸<br><br>• <b>Канал «Валки, шо там?»</b> — від 150 ₴<br>• <b>Чатік</b> — публікація від 150 ₴, реклама/кнопка в боті від 100 ₴<br>• <b>Базарчик</b> — Lite 90 ₴ / 3 міс., Pro 150 ₴ / 3 міс., гілка від 300 ₴ / міс., реклама в боті 100 ₴<br>• <b>Пакети</b> — від 400 ₴<br><br>Що саме вас цікавить?',
+    prices: () => ({ fb: true, html: 'Орієнтири по цінах 💸<br><br>• <b>Канал «Валки, шо там?»</b> — від 150 ₴<br>• <b>Чатік</b> — публікація від 150 ₴, реклама в боті 250 ₴ / тиждень<br>• <b>Базарчик</b> — Lite 90 ₴ / 3 міс., Pro 150 ₴ / 3 міс., гілка від 300 ₴ / міс., реклама в боті 100 ₴<br>• <b>Пакети</b> — від 400 ₴<br><br>Що саме вас цікавить?',
         actions: [ba('campaign', 'Канал «Валки, шо там?»', 'say', 'vsht'), ba('chat', 'Чатік', 'say', 'chatik'), ba('storefront', 'Базарчик', 'say', 'bazar'), ba('layers', 'Рекламні пакети', 'say', 'packages')] }),
 
     ad_where: () => ({ html: 'Рекламу — де саме хочете розмістити? 📣',
@@ -3267,7 +3300,7 @@ const BOT_REPLIES = {
     vsht: () => ({ fb: true, html: '<b>Канал «Валки, шо там?»</b> (5K підписників) 📣<br><br>• <b>Стандартне</b> — 150 ₴: ваше готове оголошення + закріплення на 24 год<br>• <b>Інфо-пост</b> — 250 ₴: корисний пост, де ваша пропозиція подана ненав’язливо<br>• <b>Міні-інтервʼю</b> — 300 ₴<br>• <b>Інтерактив</b> (вікторина/опитування) та <b>розіграші</b> — є окремо<br><br>За донату від 50 ₴ на місцевий збір репостимо оголошення в «Чатік» безкоштовно.',
         actions: [ba('campaign', 'Стандартне', 'modal', 'vsht_std'), ba('feed', 'Інфо-пост', 'modal', 'vsht_info'), ba('list', 'Усі варіанти каналу', 'page', 'page-vsht')] }),
 
-    chatik: () => ({ fb: true, html: '<b>Валківський Чатік</b> (5.7K) 💬<br><br>• <b>Стандартне</b> — 150 ₴ (+ закріплення на 24 год)<br>• <b>Стандартне + кнопка</b> — 200 ₴ (кнопка в щоденному повідомленні бота на 2 дні)<br>• <b>Кнопка в боті</b> — 100 ₴ на тиждень<br>• <b>Реклама в боті</b> — 250 ₴, кнопка двічі на день (вранці й ввечері)<br>• <b>Діалог у чаті</b> — 250 ₴: ми ставимо цікаві питання у відповідь на вашу рекламу',
+    chatik: () => ({ fb: true, html: '<b>Валківський Чатік</b> (5.7K) 💬<br><br>• <b>Стандартне</b> — 150 ₴ (+ закріплення на 24 год)<br>• <b>Стандартне + кнопка</b> — 200 ₴ (кнопка в щоденному повідомленні бота на 2 дні)<br>• <b>Реклама в боті</b> — 250 ₴ на тиждень: кнопка двічі на день (вранці й ввечері)<br>• <b>Діалог у чаті</b> — 250 ₴: ми ставимо цікаві питання у відповідь на вашу рекламу',
         actions: [ba('chat', 'Стандартне', 'modal', 'chat_std'), ba('smart_button', 'Стандартне + кнопка', 'modal', 'chat_btn_std'), ba('smart_toy', 'Реклама в боті', 'modal', 'chat_bot'), ba('list', 'Усі варіанти чату', 'page', 'page-chatik')] }),
 
     bazar: () => ({ fb: true, html: '<b>Валківський Базарчик</b> (8K) 🛒<br><br>• Публікувати оголошення можна безкоштовно: до <b>3 на тиждень</b><br>• Більше оголошень і без перевірок бота — тарифи <b>Lite</b> (90 ₴ / 3 міс.) та <b>Pro</b> (150 ₴ / 3 міс.)<br>• <b>Власна гілка</b> — від 300 ₴ / міс.<br>• <b>Реклама в боті</b> Базарчика — 100 ₴ на 7 днів',
@@ -3276,10 +3309,10 @@ const BOT_REPLIES = {
     limits: () => ({ fb: true, html: '<b>Ліміти оголошень у Базарчику</b> 📈<br><br>Безкоштовно: 3 оголошення на тиждень + перевірки від бота.<br><br>• <b>Lite</b> — 90 ₴ / 3 міс.: до 30+ оголошень на місяць, без перевірок бота<br>• <b>Pro</b> — від 150 ₴ / 3 міс.: 50+ оголошень на місяць, без перевірок бота<br><br>Хочете безліміт — для цього є власна гілка. А військовим і їхнім рідним Pro дається безкоштовно раз на рік.',
         actions: [ba('workspace_premium', 'Переглянути Pro', 'modal', 'pro'), ba('license', 'Переглянути Lite', 'modal', 'lite'), ba('storefront', 'Власна гілка (безліміт)', 'say', 'branch')] }),
 
-    branch: () => ({ fb: true, html: '<b>Власна гілка в Базарчику</b> — ваш міні-сайт усередині групи 🏪<br><br>• <b>Стандарт</b> — 300 ₴ / міс.: логотип чи емодзі, власна назва, безліміт публікацій<br>• <b>Premium</b> — 450 ₴ / міс.: усе зі Стандарту + ТОП-4 закріплення, репост на канал і кнопка в боті<br><br>Для проби є тижневі версії: Стандарт — 100 ₴, Premium — 200 ₴.<br><br>' + botSlotsLine(),
-        actions: [ba('storefront', 'Гілка Стандарт', 'modal', 'branch_std'), ba('crown', 'Гілка Premium', 'modal', 'branch_prem')] }),
+    branch: () => ({ fb: true, html: '<b>Власна гілка в Базарчику</b> — ваш міні-сайт усередині групи 🏪<br><br>• <b>Стандарт</b> — 300 ₴ / міс.: логотип чи емодзі, власна назва, безліміт публікацій<br>• <b>Premium</b> — 450 ₴ / міс.: усе зі Стандарту + ТОП-4 закріплення, репост на канал і кнопка в боті<br><br>Для проби є тижневі версії: Стандарт — 100 ₴, Premium — 200 ₴.',
+        actions: [ba('storefront', 'Гілка Стандарт', 'modal', 'branch_std', 'silver-shine'), ba('crown', 'Гілка Premium', 'modal', 'branch_prem')] }),
 
-    premium: () => ({ fb: true, html: '<b>Гілка Premium</b> 👑 — 450 ₴ / міс. (750 ₴ на 2 міс., 950 ₴ на 3 міс.)<br><br>Усе зі Стандарту + ТОП-4 закріплення в групі, репост на канал «Валки, шо там?» і кнопка в боті на тиждень.<br><br>' + botSlotsLine(),
+    premium: () => ({ fb: true, html: '<b>Гілка Premium</b> 👑 — 450 ₴ / міс. (750 ₴ на 2 міс., 950 ₴ на 3 міс.)<br><br>Усе зі Стандарту + ТОП-4 закріплення в групі, репост на канал «Валки, шо там?» і кнопка в боті на тиждень.',
         actions: [ba('crown', 'Переглянути Premium', 'modal', 'branch_prem')] }),
 
     pin: () => ({ fb: true, html: '<b>Закріплення</b> 📌<br><br>• На каналі та в чаті у «Стандартному» закріплення на 24 години вже входить у ціну<br>• Пакет «Стандарт+» — закріплення на тиждень<br>• У Базарчику окреме закріплення оголошення зараз недоступне, але гілка Premium потрапляє в ТОП-4 групи',
@@ -3288,7 +3321,7 @@ const BOT_REPLIES = {
     packages: () => ({ fb: true, html: '<b>Рекламні пакети</b> 🎁 — кілька майданчиків одним замовленням:<br><br>• <b>Стандарт+</b> — 400 ₴: канал + репост у чат, закріплення на тиждень, кнопка і реклама в ботах<br>• <b>Базарчик+</b> — 400 ₴: власна гілка на 14 днів + репости в чат і на канал + кнопка в боті<br>• <b>Реклама в ботах+</b> — 400 ₴: публікація в чаті + реклама в обох ботах на 7 днів<br>• <b>Кастомний</b> — збираємо під вас<br><br>Для «Стандарт+» і «Базарчик+» є варіант 300 ₴ + донат від 50 ₴ на місцевий збір.',
         actions: [ba('layers', 'Стандарт+', 'modal', 'pack_std_plus'), ba('layers', 'Базарчик+', 'modal', 'pack_baz_plus'), ba('layers', 'Реклама в ботах+', 'modal', 'pack_bots'), ba('dashboard_customize', 'Усі пакети та кастомний', 'page', 'page-packages')] }),
 
-    bot_ad: () => ({ fb: true, html: '<b>Реклама в ботах</b> 🤖<br><br>• <b>Базарчик-бот</b> — 100 ₴ на 7 днів: ваше повідомлення та/або посилання постійно показується в повідомленнях бота в групі<br>• <b>Бот у Чатіку</b> — 250 ₴: рекламна кнопка в щоденних повідомленнях двічі на день (вранці й ввечері)<br>• <b>Пакет «Реклама в ботах+»</b> — 400 ₴: обидва боти + стандартна публікація в чаті',
+    bot_ad: () => ({ fb: true, html: '<b>Реклама в ботах</b> 🤖<br><br>• <b>Базарчик-бот</b> — 100 ₴ на 7 днів: ваше повідомлення та/або посилання постійно показується в повідомленнях бота в групі<br>• <b>Бот у Чатіку</b> — 250 ₴ на тиждень: рекламна кнопка в щоденних повідомленнях двічі на день (вранці й ввечері)<br>• <b>Пакет «Реклама в ботах+»</b> — 400 ₴: обидва боти + стандартна публікація в чаті',
         actions: [ba('smart_toy', 'Реклама в боті Базарчика', 'modal', 'baz_bot'), ba('smart_toy', 'Реклама в боті Чатіка', 'modal', 'chat_bot'), ba('layers', 'Пакет «Реклама в ботах+»', 'modal', 'pack_bots')] }),
 
     native: () => ({ fb: true, html: '<b>Нативна реклама</b> ✨ — коли це читають як цікавий контент, а не «знову реклама»:<br><br>• <b>Інфо-пост</b> — 250 ₴<br>• <b>Інтерактив</b> — опитування чи вікторина + ваше оголошення двічі<br>• <b>Міні-інтервʼю</b> — 300 ₴<br>• <b>Діалог у чаті</b> — 250 ₴<br>• <b>Розіграші</b> — від 150 ₴',
@@ -3347,7 +3380,7 @@ function botRowsEl(actions) {
     actions.forEach(a => {
         const r = document.createElement('div');
         r.className = 'in-btn';
-        r.innerHTML = `<div class="in-title"><span class="material-symbols-rounded">${a.icon}</span><span>${a.label}</span></div><span class="material-symbols-rounded arrow">chevron_right</span>`;
+        r.innerHTML = `<div class="in-title"><span class="material-symbols-rounded ${a.fx || (a.icon === 'layers' ? chromeCls(a.label) : (ICON_FX[a.icon] || ''))}">${a.icon}</span><span>${a.label}</span></div><span class="material-symbols-rounded arrow">chevron_right</span>`;
         r.onclick = () => botDo(a);
         g.appendChild(r);
     });
