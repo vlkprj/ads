@@ -828,6 +828,23 @@ body.no-scroll {
     .silver-shine, .electric-bolt, .chrome-grad { animation: none; }
 }
 
+/* ---- Світліше золото для Premium-гілки ---- */
+.gold-light {
+    background-image: linear-gradient(110deg, #c8920a 0%, #e8b923 38%, #fff0a8 50%, #e8b923 62%, #c8920a 100%);
+    filter: drop-shadow(0 0 2px rgba(255, 205, 70, 0.6));
+}
+
+/* ---- Чорний метал зі срібним блиском: «Збільшити ліміт» ---- */
+.black-shine {
+    display: inline-block;
+    background: linear-gradient(110deg, #0c0c0e 0%, #17171a 34%, #9da3ad 49%, #e4e8ee 50%, #9da3ad 51%, #17171a 66%, #0c0c0e 100%);
+    background-size: 250% auto;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent !important;
+    animation: silverShine 3.2s ease-in-out infinite;
+}
+.chrome-multi { --c1: #007aff; --c2: #af52de; --c3: #ff2d55; --c4: #5ac8fa; }
+
 /* ---- Місця для Premium-гілки ---- */
 .slots-card { background: rgba(142, 142, 147, 0.08); border-radius: 16px; padding: 14px; margin-top: 16px; }
 .slots-title { font-size: 14.5px; font-weight: 700; display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
@@ -962,7 +979,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
 
         <div class="main-btn" onclick="nav('page-packages')">
             <div class="btn-icon">
-                <span class="material-symbols-rounded">cards_stack</span>
+                <span class="material-symbols-rounded chrome-grad chrome-multi">cards_stack</span>
             </div>
             <div class="btn-content">
                 <div class="btn-title">Готові рекламні пакети</div>
@@ -1066,7 +1083,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
 
     <div class="in-btn" onclick="openModal('Гілка Premium', document.getElementById('baz-branch-prem-html').innerHTML, '450 ₴ / місяць', 'baz_branch_prem', false)">
         <div class="in-title">
-            <span class="material-symbols-rounded gold-crown">crown</span>
+            <span class="material-symbols-rounded gold-crown gold-light">crown</span>
             Власна гілка Premium
         </div>
         <div class="in-action">
@@ -1076,7 +1093,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
 
     <div class="in-btn" onclick="nav('page-limits')">
         <div class="in-title">
-            <span class="material-symbols-rounded electric-bolt">bolt_boost</span>
+            <span class="material-symbols-rounded black-shine">bolt_boost</span>
             Збільшити ліміт
         </div>
         <div class="in-action">
@@ -1108,12 +1125,12 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
     
     <div class="card-group">
         <div class="in-btn" onclick="openModal('Pro', document.getElementById('baz-pro-html').innerHTML, '150 ₴ / 3 місяці', 'baz_pro', false)">
-            <div class="in-title" style="display: flex; align-items: center; gap: 6px;"><span class="material-symbols-rounded gold-crown">workspace_premium</span><span class="gold-crown" style="font-weight: 700;">Pro</span></div>
+            <div class="in-title" style="display: flex; align-items: center; gap: 6px;"><span class="material-symbols-rounded gold-crown">workspace_premium</span><span style="font-weight: 700;">Pro</span></div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
         
         <div class="in-btn" onclick="openModal('Lite', document.getElementById('baz-lite-html').innerHTML, '90 ₴ / 3 місяці', 'baz_lite', false)">
-            <div class="in-title" style="display: flex; align-items: center; gap: 6px;"><span class="material-symbols-rounded silver-shine">license</span><span class="silver-shine" style="font-weight: 700;">Lite</span></div>
+            <div class="in-title" style="display: flex; align-items: center; gap: 6px;"><span class="material-symbols-rounded silver-shine">license</span><span style="font-weight: 700;">Lite</span></div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
     </div>
@@ -1456,7 +1473,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
                     <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
                 </div>
                 <div class="in-btn" onclick="openModal('Гілка Premium', document.getElementById('baz-branch-prem-html').innerHTML, '450 ₴ / міс.', 'baz_branch_prem', false)">
-                    <div class="in-title"><span class="material-symbols-rounded gold-crown">crown</span> Гілка Premium</div>
+                    <div class="in-title"><span class="material-symbols-rounded gold-crown gold-light">crown</span> Гілка Premium</div>
                     <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
                 </div>
             </div>
@@ -1528,7 +1545,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
                     <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
                 </div>
                 <div class="in-btn" onclick="openModal('Гілка Premium', document.getElementById('baz-branch-prem-html').innerHTML, '450 ₴ / міс.', 'baz_branch_prem', false)">
-                    <div class="in-title"><span class="material-symbols-rounded gold-crown">crown</span> Гілка Premium</div>
+                    <div class="in-title"><span class="material-symbols-rounded gold-crown gold-light">crown</span> Гілка Premium</div>
                     <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
                 </div>
             </div>
@@ -2071,7 +2088,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
 
 <div class="week-try">
     <div class="week-info">
-        <div class="week-title"><span class="material-symbols-rounded gold-crown">crown</span> Гілка Premium • Тижнева</div>
+        <div class="week-title"><span class="material-symbols-rounded gold-crown gold-light">crown</span> Гілка Premium • Тижнева</div>
         <div class="week-desc">Спробуйте преміум-формат на тиждень зі всіма плюшками.</div>
     </div>
     <div class="week-btn" onclick="closeModal(); setTimeout(() => openModal('Власна гілка Premium • Тижнева', 'Тестовий тиждень преміум-гілки з закріпленням у ТОП-4 та репостом.', '200 ₴ / тиж', 'baz_branch_prem_week', false), 300)">Замовити</div>
@@ -3273,7 +3290,7 @@ function botDetect(text) {
 // ---------- Тексти відповідей (редагуй тут) ----------
 const ba = (icon, label, t, v, fx) => ({ icon, label, t, v, fx });
 const chromeCls = l => 'chrome-grad ' + (l.includes('Базарчик+') ? 'chrome-purple' : l.includes('ботах+') ? 'chrome-red' : 'chrome-blue');
-const ICON_FX = { layers: 'chrome-grad', bolt_boost: 'electric-bolt', license: 'silver-shine' };
+const ICON_FX = { layers: 'chrome-grad', bolt_boost: 'black-shine', license: 'silver-shine' };
 const BA_ADMIN = ba('chat', 'Написати адмінам', 'admin');
 
 const BOT_REPLIES = {
