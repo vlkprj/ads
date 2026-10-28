@@ -845,6 +845,58 @@ body.no-scroll {
 }
 .chrome-multi { --c1: #007aff; --c2: #af52de; --c3: #ff2d55; --c4: #5ac8fa; }
 
+/* ---- Ракета Max: чорна, але миготить червоним ---- */
+@keyframes rocketBlink {
+    0%, 50%, 100% { color: #1a1a1c; filter: none; }
+    58% { color: #ff2d2d; filter: drop-shadow(0 0 2px rgba(255, 45, 45, 0.9)) drop-shadow(0 0 7px rgba(255, 59, 48, 0.6)); }
+    66% { color: #1a1a1c; filter: none; }
+    74% { color: #ff2d2d; filter: drop-shadow(0 0 2px rgba(255, 45, 45, 0.9)) drop-shadow(0 0 8px rgba(255, 59, 48, 0.65)); }
+    84% { color: #1a1a1c; filter: none; }
+}
+.rocket-blink { display: inline-block; animation: rocketBlink 2.8s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .rocket-blink { animation: none; } }
+
+/* ---- Зелене віконце при запуску (нові тарифи) ---- */
+.promo-banner.promo-green {
+    background: linear-gradient(135deg, #064e3b 0%, #0f8a52 68%, #2fbf71 100%);
+    position: relative;
+    overflow: hidden;
+}
+.promo-banner.promo-green::after {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(134,239,172,0.28) 0%, transparent 70%);
+    pointer-events: none;
+}
+.promo-banner.promo-green .promo-btn {
+    background: rgba(255,255,255,0.18);
+    color: #ffffff;
+    border: 1.5px solid rgba(255,255,255,0.35);
+    backdrop-filter: blur(8px);
+}
+.promo-banner.promo-green .promo-btn:active { background: rgba(255,255,255,0.3); }
+.promo-eyebrow.with-logo { display: flex; align-items: center; gap: 8px; }
+.promo-eyebrow.with-logo img { width: 22px; height: 22px; border-radius: 7px; object-fit: cover; flex-shrink: 0; }
+
+/* ---- Вибір гілки для Pro One ---- */
+.branch-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 1150; }
+.branch-overlay.show { opacity: 1; pointer-events: auto; }
+.branch-sheet { position: fixed; bottom: -100%; left: 0; width: 100%; background: var(--card); border-radius: 24px 24px 0 0; padding: 22px 20px; padding-bottom: calc(20px + env(safe-area-inset-bottom)); transition: bottom 0.3s cubic-bezier(0.25, 1, 0.5, 1); z-index: 1151; box-shadow: 0 -4px 20px rgba(0,0,0,0.1); display: flex; flex-direction: column; max-height: 88dvh; }
+.branch-sheet.show { bottom: 0; }
+.branch-title { font-size: 20px; font-weight: 700; padding-right: 36px; margin-bottom: 4px; }
+.branch-sub { font-size: 13.5px; color: var(--sub); line-height: 1.4; margin-bottom: 12px; }
+.branch-list { overflow-y: auto; border-radius: 16px; background: rgba(142, 142, 147, 0.08); margin-bottom: 12px; flex-shrink: 1; }
+.branch-opt { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 13px 14px; font-size: 15px; font-weight: 500; line-height: 1.3; border-bottom: 1px solid var(--sep); cursor: pointer; }
+.branch-opt:last-child { border-bottom: none; }
+.branch-opt .material-symbols-rounded { font-size: 22px; color: #c7c7cc; flex-shrink: 0; }
+.branch-opt.selected { background: var(--card); }
+.branch-opt.selected .material-symbols-rounded { color: #34c759; }
+.primary-btn:disabled { opacity: 0.35; pointer-events: none; }
+.check-branch { font-size: 14px; font-weight: 500; color: var(--sub); margin: -2px 0 8px; display: none; }
+
 /* ---- Місця для Premium-гілки ---- */
 .slots-card { background: rgba(142, 142, 147, 0.08); border-radius: 16px; padding: 14px; margin-top: 16px; }
 .slots-title { font-size: 14.5px; font-weight: 700; display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
@@ -979,7 +1031,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
 
         <div class="main-btn" onclick="nav('page-packages')">
             <div class="btn-icon">
-                <span class="material-symbols-rounded chrome-grad chrome-multi">cards_stack</span>
+                <span class="material-symbols-rounded">cards_stack</span>
             </div>
             <div class="btn-content">
                 <div class="btn-title">Готові рекламні пакети</div>
@@ -1124,18 +1176,32 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
     <div class="intro-box">Збільшити свій ліміт оголошень в групі «Валківський Базарчик»</div>
     
     <div class="card-group">
-        <div class="in-btn" onclick="openModal('Pro', document.getElementById('baz-pro-html').innerHTML, '150 ₴ / 3 місяці', 'baz_pro', false)">
-            <div class="in-title" style="display: flex; align-items: center; gap: 6px;"><span class="material-symbols-rounded gold-crown">workspace_premium</span><span style="font-weight: 700;">Pro</span></div>
+        <div class="in-btn" onclick="openModal('Lite', document.getElementById('baz-lite-html').innerHTML, '90 ₴ / 3 місяці', 'baz_lite', false)">
+            <div class="in-title" style="display: flex; align-items: center; gap: 6px;"><span class="material-symbols-rounded silver-shine">license</span><span>Lite</span></div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
-        
-        <div class="in-btn" onclick="openModal('Lite', document.getElementById('baz-lite-html').innerHTML, '90 ₴ / 3 місяці', 'baz_lite', false)">
-            <div class="in-title" style="display: flex; align-items: center; gap: 6px;"><span class="material-symbols-rounded silver-shine">license</span><span style="font-weight: 700;">Lite</span></div>
+
+        <div class="in-btn" onclick="openModal('Pro', document.getElementById('baz-pro-html').innerHTML, '150 ₴ / 3 місяці', 'baz_pro', false)">
+            <div class="in-title" style="display: flex; align-items: center; gap: 6px;"><span class="material-symbols-rounded gold-crown">workspace_premium</span><span>Pro</span></div>
+            <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+        </div>
+
+        <div class="in-btn" onclick="openModal('Pro One', document.getElementById('baz-pro-one-html').innerHTML, '50 ₴ / місяць', 'baz_pro_one', false)">
+            <div class="in-title" style="display: flex; align-items: center; gap: 6px;"><span class="material-symbols-rounded black-shine">looks_one</span><span>Pro One</span></div>
+            <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+        </div>
+
+        <div class="in-btn" onclick="openModal('Водій Pro', document.getElementById('baz-driver-pro-html').innerHTML, '50 ₴ / 3 місяці', 'baz_driver_pro', false)">
+            <div class="in-title" style="display: flex; align-items: center; gap: 6px;"><span class="material-symbols-rounded black-shine">local_taxi</span><span>Водій Pro</span></div>
+            <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
+        </div>
+
+        <div class="in-btn" onclick="openModal('Max', document.getElementById('baz-max-html').innerHTML, '299 ₴ / 3 місяці', 'baz_max', false)">
+            <div class="in-title" style="display: flex; align-items: center; gap: 6px;"><span class="material-symbols-rounded rocket-blink">rocket_launch</span><span>Max</span></div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
     </div>
 </div>
-
 
 <div id="page-vsht" class="page">
     <div class="nav-bar">
@@ -1490,6 +1556,18 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
                 <div class="in-title"><span class="material-symbols-rounded">add_chart</span> Хочу публікувати більше і без перевірок бота</div>
                 <span class="material-symbols-rounded arrow">chevron_right</span>
             </div>
+            <div class="in-btn" onclick="showQuizRes('res-c4', 'q-c-group')">
+                <div class="in-title"><span class="material-symbols-rounded">account_tree</span> Хочу Pro, але тільки в одній гілці (наприклад, «Послуги» чи «Продукти • Їжа»)</div>
+                <span class="material-symbols-rounded arrow">chevron_right</span>
+            </div>
+            <div class="in-btn" onclick="showQuizRes('res-c5', 'q-c-group')">
+                <div class="in-title"><span class="material-symbols-rounded">local_taxi</span> Я водій: таксі, попутка чи автопослуги</div>
+                <span class="material-symbols-rounded arrow">chevron_right</span>
+            </div>
+            <div class="in-btn" onclick="showQuizRes('res-c6', 'q-c-group')">
+                <div class="in-title"><span class="material-symbols-rounded">rocket_launch</span> Публікую дуже багато: щодня і в усіх гілках</div>
+                <span class="material-symbols-rounded arrow">chevron_right</span>
+            </div>
             <div class="in-btn" onclick="showQuizRes('res-c3', 'q-c-group')">
                 <div class="in-title"><span class="material-symbols-rounded">all_inclusive</span> Хочу повний безліміт у власній гілці (власний розділ в групі)</div>
                 <span class="material-symbols-rounded arrow">chevron_right</span>
@@ -1525,6 +1603,57 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
             <div class="card-group">
                 <div class="in-btn" onclick="openModal('Pro', document.getElementById('baz-pro-html').innerHTML, '150 ₴ / 3 місяці', 'baz_pro', false)">
                     <div class="in-title"><span class="material-symbols-rounded gold-crown">workspace_premium</span> Тариф Pro</div>
+                    <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="res-c4" class="q-res" style="display:none;">
+            <div class="chat-sim" style="background: transparent; padding: 0; margin: 0 0 24px;">
+                <div class="chat-msg reply">
+                    <img src="assets/vsht.PNG" class="chat-avatar">
+                    <div class="bubble" style="border-radius: 14px 14px 14px 4px; background: #e5e5ea;">
+                        <span class="bubble-text">Тоді вам підійде Pro One — це Pro, але тільки в обраній вами гілці:</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-group">
+                <div class="in-btn" onclick="openModal('Pro One', document.getElementById('baz-pro-one-html').innerHTML, '50 ₴ / місяць', 'baz_pro_one', false)">
+                    <div class="in-title"><span class="material-symbols-rounded black-shine">looks_one</span> Тариф Pro One</div>
+                    <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="res-c5" class="q-res" style="display:none;">
+            <div class="chat-sim" style="background: transparent; padding: 0; margin: 0 0 24px;">
+                <div class="chat-msg reply">
+                    <img src="assets/vsht.PNG" class="chat-avatar">
+                    <div class="bubble" style="border-radius: 14px 14px 14px 4px; background: #e5e5ea;">
+                        <span class="bubble-text">Для вас є окремий тариф — Водій Pro:</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-group">
+                <div class="in-btn" onclick="openModal('Водій Pro', document.getElementById('baz-driver-pro-html').innerHTML, '50 ₴ / 3 місяці', 'baz_driver_pro', false)">
+                    <div class="in-title"><span class="material-symbols-rounded black-shine">local_taxi</span> Тариф Водій Pro</div>
+                    <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="res-c6" class="q-res" style="display:none;">
+            <div class="chat-sim" style="background: transparent; padding: 0; margin: 0 0 24px;">
+                <div class="chat-msg reply">
+                    <img src="assets/vsht.PNG" class="chat-avatar">
+                    <div class="bubble" style="border-radius: 14px 14px 14px 4px; background: #e5e5ea;">
+                        <span class="bubble-text">Тоді дивіться на Max — 20 оголошень на день у всіх гілках:</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-group">
+                <div class="in-btn" onclick="openModal('Max', document.getElementById('baz-max-html').innerHTML, '299 ₴ / 3 місяці', 'baz_max', false)">
+                    <div class="in-title"><span class="material-symbols-rounded rocket-blink">rocket_launch</span> Тариф Max</div>
                     <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
                 </div>
             </div>
@@ -1786,7 +1915,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
     </div>
     <div class="doc-card">
         <div class="doc-h"><span class="material-symbols-rounded" style="color: #af52de;">bolt_boost</span> 2. Збільшення ліміту оголошень у «Валківському Базарчику»</div>
-        <div class="doc-p">Для користувачів, які бажають публікувати більше оголошень у групі «Валківський Базарчик», доступні платні тарифи Lite та Pro.</div>
+        <div class="doc-p">Для користувачів, які бажають публікувати більше оголошень у групі «Валківський Базарчик», доступні платні тарифи Lite, Pro, Pro One, Водій Pro та Max. Тариф Pro One діє лише в обраній вами гілці, а Водій Pro — лише в гілці «Таксі • Попутка • Автопослуги».</div>
         <div class="doc-p">Зазвичай ми підключаємо обраний тариф одразу після отримання донату.</div>
         <div class="doc-p">Якщо підключити тариф одразу неможливо, ми зв’яжемося з вами та повідомимо про ситуацію.</div>
         <div class="doc-p">Якщо ви оплатили тариф, але він не активувався, з вами не зв’язалися або виникла інша проблема, зверніться до адміністраторів через <a class="doc-link" href="https://t.me/valkysho_bot" onclick="tg.openTelegramLink(this.href);return false;">@valkysho_bot</a>.</div>
@@ -1874,6 +2003,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
     <div class="checkout-card">
         <div class="check-label">Ваше замовлення:</div>
         <div class="check-name" id="check-name-display">---</div>
+        <div class="check-branch" id="check-branch-display"></div>
         <div class="check-price" id="check-price-display">0 ₴</div>
     </div>
 
@@ -1899,17 +2029,28 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
 </div>
 
 
+<div class="branch-overlay" id="branch-overlay" onclick="closeBranchSheet()"></div>
+<div class="branch-sheet" id="branch-sheet">
+    <div class="modal-close" onclick="closeBranchSheet()">
+        <span class="material-symbols-rounded" style="font-size: 20px;">close</span>
+    </div>
+    <div class="branch-title">Оберіть гілку</div>
+    <div class="branch-sub">Pro One працюватиме тільки в обраній гілці. Адміністратори отримають замовлення вже з вашим вибором.</div>
+    <div class="branch-list" id="branch-list"></div>
+    <button class="primary-btn" id="branch-ok" onclick="confirmBranch()" disabled>Продовжити</button>
+</div>
+
 <div class="launch-wrap" id="launch-offer">
-    <div class="promo-banner promo-purple">
+    <div class="promo-banner promo-green">
         <div class="promo-close" onclick="launchOfferHide(false)">
             <span class="material-symbols-rounded" style="font-size: 16px;">close</span>
         </div>
-        <div class="promo-eyebrow">💟 Валківський Базарчик</div>
+        <div class="promo-eyebrow with-logo"><img src="assets/vb.PNG" alt=""><span>Валківський Базарчик</span></div>
         <div class="promo-title">Збільшити ліміт у групі «Валківський Базарчик»</div>
-        <div class="promo-desc">Тариф <b>Pro</b>: 50+ оголошень на місяць і жодних перевірок від бота.</div>
-        <div class="promo-meta">Від 150 ₴ на 3 місяці</div>
+        <div class="promo-desc">Нові тарифи <b>Pro One</b>, <b>Водій Pro</b> і <b>Max</b>.</div>
+        <div class="promo-meta">Від 50 ₴</div>
         <div class="launch-actions">
-            <div class="promo-btn" onclick="launchOfferOpenPro()">Переглянути Pro</div>
+            <div class="promo-btn" onclick="launchOfferOpenLimits()">Переглянути</div>
             <div class="launch-skip" onclick="launchOfferHide(true)">Не цікаво</div>
         </div>
     </div>
@@ -2110,7 +2251,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
     <div style="font-weight: 600; margin: 16px 0 12px; color: var(--text);">Що входить:</div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: #10b981; flex-shrink: 0;">stat_3</span>
-        <span style="font-size: 14px; line-height: 1.4;">Збільшений ліміт до 50+ оголошень на місяць</span>
+        <span style="font-size: 14px; line-height: 1.4;">Збільшений ліміт до 60+ оголошень на місяць</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
         <span class="material-symbols-rounded" style="color: var(--sub); flex-shrink: 0;">smart_toy</span>
@@ -2127,7 +2268,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
         <div class="comp-card active">
             <div class="comp-title premium-shimmer">Pro</div>
             <div class="comp-price">від 150 ₴ / 3 міс.</div>
-            <div class="comp-item plus"><span class="material-symbols-rounded">check</span> 50+ оголошень / міс.</div>
+            <div class="comp-item plus"><span class="material-symbols-rounded">check</span> 60+ оголошень / міс.</div>
             <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Анти-бот</div>
         </div>
     </div>
@@ -2161,6 +2302,102 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
     </div>
 </div>
 
+
+<div id="baz-pro-one-html" style="display: none;">
+    <div class="intro-box">Це спеціальний Pro, який працює <b>тільки в обраній вами гілці</b>. Усі можливості Pro — але в межах одного розділу групи.</div>
+    <div style="font-weight: 600; margin: 16px 0 12px; color: var(--text);">Що входить:</div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #10b981; flex-shrink: 0;">stat_3</span>
+        <span style="font-size: 14px; line-height: 1.4;">Усі можливості Pro: ліміт до 60+ оголошень на місяць</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: var(--sub); flex-shrink: 0;">account_tree</span>
+        <span style="font-size: 14px; line-height: 1.4;">Діє лише в одній гілці на ваш вибір (наприклад, «Послуги» чи «Продукти • Їжа»). Гілку оберете під час замовлення</span>
+    </div>
+    <div style="display: flex; gap: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: var(--sub); flex-shrink: 0;">smart_toy</span>
+        <span style="font-size: 14px; line-height: 1.4;">Анти-бот (бот більше не просить у вас підтверджень і забуває про ваше існування)</span>
+    </div>
+
+    <div class="comp-grid">
+        <div class="comp-card">
+            <div class="comp-title">Базовий</div>
+            <div class="comp-price">Безкоштовно</div>
+            <div class="comp-item"><span class="material-symbols-rounded">filter_3</span> 3 оголошення / тиж</div>
+            <div class="comp-item"><span class="material-symbols-rounded">smart_toy</span> Перевірки від бота</div>
+        </div>
+        <div class="comp-card active">
+            <div class="comp-title">Pro One</div>
+            <div class="comp-price">від 50 ₴ / міс.</div>
+            <div class="comp-item plus"><span class="material-symbols-rounded">check</span> 60+ оголошень / міс. в обраній гілці</div>
+            <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Анти-бот</div>
+        </div>
+    </div>
+</div>
+
+<div id="baz-driver-pro-html" style="display: none;">
+    <div class="intro-box">Спеціальний тариф для водіїв — діє тільки в межах гілки «Таксі • Попутка • Автопослуги».</div>
+    <div style="font-weight: 600; margin: 16px 0 12px; color: var(--text);">Що входить:</div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #10b981; flex-shrink: 0;">stat_3</span>
+        <span style="font-size: 14px; line-height: 1.4;">Збільшений ліміт: 14+ оголошень на тиждень (замість 3 на безкоштовному)</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: var(--sub); flex-shrink: 0;">local_taxi</span>
+        <span style="font-size: 14px; line-height: 1.4;">Діє лише в гілці «Таксі • Попутка • Автопослуги»</span>
+    </div>
+    <div style="display: flex; gap: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: var(--sub); flex-shrink: 0;">smart_toy</span>
+        <span style="font-size: 14px; line-height: 1.4;">Анти-бот (бот більше не просить у вас підтверджень і забуває про ваше існування)</span>
+    </div>
+
+    <div class="comp-grid">
+        <div class="comp-card">
+            <div class="comp-title">Базовий</div>
+            <div class="comp-price">Безкоштовно</div>
+            <div class="comp-item"><span class="material-symbols-rounded">filter_3</span> 3 оголошення / тиж</div>
+            <div class="comp-item"><span class="material-symbols-rounded">smart_toy</span> Перевірки від бота</div>
+        </div>
+        <div class="comp-card active">
+            <div class="comp-title">Водій Pro</div>
+            <div class="comp-price">від 50 ₴ / 3 міс.</div>
+            <div class="comp-item plus"><span class="material-symbols-rounded">check</span> 14+ оголошень / тиж.</div>
+            <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Анти-бот</div>
+        </div>
+    </div>
+</div>
+
+<div id="baz-max-html" style="display: none;">
+    <div style="font-weight: 600; margin: 16px 0 12px; color: var(--text);">Що входить:</div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: #10b981; flex-shrink: 0;">stat_3</span>
+        <span style="font-size: 14px; line-height: 1.4;">20 оголошень на день — у всіх гілках</span>
+    </div>
+    <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: var(--sub); flex-shrink: 0;">compare_arrows</span>
+        <span style="font-size: 14px; line-height: 1.4;">Різниця з Pro: у Pro — 60+ оголошень на весь місяць, а в Max — 20 оголошень на кожен день</span>
+    </div>
+    <div style="display: flex; gap: 12px; align-items: flex-start;">
+        <span class="material-symbols-rounded" style="color: var(--sub); flex-shrink: 0;">smart_toy</span>
+        <span style="font-size: 14px; line-height: 1.4;">Анти-бот (бот більше не просить у вас підтверджень і забуває про ваше існування)</span>
+    </div>
+
+    <div class="comp-grid">
+        <div class="comp-card">
+            <div class="comp-title">Базовий</div>
+            <div class="comp-price">Безкоштовно</div>
+            <div class="comp-item"><span class="material-symbols-rounded">filter_3</span> 3 оголошення / тиж</div>
+            <div class="comp-item"><span class="material-symbols-rounded">smart_toy</span> Перевірки від бота</div>
+        </div>
+        <div class="comp-card active">
+            <div class="comp-title">Max</div>
+            <div class="comp-price">від 299 ₴ / 3 міс.</div>
+            <div class="comp-item plus"><span class="material-symbols-rounded">check</span> 20 оголошень / день</div>
+            <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Усі гілки</div>
+            <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Анти-бот</div>
+        </div>
+    </div>
+</div>
 
 
  <!--WHY--> 
@@ -2792,8 +3029,67 @@ const PREMIUM_SLOTS = {
 const PLANS = {
     baz_branch_std:  { options: [[1, 300], [2, 500], [3, 650]] },
     baz_branch_prem: { options: [[1, 450], [2, 750], [3, 950]], loyalty: 3 },
-    baz_pro:         { options: [[3, 150], [6, 250], [12, 450]] }
+    baz_pro:         { options: [[3, 150], [6, 250], [12, 450]] },
+    baz_pro_one:     { options: [[1, 50], [6, 80], [12, 120]] },
+    baz_driver_pro:  { options: [[3, 50], [6, 80], [12, 120]] },
+    baz_max:         { options: [[3, 299], [6, 499], [12, 899]] }
 };
+
+// ---- Гілки для Pro One / Водій Pro ----
+const PRO_ONE_BRANCHES = [
+    'Сільгосп', 'Продукти • Їжа', 'Техніка • Електроніка', 'Послуги',
+    'Товари і одяг для дітей', 'ТОВАРИ для дому і саду • Декор', 'Краса • Догляд',
+    'Авто • Мото • Вело', 'Ремонт та будівництво', 'Чоловічий одяг та аксесуари',
+    'Жіночий одяг та аксесуари', 'Домашні улюбленці', 'Квіти • Рослини • Насіння • Розсада',
+    'Оренда / Нерухомість', 'Вакансії • Робота', 'Хоббі, спорт-товари, книги та інше',
+    'Освіта • Курси • Секції • Гуртки', 'Здоровʼя • Медикаменти', 'Кафе та інші заклади'
+];
+const DRIVER_BRANCH = 'Таксі • Попутка • Автопослуги';
+let chosenBranch = '';
+let pendingBranch = '';
+
+function openBranchSheet() {
+    pendingBranch = chosenBranch;
+    const list = document.getElementById('branch-list');
+    list.innerHTML = '';
+    PRO_ONE_BRANCHES.forEach(name => {
+        const row = document.createElement('div');
+        row.className = 'branch-opt' + (name === pendingBranch ? ' selected' : '');
+        const label = document.createElement('span');
+        label.textContent = name;
+        const ic = document.createElement('span');
+        ic.className = 'material-symbols-rounded';
+        ic.textContent = name === pendingBranch ? 'check_circle' : 'radio_button_unchecked';
+        row.appendChild(label);
+        row.appendChild(ic);
+        row.onclick = () => pickBranch(name);
+        list.appendChild(row);
+    });
+    document.getElementById('branch-ok').disabled = !pendingBranch;
+    document.getElementById('branch-overlay').classList.add('show');
+    document.getElementById('branch-sheet').classList.add('show');
+}
+function pickBranch(name) {
+    tg.HapticFeedback.impactOccurred('light');
+    pendingBranch = name;
+    document.querySelectorAll('#branch-list .branch-opt').forEach(row => {
+        const sel = row.firstChild.textContent === name;
+        row.classList.toggle('selected', sel);
+        row.lastChild.textContent = sel ? 'check_circle' : 'radio_button_unchecked';
+    });
+    document.getElementById('branch-ok').disabled = false;
+}
+function closeBranchSheet() {
+    document.getElementById('branch-overlay').classList.remove('show');
+    document.getElementById('branch-sheet').classList.remove('show');
+}
+function confirmBranch() {
+    if (!pendingBranch) return;
+    chosenBranch = pendingBranch;
+    closeBranchSheet();
+    goToCheckout();
+}
+
 let modalPlan = null;
 
 function monthsLabel(m) {
@@ -2870,6 +3166,7 @@ function openModal(title, desc, price, action) {
     }
     
     modalPlan = null;
+    chosenBranch = '';
     document.getElementById('m-plans').classList.remove('show');
     document.getElementById('m-plan-note').classList.remove('show');
     if (price && PLANS[action] && !String(price).includes('<s')) {
@@ -2948,6 +3245,7 @@ let lastPage = 'home';
 let selectedMethod = null;
 
 function goToCheckout() {
+    if (modalPlan && modalPlan.action === 'baz_pro_one' && !chosenBranch) { openBranchSheet(); return; }
     closeModal();
     const activePage = document.querySelector('.page.active').id;
     if(activePage === 'page-vsht') currentOrder.platform = "в Валки, шо там? 🇺🇦";
@@ -2971,11 +3269,14 @@ function goToCheckout() {
     currentOrder.months = 0;
     currentOrder.total = 0;
     currentOrder.planId = '';
+    currentOrder.branch = '';
     if (modalPlan) {
         currentOrder.term = modalPlan.long;
         currentOrder.months = modalPlan.months;
         currentOrder.total = modalPlan.price;
         currentOrder.planId = modalPlan.action;
+        if (modalPlan.action === 'baz_pro_one') currentOrder.branch = chosenBranch;
+        else if (modalPlan.action === 'baz_driver_pro') currentOrder.branch = DRIVER_BRANCH;
         finalPriceText = `${modalPlan.price} ₴ / ${modalPlan.long}`;
     }
 
@@ -2985,6 +3286,9 @@ function goToCheckout() {
         ? `${currentOrder.name} · ${currentOrder.term}`
         : currentOrder.name;
     document.getElementById('check-price-display').innerText = currentOrder.price;
+    const brEl = document.getElementById('check-branch-display');
+    brEl.innerText = currentOrder.branch ? 'Гілка: ' + currentOrder.branch : '';
+    brEl.style.display = currentOrder.branch ? 'block' : 'none';
 
     selectedMethod = 'admin';
     lastPage = activePage;
@@ -3019,12 +3323,15 @@ function processFinalAction() {
     const name = currentOrder.name;
     const plat = currentOrder.platform;
 
-    if (name.includes('Безлім') || name === 'Pro' || name === 'Lite') {
+    if (name.includes('Безлім') || name === 'Pro' || name === 'Lite' || name === 'Pro One' || name === 'Водій Pro' || name === 'Max') {
         msg = `Вітаю! Хочу замовити ${name} у групі Валківський Базарчик`;
     } else if (name.toLowerCase().includes('пакет') || name.includes('ботах+')) {
         msg = `Вітаю! Хочу замовити рекламу. Мене цікавить рекламний пакет «${name}»`;
     } else {
         msg = `Вітаю! Хочу замовити рекламу. Мене цікавить варіант ${name} ${plat}`;
+    }
+    if (currentOrder.branch) {
+        msg += `\n\n📂 Гілка: ${currentOrder.branch}`;
     }
     if (currentOrder.term) {
         const perMonth = currentOrder.months > 1
@@ -3052,7 +3359,8 @@ function processFinalAction() {
             plan: currentOrder.term ? {
                 id: currentOrder.planId,
                 months: currentOrder.months,
-                total: currentOrder.total
+                total: currentOrder.total,
+                branch: currentOrder.branch || null
             } : null
         })
     }).then(() => {
@@ -3176,8 +3484,8 @@ function quizGoBack() {
 
 
 
-// ---- Віконце при запуску: пропозиція Pro ----
-const LAUNCH_KEY = 'vsht_launch_offer_until';
+// ---- Віконце при запуску: нові тарифи ----
+const LAUNCH_KEY = 'vsht_launch_offer_until_v2';
 function launchOfferHide(snooze) {
     document.getElementById('launch-offer').classList.remove('show');
     document.body.classList.remove('no-scroll');
@@ -3185,10 +3493,9 @@ function launchOfferHide(snooze) {
         try { localStorage.setItem(LAUNCH_KEY, String(Date.now() + 7 * 24 * 3600 * 1000)); } catch (e) {}
     }
 }
-function launchOfferOpenPro() {
+function launchOfferOpenLimits() {
     launchOfferHide(false);
     nav('page-limits');
-    setTimeout(() => openModal('Pro', document.getElementById('baz-pro-html').innerHTML, '150 ₴ / 3 місяці', 'baz_pro', false), 300);
 }
 window.addEventListener('load', () => {
     let until = 0;
@@ -3213,6 +3520,9 @@ const BOT_ADMIN_URL = 'https://t.me/valkysho_bot';
 const BOT_MODALS = {
     pro:           ['page-limits',   'Pro',                  'baz-pro-html',          '150 ₴ / 3 місяці', 'baz_pro'],
     lite:          ['page-limits',   'Lite',                 'baz-lite-html',         '90 ₴ / 3 місяці',  'baz_lite'],
+    pro_one:       ['page-limits',   'Pro One',              'baz-pro-one-html',      '50 ₴ / місяць',    'baz_pro_one'],
+    driver_pro:    ['page-limits',   'Водій Pro',            'baz-driver-pro-html',   '50 ₴ / 3 місяці',  'baz_driver_pro'],
+    max:           ['page-limits',   'Max',                  'baz-max-html',          '299 ₴ / 3 місяці', 'baz_max'],
     branch_std:    ['page-bazar',    'Гілка Стандарт',       'baz-branch-std-html',   '300 ₴ / міс.',     'baz_branch_std'],
     branch_prem:   ['page-bazar',    'Гілка Premium',        'baz-branch-prem-html',  '450 ₴ / місяць',   'baz_branch_prem'],
     baz_bot:       ['page-bazar',    'Реклама в боті',       'baz-bot-html',          '100 ₴',            'baz_bot'],
@@ -3248,6 +3558,8 @@ const BOT_INTENTS = [
     { id: 'bot_ad', tier: 0, kw: [['реклама в боті',3],['реклама в ботах',3],['ботах',2],['бот',2],['кнопк',2]] },
     { id: 'premium', tier: 0, kw: [['premium',3],['преміум',3],['топ-4',3],['топ',1],['вільн',2],['наявн',2],['місц',1]] },
     { id: 'branch', tier: 0, kw: [['гілк',3],['оренд',2],['розділ',1],['вітрин',1],['власн',1]] },
+    { id: 'tariff_diff', tier: 0, kw: [['різниц',8],['відрізн',8],['порівн',8],['відмінн',6],['чим відрізн',9],['що з тарифів',6],['який тариф',5],['всі тариф',5],['усі тариф',5]] },
+    { id: 'tariffs_new', tier: 0, kw: [['pro one',7],['proone',7],['про ван',7],['нові тариф',7],['новий тариф',7],['нових тариф',7],['водій',4],['водія',4],['водії',4],['водіїв',4],['водіям',4],['таксі',4],['таксист',4],['попутк',4],['автопослуг',3],['max$',5],['макс',3]] },
     { id: 'limits', tier: 0, kw: [['ліміт',3],['безліміт',3],['обмеж',2],['анти',2],['перевірк',2],['lite$',3],['pro$',3],['тариф',2],['більше оголошен',3],['скільки оголошен',4],['бот просить',3],['підтвердж',1]] },
     { id: 'packages', tier: 0, kw: [['пакет',3],['комплекс',2],['стандарт+',10],['базарчик+',10],['ботах+',10],['кастомн',3],['індивідуальн',1],['кілька майданчик',3],['усе разом',3]] },
     { id: 'giveaway', tier: 0, kw: [['розіг',3],['конкурс',3],['подарунк',1],['giveaway',3]] },
@@ -3290,7 +3602,7 @@ function botDetect(text) {
 // ---------- Тексти відповідей (редагуй тут) ----------
 const ba = (icon, label, t, v, fx) => ({ icon, label, t, v, fx });
 const chromeCls = l => 'chrome-grad ' + (l.includes('Базарчик+') ? 'chrome-purple' : l.includes('ботах+') ? 'chrome-red' : 'chrome-blue');
-const ICON_FX = { layers: 'chrome-grad', bolt_boost: 'black-shine', license: 'silver-shine' };
+const ICON_FX = { layers: 'chrome-grad', bolt_boost: 'black-shine', license: 'silver-shine', looks_one: 'black-shine', local_taxi: 'black-shine', rocket_launch: 'rocket-blink' };
 const BA_ADMIN = ba('chat', 'Написати адмінам', 'admin');
 
 const BOT_REPLIES = {
@@ -3308,7 +3620,7 @@ const BOT_REPLIES = {
     fallback: () => ({ html: 'Щось я вас не дуже зрозумів 🤔 Спробуйте ще раз більш детально описати, з чим саме я вам можу допомогти.',
         actions: [ba('menu', 'Переглянути меню', 'menu')] }),
 
-    prices: () => ({ fb: true, html: 'Орієнтири по цінах 💸<br><br>• <b>Канал «Валки, шо там?»</b> — від 150 ₴<br>• <b>Чатік</b> — публікація від 150 ₴, реклама в боті 250 ₴ / тиждень<br>• <b>Базарчик</b> — Lite 90 ₴ / 3 міс., Pro 150 ₴ / 3 міс., гілка від 300 ₴ / міс., реклама в боті 100 ₴<br>• <b>Пакети</b> — від 400 ₴<br><br>Що саме вас цікавить?',
+    prices: () => ({ fb: true, html: 'Орієнтири по цінах 💸<br><br>• <b>Канал «Валки, шо там?»</b> — від 150 ₴<br>• <b>Чатік</b> — публікація від 150 ₴, реклама в боті 250 ₴ / тиждень<br>• <b>Базарчик</b> — Lite 90 ₴ / 3 міс., Pro 150 ₴ / 3 міс., Pro One від 50 ₴ / міс., Водій Pro від 50 ₴ / 3 міс., Max від 299 ₴ / 3 міс., гілка від 300 ₴ / міс., реклама в боті 100 ₴<br>• <b>Пакети</b> — від 400 ₴<br><br>Що саме вас цікавить?',
         actions: [ba('campaign', 'Канал «Валки, шо там?»', 'say', 'vsht'), ba('chat', 'Чатік', 'say', 'chatik'), ba('storefront', 'Базарчик', 'say', 'bazar'), ba('layers', 'Рекламні пакети', 'say', 'packages')] }),
 
     ad_where: () => ({ html: 'Рекламу — де саме хочете розмістити? 📣',
@@ -3320,11 +3632,17 @@ const BOT_REPLIES = {
     chatik: () => ({ fb: true, html: '<b>Валківський Чатік</b> (5.7K) 💬<br><br>• <b>Стандартне</b> — 150 ₴ (+ закріплення на 24 год)<br>• <b>Стандартне + кнопка</b> — 200 ₴ (кнопка в щоденному повідомленні бота на 2 дні)<br>• <b>Реклама в боті</b> — 250 ₴ на тиждень: кнопка двічі на день (вранці й ввечері)<br>• <b>Діалог у чаті</b> — 250 ₴: ми ставимо цікаві питання у відповідь на вашу рекламу',
         actions: [ba('chat', 'Стандартне', 'modal', 'chat_std'), ba('smart_button', 'Стандартне + кнопка', 'modal', 'chat_btn_std'), ba('smart_toy', 'Реклама в боті', 'modal', 'chat_bot'), ba('list', 'Усі варіанти чату', 'page', 'page-chatik')] }),
 
-    bazar: () => ({ fb: true, html: '<b>Валківський Базарчик</b> (8K) 🛒<br><br>• Публікувати оголошення можна безкоштовно: до <b>3 на тиждень</b><br>• Більше оголошень і без перевірок бота — тарифи <b>Lite</b> (90 ₴ / 3 міс.) та <b>Pro</b> (150 ₴ / 3 міс.)<br>• <b>Власна гілка</b> — від 300 ₴ / міс.<br>• <b>Реклама в боті</b> Базарчика — 100 ₴ на 7 днів',
+    bazar: () => ({ fb: true, html: '<b>Валківський Базарчик</b> (8K) 🛒<br><br>• Публікувати оголошення можна безкоштовно: до <b>3 на тиждень</b><br>• Більше оголошень і без перевірок бота — тарифи <b>Lite</b>, <b>Pro</b>, <b>Pro One</b>, <b>Водій Pro</b> та <b>Max</b><br>• <b>Власна гілка</b> — від 300 ₴ / міс.<br>• <b>Реклама в боті</b> Базарчика — 100 ₴ на 7 днів',
         actions: [ba('bolt_boost', 'Збільшити ліміт', 'say', 'limits'), ba('storefront', 'Власна гілка', 'say', 'branch'), ba('smart_toy', 'Реклама в боті', 'modal', 'baz_bot')] }),
 
-    limits: () => ({ fb: true, html: '<b>Ліміти оголошень у Базарчику</b> 📈<br><br>Безкоштовно: 3 оголошення на тиждень + перевірки від бота.<br><br>• <b>Lite</b> — 90 ₴ / 3 міс.: до 30+ оголошень на місяць, без перевірок бота<br>• <b>Pro</b> — від 150 ₴ / 3 міс.: 50+ оголошень на місяць, без перевірок бота<br><br>Хочете безліміт — для цього є власна гілка. А військовим і їхнім рідним Pro дається безкоштовно раз на рік.',
-        actions: [ba('workspace_premium', 'Переглянути Pro', 'modal', 'pro'), ba('license', 'Переглянути Lite', 'modal', 'lite'), ba('storefront', 'Власна гілка (безліміт)', 'say', 'branch')] }),
+    limits: () => ({ fb: true, html: '<b>Ліміти оголошень у Базарчику</b> 📈<br><br>Безкоштовно: 3 оголошення на тиждень + перевірки від бота. У всіх платних тарифів перевірок бота немає (анти-бот).<br><br>• <b>Lite</b> — 90 ₴ / 3 міс.: до 30+ оголошень на місяць<br>• <b>Pro</b> — від 150 ₴ / 3 міс.: 60+ оголошень на місяць, усі гілки<br>• <b>Pro One</b> — від 50 ₴ / міс.: можливості Pro, але тільки в одній обраній вами гілці<br>• <b>Водій Pro</b> — від 50 ₴ / 3 міс.: 14+ оголошень на тиждень, тільки в гілці «Таксі • Попутка • Автопослуги»<br>• <b>Max</b> — від 299 ₴ / 3 міс.: 20 оголошень на день, усі гілки<br><br>Хочете безліміт — для цього є власна гілка. А військовим і їхнім рідним Pro дається безкоштовно раз на рік.',
+        actions: [ba('license', 'Переглянути Lite', 'modal', 'lite'), ba('workspace_premium', 'Переглянути Pro', 'modal', 'pro'), ba('looks_one', 'Переглянути Pro One', 'modal', 'pro_one'), ba('local_taxi', 'Переглянути Водій Pro', 'modal', 'driver_pro'), ba('rocket_launch', 'Переглянути Max', 'modal', 'max'), ba('compare_arrows', 'Різниця між тарифами', 'say', 'tariff_diff'), ba('storefront', 'Власна гілка (безліміт)', 'say', 'branch')] }),
+
+    tariffs_new: () => ({ fb: true, html: '<b>Нові тарифи в Базарчику</b> 🆕<br><br>• <b>Pro One</b> — 50 ₴ / міс., 80 ₴ / 6 міс., 120 ₴ / рік. Це спеціальний Pro, який працює тільки в обраній вами гілці (наприклад, «Послуги» чи «Продукти • Їжа»). Гілку оберете під час замовлення<br>• <b>Водій Pro</b> — 50 ₴ / 3 міс., 80 ₴ / 6 міс., 120 ₴ / рік. 14+ оголошень на тиждень (замість 3 безкоштовних) у гілці «Таксі • Попутка • Автопослуги»<br>• <b>Max</b> — 299 ₴ / 3 міс., 499 ₴ / 6 міс., 899 ₴ / рік. 20 оголошень на день у всіх гілках<br><br>У всіх трьох — анти-бот: жодних перевірок від бота.',
+        actions: [ba('looks_one', 'Pro One', 'modal', 'pro_one'), ba('local_taxi', 'Водій Pro', 'modal', 'driver_pro'), ba('rocket_launch', 'Max', 'modal', 'max'), ba('compare_arrows', 'Різниця між тарифами', 'say', 'tariff_diff')] }),
+
+    tariff_diff: () => ({ fb: true, html: '<b>Різниця між тарифами Базарчика</b> ⚖️<br><br>Безкоштовно — 3 оголошення на тиждень і перевірки від бота. У всіх платних тарифах бот вас більше не перевіряє.<br><br>• <b>Lite</b> — до 30+ оголошень на місяць<br>• <b>Pro</b> — 60+ оголошень на місяць у всіх гілках<br>• <b>Pro One</b> — ті самі можливості, що й Pro (60+ на місяць), але тільки в одній обраній вами гілці<br>• <b>Водій Pro</b> — 14+ оголошень на тиждень, тільки в гілці «Таксі • Попутка • Автопослуги»<br>• <b>Max</b> — 20 оголошень на день у всіх гілках<br><br><b>Pro проти Max:</b> у Pro ліміт рахується на весь місяць (60+), а в Max — на кожен день (20).<br><br><b>Що обрати:</b> публікуєте в одній темі — Pro One; у різних — Pro; дуже активно щодня — Max; ви водій — Водій Pro; потрібно трохи більше й без перевірок — Lite.',
+        actions: [ba('looks_one', 'Pro One', 'modal', 'pro_one'), ba('local_taxi', 'Водій Pro', 'modal', 'driver_pro'), ba('rocket_launch', 'Max', 'modal', 'max'), ba('quiz', 'Допоможіть обрати (тест)', 'quiz')] }),
 
     branch: () => ({ fb: true, html: '<b>Власна гілка в Базарчику</b> — ваш міні-сайт усередині групи 🏪<br><br>• <b>Стандарт</b> — 300 ₴ / міс.: логотип чи емодзі, власна назва, безліміт публікацій<br>• <b>Premium</b> — 450 ₴ / міс.: усе зі Стандарту + ТОП-4 закріплення, репост на канал і кнопка в боті<br><br>Для проби є тижневі версії: Стандарт — 100 ₴, Premium — 200 ₴.',
         actions: [ba('storefront', 'Гілка Стандарт', 'modal', 'branch_std', 'silver-shine'), ba('crown', 'Гілка Premium', 'modal', 'branch_prem')] }),
