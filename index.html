@@ -1186,7 +1186,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
 
-        <div class="in-btn" onclick="openModal('Pro One', document.getElementById('baz-pro-one-html').innerHTML, '50 ₴ / місяць', 'baz_pro_one', false)">
+        <div class="in-btn" onclick="openModal('Pro One', document.getElementById('baz-pro-one-html').innerHTML, '50 ₴ / 3 місяці', 'baz_pro_one', false)">
             <div class="in-title" style="display: flex; align-items: center; gap: 6px;"><span class="material-symbols-rounded black-shine">looks_one</span><span>Pro One</span></div>
             <div class="in-action">Переглянути <span class="material-symbols-rounded arrow">chevron_right</span></div>
         </div>
@@ -1618,7 +1618,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
                 </div>
             </div>
             <div class="card-group">
-                <div class="in-btn" onclick="openModal('Pro One', document.getElementById('baz-pro-one-html').innerHTML, '50 ₴ / місяць', 'baz_pro_one', false)">
+                <div class="in-btn" onclick="openModal('Pro One', document.getElementById('baz-pro-one-html').innerHTML, '50 ₴ / 3 місяці', 'baz_pro_one', false)">
                     <div class="in-title"><span class="material-symbols-rounded black-shine">looks_one</span> Тариф Pro One</div>
                     <div class="in-action">Детальніше <span class="material-symbols-rounded arrow">chevron_right</span></div>
                 </div>
@@ -2258,7 +2258,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
         <span style="font-size: 14px; line-height: 1.4;">Діє в усіх гілках</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
-        <span class="material-symbols-rounded" style="color: #10b981; flex-shrink: 0;">add_circle</span>
+        <span class="material-symbols-rounded" style="color: #10b981; flex-shrink: 0;">format_list_bulleted_add</span>
         <span style="font-size: 14px; line-height: 1.4;">Бонусні оголошення за запитом: від 10 до 20</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
@@ -2290,7 +2290,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
         <span style="font-size: 14px; line-height: 1.4;">Збільшений ліміт до 30+ оголошень на місяць</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
-        <span class="material-symbols-rounded" style="color: #10b981; flex-shrink: 0;">format_list_bulleted_add</span>
+        <span class="material-symbols-rounded" style="color: #10b981; flex-shrink: 0;">add_circle</span>
         <span style="font-size: 14px; line-height: 1.4;">Діє в усіх гілках</span>
     </div>
     <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
@@ -2344,7 +2344,7 @@ body.no-scroll .bot-fab, body.on-checkout .bot-fab { display: none; }
         </div>
         <div class="comp-card active">
             <div class="comp-title">Pro One</div>
-            <div class="comp-price">від 50 ₴ / міс.</div>
+            <div class="comp-price">від 50 ₴ / 3 міс.</div>
             <div class="comp-item plus"><span class="material-symbols-rounded">check</span> 60+ оголошень / міс. в обраній гілці</div>
             <div class="comp-item plus"><span class="material-symbols-rounded">check</span> Анти-бот</div>
         </div>
@@ -3051,7 +3051,7 @@ const PLANS = {
     baz_branch_std:  { options: [[1, 300], [2, 500], [3, 650]] },
     baz_branch_prem: { options: [[1, 450], [2, 750], [3, 950]], loyalty: 3 },
     baz_pro:         { options: [[3, 150], [6, 250], [12, 450]] },
-    baz_pro_one:     { options: [[1, 50], [6, 80], [12, 120]] },
+    baz_pro_one:     { options: [[3, 50], [6, 80], [12, 120]] },
     baz_driver_pro:  { options: [[6, 50], [12, 80]] },
     baz_max:         { options: [[3, 299], [6, 499], [12, 899]] }
 };
@@ -3541,7 +3541,7 @@ const BOT_ADMIN_URL = 'https://t.me/valkysho_bot';
 const BOT_MODALS = {
     pro:           ['page-limits',   'Pro',                  'baz-pro-html',          '150 ₴ / 3 місяці', 'baz_pro'],
     lite:          ['page-limits',   'Lite',                 'baz-lite-html',         '90 ₴ / 3 місяці',  'baz_lite'],
-    pro_one:       ['page-limits',   'Pro One',              'baz-pro-one-html',      '50 ₴ / місяць',    'baz_pro_one'],
+    pro_one:       ['page-limits',   'Pro One',              'baz-pro-one-html',      '50 ₴ / 3 місяці',  'baz_pro_one'],
     driver_pro:    ['page-limits',   'Водій Pro',            'baz-driver-pro-html',   '50 ₴ / 6 місяців', 'baz_driver_pro'],
     max:           ['page-limits',   'Max',                  'baz-max-html',          '299 ₴ / 3 місяці', 'baz_max'],
     branch_std:    ['page-bazar',    'Гілка Стандарт',       'baz-branch-std-html',   '300 ₴ / міс.',     'baz_branch_std'],
@@ -3641,7 +3641,7 @@ const BOT_REPLIES = {
     fallback: () => ({ html: 'Щось я вас не дуже зрозумів 🤔 Спробуйте ще раз більш детально описати, з чим саме я вам можу допомогти.',
         actions: [ba('menu', 'Переглянути меню', 'menu')] }),
 
-    prices: () => ({ fb: true, html: 'Орієнтири по цінах 💸<br><br>• <b>Канал «Валки, шо там?»</b> — від 150 ₴<br>• <b>Чатік</b> — публікація від 150 ₴, реклама в боті 250 ₴ / тиждень<br>• <b>Базарчик</b> — Lite 90 ₴ / 3 міс., Pro 150 ₴ / 3 міс., Pro One від 50 ₴ / міс., Водій Pro від 50 ₴ / 6 міс., Max від 299 ₴ / 3 міс., гілка від 300 ₴ / міс., реклама в боті 100 ₴<br>• <b>Пакети</b> — від 400 ₴<br><br>Що саме вас цікавить?',
+    prices: () => ({ fb: true, html: 'Орієнтири по цінах 💸<br><br>• <b>Канал «Валки, шо там?»</b> — від 150 ₴<br>• <b>Чатік</b> — публікація від 150 ₴, реклама в боті 250 ₴ / тиждень<br>• <b>Базарчик</b> — Lite 90 ₴ / 3 міс., Pro 150 ₴ / 3 міс., Pro One від 50 ₴ / 3 міс., Водій Pro від 50 ₴ / 6 міс., Max від 299 ₴ / 3 міс., гілка від 300 ₴ / міс., реклама в боті 100 ₴<br>• <b>Пакети</b> — від 400 ₴<br><br>Що саме вас цікавить?',
         actions: [ba('campaign', 'Канал «Валки, шо там?»', 'say', 'vsht'), ba('chat', 'Чатік', 'say', 'chatik'), ba('storefront', 'Базарчик', 'say', 'bazar'), ba('layers', 'Рекламні пакети', 'say', 'packages')] }),
 
     ad_where: () => ({ html: 'Рекламу — де саме хочете розмістити? 📣',
@@ -3656,10 +3656,10 @@ const BOT_REPLIES = {
     bazar: () => ({ fb: true, html: '<b>Валківський Базарчик</b> (8K) 🛒<br><br>• Публікувати оголошення можна безкоштовно: до <b>3 на тиждень</b><br>• Більше оголошень і без перевірок бота — тарифи <b>Lite</b>, <b>Pro</b>, <b>Pro One</b>, <b>Водій Pro</b> та <b>Max</b><br>• <b>Власна гілка</b> — від 300 ₴ / міс.<br>• <b>Реклама в боті</b> Базарчика — 100 ₴ на 7 днів',
         actions: [ba('bolt_boost', 'Збільшити ліміт', 'say', 'limits'), ba('storefront', 'Власна гілка', 'say', 'branch'), ba('smart_toy', 'Реклама в боті', 'modal', 'baz_bot')] }),
 
-    limits: () => ({ fb: true, html: '<b>Ліміти оголошень у Базарчику</b> 📈<br><br>Безкоштовно: 3 оголошення на тиждень + перевірки від бота. У всіх платних тарифів перевірок бота немає (анти-бот).<br><br>• <b>Lite</b> — 90 ₴ / 3 міс.: 30+ оголошень на місяць, усі гілки (+10–20 бонусних за запитом)<br>• <b>Pro</b> — від 150 ₴ / 3 міс.: 60+ оголошень на місяць, усі гілки (+10–20 бонусних за запитом)<br>• <b>Pro One</b> — від 50 ₴ / міс.: можливості Pro, але тільки в одній обраній вами гілці<br>• <b>Водій Pro</b> — від 50 ₴ / 6 міс.: 14+ оголошень на тиждень, тільки в гілці «Таксі • Попутка • Автопослуги»<br>• <b>Max</b> — від 299 ₴ / 3 міс.: 15+ оголошень на день (+10 бонусних за запитом), усі гілки<br><br>Хочете безліміт — для цього є власна гілка. А військовим і їхнім рідним Pro дається безкоштовно раз на рік.',
+    limits: () => ({ fb: true, html: '<b>Ліміти оголошень у Базарчику</b> 📈<br><br>Безкоштовно: 3 оголошення на тиждень + перевірки від бота. У всіх платних тарифів перевірок бота немає (анти-бот).<br><br>• <b>Lite</b> — 90 ₴ / 3 міс.: 30+ оголошень на місяць, усі гілки (+10–20 бонусних за запитом)<br>• <b>Pro</b> — від 150 ₴ / 3 міс.: 60+ оголошень на місяць, усі гілки (+10–20 бонусних за запитом)<br>• <b>Pro One</b> — від 50 ₴ / 3 міс.: можливості Pro, але тільки в одній обраній вами гілці<br>• <b>Водій Pro</b> — від 50 ₴ / 6 міс.: 14+ оголошень на тиждень, тільки в гілці «Таксі • Попутка • Автопослуги»<br>• <b>Max</b> — від 299 ₴ / 3 міс.: 15+ оголошень на день (+10 бонусних за запитом), усі гілки<br><br>Хочете безліміт — для цього є власна гілка. А військовим і їхнім рідним Pro дається безкоштовно раз на рік.',
         actions: [ba('license', 'Переглянути Lite', 'modal', 'lite'), ba('workspace_premium', 'Переглянути Pro', 'modal', 'pro'), ba('looks_one', 'Переглянути Pro One', 'modal', 'pro_one'), ba('local_taxi', 'Переглянути Водій Pro', 'modal', 'driver_pro'), ba('rocket_launch', 'Переглянути Max', 'modal', 'max'), ba('compare_arrows', 'Різниця між тарифами', 'say', 'tariff_diff'), ba('storefront', 'Власна гілка (безліміт)', 'say', 'branch')] }),
 
-    tariffs_new: () => ({ fb: true, html: '<b>Нові тарифи в Базарчику</b> 🆕<br><br>• <b>Pro One</b> — 50 ₴ / міс., 80 ₴ / 6 міс., 120 ₴ / рік. Це спеціальний Pro, який працює тільки в обраній вами гілці (наприклад, «Послуги» чи «Продукти • Їжа»). Гілку оберете під час замовлення<br>• <b>Водій Pro</b> — 50 ₴ / 6 міс., 80 ₴ / рік. 14+ оголошень на тиждень (замість 3 безкоштовних) у гілці «Таксі • Попутка • Автопослуги»<br>• <b>Max</b> — 299 ₴ / 3 міс., 499 ₴ / 6 міс., 899 ₴ / рік. 15+ оголошень на день у всіх гілках + 10 бонусних за запитом<br><br>У всіх трьох — анти-бот: жодних перевірок від бота.',
+    tariffs_new: () => ({ fb: true, html: '<b>Нові тарифи в Базарчику</b> 🆕<br><br>• <b>Pro One</b> — 50 ₴ / 3 міс., 80 ₴ / 6 міс., 120 ₴ / рік. Це спеціальний Pro, який працює тільки в обраній вами гілці (наприклад, «Послуги» чи «Продукти • Їжа»). Гілку оберете під час замовлення<br>• <b>Водій Pro</b> — 50 ₴ / 6 міс., 80 ₴ / рік. 14+ оголошень на тиждень (замість 3 безкоштовних) у гілці «Таксі • Попутка • Автопослуги»<br>• <b>Max</b> — 299 ₴ / 3 міс., 499 ₴ / 6 міс., 899 ₴ / рік. 15+ оголошень на день у всіх гілках + 10 бонусних за запитом<br><br>У всіх трьох — анти-бот: жодних перевірок від бота.',
         actions: [ba('looks_one', 'Pro One', 'modal', 'pro_one'), ba('local_taxi', 'Водій Pro', 'modal', 'driver_pro'), ba('rocket_launch', 'Max', 'modal', 'max'), ba('compare_arrows', 'Різниця між тарифами', 'say', 'tariff_diff')] }),
 
     tariff_diff: () => ({ fb: true, html: '<b>Різниця між тарифами Базарчика</b> ⚖️<br><br>Безкоштовно — 3 оголошення на тиждень і перевірки від бота. У всіх платних тарифах бот вас більше не перевіряє.<br><br>• <b>Lite</b> — 30+ оголошень на місяць у всіх гілках (+10–20 бонусних за запитом)<br>• <b>Pro</b> — 60+ оголошень на місяць у всіх гілках (+10–20 бонусних за запитом)<br>• <b>Pro One</b> — ті самі можливості, що й Pro (60+ на місяць), але тільки в одній обраній вами гілці<br>• <b>Водій Pro</b> — 14+ оголошень на тиждень, тільки в гілці «Таксі • Попутка • Автопослуги»<br>• <b>Max</b> — 15+ оголошень на день (+10 бонусних за запитом) у всіх гілках<br><br><b>Pro проти Max:</b> у Pro ліміт рахується на весь місяць (60+), а в Max — на кожен день (15+).<br><br><b>Що обрати:</b> публікуєте в одній темі — Pro One; у різних — Pro; дуже активно щодня — Max; ви водій — Водій Pro; потрібно трохи більше й без перевірок — Lite.',
